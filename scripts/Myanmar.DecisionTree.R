@@ -10,7 +10,10 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/decision tree/")
 
 # Load the required R libraries
 library(tree)
+
+# Read data, define variables, and store data in variables
+data <- read.csv(file="SetD_2015_LP_1D_30m_RF_12CL_ForR.csv", header=TRUE, sep=",")
