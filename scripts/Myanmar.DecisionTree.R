@@ -10,7 +10,7 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd(""/Users/dondealban/Dropbox/Research/myanmar/"")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/")
 
 # Load the required R libraries
-library(ggplot2)
+library(tree)
