@@ -16,7 +16,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/decision tree/")
 library(tree)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="SetD_2015_LP_1D_30m_RF_12CL_ForR.csv", header=TRUE, sep=",")
+data <- read.csv(file="SetD_2015_LP_1D_30m_RF_9CL_ForR.csv", header=TRUE, sep=",")
 
 
 # CREATE SUBSETS TO DEFINE CLASSES IN MULTI-LEVEL CLASSIFICATION
