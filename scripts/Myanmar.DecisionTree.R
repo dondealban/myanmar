@@ -29,5 +29,5 @@ data$LC1[data$LC_TYPE!="FOR" & data$LC_TYPE!="MNG" & data$LC_TYPE!="OPM" & data$
 data$LC2[data$LC1=="NVG"] <- "NVG"
 data$LC2[data$LC1!="NVG" & data$LC_TYPE=="FOR"] <- "FOR"
 data$LC2[data$LC1!="NVG" & data$LC_TYPE=="SHB"] <- "SHB"
-data$LC2[data$LC_TYPE!="MNG" | data$LC_TYPE=="OPM" | data$LC_TYPE=="RBM"] <- "MOR"
+data$LC2[data$LC1!="NVG" & data$LC_TYPE!="MNG" | data$LC_TYPE=="OPM" | data$LC_TYPE=="RBM"] <- "MOR"
 
