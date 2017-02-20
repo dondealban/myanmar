@@ -36,5 +36,7 @@ data$LC2[data$LC1=="INC" & data$LC_TYPE=="OPM"] <- "INC"
 data$LC2[data$LC1=="INC" & data$LC_TYPE=="RBM"] <- "INC"
 
 # Level 3: mangrove | oil palm/rubber
-
-
+data$LC3[data$LC2=="EXC"] <- "EXC"
+data$LC3[data$LC2=="INC" & data$LC_TYPE=="MNG"] <- "EXC"
+data$LC3[data$LC2=="INC" & data$LC_TYPE=="OPM"] <- "INC"
+data$LC3[data$LC2=="INC" & data$LC_TYPE=="RBM"] <- "INC"
