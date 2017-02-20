@@ -45,3 +45,10 @@ data$LC3[data$LC2=="INC" & data$LC_TYPE=="RBM"] <- "INC"
 data$LC4[data$LC3=="EXC"] <- "EXC"
 data$LC4[data$LC3=="INC" & data$LC_TYPE=="OPM"] <- "OPM"
 data$LC4[data$LC3=="INC" & data$LC_TYPE=="RBM"] <- "RBM"
+
+# Select observations per classification level and store selected data in variables
+
+datalvl1  <- data
+datalvl2  <- subset(data, subset=(LC1=="INC"))
+datalvl3  <- subset(data, subset=(LC2=="INC"))
+datalvl4  <- subset(data, subset=(LC3=="INC"))
