@@ -27,7 +27,7 @@ data$LC1[data$LC_TYPE!="FOR" & data$LC_TYPE!="MNG" & data$LC_TYPE!="OPM" & data$
 
 # Level 2: forest | shrubs/orchards | mangrove/oil palm/rubber
 data$LC2[data$LC1=="NVG"] <- "NVG"
-data$LC2[data$LC1!="NVG" & data$LC_TYPE=="FOR"] <- "FOR"
-data$LC2[data$LC1!="NVG" & data$LC_TYPE=="SHB"] <- "SHB"
-data$LC2[data$LC1!="NVG" & data$LC_TYPE!="MNG" | data$LC_TYPE=="OPM" | data$LC_TYPE=="RBM"] <- "MOR"
+data$LC1[data$LC1=="VEG" & data$LC_TYPE=="FOR" | data$LC_TYPE=="SHB"] <- "EX1"
+data$LC1[data$LC1=="VEG" & data$LC_TYPE!="MNG" | data$LC_TYPE!="OPM" | data$LC_TYPE!="RBM"] <- "IN1"
+
 
