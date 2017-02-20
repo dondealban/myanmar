@@ -48,17 +48,60 @@ data$LC4[data$LC3=="INC" & data$LC_TYPE=="RBM"] <- "RBM"
 
 # Select observations per classification level and store selected data in variables
 
-data.l1  <- data
-data.l2  <- subset(data, subset=(LC1=="INC"))
-data.l3  <- subset(data, subset=(LC2=="INC"))
-data.l4  <- subset(data, subset=(LC3=="INC"))
+data.lc1  <- data
+data.lc2  <- subset(data, subset=(LC1=="INC"))
+data.lc3  <- subset(data, subset=(LC2=="INC"))
+data.lc4  <- subset(data, subset=(LC3=="INC"))
 
 # EXECUTE DECISION TREE CLASSIFICATION
 
 # Execute tree function using specified classification level and predictor variables
 
-tree.l1  <- tree(factor(LC1) ~ HH, data.l1)
-tree.l2  <- tree(factor(LC2) ~ B4, data.l2)
-tree.l3  <- tree(factor(LC3) ~ B5, data.l3)
-tree.l4  <- tree(factor(LC4) ~ HH + B6, data.l4)
+tree.lc1  <- tree(factor(LC1) ~ HH, data.lc1)
+tree.lc2  <- tree(factor(LC2) ~ B4, data.lc2)
+tree.lc3  <- tree(factor(LC3) ~ B5, data.lc3)
+tree.lc4  <- tree(factor(LC4) ~ HH + B6, data.lc4)
 
+# SAVE OUTPUTS TO FILE
+
+# Generate tree summary and misclassification statistics and save as TXT file
+
+sink("output-tree-summary-lc1.txt", append=FALSE, split=TRUE)
+print(tree.lc1)
+print(summary(tree.lc1))
+print(misclass.tree(tree.lc1, detail=TRUE))
+sink()
+sink("output-tree-summary-lc2.txt", append=FALSE, split=TRUE)
+print(tree.lc2)
+print(summary(tree.lc2))
+print(misclass.tree(tree.lc2, detail=TRUE))
+sink()
+sink("output-tree-summary-lc3.txt", append=FALSE, split=TRUE)
+print(tree.lc3)
+print(summary(tree.lc3))
+print(misclass.tree(tree.lc3, detail=TRUE))
+sink()
+sink("output-tree-summary-lc4.txt", append=FALSE, split=TRUE)
+print(tree.lc4)
+print(summary(tree.lc4))
+print(misclass.tree(tree.lc4, detail=TRUE))
+sink()
+
+# Plot tree object/dendrogram and save as PDF file
+
+pdf("output-dendrogram-lc1.pdf", width=7, height=5.5)
+plot(tree.lc1)
+text(tree.lc1, cex=0.70)
+dev.off()
+pdf("output-dendrogram-lc2.pdf", width=7, height=5.5)
+plot(tree.lc2)
+text(tree.lc2, cex=0.70)
+dev.off()
+pdf("output-dendrogram-lc3.pdf", width=7, height=5.5)
+plot(tree.lc3)
+text(tree.lc3, cex=0.70)
+dev.off()
+pdf("output-dendrogram-lc4.pdf", width=7, height=5.5)
+plot(tree.lc4)
+text(tree.lc4, cex=0.70)
+dev.off()
