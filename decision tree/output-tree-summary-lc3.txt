@@ -1,0 +1,20 @@
+node), split, n, deviance, yval, (yprob)
+      * denotes terminal node
+
+ 1) root 910 1214.00 INC ( 0.38571 0.61429 )  
+   2) B5 < 0.273733 261   71.51 EXC ( 0.96935 0.03065 )  
+     4) B5 < 0.271059 244   40.82 EXC ( 0.98361 0.01639 ) *
+     5) B5 > 0.271059 17   18.55 EXC ( 0.76471 0.23529 ) *
+   3) B5 > 0.273733 649  550.90 INC ( 0.15100 0.84900 )  
+     6) B5 < 0.313896 295  375.10 INC ( 0.33220 0.66780 )  
+      12) B5 < 0.295032 186  254.70 INC ( 0.43548 0.56452 ) *
+      13) B5 > 0.295032 109   94.38 INC ( 0.15596 0.84404 ) *
+     7) B5 > 0.313896 354    0.00 INC ( 0.00000 1.00000 ) *
+
+Classification tree:
+tree(formula = factor(LC3) ~ B5, data = data.lc3)
+Number of terminal nodes:  5 
+Residual mean deviance:  0.4514 = 408.5 / 905 
+Misclassification error rate: 0.1165 = 106 / 910 
+  1   2   4   5   3   6  12  13   7 
+351   8   4   4  98  98  81  17   0 
