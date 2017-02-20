@@ -40,3 +40,8 @@ data$LC3[data$LC2=="EXC"] <- "EXC"
 data$LC3[data$LC2=="INC" & data$LC_TYPE=="MNG"] <- "EXC"
 data$LC3[data$LC2=="INC" & data$LC_TYPE=="OPM"] <- "INC"
 data$LC3[data$LC2=="INC" & data$LC_TYPE=="RBM"] <- "INC"
+
+# Level 4: oil palm | rubber
+data$LC4[data$LC3=="EXC"] <- "EXC"
+data$LC4[data$LC3=="INC" & data$LC_TYPE=="OPM"] <- "OPM"
+data$LC4[data$LC3=="INC" & data$LC_TYPE=="RBM"] <- "RBM"
