@@ -48,7 +48,17 @@ data$LC4[data$LC3=="INC" & data$LC_TYPE=="RBM"] <- "RBM"
 
 # Select observations per classification level and store selected data in variables
 
-datalvl1  <- data
-datalvl2  <- subset(data, subset=(LC1=="INC"))
-datalvl3  <- subset(data, subset=(LC2=="INC"))
-datalvl4  <- subset(data, subset=(LC3=="INC"))
+data.l1  <- data
+data.l2  <- subset(data, subset=(LC1=="INC"))
+data.l3  <- subset(data, subset=(LC2=="INC"))
+data.l4  <- subset(data, subset=(LC3=="INC"))
+
+# EXECUTE DECISION TREE CLASSIFICATION
+
+# Execute tree function using specified classification level and predictor variables
+
+tree.l1  <- tree(factor(LC1) ~ HH, data.l1)
+tree.l2  <- tree(factor(LC2) ~ B4, data.l2)
+tree.l3  <- tree(factor(LC3) ~ B5, data.l3)
+tree.l4  <- tree(factor(LC4) ~ HH + B6, data.l4)
+
