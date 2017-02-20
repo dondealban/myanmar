@@ -21,13 +21,20 @@ data <- read.csv(file="SetD_2015_LP_1D_30m_RF_9CL_ForR.csv", header=TRUE, sep=",
 
 # CREATE SUBSETS TO DEFINE CLASSES IN MULTI-LEVEL CLASSIFICATION
 
+# Notation: IN = include class; EX = exclude class
+
 # Level 1: vegetation | non-vegetation
-data$LC1[data$LC_TYPE=="FOR" | data$LC_TYPE=="MNG" | data$LC_TYPE=="OPM" | data$LC_TYPE=="RBM" | data$LC_TYPE=="SHB"] <- "VEG"
-data$LC1[data$LC_TYPE!="FOR" & data$LC_TYPE!="MNG" & data$LC_TYPE!="OPM" & data$LC_TYPE!="RBM" & data$LC_TYPE!="SHB"] <- "NVG"
+data$LC1[data$LC_TYPE=="FOR" | data$LC_TYPE=="MNG" | data$LC_TYPE=="OPM" | data$LC_TYPE=="RBM" | data$LC_TYPE=="SHB"] <- "IN1"
+data$LC1[data$LC_TYPE!="FOR" & data$LC_TYPE!="MNG" & data$LC_TYPE!="OPM" & data$LC_TYPE!="RBM" & data$LC_TYPE!="SHB"] <- "EX1"
 
 # Level 2: forest | shrubs/orchards | mangrove/oil palm/rubber
-data$LC2[data$LC1=="NVG"] <- "NVG"
-data$LC1[data$LC1=="VEG" & data$LC_TYPE=="FOR" | data$LC_TYPE=="SHB"] <- "EX1"
-data$LC1[data$LC1=="VEG" & data$LC_TYPE!="MNG" | data$LC_TYPE!="OPM" | data$LC_TYPE!="RBM"] <- "IN1"
+data$LC2[data$LC1=="EX1"] <- "EX2"
+data$LC2[data$LC1=="IN1" & data$LC_TYPE=="FOR"] <- "EX2"
+data$LC2[data$LC1=="IN1" & data$LC_TYPE=="SHB"] <- "EX2"
+data$LC2[data$LC1=="IN1" & data$LC_TYPE=="MNG"] <- "IN2"
+data$LC2[data$LC1=="IN1" & data$LC_TYPE=="OPM"] <- "IN2"
+data$LC2[data$LC1=="IN1" & data$LC_TYPE=="RBM"] <- "IN2"
+
+# Level 3: mangrove | oil palm/rubber
 
 
