@@ -1,2 +1,4 @@
 # myanmar
-This repository contains R scripts pertaining to image analysis and scenario modeling of remote sensing data in Myanmar.
+This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during the development of the scripts and workflows.
+
+
