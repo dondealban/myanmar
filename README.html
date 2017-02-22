@@ -121,7 +121,7 @@ $(document).ready(function () {
 
 <div id="myanmar" class="section level1">
 <h1>Myanmar</h1>
-<p>This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during the development of the scripts and workflows.</p>
+<p>This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during workflow development and scripting.</p>
 <div id="land-cover-change-analysis" class="section level2">
 <h2>Land Cover Change Analysis</h2>
 <p>This study explored the synergy of optical and SAR data for mapping and monitoring land/forest cover change in Myanmar. Landsat (5/8) and L-band SAR (JERS1/PALSAR2) data were combined to generate land cover maps at two time points, specifcally 1995 and 2015. Image processing and classification were carried out mainly in Google Earth Engine, as well as other platforms including ESA SNAP Toolbox and Quantum GIS for pre-processing SAR data. A Random Forest algorithm was used to classify the image datasets using a combination of ground-truth data and high-resolution images for training and validating the results.</p>
@@ -137,16 +137,128 @@ $(document).ready(function () {
 </div>
 <div id="decision-tree" class="section level4">
 <h4>Decision tree</h4>
-<p>A decision tree classification was implemented to</p>
+<ol style="list-style-type: decimal">
+<li>Using the image statistics extracted from the regions of interest, a decision tree classification was implemented to determine thresholds for specific channels/bands that can discriminate between land cover classes. (Note: this was done to produce a mask layer that can be used for delineating regions of interest in the 1995 dataset, specifically for oil palm and rubber.)</li>
+<li>The specific channels/bands were chosen based on a visual assessment of box-whisker plots showing distributions of land cover types for each predictor variable.</li>
+<li>The specific channels/bands selected were as follows (from 2015 image statistics using Landsat-8/PALSAR-2):
+<ul>
+<li>HH: vegetation; non-vegetation</li>
+<li>B4: shrubs/orchards; mangroves/rubber/oil palm; forest</li>
+<li>B5: oil palm/rubber; mangroves</li>
+<li>HH/B6: rubber; oil palm</li>
+</ul></li>
+</ol>
 </div>
 </div>
 <div id="acronyms" class="section level3">
 <h3>Acronyms</h3>
 <div id="land-cover-types" class="section level4">
 <h4>Land Cover Types</h4>
+<p>The following land cover types were identified based on available ground-truth data and ancillary maps, and subsequently adopted as the land cover classification scheme.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Acronym</th>
+<th>Land Cover Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FOR</td>
+<td>Forest</td>
+</tr>
+<tr class="even">
+<td>MNG</td>
+<td>Mangrove</td>
+</tr>
+<tr class="odd">
+<td>OPM</td>
+<td>Oil Palm Mature</td>
+</tr>
+<tr class="even">
+<td>OPY</td>
+<td>Oil Palm Young</td>
+</tr>
+<tr class="odd">
+<td>RBM</td>
+<td>Rubber Mature</td>
+</tr>
+<tr class="even">
+<td>RBY</td>
+<td>Rubber Young</td>
+</tr>
+<tr class="odd">
+<td>RBN</td>
+<td>Rubber New</td>
+</tr>
+<tr class="even">
+<td>SHB</td>
+<td>Shrub/Orchard</td>
+</tr>
+<tr class="odd">
+<td>RPD</td>
+<td>Rice Paddy</td>
+</tr>
+<tr class="even">
+<td>BUA</td>
+<td>Built-Up Area</td>
+</tr>
+<tr class="odd">
+<td>BSG</td>
+<td>Bare Soil/Ground</td>
+</tr>
+<tr class="even">
+<td>WTR</td>
+<td>Water</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="texture-measures" class="section level4">
 <h4>Texture Measures</h4>
+<p>Grey-level co-occurrence matrices were computed from the HH and HV polarisation channels of the SAR data. The following Haralick texture measures were computed:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Acronym</th>
+<th>Texture Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ASM</td>
+<td>Angular Second Moment</td>
+</tr>
+<tr class="even">
+<td>CON</td>
+<td>Contrast</td>
+</tr>
+<tr class="odd">
+<td>COR</td>
+<td>Correlation</td>
+</tr>
+<tr class="even">
+<td>DIS</td>
+<td>Dissimilarity</td>
+</tr>
+<tr class="odd">
+<td>ENT</td>
+<td>Entropy</td>
+</tr>
+<tr class="even">
+<td>IDM</td>
+<td>Homogeneity</td>
+</tr>
+<tr class="odd">
+<td>SVG</td>
+<td>Mean</td>
+</tr>
+<tr class="even">
+<td>VAR</td>
+<td>Variance</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
