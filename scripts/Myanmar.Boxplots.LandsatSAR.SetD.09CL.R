@@ -13,13 +13,13 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Desktop/Scripts/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/test classes/09/")
 
 # Load the required R libraries
 library(ggplot2)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="SetD_2015_LP_1D_30m_RF_9CL_ForR.csv", header=TRUE, sep=",")
+data <- read.csv(file="SetD_2015_LP_1D_30m_RF_09CL_ForR.csv", header=TRUE, sep=",")
 
 # GENERATE PLOTS
 # Generate boxplots of land cover types for each predictor variable
