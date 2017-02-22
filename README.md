@@ -41,6 +41,23 @@ BUA     | Built-Up Area
 BSG     | Bare Soil/Ground
 WTR     | Water
 
+#### Predictor Variables
+Predictor variables consist mainly of Landsat bands and L-band SAR polarisation channels. Additional predictors were calculated from the main bands/channels, specifically indices and texture measures (see below). SAR indices indicated by an asterisk (*).
+
+Acronym | Index
+------- | ----------------
+EVI     | Enhanced Vegetation Index
+LSWI    | Land Surface Water Index
+NDVI    | Normalised Difference Vegetation Index 
+NDTI    | Normalised Till Index
+SATVI   | Soil-Adjusted Vegetation Index
+AVE     | Average*
+DIF     | Difference*
+NDI     | Normalised Difference Index*
+NLI     | NL Index*
+RT1     | HH/HV Ratio
+RT2     | HV/HH Ratio
+
 #### Texture Measures
 Grey-level co-occurrence matrices were computed from the HH and HV polarisation channels of the SAR data. The following Haralick texture measures were computed:
 
