@@ -13,14 +13,19 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 3. The plots show land cover types (x-axis) against backscatter/reflectance/index values (y-axis) for each predictor variable.
 
 #### Decision tree
-1. Using the image statistics extracted from the regions of interest, a decision tree classification was implemented to determine thresholds for specific channels/bands that can discriminate between land cover classes.
+1. Using the image statistics extracted from the regions of interest, a decision tree classification was implemented to determine thresholds for specific channels/bands that can discriminate between land cover classes. (Note: this was done to produce a mask layer that can be used for delineating regions of interest in the 1995 dataset, specifically for oil palm and rubber.)
 2. The specific channels/bands were chosen based on a visual assessment of box-whisker plots showing distributions of land cover types for each predictor variable.
-3. The specific channels/bands selected were as follows:
-
+3. The specific channels/bands selected were as follows (from 2015 image statistics using Landsat-8/PALSAR-2):
+    + HH: vegetation; non-vegetation
+    + B4: shrubs/orchards; mangroves/rubber/oil palm; forest
+    + B5: oil palm/rubber; mangroves
+    + HH/B6: rubber; oil palm
 
 ### Acronyms
 
 #### Land Cover Types
+The following land cover types were identified based on available ground-truth data and ancillary maps, and subsequently adopted as the land cover classification scheme.
+
 Acronym | Land Cover Type
 ------- | ----------------
 FOR     | Forest
