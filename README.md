@@ -55,8 +55,8 @@ AVE     | Average*
 DIF     | Difference*
 NDI     | Normalised Difference Index*
 NLI     | NL Index*
-RT1     | HH/HV Ratio
-RT2     | HV/HH Ratio
+RT1     | HH/HV Ratio*
+RT2     | HV/HH Ratio*
 
 #### Texture Measures
 Grey-level co-occurrence matrices were computed from the HH and HV polarisation channels of the SAR data. The following Haralick texture measures were computed:
