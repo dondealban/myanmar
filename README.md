@@ -1,7 +1,52 @@
 # Myanmar
 This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during the development of the scripts and workflows.
 
-## image statistics
+## Land Cover Change Analysis
+This study explored the synergy of optical and SAR data for mapping and monitoring land/forest cover change in Myanmar. Landsat (5/8) and L-band SAR (JERS1/PALSAR2) data were combined to generate land cover maps at two time points, specifcally 1995 and 2015. Image processing and classification were carried out mainly in Google Earth Engine, as well as other platforms including ESA SNAP Toolbox and Quantum GIS for pre-processing SAR data. A Random Forest algorithm was used to classify the image datasets using a combination of ground-truth data and high-resolution images for training and validating the results.
+
+### Tasks
+
+#### Image statistics
+
+1. Image statistics were extracted from all regions of interest and exported from the Google Earth Engine platform as csv files, which were subsequently imported in R for visualisation and analysis. 
+2. Box-whisker plots were generated to visualise the distribution of SAR backscatter and Landsat TOA reflectance values for each predictor variable consisting of the image channels/bands, derived indices, and texture measures.
+3. The plots show land cover types (x-axis) against backscatter/reflectance/index values (y-axis) for each predictor variable.
+
+#### Decision tree
+1. Using the image statistics extracted from the regions of interest, a decision tree classification was implemented to determine thresholds for specific channels/bands that can discriminate between land cover classes.
+2. The specific channels/bands were chosen based on a visual assessment of box-whisker plots showing distributions of land cover types for each predictor variable.
+3. The specific channels/bands selected were as follows:
 
 
-## decision tree
+### Acronyms
+
+#### Land Cover Types
+Acronym | Land Cover Type
+------- | ----------------
+FOR     | Forest
+MNG     | Mangrove
+OPM     | Oil Palm Mature
+OPY     | Oil Palm Young
+RBM     | Rubber Mature
+RBY     | Rubber Young
+RBN     | Rubber New
+SHB     | Shrub/Orchard
+RPD     | Rice Paddy
+BUA     | Built-Up Area
+BSG     | Bare Soil/Ground
+WTR     | Water
+
+#### Texture Measures
+Grey-level co-occurrence matrices were computed from the HH and HV polarisation channels of the SAR data. The following Haralick texture measures were computed:
+
+Acronym | Texture Measure
+------- | ----------------
+ASM     | Angular Second Moment 
+CON     | Contrast
+COR     | Correlation
+DIS     | Dissimilarity
+ENT     | Entropy
+IDM     | Homogeneity
+SVG     | Mean
+VAR     | Variance
+
