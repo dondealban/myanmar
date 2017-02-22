@@ -1,5 +1,5 @@
 # Myanmar
-This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during the development of the scripts and workflows.
+This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during workflow development and scripting.
 
 ## Land Cover Change Analysis
 This study explored the synergy of optical and SAR data for mapping and monitoring land/forest cover change in Myanmar. Landsat (5/8) and L-band SAR (JERS1/PALSAR2) data were combined to generate land cover maps at two time points, specifcally 1995 and 2015. Image processing and classification were carried out mainly in Google Earth Engine, as well as other platforms including ESA SNAP Toolbox and Quantum GIS for pre-processing SAR data. A Random Forest algorithm was used to classify the image datasets using a combination of ground-truth data and high-resolution images for training and validating the results.
