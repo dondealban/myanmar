@@ -9,12 +9,12 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   17 Feb 2017
-# Last Modified:  
+# Last Modified:  22 Feb 2017
 
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/test classes/12/")
 
 # Load the required R libraries
 library(ggplot2)
