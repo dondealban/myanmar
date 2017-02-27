@@ -169,7 +169,7 @@ sarHV_ENT <- sarHV_ENT + ylim(2.1,2.4)
 # HV IDM
 sarHV_IDM <- ggplot() + geom_boxplot(aes(y = HV_IDM, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarHV_IDM <- sarHV_IDM + labs(title="HV Homogeneity Texture of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-sarHV_IDM <- sarHV_IDM + ylim(0,0.07)
+sarHV_IDM <- sarHV_IDM + ylim(0,0.1)
 
 # HV SAVG
 sarHV_SAVG <- ggplot() + geom_boxplot(aes(y = HV_SAVG, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
