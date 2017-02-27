@@ -69,27 +69,27 @@ optB11 <- optB11 + ylim(280,310)
 # EVI
 optEVI <- ggplot() + geom_boxplot(aes(y = EVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optEVI <- optEVI + labs(title="Enhanced Vegetation Index (EVI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optEVI <- optEVI + ylim(-0.5,1)
+optEVI <- optEVI + ylim(-0.5,1.1)
 
 # LSWI
 optLSWI <- ggplot() + geom_boxplot(aes(y = LSWI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optLSWI <- optLSWI + labs(title="Land Surface Water Index (LSWI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optLSWI <- optLSWI + ylim(-0.5,1)
+optLSWI <- optLSWI + ylim(-0.5,1.1)
 
 # NDTI
 optNDTI <- ggplot() + geom_boxplot(aes(y = NDTI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optNDTI <- optNDTI + labs(title="Normalised Difference Till Index (NDTI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optNDTI <- optNDTI + ylim(0,1)
+optNDTI <- optNDTI + ylim(-0.5,1.1)
 
 # NDVI
 optNDVI <- ggplot() + geom_boxplot(aes(y = NDVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optNDVI <- optNDVI + labs(title="Normalised Difference Vegetation Index (NDVI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optNDVI <- optNDVI + ylim(-0.5,1)
+optNDVI <- optNDVI + ylim(-0.5,1.1)
 
 # SATVI
 optSATVI <- ggplot() + geom_boxplot(aes(y = SATVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optSATVI <- optSATVI + labs(title="Soil-Adjusted Total Vegetation Index (SATVI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optSATVI <- optSATVI + ylim(-0.5,1)
+optSATVI <- optSATVI + ylim(-0.5,1.1)
 
 # HH
 sarHH <- ggplot() + geom_boxplot(aes(y = HH, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
