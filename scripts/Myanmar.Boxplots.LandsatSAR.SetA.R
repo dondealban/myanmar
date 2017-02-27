@@ -92,7 +92,7 @@ optSATVI <- optSATVI + ylim(-0.5,1)
 # HH
 sarHH <- ggplot() + geom_boxplot(aes(y = HH, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarHH <- sarHH + labs(title="HH Sigma0 Backscatter of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value (dB)", fill="Year")
-sarHH <- sarHH + ylim(-32,11)
+sarHH <- sarHH + ylim(-32,10)
 
 # HH ASM
 sarHH_ASM <- ggplot() + geom_boxplot(aes(y = HH_ASM, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
