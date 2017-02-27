@@ -132,7 +132,7 @@ sarHH_SAVG <- sarHH_SAVG + ylim(-60000,20000)
 # HH VAR
 sarHH_VAR <- ggplot() + geom_boxplot(aes(y = HH_VAR, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarHH_VAR <- sarHH_VAR + labs(title="HH Variance Texture of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-sarHH_VAR <- sarHH_VAR + ylim(0,20000000)
+sarHH_VAR <- sarHH_VAR + ylim(0,50000000)
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
