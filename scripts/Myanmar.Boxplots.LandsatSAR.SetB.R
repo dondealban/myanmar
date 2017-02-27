@@ -189,7 +189,7 @@ sarAVE <- sarAVE + ylim(0,40000)
 # DIFFERENCE
 sarDIF <- ggplot() + geom_boxplot(aes(y = DIF, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarDIF <- sarDIF + labs(title="HH - HV Backscatter of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-sarDIf <- sarDIF + ylim(-2000,30000)
+sarDIf <- sarDIF + ylim(-2000,60000)
 
 # NDI
 sarNDI <- ggplot() + geom_boxplot(aes(y = NDI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
