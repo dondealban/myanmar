@@ -67,7 +67,7 @@ optB6_B11 <- optB6_B11 + ylim(280,310)
 # EVI
 optEVI <- ggplot() + geom_boxplot(aes(y = EVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optEVI <- optEVI + labs(title="Enhanced Vegetation Index (EVI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-optEVI <- optEVI + ylim(-0.5,1)
+optEVI <- optEVI + ylim(-0.5,1.20)
 
 # LSWI
 optLSWI <- ggplot() + geom_boxplot(aes(y = LSWI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
