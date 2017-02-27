@@ -122,7 +122,7 @@ sarHH_ENT <- sarHH_ENT + ylim(2.1,2.4)
 # HH IDM
 sarHH_IDM <- ggplot() + geom_boxplot(aes(y = HH_IDM, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarHH_IDM <- sarHH_IDM + labs(title="HH Homogeneity Texture of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-sarHH_IDM <- sarHH_IDM + ylim(0,0.05)
+sarHH_IDM <- sarHH_IDM + ylim(0,0.1)
 
 # HH SAVG
 sarHH_SAVG <- ggplot() + geom_boxplot(aes(y = HH_SAVG, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
