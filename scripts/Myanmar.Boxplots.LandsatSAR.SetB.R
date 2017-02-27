@@ -204,7 +204,7 @@ sarNLI <- sarNLI + ylim(100,10000)
 # RATIO 1
 sarRT1 <- ggplot() + geom_boxplot(aes(y = RT1, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 sarRT1 <- sarRT1 + labs(title="HH/HV Ratio of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
-sarRT1 <- sarRT1 + ylim(0,20)
+sarRT1 <- sarRT1 + ylim(0,40)
 
 # RATIO 2
 sarRT2 <- ggplot() + geom_boxplot(aes(y = RT2, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
