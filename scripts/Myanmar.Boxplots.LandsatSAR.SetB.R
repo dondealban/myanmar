@@ -15,7 +15,7 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/test classes/09/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/")
 
 # Load the required R libraries
 library(ggplot2)
