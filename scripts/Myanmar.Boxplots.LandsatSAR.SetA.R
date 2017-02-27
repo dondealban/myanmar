@@ -59,6 +59,11 @@ optB6_B10 <- ggplot() + geom_boxplot(aes(y = B6_B10, x = LC_TYPE, fill=factor(YE
 optB6_B10 <- optB6_B10 + labs(title="B6/B10 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
 optB6_B10 <- optB6_B10 + ylim(280,310)
 
+# B6-B11
+optB6_B11 <- ggplot() + geom_boxplot(aes(y = B6_B11, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
+optB6_B11 <- optB6_B11 + labs(title="B6/B11 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
+optB6_B11 <- optB6_B11 + ylim(280,310)
+
 # EVI
 optEVI <- ggplot() + geom_boxplot(aes(y = EVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optEVI <- optEVI + labs(title="Enhanced Vegetation Index (EVI) of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Value", fill="Year")
