@@ -59,12 +59,12 @@ optB7 <- optB7 + ylim(0,0.6)
 # B10
 optB10 <- ggplot() + geom_boxplot(aes(y = B10, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB10 <- optB10 + labs(title="B10 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB10 <- optB10 + ylim(290,310)
+optB10 <- optB10 + ylim(280,310)
 
 # B11
 optB11 <- ggplot() + geom_boxplot(aes(y = B11, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB11 <- optB11 + labs(title="B11 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB11 <- optB11 + ylim(290,310)
+optB11 <- optB11 + ylim(280,310)
 
 # EVI
 optEVI <- ggplot() + geom_boxplot(aes(y = EVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
