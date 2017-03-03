@@ -1,10 +1,11 @@
-# This R script implements a decision tree classification using the tree package. The
-# objective is to generate a tree based on specified predictor variables and to determine
-# the variables and thresholds used for splitting classes.
+# This test script assesses the variable importance of a Random Forest classification
+# using the randomForest and party packages. The objective is to determine the importance
+# of predictor variables and to subsequently select variables that contribute to improving
+# model performance and to exclude variables that do not improve model performance.
 #
 # Script By:      Jose Don T De Alban
-# Date Created:   17 Feb 2017
-# Last Modified:  20 Feb 2017
+# Date Created:   03 Mar 2017
+# Last Modified:  
 
 
 # LOAD LIBRARIES AND DATA
