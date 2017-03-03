@@ -16,6 +16,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
 # Load the required R libraries
 library(randomForest)
 library(party)
+library(corrplot)
 library(ggcorrplot)
 
 # Read data, define variables, and store data in variables
@@ -29,8 +30,8 @@ data1995 <- subset(data, data$YEAR=="1995")
 data2015 <- subset(data, data$YEAR=="2015")
 
 # Subset data containing only numerical type variables by year
-ndata1995 <- data1995[, c(3:24)]
-ndata2015 <- data2015[, c(3:24)]
+ndata1995 <- data1995[, c(4:24)]
+ndata2015 <- data2015[, c(4:24)]
 
 
 # CALCULATE AND PLOT CORRELATION MATRICES
@@ -40,8 +41,8 @@ cor1995 <- cor(ndata1995)
 cor2015 <- cor(ndata2015)
 
 # Plot correlation matrices for visualisation
-cor1995cm <- ggcorrplot(cor1995, hc.order=TRUE)
-cor2015cm <- ggcorrplot(cor2015, hc.order=TRUE)
+cor1995cm <- ggcorrplot(ndata1995, hc.order=TRUE)
+cor2015cm <- ggcorrplot(ndata2015, hc.order=TRUE)
 
 
 # RUN RANDOM FOREST IMPLEMENTATION
