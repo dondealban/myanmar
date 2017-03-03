@@ -9,3 +9,12 @@
 
 
 # LOAD LIBRARIES AND DATA
+
+# Set working directory
+setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
+
+# Load the required R libraries
+library(randomForest)
+library(party)
+library(ggcorrplot)
+
