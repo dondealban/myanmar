@@ -19,7 +19,7 @@ library(party)
 library(ggcorrplot)
 
 # Read data, define variables, and store data in variables
-data <- read.csv("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/
+data <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/
                  set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
 
 
