@@ -86,9 +86,14 @@ print(rf1995)
 print(rf1995t1)
 print(rf1995t2)
 sink()
-
 sink("output-rf-randomforest-2015.txt", append=FALSE, split=TRUE)
 print(rf2015)
 print(rf2015t1)
 print(rf2015t2)
 sink()
+
+# Save graph of random forest variable importance as pdf file
+
+pdf("output-rf-varimp-graph-mda-1995.pdf", width=7, height=5.5)
+varImpPlot(rf1995)
+dev.off()
