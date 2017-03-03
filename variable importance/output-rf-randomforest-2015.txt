@@ -1,0 +1,65 @@
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data2015, mtry = 2, ntree = 50, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 50
+No. of variables tried at each split: 2
+
+        OOB estimate of  error rate: 1.63%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 362   4   0   0   0   0   0   0   0 0.010928962
+BUA   1 315   0   0   0   0   0   0   0 0.003164557
+FOR   0   0 268   4   3   2   0   0   0 0.032490975
+MNG   0   0   2 349   0   0   0   0   0 0.005698006
+OPM   0   0   1   1 270   2   0   3   0 0.025270758
+RBM   0   0   0   0   3 277   0   2   0 0.017730496
+RPD   0   0   0   1   0   0 416   0   0 0.002398082
+SHB   0   0   1   2   5  11   2 136   0 0.133757962
+WTR   0   0   0   0   0   0   0   0 633 0.000000000
+        MeanDecreaseAccuracy
+B1               7.713474242
+B2               9.561661070
+B3               6.707521421
+B4               6.734020703
+B5               9.355688871
+B7               6.795372027
+B6_B10           9.094848300
+B6_B11           9.209685671
+EVI              8.716096929
+HH               8.376146866
+HH_ASM           1.360299360
+HH_CON           5.606408049
+HH_COR           1.802030025
+HH_DIS           5.643352229
+HH_ENT          -0.005502737
+HH_IDM           4.903497680
+HH_SAVG         10.393307973
+HH_VAR           5.794245687
+LSWI             5.994475887
+NDTI             7.155524656
+NDVI             8.918669903
+SATVI            8.014338189
+        MeanDecreaseGini
+B1           147.5583267
+B2           148.5828533
+B3           141.4153393
+B4           138.5230881
+B5           189.6432070
+B7           204.3128254
+B6_B10       136.6020232
+B6_B11       122.1524217
+EVI          191.1411615
+HH           180.9127698
+HH_ASM         0.2155474
+HH_CON        27.2640069
+HH_COR        10.8868917
+HH_DIS        29.5571532
+HH_ENT         0.1588466
+HH_IDM        19.1691925
+HH_SAVG      194.3799895
+HH_VAR        26.1245492
+LSWI         140.7217225
+NDTI         161.3212941
+NDVI         273.9010675
+SATVI        196.7036163

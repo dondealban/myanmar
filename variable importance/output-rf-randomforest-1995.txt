@@ -1,0 +1,131 @@
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data1995, mtry = 2, ntree = 50, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 50
+No. of variables tried at each split: 2
+
+        OOB estimate of  error rate: 0.8%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 540   2   0   0   0   0   0   0   0 0.003690037
+BUA   4 313   0   0   0   0   0   0   0 0.012618297
+FOR   0   0 281   1   2   0   0   1   0 0.014035088
+MNG   1   0   0 347   0   0   3   0   0 0.011396011
+OPM   0   0   1   0 284   0   0   0   0 0.003508772
+RBM   0   0   0   0   0 265   0   0   0 0.000000000
+RPD   0   0   0   2   0   0 404   0   0 0.004926108
+SHB   2   0   1   0   0   0   6 148   0 0.057324841
+WTR   0   0   0   0   0   0   0   0 622 0.000000000
+[1] "\n"
+        MeanDecreaseAccuracy
+B1                 7.4225340
+B2                 8.7950587
+B3                 7.7941937
+B4                 8.6605809
+B5                 7.5346562
+B7                 7.5887722
+B6_B10             9.5777004
+B6_B11            10.1993027
+EVI                8.7626485
+HH                 7.3656346
+HH_ASM             1.0864084
+HH_CON             7.5725008
+HH_COR             0.4632391
+HH_DIS             6.6044625
+HH_ENT             1.0101525
+HH_IDM             4.4709945
+HH_SAVG            7.2730316
+HH_VAR             5.5164998
+LSWI               7.2410592
+NDTI               7.4690908
+NDVI               9.3369463
+SATVI              8.6783813
+        MeanDecreaseGini
+B1           136.8171053
+B2           121.0606292
+B3           146.7627142
+B4           173.1553308
+B5           239.8044696
+B7           228.0902611
+B6_B10       130.0923575
+B6_B11       132.1436376
+EVI          254.2404941
+HH           159.3888255
+HH_ASM         0.4649791
+HH_CON        34.5434767
+HH_COR         8.5098388
+HH_DIS        28.2586194
+HH_ENT         0.1924045
+HH_IDM        14.8718575
+HH_SAVG      214.9253396
+HH_VAR        32.3036720
+LSWI         189.5825242
+NDTI         146.7826717
+NDVI         232.1192852
+SATVI        190.9200578
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data2015, mtry = 2, ntree = 50, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 50
+No. of variables tried at each split: 2
+
+        OOB estimate of  error rate: 1.63%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 362   4   0   0   0   0   0   0   0 0.010928962
+BUA   1 315   0   0   0   0   0   0   0 0.003164557
+FOR   0   0 268   4   3   2   0   0   0 0.032490975
+MNG   0   0   2 349   0   0   0   0   0 0.005698006
+OPM   0   0   1   1 270   2   0   3   0 0.025270758
+RBM   0   0   0   0   3 277   0   2   0 0.017730496
+RPD   0   0   0   1   0   0 416   0   0 0.002398082
+SHB   0   0   1   2   5  11   2 136   0 0.133757962
+WTR   0   0   0   0   0   0   0   0 633 0.000000000
+        MeanDecreaseAccuracy
+B1               7.713474242
+B2               9.561661070
+B3               6.707521421
+B4               6.734020703
+B5               9.355688871
+B7               6.795372027
+B6_B10           9.094848300
+B6_B11           9.209685671
+EVI              8.716096929
+HH               8.376146866
+HH_ASM           1.360299360
+HH_CON           5.606408049
+HH_COR           1.802030025
+HH_DIS           5.643352229
+HH_ENT          -0.005502737
+HH_IDM           4.903497680
+HH_SAVG         10.393307973
+HH_VAR           5.794245687
+LSWI             5.994475887
+NDTI             7.155524656
+NDVI             8.918669903
+SATVI            8.014338189
+        MeanDecreaseGini
+B1           147.5583267
+B2           148.5828533
+B3           141.4153393
+B4           138.5230881
+B5           189.6432070
+B7           204.3128254
+B6_B10       136.6020232
+B6_B11       122.1524217
+EVI          191.1411615
+HH           180.9127698
+HH_ASM         0.2155474
+HH_CON        27.2640069
+HH_COR        10.8868917
+HH_DIS        29.5571532
+HH_ENT         0.1588466
+HH_IDM        19.1691925
+HH_SAVG      194.3799895
+HH_VAR        26.1245492
+LSWI         140.7217225
+NDTI         161.3212941
+NDVI         273.9010675
+SATVI        196.7036163
