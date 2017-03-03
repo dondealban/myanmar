@@ -45,12 +45,26 @@ ggcorrplot(cor2015, hc.order=TRUE)
 # RUN RANDOM FOREST IMPLEMENTATION
 
 # Define factor predictor variables
-data2015$LC_TYPE <- factor(data2015$LC_TYPE)
 data1995$LC_TYPE <- factor(data1995$LC_TYPE)
-data2015$YEAR <- factor(data2015$YEAR)
+data2015$LC_TYPE <- factor(data2015$LC_TYPE)
 data1995$YEAR <- factor(data1995$YEAR)
+data2015$YEAR <- factor(data2015$YEAR)
 
-# randomForest
+# randomForest implementation
+rf1995 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+                       HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
+                       HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995,
+                       mtry=2, ntree=50, importance=TRUE)
+rf2015 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+                       HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
+                       HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015,
+                       mtry=2, ntree=50, importance=TRUE)
 
+# randomForest variable importance based on permutation importance (mean decrease in accuracy)
+rf1995t1 <- importance(rf1995, type=1)
+rf2015t1 <- importance(rf2015, type=1)
 
+# randomForest variable importance based on Gini importance (mean decrease in impurity)
+rf1995t1 <- importance(rf1995, type=2)
+rf2015t1 <- importance(rf2015, type=2)
 
