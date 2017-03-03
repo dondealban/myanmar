@@ -22,6 +22,7 @@ library(ggcorrplot)
 data <- read.csv("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/
                  set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
 
+
 # SUBSET DATA AND STORE INTO VARIABLES
 
 # Subset data by year
@@ -32,6 +33,7 @@ data2015 <- subset(data, data$YEAR=="2015")
 ndata1995 <- data1995[, c(3:24)]
 ndata2015 <- data2015[, c(3,24)]
 
+
 # CALCULATE AND PLOT CORRELATION MATRICES
 
 # Calculate correlation matrices
@@ -39,8 +41,9 @@ cor1995 <- cor(ndata1995)
 cor2015 <- cor(ndata2015)
 
 # Plot correlation matrices for visualisation
-ggcorrplot(cor1995, hc.order=TRUE)
-ggcorrplot(cor2015, hc.order=TRUE)
+cor1995cm <- ggcorrplot(cor1995, hc.order=TRUE)
+cor2015cm <- ggcorrplot(cor2015, hc.order=TRUE)
+
 
 # RUN RANDOM FOREST IMPLEMENTATION
 
@@ -65,6 +68,33 @@ rf1995t1 <- importance(rf1995, type=1)
 rf2015t1 <- importance(rf2015, type=1)
 
 # randomForest variable importance based on Gini importance (mean decrease in impurity)
-rf1995t1 <- importance(rf1995, type=2)
-rf2015t1 <- importance(rf2015, type=2)
+rf1995t2 <- importance(rf1995, type=2)
+rf2015t2 <- importance(rf2015, type=2)
 
+
+# SAVE OUTPUTS TO FILE
+
+# Save correlation matrices as pdf files
+
+pdf("output-correlation-matrix-1995.pdf", width=7, height=5.5)
+plot(cor1995cm)
+text(cor1995cm, cex=0.70)
+dev.off()
+pdf("output-correlation-matrix-2015.pdf", width=7, height=5.5)
+plot(cor1995cm)
+text(cor1995cm, cex=0.70)
+dev.off()
+
+# Save random forest and variable importance results as txt file
+
+sink("output-rf-randomforest-1995.txt", append=FALSE, split=TRUE)
+print(rf1995)
+print(rf1995t1)
+print(rf1995t2)
+sink()
+
+sink("output-rf-randomforest-2015.txt", append=FALSE, split=TRUE)
+print(rf2015)
+print(rf2015t1)
+print(rf2015t2)
+sink()
