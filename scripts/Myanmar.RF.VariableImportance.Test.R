@@ -21,3 +21,16 @@ library(ggcorrplot)
 # Read data, define variables, and store data in variables
 data <- read.csv("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/
                  set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
+
+# SUBSET DATA AND STORE INTO VARIABLES
+
+# Subset data by year
+data1995 <- subset(data, data$YEAR=="1995")
+data2015 <- subset(data, data$YEAR=="2015")
+
+# Subset data containing only numerical type variables by year
+ndata1995 <- data1995[, c(3:24)]
+ndata2015 <- data2015[, c(3,24)]
+
+
+
