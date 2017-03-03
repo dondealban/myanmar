@@ -41,8 +41,8 @@ cor1995 <- cor(ndata1995)
 cor2015 <- cor(ndata2015)
 
 # Plot correlation matrices for visualisation
-cor1995cm <- ggcorrplot(ndata1995, hc.order=TRUE)
-cor2015cm <- ggcorrplot(ndata2015, hc.order=TRUE)
+cor1995cm <- ggcorrplot(cor1995, hc.order=TRUE)
+cor2015cm <- ggcorrplot(cor2015, hc.order=TRUE)
 
 
 # RUN RANDOM FOREST IMPLEMENTATION
