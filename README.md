@@ -77,4 +77,3 @@ ENT     | Entropy
 IDM     | Homogeneity
 SVG     | Mean
 VAR     | Variance
-
