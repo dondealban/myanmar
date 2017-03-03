@@ -94,6 +94,9 @@ sink()
 
 # Save graph of random forest variable importance as pdf file
 
-pdf("output-rf-varimp-graph-mda-1995.pdf", width=7, height=5.5)
+pdf("output-rf-varimp-graph-1995.pdf", width=7, height=5.5)
 varImpPlot(rf1995)
+dev.off()
+pdf("output-rf-varimp-graph-2015.pdf", width=7, height=5.5)
+varImpPlot(rf2015)
 dev.off()
