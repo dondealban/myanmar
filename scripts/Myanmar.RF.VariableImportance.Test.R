@@ -42,6 +42,15 @@ cor2015 <- cor(ndata2015)
 ggcorrplot(cor1995, hc.order=TRUE)
 ggcorrplot(cor2015, hc.order=TRUE)
 
+# RUN RANDOM FOREST IMPLEMENTATION
+
+# Define factor predictor variables
+data2015$LC_TYPE <- factor(data2015$LC_TYPE)
+data1995$LC_TYPE <- factor(data1995$LC_TYPE)
+data2015$YEAR <- factor(data2015$YEAR)
+data1995$YEAR <- factor(data1995$YEAR)
+
+# randomForest
 
 
 
