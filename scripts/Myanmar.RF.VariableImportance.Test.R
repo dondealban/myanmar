@@ -76,14 +76,8 @@ rf2015t2 <- importance(rf2015, type=2)
 
 # Save correlation matrices as pdf files
 
-pdf("output-correlation-matrix-1995.pdf", width=7, height=5.5)
-plot(cor1995cm)
-text(cor1995cm, cex=0.70)
-dev.off()
-pdf("output-correlation-matrix-2015.pdf", width=7, height=5.5)
-plot(cor1995cm)
-text(cor1995cm, cex=0.70)
-dev.off()
+ggsave(cor1995cm, "output-correlation-matrix-1995.pdf", width=7, height=5.5, units="in", dpi=300)
+ggsave(cor2015cm, "output-correlation-matrix-2015.pdf", width=7, height=5.5, units="in", dpi=300)
 
 # Save random forest and variable importance results as txt file
 
