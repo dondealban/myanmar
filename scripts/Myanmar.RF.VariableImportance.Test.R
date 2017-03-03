@@ -32,5 +32,16 @@ data2015 <- subset(data, data$YEAR=="2015")
 ndata1995 <- data1995[, c(3:24)]
 ndata2015 <- data2015[, c(3,24)]
 
+# CALCULATE AND PLOT CORRELATION MATRICES
+
+# Calculate correlation matrices
+cor1995 <- cor(ndata1995)
+cor2015 <- cor(ndata2015)
+
+# Plot correlation matrices for visualisation
+ggcorrplot(cor1995, hc.order=TRUE)
+ggcorrplot(cor2015, hc.order=TRUE)
+
+
 
 
