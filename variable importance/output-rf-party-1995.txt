@@ -1,0 +1,19 @@
+
+	 Random Forest using Conditional Inference Trees
+
+Number of trees:  50 
+
+Response:  LC_TYPE 
+Inputs:  B1, B2, B3, B4, B5, B7, B6_B10, B6_B11, EVI, HH, HH_ASM, HH_CON, HH_COR, HH_DIS, HH_ENT, HH_IDM, HH_SAVG, HH_VAR, LSWI, NDTI, NDVI, SATVI 
+Number of observations:  3230 
+
+   user  system elapsed 
+  4.708   0.066   4.774 
+           B1            B2            B3            B4            B5            B7 
+ 3.077441e-02  4.223906e-02  6.570707e-02  6.106061e-02  9.351852e-02  7.872054e-02 
+       B6_B10        B6_B11           EVI            HH        HH_ASM        HH_CON 
+ 4.727273e-02  3.528620e-02  1.380640e-01  3.242424e-02 -3.367003e-05  8.602694e-03 
+       HH_COR        HH_DIS        HH_ENT        HH_IDM       HH_SAVG        HH_VAR 
+ 6.734007e-05  6.447811e-03  1.346801e-04  1.700337e-03  6.343434e-02  4.612795e-03 
+         LSWI          NDTI          NDVI         SATVI 
+ 7.395623e-02  5.735690e-02  1.289226e-01  7.324916e-02 
