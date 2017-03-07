@@ -35,7 +35,7 @@ ndata2015 <- data2015[, c(4:24)]
 
 
 # SET RANDOM SEED
-set.seed(2015)
+set.seed(2017)
 
 # CALCULATE AND PLOT CORRELATION MATRICES
 
@@ -60,11 +60,11 @@ data2015$YEAR <- factor(data2015$YEAR)
 rf1995 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
                        HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                        HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995,
-                       mtry=5, ntree=50, importance=TRUE)
+                       mtry=5, ntree=100, importance=TRUE)
 rf2015 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
                        HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                        HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015,
-                       mtry=5, ntree=50, importance=TRUE)
+                       mtry=5, ntree=100, importance=TRUE)
 
 # randomForest variable importance based on permutation importance (mean decrease in accuracy)
 rf1995t1 <- importance(rf1995, type=1)
@@ -78,11 +78,11 @@ rf2015t2 <- importance(rf2015, type=2)
 cf1995 <- cforest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI + 
                   HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                   HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995, 
-                  control=cforest_unbiased(mtry=5, ntree=50))
+                  control=cforest_unbiased(mtry=5, ntree=100))
 cf2015 <- cforest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI + 
                   HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                   HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015, 
-                  control=cforest_unbiased(mtry=5, ntree=50))
+                  control=cforest_unbiased(mtry=5, ntree=100))
 
 # SAVE OUTPUTS TO FILE
 
@@ -117,13 +117,11 @@ dev.off()
 
 sink("output-rf-party-1995.txt", append=FALSE, split=TRUE)
 print(cf1995)
-set.seed(2015)
 print(system.time(vi1995 <- varimp(cf1995, conditional=FALSE)))
 print(vi1995)
 sink()
 sink("output-rf-party-2015.txt", append=FALSE, split=TRUE)
 print(cf2015)
-set.seed(2015)
 print(system.time(vi2015 <- varimp(cf2015, conditional=FALSE)))
 print(vi2015)
 sink()
