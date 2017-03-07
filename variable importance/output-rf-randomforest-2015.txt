@@ -1,65 +1,65 @@
 
 Call:
- randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data2015, mtry = 2, ntree = 50, importance = TRUE) 
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data2015, mtry = 5, ntree = 50, importance = TRUE) 
                Type of random forest: classification
                      Number of trees: 50
-No. of variables tried at each split: 2
+No. of variables tried at each split: 5
 
-        OOB estimate of  error rate: 1.43%
+        OOB estimate of  error rate: 1.69%
 Confusion matrix:
     BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
-BSG 360   4   0   1   0   0   0   0   1 0.016393443
-BUA   1 315   0   0   0   0   0   0   0 0.003164557
-FOR   0   0 270   4   1   1   0   1   0 0.025270758
-MNG   0   0   1 350   0   0   0   0   0 0.002849003
-OPM   0   0   1   0 270   4   0   2   0 0.025270758
-RBM   0   0   0   0   3 278   0   1   0 0.014184397
-RPD   0   0   0   1   0   0 416   0   0 0.002398082
-SHB   0   0   1   0   5   9   2 140   0 0.108280255
+BSG 362   4   0   0   0   0   0   0   0 0.010928962
+BUA   0 315   0   0   0   0   0   1   0 0.003164557
+FOR   0   0 273   1   2   1   0   0   0 0.014440433
+MNG   0   0   0 351   0   0   0   0   0 0.000000000
+OPM   0   0   1   0 270   3   0   3   0 0.025270758
+RBM   0   0   0   0   5 273   0   4   0 0.031914894
+RPD   0   0   0   2   0   0 415   0   0 0.004796163
+SHB   0   0   1   0  11  12   1 132   0 0.159235669
 WTR   0   0   0   0   0   0   0   0 633 0.000000000
         MeanDecreaseAccuracy
-B1                9.77299795
-B2                8.70598498
-B3                7.07920196
-B4                6.65493626
-B5                8.39421822
-B7                7.52322480
-B6_B10            9.29552766
-B6_B11           11.32784869
-EVI               9.91169615
-HH                7.61139674
-HH_ASM            1.44333898
-HH_CON            6.66399986
-HH_COR            0.08370465
-HH_DIS            7.27280068
-HH_ENT            0.00000000
-HH_IDM            5.40520865
-HH_SAVG          10.84145770
-HH_VAR            7.05801852
-LSWI              6.93925790
-NDTI              7.16181817
-NDVI              9.71438267
-SATVI             8.19543076
+B1                8.59407717
+B2               10.03362358
+B3                6.20873615
+B4                4.90529405
+B5                8.65322621
+B7                7.92221736
+B6_B10           10.95140972
+B6_B11            9.68868992
+EVI               9.71850860
+HH               10.29261947
+HH_ASM            0.00000000
+HH_CON            5.70871617
+HH_COR            0.07535584
+HH_DIS            7.62220334
+HH_ENT            1.01015254
+HH_IDM            4.30406525
+HH_SAVG          12.66605249
+HH_VAR            7.36736917
+LSWI              6.41715116
+NDTI              7.29806199
+NDVI              9.12467286
+SATVI             9.03535293
         MeanDecreaseGini
-B1           83.29323925
-B2          129.13325677
-B3          189.66008934
-B4          141.84111557
-B5          211.26695663
-B7          214.41206183
-B6_B10      116.43215792
-B6_B11       98.66155615
-EVI         263.55543974
-HH          169.38895236
-HH_ASM        0.29030268
-HH_CON       29.35497304
-HH_COR       10.16577187
-HH_DIS       28.52043572
-HH_ENT        0.09007869
-HH_IDM       19.11358637
-HH_SAVG     227.32439593
-HH_VAR       27.44204844
-LSWI        143.09746532
-NDTI        126.56767449
-NDVI        223.41211924
-SATVI       215.49565147
+B1           95.71158057
+B2          124.86179252
+B3          169.14680488
+B4          100.53679955
+B5          214.34766620
+B7          171.57342126
+B6_B10      130.25201426
+B6_B11       65.99372677
+EVI         277.53133723
+HH          192.47433521
+HH_ASM        0.00000000
+HH_CON       13.78786870
+HH_COR        5.61210033
+HH_DIS       15.51781192
+HH_ENT        0.08759338
+HH_IDM        8.36911943
+HH_SAVG     254.97879366
+HH_VAR       16.36203252
+LSWI        126.53487837
+NDTI         79.57143919
+NDVI        297.38697471
+SATVI       329.51985471
