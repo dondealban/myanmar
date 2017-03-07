@@ -35,7 +35,7 @@ ndata2015 <- data2015[, c(4:24)]
 
 
 # SET RANDOM SEED
-set.seed(2017)
+set.seed(2015)
 
 # CALCULATE AND PLOT CORRELATION MATRICES
 
@@ -117,13 +117,13 @@ dev.off()
 
 sink("output-rf-party-1995.txt", append=FALSE, split=TRUE)
 print(cf1995)
-set.seed(2017)
+set.seed(2015)
 print(system.time(vi1995 <- varimp(cf1995, conditional=FALSE)))
 print(vi1995)
 sink()
 sink("output-rf-party-2015.txt", append=FALSE, split=TRUE)
 print(cf2015)
-set.seed(2017)
+set.seed(2015)
 print(system.time(vi2015 <- varimp(cf2015, conditional=FALSE)))
 print(vi2015)
 sink()
