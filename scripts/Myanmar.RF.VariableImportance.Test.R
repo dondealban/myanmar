@@ -114,6 +114,8 @@ varImpPlot(rf2015)
 dev.off()
 
 # Save party package results as txt file
+# Note: for party implementation of variable importance, conditional setting was set to
+# "FALSE" instead of "TRUE" due to errors encountered--i.e., crashes RStudio application
 
 sink("output-rf-party-1995.txt", append=FALSE, split=TRUE)
 print(cf1995)
