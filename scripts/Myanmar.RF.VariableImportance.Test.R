@@ -60,11 +60,11 @@ data2015$YEAR <- factor(data2015$YEAR)
 rf1995 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
                        HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                        HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995,
-                       mtry=2, ntree=50, importance=TRUE)
+                       mtry=5, ntree=50, importance=TRUE)
 rf2015 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
                        HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                        HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015,
-                       mtry=2, ntree=50, importance=TRUE)
+                       mtry=5, ntree=50, importance=TRUE)
 
 # randomForest variable importance based on permutation importance (mean decrease in accuracy)
 rf1995t1 <- importance(rf1995, type=1)
@@ -78,11 +78,11 @@ rf2015t2 <- importance(rf2015, type=2)
 cf1995 <- cforest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI + 
                   HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                   HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995, 
-                  control=cforest_unbiased(mtry=2, ntree=50))
+                  control=cforest_unbiased(mtry=5, ntree=50))
 cf2015 <- cforest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI + 
                   HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
                   HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015, 
-                  control=cforest_unbiased(mtry=2, ntree=50))
+                  control=cforest_unbiased(mtry=5, ntree=50))
 
 # SAVE OUTPUTS TO FILE
 
