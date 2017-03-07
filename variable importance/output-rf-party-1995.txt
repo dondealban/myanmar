@@ -1,19 +1,19 @@
 
 	 Random Forest using Conditional Inference Trees
 
-Number of trees:  50 
+Number of trees:  100 
 
 Response:  LC_TYPE 
 Inputs:  B1, B2, B3, B4, B5, B7, B6_B10, B6_B11, EVI, HH, HH_ASM, HH_CON, HH_COR, HH_DIS, HH_ENT, HH_IDM, HH_SAVG, HH_VAR, LSWI, NDTI, NDVI, SATVI 
 Number of observations:  3230 
 
    user  system elapsed 
-  4.129   0.139   4.292 
-           B1            B2            B3            B4            B5            B7 
- 1.505051e-02  2.523569e-02  3.919192e-02  7.952862e-02  6.760943e-02  7.102694e-02 
-       B6_B10        B6_B11           EVI            HH        HH_ASM        HH_CON 
- 2.996633e-02  2.976431e-02  1.954882e-01  3.622896e-02  0.000000e+00  2.255892e-03 
-       HH_COR        HH_DIS        HH_ENT        HH_IDM       HH_SAVG        HH_VAR 
- 3.367003e-05  2.946128e-03  0.000000e+00 -5.050505e-05  5.372054e-02  3.703704e-04 
-         LSWI          NDTI          NDVI         SATVI 
- 1.139731e-01  4.595960e-02  2.216667e-01  7.914141e-02 
+  7.600   0.132   7.775 
+          B1           B2           B3           B4           B5           B7       B6_B10 
+9.393939e-03 2.951178e-02 4.055556e-02 8.787879e-02 8.192761e-02 7.246633e-02 3.595118e-02 
+      B6_B11          EVI           HH       HH_ASM       HH_CON       HH_COR       HH_DIS 
+2.084175e-02 2.345118e-01 3.250000e-02 0.000000e+00 1.531987e-03 4.208754e-05 2.011785e-03 
+      HH_ENT       HH_IDM      HH_SAVG       HH_VAR         LSWI         NDTI         NDVI 
+0.000000e+00 8.417508e-06 6.275253e-02 6.734007e-04 7.289562e-02 4.227273e-02 1.963805e-01 
+       SATVI 
+6.755051e-02 
