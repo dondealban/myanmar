@@ -29,33 +29,22 @@ SetA1995 <- subset(SetA, SetA$YEAR=="1995")
 SetA2015 <- subset(SetA, SetA$YEAR=="2015")
 SetB2015 <- subset(SetB, SetB$YEAR=="2015")
 
-# Subset data containing only numerical type variables by year
-ndata1995 <- data1995[, c(4:24)]
-ndata2015 <- data2015[, c(4:24)]
-
 
 # SET RANDOM SEED
 set.seed(2017)
 
 
-# CALCULATE AND PLOT CORRELATION MATRICES
-
-# Calculate correlation matrices
-cor1995 <- cor(ndata1995)
-cor2015 <- cor(ndata2015)
-
-# Plot correlation matrices for visualisation
-cor1995cm <- ggcorrplot(cor1995, hc.order=TRUE)
-cor2015cm <- ggcorrplot(cor2015, hc.order=TRUE)
-
-
 # RUN RANDOM FOREST IMPLEMENTATION
 
 # Define factor predictor variables
-data1995$LC_TYPE <- factor(data1995$LC_TYPE)
-data2015$LC_TYPE <- factor(data2015$LC_TYPE)
-data1995$YEAR <- factor(data1995$YEAR)
-data2015$YEAR <- factor(data2015$YEAR)
+# LC_TYPE
+SetA1995$LC_TYPE <- factor(SetA1995$LC_TYPE)
+SetA2015$LC_TYPE <- factor(SetA2015$LC_TYPE)
+SetB2015$LC_TYPE <- factor(SetB2015$LC_TYPE)
+# Year
+SetA1995$YEAR <- factor(SetA1995$YEAR)
+SetA2015$YEAR <- factor(SetA2015$YEAR)
+SetB2015$YEAR <- factor(SetB2015$YEAR)
 
 # randomForest package implementation
 rf1995 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
