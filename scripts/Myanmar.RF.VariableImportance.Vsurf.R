@@ -1,7 +1,8 @@
-# This test script assesses the variable importance of a Random Forest classification
-# using the randomForest, party, and VSURF packages. The objective is to determine the
-# importance of predictor variables, to select variables that contribute to improving
-# model performance, and to exclude variables that do not improve model performance.
+# This script assesses variable importance and implements variable selection from a 
+# Random Forest classification using the VSURF package. The objective is to determine
+# the importance of predictor variables, to select variables that contribute to
+# improving model performance, and to exclude variables that do not improve model
+# performance.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   03 Mar 2017
@@ -14,21 +15,19 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
 
 # Load the required R libraries
-library(randomForest)
-library(party)
-library(corrplot)
-library(ggcorrplot)
 library(VSURF)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
+SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
+SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # SUBSET DATA AND STORE INTO VARIABLES
 
 # Subset data by year
-data1995 <- subset(data, data$YEAR=="1995")
-data2015 <- subset(data, data$YEAR=="2015")
+SetA1995 <- subset(SetA, SetA$YEAR=="1995")
+SetA2015 <- subset(SetA, SetA$YEAR=="2015")
+SetB2015 <- subset(SetB, SetB$YEAR=="2015")
 
 # Subset data containing only numerical type variables by year
 ndata1995 <- data1995[, c(4:24)]
