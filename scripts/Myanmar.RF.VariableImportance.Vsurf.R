@@ -22,19 +22,16 @@ SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statisti
 SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
+# SET RANDOM SEED
+set.seed(2017)
+
+
 # SUBSET DATA AND STORE INTO VARIABLES
 
 # Subset data by year
 SetA1995 <- subset(SetA, SetA$YEAR=="1995")
 SetA2015 <- subset(SetA, SetA$YEAR=="2015")
 SetB2015 <- subset(SetB, SetB$YEAR=="2015")
-
-
-# SET RANDOM SEED
-set.seed(2017)
-
-
-# RUN RANDOM FOREST IMPLEMENTATION
 
 # Define factor predictor variables
 # LC_TYPE
@@ -47,16 +44,26 @@ SetA2015$YEAR <- factor(SetA2015$YEAR)
 SetB2015$YEAR <- factor(SetB2015$YEAR)
 
 
-# vsurf package implementation
-vs1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
-                HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995, mtry=7, ntree=100,
-                na.action = na.omit)
-vs2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
-                HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015, mtry=7, ntree=100, 
-                na.action = na.omit)
+# RUN RANDOM FOREST IMPLEMENTATION ON SET A
 
+# Set A vsurf package implementation
+# Note: total predictor variables n=22; mtry=n/3
+vsSetA1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+              LSWI + NDTI + NDVI + SATVI, data=SetA1995, mtry=7, ntree=100,
+              na.action = na.omit)
+vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+              LSWI + NDTI + NDVI + SATVI, data=SetA2015, mtry=7, ntree=100, 
+              na.action = na.omit)
+
+# Set B vsurf package implementation
+# Note: total predictor variables n=37; mtry=n/3
+vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + B11 + DIF + EVI +
+              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+              HV + HV_ASM + HV_CON + HV_COR + HV_DIS + HV_ENT + HV_IDM + HV_SAVG + HV_VAR +
+              LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015,
+              mtry=12, ntree=100, na.action = na.omit)
 
 # SAVE OUTPUTS TO FILE
 
