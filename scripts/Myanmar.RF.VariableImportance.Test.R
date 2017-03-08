@@ -86,6 +86,17 @@ cf2015 <- cforest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI 
                   HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015, 
                   control=cforest_unbiased(mtry=5, ntree=100))
 
+# vsurf package implementation
+vs1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
+                HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995, mtry=7, ntree=100,
+                na.action = na.omit)
+vs2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
+                HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015, mtry=7, ntree=100, 
+                na.action = na.omit)
+
+
 # SAVE OUTPUTS TO FILE
 
 # Save correlation matrices as pdf files
