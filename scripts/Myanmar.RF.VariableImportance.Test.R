@@ -143,6 +143,7 @@ sink()
 
 # Save vsurf package plots as pdf files and summaries as txt files
 
+# Summaries
 sink("output-rf-vsurf-1995.txt", append=FALSE, split=TRUE)
 print(summary(vs1995))
 print(number[vs1995$varselect.thres])
@@ -155,3 +156,31 @@ print(number[vs2015$varselect.thres])
 print(number[vs2015$varselect.interp])
 print(number[vs2015$varselect.pred])
 sink()
+
+# 1995 plots
+pdf("output-rf-vsurf-plot-00-allsteps-1995.pdf", width=7, height=5.5)
+plot(vs1995)
+dev.off()
+pdf("output-rf-vsurf-plot-01-threshold-1995.pdf", width=7, height=5.5)
+plot(vs1995, step="thres", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-vsurf-plot-02-interpret-1995.pdf", width=7, height=5.5)
+plot(vs1995, step="interp", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-vsurf-plot-03-predict-1995.pdf", width=7, height=5.5)
+plot(vs1995, step="pred", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+
+# 2015 plots
+pdf("output-rf-vsurf-plot-00-allsteps-2015.pdf", width=7, height=5.5)
+plot(vs2015)
+dev.off()
+pdf("output-rf-vsurf-plot-01-threshold-2015.pdf", width=7, height=5.5)
+plot(vs2015, step="thres", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-vsurf-plot-02-interpret-2015.pdf", width=7, height=5.5)
+plot(vs2015, step="interp", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-vsurf-plot-03-predict-2015.pdf", width=7, height=5.5)
+plot(vs2015, step="pred", imp.sd=TRUE, var.names = TRUE)
+dev.off()
