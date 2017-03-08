@@ -67,47 +67,6 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
 
 # SAVE OUTPUTS TO FILE
 
-# Save correlation matrices as pdf files
-
-ggsave(cor1995cm, file="output-correlation-matrix-1995.pdf", width=7, height=5.5, units="in", dpi=300)
-ggsave(cor2015cm, file="output-correlation-matrix-2015.pdf", width=7, height=5.5, units="in", dpi=300)
-
-# Save random forest package results as txt file
-
-sink("output-rf-randomforest-1995.txt", append=FALSE, split=TRUE)
-print(rf1995)
-print(rf1995t1)
-print(rf1995t2)
-sink()
-sink("output-rf-randomforest-2015.txt", append=FALSE, split=TRUE)
-print(rf2015)
-print(rf2015t1)
-print(rf2015t2)
-sink()
-
-# Save graph of random forest variable importance as pdf file
-
-pdf("output-rf-varimp-graph-1995.pdf", width=7, height=5.5)
-varImpPlot(rf1995)
-dev.off()
-pdf("output-rf-varimp-graph-2015.pdf", width=7, height=5.5)
-varImpPlot(rf2015)
-dev.off()
-
-# Save party package results as txt file
-# Note: for party implementation of variable importance, conditional setting was set to
-# "FALSE" instead of "TRUE" due to errors encountered--i.e., crashes RStudio application
-
-sink("output-rf-party-1995.txt", append=FALSE, split=TRUE)
-print(cf1995)
-print(system.time(vi1995 <- varimp(cf1995, conditional=FALSE)))
-print(vi1995)
-sink()
-sink("output-rf-party-2015.txt", append=FALSE, split=TRUE)
-print(cf2015)
-print(system.time(vi2015 <- varimp(cf2015, conditional=FALSE)))
-print(vi2015)
-sink()
 
 # Save vsurf package plots as pdf files and summaries as txt files
 
