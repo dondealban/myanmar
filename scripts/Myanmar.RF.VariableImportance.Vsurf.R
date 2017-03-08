@@ -57,6 +57,25 @@ vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_
               LSWI + NDTI + NDVI + SATVI, data=SetA2015, mtry=7, ntree=100, 
               na.action = na.omit)
 
+# Save Set A summaries as txt files
+
+sink("output-rf-vsurf-SetA1995.txt", append=FALSE, split=TRUE)
+print(summary(vsSetA1995))
+print(number[vsSetA1995$varselect.thres])
+print(number[vsSetA1995$varselect.interp])
+print(number[vsSetA1995$varselect.pred])
+sink()
+sink("output-rf-vsurf-SetA2015.txt", append=FALSE, split=TRUE)
+print(summary(vsSetA2015))
+print(number[vsSetA2015$varselect.thres])
+print(number[vsSetA2015$varselect.interp])
+print(number[vsSetA2015$varselect.pred])
+sink()
+
+
+
+# RUN RANDOM FOREST IMPLEMENTATION ON SET A
+
 # Set B vsurf package implementation
 # Note: total predictor variables n=37; mtry=n/3
 vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + B11 + DIF + EVI +
@@ -65,24 +84,16 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
               LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015,
               mtry=12, ntree=100, na.action = na.omit)
 
-# SAVE OUTPUTS TO FILE
+# Save Set A summaries as txt files
 
-
-# Save vsurf package plots as pdf files and summaries as txt files
-
-# Summaries
-sink("output-rf-vsurf-1995.txt", append=FALSE, split=TRUE)
-print(summary(vs1995))
-print(number[vs1995$varselect.thres])
-print(number[vs1995$varselect.interp])
-print(number[vs1995$varselect.pred])
+sink("output-rf-vsurf-SetB2015.txt", append=FALSE, split=TRUE)
+print(summary(vsSetB2015))
+print(number[vsSetB2015$varselect.thres])
+print(number[vsSetB2015$varselect.interp])
+print(number[vsSetB2015$varselect.pred])
 sink()
-sink("output-rf-vsurf-2015.txt", append=FALSE, split=TRUE)
-print(summary(vs2015))
-print(number[vs2015$varselect.thres])
-print(number[vs2015$varselect.interp])
-print(number[vs2015$varselect.pred])
-sink()
+
+
 
 # 1995 plots
 pdf("output-rf-vsurf-plot-00-allsteps-1995.pdf", width=7, height=5.5)
