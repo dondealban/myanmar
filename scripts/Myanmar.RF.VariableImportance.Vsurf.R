@@ -19,7 +19,7 @@ library(VSURF)
 
 # Read data, define variables, and store data in variables
 SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
-SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
+SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # SET RANDOM SEED
