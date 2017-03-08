@@ -122,5 +122,19 @@ print(number[vsSetB2015$varselect.interp])
 print(number[vsSetB2015$varselect.pred])
 sink()
 
+# Save Set B plots as pdf files
 
+# SetB 2015 plots
+pdf("output-rf-plot-00-allsteps-SetB2015.pdf", width=7, height=5.5)
+plot(vsSetB2015)
+dev.off()
+pdf("output-rf-plot-01-threshold-SetB2015.pdf", width=7, height=5.5)
+plot(vsSetB2015, step="thres", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-02-interpret-SetB2015.pdf", width=7, height=5.5)
+plot(vsSetB2015, step="interp", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-03-predict-SetB2015.pdf", width=7, height=5.5)
+plot(vsSetB2015, step="pred", imp.sd=TRUE, var.names = TRUE)
+dev.off()
 
