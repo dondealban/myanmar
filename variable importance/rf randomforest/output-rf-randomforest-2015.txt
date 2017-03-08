@@ -1,0 +1,65 @@
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 +      B6_B10 + B6_B11 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS +      HH_ENT + HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI +      SATVI, data = data2015, mtry = 7, ntree = 100, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 100
+No. of variables tried at each split: 7
+
+        OOB estimate of  error rate: 1.63%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 361   5   0   0   0   0   0   0   0 0.013661202
+BUA   2 313   0   0   0   0   0   1   0 0.009493671
+FOR   0   0 274   1   1   1   0   0   0 0.010830325
+MNG   0   0   0 351   0   0   0   0   0 0.000000000
+OPM   0   0   1   0 272   3   0   1   0 0.018050542
+RBM   0   0   0   0   4 273   0   5   0 0.031914894
+RPD   0   0   0   2   0   0 415   0   0 0.004796163
+SHB   0   0   1   0   7  13   2 134   0 0.146496815
+WTR   0   0   0   0   0   0   0   0 633 0.000000000
+        MeanDecreaseAccuracy
+B1               14.93346291
+B2               11.54622760
+B3                9.66203490
+B4                6.21633439
+B5               11.40980857
+B7                9.02964959
+B6_B10           17.95073570
+B6_B11           15.57579824
+EVI              14.71306794
+HH               13.93574572
+HH_ASM            0.01873797
+HH_CON            8.96988871
+HH_COR           -0.92902114
+HH_DIS            9.58577774
+HH_ENT            0.00000000
+HH_IDM            6.26863732
+HH_SAVG          22.37296634
+HH_VAR            7.82717836
+LSWI              7.69171497
+NDTI             10.67187100
+NDVI             13.03565331
+SATVI            12.61040576
+        MeanDecreaseGini
+B1           83.18642361
+B2          116.42921343
+B3          163.61085698
+B4           97.81117089
+B5          220.38003557
+B7          150.90639267
+B6_B10      114.75969909
+B6_B11       54.23703773
+EVI         367.03391995
+HH          156.83079381
+HH_ASM        0.03179067
+HH_CON       14.39862217
+HH_COR        4.95348938
+HH_DIS       14.45994328
+HH_ENT        0.01000000
+HH_IDM        7.23928487
+HH_SAVG     304.30965516
+HH_VAR       10.58970283
+LSWI        124.27277341
+NDTI         56.13798480
+NDVI        309.29328110
+SATVI       317.29907944

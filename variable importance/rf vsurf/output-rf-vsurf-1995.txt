@@ -1,0 +1,11 @@
+
+ VSURF computation time: 17 mins 
+
+ VSURF selected: 
+	19 variables at thresholding step (in 43.6 secs)
+	14 variables at interpretation step (in 9.8 mins)
+	13 variables at prediction step (in 6.4 mins)
+NULL
+ [1] 24  7 12  8 25 22  9  6 20 23 11 10  5  4 13 17 21 15 19
+ [1] 24  7 12  8 25 22  9  6 20 23 11 10  5  4
+ [1] 24  7 12  8 25 22  9  6 20 23 11 10  5

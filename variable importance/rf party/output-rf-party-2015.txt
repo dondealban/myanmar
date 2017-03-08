@@ -5,15 +5,15 @@ Number of trees:  100
 
 Response:  LC_TYPE 
 Inputs:  B1, B2, B3, B4, B5, B7, B6_B10, B6_B11, EVI, HH, HH_ASM, HH_CON, HH_COR, HH_DIS, HH_ENT, HH_IDM, HH_SAVG, HH_VAR, LSWI, NDTI, NDVI, SATVI 
-Number of observations:  3230 
+Number of observations:  3076 
 
    user  system elapsed 
-  7.600   0.132   7.775 
+  6.981   0.065   7.047 
           B1           B2           B3           B4           B5           B7       B6_B10 
-9.393939e-03 2.951178e-02 4.055556e-02 8.787879e-02 8.192761e-02 7.246633e-02 3.595118e-02 
+1.335102e-02 1.956676e-02 3.951370e-02 1.267020e-02 9.167109e-02 8.765694e-02 3.489832e-02 
       B6_B11          EVI           HH       HH_ASM       HH_CON       HH_COR       HH_DIS 
-2.084175e-02 2.345118e-01 3.250000e-02 0.000000e+00 1.531987e-03 4.208754e-05 2.011785e-03 
+1.176835e-02 2.023873e-01 4.099027e-02 0.000000e+00 4.155615e-03 6.189213e-05 2.369584e-03 
       HH_ENT       HH_IDM      HH_SAVG       HH_VAR         LSWI         NDTI         NDVI 
-0.000000e+00 8.417508e-06 6.275253e-02 6.734007e-04 7.289562e-02 4.227273e-02 1.963805e-01 
+0.000000e+00 8.841733e-06 9.622458e-02 2.343059e-03 8.051282e-02 3.879752e-02 1.899381e-01 
        SATVI 
-6.755051e-02 
+1.205482e-01 
