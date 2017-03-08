@@ -59,22 +59,51 @@ vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_
 
 # Save Set A summaries as txt files
 
-sink("output-rf-vsurf-SetA1995.txt", append=FALSE, split=TRUE)
+sink("output-rf-summary-SetA1995.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA1995))
 print(number[vsSetA1995$varselect.thres])
 print(number[vsSetA1995$varselect.interp])
 print(number[vsSetA1995$varselect.pred])
 sink()
-sink("output-rf-vsurf-SetA2015.txt", append=FALSE, split=TRUE)
+sink("output-rf-summary-SetA2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA2015))
 print(number[vsSetA2015$varselect.thres])
 print(number[vsSetA2015$varselect.interp])
 print(number[vsSetA2015$varselect.pred])
 sink()
 
+# Save Set A plots as pdf files
+
+# SetA 1995 plots
+pdf("output-rf-plot-00-allsteps-SetA1995.pdf", width=7, height=5.5)
+plot(vsSetA1995)
+dev.off()
+pdf("output-rf-plot-01-threshold-SetA1995.pdf", width=7, height=5.5)
+plot(vsSetA1995, step="thres", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-02-interpret-SetA1995.pdf", width=7, height=5.5)
+plot(vsSetA1995, step="interp", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-03-predict-SetA1995.pdf", width=7, height=5.5)
+plot(vsSetA1995, step="pred", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+
+# SetA 2015 plots
+pdf("output-rf-plot-00-allsteps-SetA2015.pdf", width=7, height=5.5)
+plot(vsSetA2015)
+dev.off()
+pdf("output-rf-plot-01-threshold-SetA2015.pdf", width=7, height=5.5)
+plot(vsSetA2015, step="thres", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-02-interpret-SetA2015.pdf", width=7, height=5.5)
+plot(vsSetA2015, step="interp", imp.sd=TRUE, var.names = TRUE)
+dev.off()
+pdf("output-rf-plot-03-predict-SetA2015.pdf", width=7, height=5.5)
+plot(vsSetA2015, step="pred", imp.sd=TRUE, var.names = TRUE)
+dev.off()
 
 
-# RUN RANDOM FOREST IMPLEMENTATION ON SET A
+# RUN RANDOM FOREST IMPLEMENTATION ON SET B
 
 # Set B vsurf package implementation
 # Note: total predictor variables n=37; mtry=n/3
@@ -84,7 +113,7 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
               LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015,
               mtry=12, ntree=100, na.action = na.omit)
 
-# Save Set A summaries as txt files
+# Save Set B summaries as txt files
 
 sink("output-rf-vsurf-SetB2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetB2015))
@@ -95,30 +124,3 @@ sink()
 
 
 
-# 1995 plots
-pdf("output-rf-vsurf-plot-00-allsteps-1995.pdf", width=7, height=5.5)
-plot(vs1995)
-dev.off()
-pdf("output-rf-vsurf-plot-01-threshold-1995.pdf", width=7, height=5.5)
-plot(vs1995, step="thres", imp.sd=TRUE, var.names = TRUE)
-dev.off()
-pdf("output-rf-vsurf-plot-02-interpret-1995.pdf", width=7, height=5.5)
-plot(vs1995, step="interp", imp.sd=TRUE, var.names = TRUE)
-dev.off()
-pdf("output-rf-vsurf-plot-03-predict-1995.pdf", width=7, height=5.5)
-plot(vs1995, step="pred", imp.sd=TRUE, var.names = TRUE)
-dev.off()
-
-# 2015 plots
-pdf("output-rf-vsurf-plot-00-allsteps-2015.pdf", width=7, height=5.5)
-plot(vs2015)
-dev.off()
-pdf("output-rf-vsurf-plot-01-threshold-2015.pdf", width=7, height=5.5)
-plot(vs2015, step="thres", imp.sd=TRUE, var.names = TRUE)
-dev.off()
-pdf("output-rf-vsurf-plot-02-interpret-2015.pdf", width=7, height=5.5)
-plot(vs2015, step="interp", imp.sd=TRUE, var.names = TRUE)
-dev.off()
-pdf("output-rf-vsurf-plot-03-predict-2015.pdf", width=7, height=5.5)
-plot(vs2015, step="pred", imp.sd=TRUE, var.names = TRUE)
-dev.off()
