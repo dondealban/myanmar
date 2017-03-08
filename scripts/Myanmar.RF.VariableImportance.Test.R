@@ -140,3 +140,18 @@ print(cf2015)
 print(system.time(vi2015 <- varimp(cf2015, conditional=FALSE)))
 print(vi2015)
 sink()
+
+# Save vsurf package plots as pdf files and summaries as txt files
+
+sink("output-rf-vsurf-1995.txt", append=FALSE, split=TRUE)
+print(summary(vs1995))
+print(number[vs1995$varselect.thres])
+print(number[vs1995$varselect.interp])
+print(number[vs1995$varselect.pred])
+sink()
+sink("output-rf-vsurf-2015.txt", append=FALSE, split=TRUE)
+print(summary(vs2015))
+print(number[vs2015$varselect.thres])
+print(number[vs2015$varselect.interp])
+print(number[vs2015$varselect.pred])
+sink()
