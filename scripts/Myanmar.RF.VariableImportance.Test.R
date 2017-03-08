@@ -1,11 +1,11 @@
 # This test script assesses the variable importance of a Random Forest classification
-# using the randomForest and party packages. The objective is to determine the importance
-# of predictor variables and to subsequently select variables that contribute to improving
-# model performance and to exclude variables that do not improve model performance.
+# using the randomForest, party, and VSURF packages. The objective is to determine the
+# importance of predictor variables, to select variables that contribute to improving
+# model performance, and to exclude variables that do not improve model performance.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   03 Mar 2017
-# Last Modified:  07 Mar 2017
+# Last Modified:  08 Mar 2017
 
 
 # LOAD LIBRARIES AND DATA
@@ -18,6 +18,7 @@ library(randomForest)
 library(party)
 library(corrplot)
 library(ggcorrplot)
+library(VSURF)
 
 # Read data, define variables, and store data in variables
 data <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
@@ -36,6 +37,7 @@ ndata2015 <- data2015[, c(4:24)]
 
 # SET RANDOM SEED
 set.seed(2017)
+
 
 # CALCULATE AND PLOT CORRELATION MATRICES
 
