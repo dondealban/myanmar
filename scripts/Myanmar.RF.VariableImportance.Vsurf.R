@@ -59,17 +59,19 @@ vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_
 
 # Save Set A summaries as txt files
 
+numSetA <- c(4:25)
+
 sink("output-rf-summary-SetA1995.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA1995))
-print(number[vsSetA1995$varselect.thres])
-print(number[vsSetA1995$varselect.interp])
-print(number[vsSetA1995$varselect.pred])
+print(numSetA[vsSetA1995$varselect.thres])
+print(numSetA[vsSetA1995$varselect.interp])
+print(numSetA[vsSetA1995$varselect.pred])
 sink()
 sink("output-rf-summary-SetA2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA2015))
-print(number[vsSetA2015$varselect.thres])
-print(number[vsSetA2015$varselect.interp])
-print(number[vsSetA2015$varselect.pred])
+print(numSetA[vsSetA2015$varselect.thres])
+print(numSetA[vsSetA2015$varselect.interp])
+print(numSetA[vsSetA2015$varselect.pred])
 sink()
 
 # Save Set A plots as pdf files
@@ -115,11 +117,13 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
 
 # Save Set B summaries as txt files
 
+numSetB <- c(4:40)
+
 sink("output-rf-summary-SetB2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetB2015))
-print(number[vsSetB2015$varselect.thres])
-print(number[vsSetB2015$varselect.interp])
-print(number[vsSetB2015$varselect.pred])
+print(numSetB[vsSetB2015$varselect.thres])
+print(numSetB[vsSetB2015$varselect.interp])
+print(numSetB[vsSetB2015$varselect.pred])
 sink()
 
 # Save Set B plots as pdf files
