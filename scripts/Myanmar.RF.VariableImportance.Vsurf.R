@@ -115,7 +115,7 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
 
 # Save Set B summaries as txt files
 
-sink("output-rf-vsurf-SetB2015.txt", append=FALSE, split=TRUE)
+sink("output-rf-summary-SetB2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetB2015))
 print(number[vsSetB2015$varselect.thres])
 print(number[vsSetB2015$varselect.interp])
