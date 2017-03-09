@@ -23,9 +23,10 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 
 #### Variable importance
 1. The variable importance from a Random Forest classification was assessed to determine the relative contribution of variables to the performance of the model. From this, variables will be excluded to improve model performance.
-2. Variable importance was computed using two packages:
-    + randomForest package: variable importance was calculated using both mean decrease in accuracy (permutation importance) and mean decrease in impurity (Gini index)
-    + party package: conditional permutation importance was calculated through conditional inference trees to address biased variable selection and to account for correlated variables, both of which are limitations in the randomForest package. 
+2. Variable importance and selection was computed using three packages:
+    + randomForest package: variable importance was calculated using both mean decrease in accuracy (permutation importance) and mean decrease in impurity (Gini index).
+    + party package: conditional permutation importance was calculated through conditional inference trees to address biased variable selection and to account for correlated variables, both of which are limitations in the randomForest package. However, cforest is computationally intensive and results in errors and crashes, once conditional settings are set to true, perhaps due to the huge set of predictor variables, tree depth, and random variables to permute.
+    + VSURF package: an automatic stepwise calculation of variable selection and assessment of variable importance was implemented consisting of thresholding, interpretation, and prediction. The process results in the selection of the most parsimonious variables that contribute to the model performance (lowest error). 
 
 ### Acronyms
 
