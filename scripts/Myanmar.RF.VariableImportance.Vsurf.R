@@ -6,7 +6,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   03 Mar 2017
-# Last Modified:  08 Mar 2017
+# Last Modified:  09 Mar 2017
 
 
 # LOAD LIBRARIES AND DATA
@@ -75,30 +75,30 @@ sink()
 # Save Set A plots as pdf files
 
 # SetA 1995 plots
-pdf("output-rf-plot-00-allsteps-SetA1995.pdf", width=7, height=5.5)
+pdf("output-rf-plot-00-allsteps-SetA1995.pdf", width=14, height=11)
 plot(vsSetA1995)
 dev.off()
-pdf("output-rf-plot-01-threshold-SetA1995.pdf", width=7, height=5.5)
+pdf("output-rf-plot-01-threshold-SetA1995.pdf", width=14, height=11)
 plot(vsSetA1995, step="thres", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-02-interpret-SetA1995.pdf", width=7, height=5.5)
+pdf("output-rf-plot-02-interpret-SetA1995.pdf", width=14, height=11)
 plot(vsSetA1995, step="interp", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-03-predict-SetA1995.pdf", width=7, height=5.5)
+pdf("output-rf-plot-03-predict-SetA1995.pdf", width=14, height=11)
 plot(vsSetA1995, step="pred", imp.sd=TRUE, var.names = TRUE)
 dev.off()
 
 # SetA 2015 plots
-pdf("output-rf-plot-00-allsteps-SetA2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-00-allsteps-SetA2015.pdf", width=14, height=11)
 plot(vsSetA2015)
 dev.off()
-pdf("output-rf-plot-01-threshold-SetA2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-01-threshold-SetA2015.pdf", width=14, height=11)
 plot(vsSetA2015, step="thres", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-02-interpret-SetA2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-02-interpret-SetA2015.pdf", width=14, height=11)
 plot(vsSetA2015, step="interp", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-03-predict-SetA2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-03-predict-SetA2015.pdf", width=14, height=11)
 plot(vsSetA2015, step="pred", imp.sd=TRUE, var.names = TRUE)
 dev.off()
 
@@ -125,16 +125,15 @@ sink()
 # Save Set B plots as pdf files
 
 # SetB 2015 plots
-pdf("output-rf-plot-00-allsteps-SetB2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-00-allsteps-SetB2015.pdf", width=14, height=11)
 plot(vsSetB2015)
 dev.off()
-pdf("output-rf-plot-01-threshold-SetB2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-01-threshold-SetB2015.pdf",width=14, height=11)
 plot(vsSetB2015, step="thres", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-02-interpret-SetB2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-02-interpret-SetB2015.pdf", width=14, height=11)
 plot(vsSetB2015, step="interp", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-pdf("output-rf-plot-03-predict-SetB2015.pdf", width=7, height=5.5)
+pdf("output-rf-plot-03-predict-SetB2015.pdf", width=14, height=11)
 plot(vsSetB2015, step="pred", imp.sd=TRUE, var.names = TRUE)
 dev.off()
-
