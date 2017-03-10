@@ -47,19 +47,17 @@ SetB2015$YEAR <- factor(SetB2015$YEAR)
 # RUN RANDOM FOREST IMPLEMENTATION ON SET A
 
 # Set A vsurf package implementation
-# Note: total predictor variables n=22; default values used for mtry=n and ntree=2000
+# Note: total predictor variables n=13; default values used for mtry=n and ntree=2000
 vsSetA1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               LSWI + NDTI + NDVI + SATVI, data=SetA1995, 
               na.action = na.omit)
 vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               LSWI + NDTI + NDVI + SATVI, data=SetA2015, 
               na.action = na.omit)
 
 # Save Set A summaries as txt files
 
-numSetA <- c(4:25)
+numSetA <- c(4:12,22:25)
 
 sink("output-rf-summary-SetA1995.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA1995))
@@ -108,16 +106,14 @@ dev.off()
 # RUN RANDOM FOREST IMPLEMENTATION ON SET B
 
 # Set B vsurf package implementation
-# Note: total predictor variables n=37; default values used for mtry=n and ntree=2000
-vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + B11 + DIF + EVI +
-              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
-              HV + HV_ASM + HV_CON + HV_COR + HV_DIS + HV_ENT + HV_IDM + HV_SAVG + HV_VAR +
-              LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015,
+# Note: total predictor variables n=13; default values used for mtry=n and ntree=2000
+vsSetB2015 <- VSURF(formula=LC_TYPE ~ B2 + B3 + B4 + B5 + B6 + B7 + B10 + B11 + EVI +
+              LSWI + NDTI + NDVI + SATVI, data=SetB2015,
               na.action = na.omit)
 
 # Save Set B summaries as txt files
 
-numSetB <- c(4:40)
+numSetB <- c(4:12,14,33,35:36,40)
 
 sink("output-rf-summary-SetB2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetB2015))
