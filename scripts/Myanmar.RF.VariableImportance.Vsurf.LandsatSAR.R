@@ -2,7 +2,7 @@
 # Random Forest classification using the VSURF package. The objective is to determine
 # the importance of predictor variables, to select variables that contribute to
 # improving model performance, and to exclude variables that do not improve model
-# performance.
+# performance. This script assesses variables from both Landsat and L-band SAR sensors.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   03 Mar 2017
