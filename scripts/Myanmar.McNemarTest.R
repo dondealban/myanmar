@@ -19,5 +19,14 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/mcnemar test/")
 mat1 = matrix(c(756,42,5,38), ncol=2, byrow=TRUE)
 
 
+# CALCULATE CRITICAL VALUE OF THE TEST
+# Note: this will determine the stringency of the test
+# Formula: cv = qchisq(1-alpha,1)
+
+cv99 <- qchisq(1-0.01, 1) # alpha=0.01
+cv95 <- qchisq(1-0.05, 1) # alpha=0.05
+cv90 <- qchisq(1-0.01, 1) # alpha=0.10
+
+
 
 
