@@ -15,8 +15,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/mcnemar test/")
 # CREATE 2x2 CONTINGENCY MATRICES
 # Note: value taken from separate spreadsheets
 
-# SetA 1995: Landsat+SAR vs. Landsat
-mat1 = matrix(c(756,42,5,38), ncol=2, byrow=TRUE)
+mat1 = matrix(c(756,42,5,38), ncol=2, byrow=TRUE) # SetA 1995: Landsat+SAR vs. Landsat
 
 
 # CALCULATE CRITICAL VALUE OF THE TEST
@@ -28,5 +27,11 @@ cv95 <- qchisq(1-0.05, 1) # alpha=0.05
 cv90 <- qchisq(1-0.01, 1) # alpha=0.10
 
 
+# CALCULATE McNEMAR's TEST STATISTIC (WITH CONTINUITY CORRECTION)
+mc1 <- mcnemar.test(mat1, correct=TRUE)
+
+
+# CALCULATE McNEMAR's TEST STATISTIC (WITHOUT CONTINUITY CORRECTION)
+mc1 <- mcnemar.test(mat1, correct=FALSE)
 
 
