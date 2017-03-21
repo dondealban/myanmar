@@ -28,10 +28,18 @@ cv90 <- qchisq(1-0.01, 1) # alpha=0.10
 
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITH CONTINUITY CORRECTION)
-mc1 <- mcnemar.test(mat1, correct=TRUE)
+mcw1 <- mcnemar.test(mat1, correct=TRUE)
 
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITHOUT CONTINUITY CORRECTION)
-mc1 <- mcnemar.test(mat1, correct=FALSE)
+mco1 <- mcnemar.test(mat1, correct=FALSE)
 
 
+# SAVE OUTPUT FILES
+
+sink("output-summary-mcnemar-test.txt", append=FALSE, split=TRUE)
+print("McNemar's Test Statistics\n")
+print("Critical Values:")
+print("At alpha = 0.01, CV = ", cv01)
+print("McNemar's Test with Continuity Correction")
+sink()
