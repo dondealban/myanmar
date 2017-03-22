@@ -38,8 +38,6 @@ mco1 <- mcnemar.test(mat1, correct=FALSE)
 # SAVE OUTPUT FILES
 
 sink("output-summary-mcnemar-test.txt", append=FALSE, split=TRUE)
-print("McNemar's Test Statistics\n")
-print("Critical Values:")
-print("At alpha = 0.01, CV = ", cv01)
-print("McNemar's Test with Continuity Correction")
+print(mcw1)
+print(mco1)
 sink()

@@ -1,0 +1,12 @@
+
+	McNemar's Chi-squared test with continuity correction
+
+data:  mat1
+McNemar's chi-squared = 27.574, df = 1, p-value = 1.512e-07
+
+
+	McNemar's Chi-squared test
+
+data:  mat1
+McNemar's chi-squared = 29.128, df = 1, p-value = 6.776e-08
+
