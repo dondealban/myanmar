@@ -4,7 +4,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   17 Feb 2017
-# Last Modified:  20 Feb 2017
+# Last Modified:  17 Apr 2017
 
 
 # LOAD LIBRARIES AND DATA
@@ -16,7 +16,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/decision tree/")
 library(tree)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="SetD_2015_LP_1D_30m_RF_9CL_ForR.csv", header=TRUE, sep=",")
+data <- read.csv(file="Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # CREATE SUBSETS TO DEFINE CLASSES IN MULTI-LEVEL CLASSIFICATION
