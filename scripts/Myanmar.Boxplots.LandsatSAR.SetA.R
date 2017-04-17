@@ -58,7 +58,7 @@ optB7 <- optB7 + labs(title="B7 Reflectance of Land Cover Types in Tanintharyi",
 optB7 <- optB7 + ylim(0,0.65)
 
 # B6-B10
-optB6_B10 <- ggplot() + geom_boxplot(aes(y = B6_B10, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
+optB6_B10 <- ggplot() + geom_boxplot(aes(y = B6, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB6_B10 <- optB6_B10 + labs(title="B6/B10 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
 optB6_B10 <- optB6_B10 + ylim(280,310)
 
