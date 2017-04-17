@@ -61,6 +61,7 @@ tree.lc1  <- tree(factor(LC1) ~ HH, data.lc1)
 tree.lc2  <- tree(factor(LC2) ~ B4, data.lc2)
 tree.lc3  <- tree(factor(LC3) ~ B5, data.lc3)
 tree.lc4  <- tree(factor(LC4) ~ HH + B6, data.lc4)
+tree.lc4a <- tree(factor(LC4) ~ B6, data.lc4) # B6 only
 
 # SAVE OUTPUTS TO FILE
 
@@ -86,6 +87,11 @@ print(tree.lc4)
 print(summary(tree.lc4))
 print(misclass.tree(tree.lc4, detail=TRUE))
 sink()
+sink("output-tree-summary-lc4a.txt", append=FALSE, split=TRUE)
+print(tree.lc4a)
+print(summary(tree.lc4a))
+print(misclass.tree(tree.lc4a, detail=TRUE))
+sink()
 
 # Plot tree object/dendrogram and save as PDF file
 
@@ -104,4 +110,8 @@ dev.off()
 pdf("output-dendrogram-lc4.pdf", width=7, height=5.5)
 plot(tree.lc4)
 text(tree.lc4, cex=0.70)
+dev.off()
+pdf("output-dendrogram-lc4a.pdf", width=7, height=5.5)
+plot(tree.lc4a)
+text(tree.lc4a, cex=0.70)
 dev.off()
