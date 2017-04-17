@@ -1,7 +1,7 @@
 # This R script generates box-whisker plots using ggplot2 package to visualise the
 # distribution of values for each predictor variable across 9 land cover types 
 # derived from combined Landsat and L-band SAR data covering Tanintharyi, Myanmar.
-# This script plots SetB values consisting of 2015 data from Landsat-8 (8 bands,
+# This script plots SetB values consisting of 2015 data from Landsat-8 (7 bands,
 # 5 indices) and ALOS/PALSAR-2 (2 polarisations, 6 indices, and 16 GLCM textures).
 #
 # Land cover types include: forest (FOR); mangrove (MNG); oil palm mature (OPM);
@@ -10,7 +10,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   17 Feb 2017
-# Last Modified:  27 Feb 2017
+# Last Modified:  17 Apr 2017
 
 # LOAD LIBRARIES AND DATA
 
