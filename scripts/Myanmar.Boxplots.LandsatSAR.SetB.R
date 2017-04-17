@@ -21,7 +21,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/
 library(ggplot2)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
+data <- read.csv(file="Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 # GENERATE PLOTS
 # Generate boxplots of land cover types for each predictor variable
