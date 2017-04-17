@@ -30,42 +30,37 @@ data <- read.csv(file="Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, s
 # B1
 optB1 <- ggplot() + geom_boxplot(aes(y = B1, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB1 <- optB1 + labs(title="B1 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB1 <- optB1 + ylim(0,0.6)
+optB1 <- optB1 + ylim(0,0.65)
 
 # B2
 optB2 <- ggplot() + geom_boxplot(aes(y = B2, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB2 <- optB2 + labs(title="B2 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB2 <- optB2 + ylim(0,0.6)
+optB2 <- optB2 + ylim(0,0.65)
 
 # B3
 optB3 <- ggplot() + geom_boxplot(aes(y = B3, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB3 <- optB3 + labs(title="B3 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB3 <- optB3 + ylim(0,0.6)
+optB3 <- optB3 + ylim(0,0.65)
 
 # B4
 optB4 <- ggplot() + geom_boxplot(aes(y = B4, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB4 <- optB4 + labs(title="B4 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB4 <- optB4 + ylim(0,0.6)
+optB4 <- optB4 + ylim(0,0.65)
 
 # B5
 optB5 <- ggplot() + geom_boxplot(aes(y = B5, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB5 <- optB5 + labs(title="B5 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB5 <- optB5 + ylim(0,0.6)
+optB5 <- optB5 + ylim(0,0.65)
 
 # B7
 optB7 <- ggplot() + geom_boxplot(aes(y = B7, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB7 <- optB7 + labs(title="B7 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB7 <- optB7 + ylim(0,0.6)
+optB7 <- optB7 + ylim(0,0.65)
 
 # B6-B10
 optB6_B10 <- ggplot() + geom_boxplot(aes(y = B6_B10, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
 optB6_B10 <- optB6_B10 + labs(title="B6/B10 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
 optB6_B10 <- optB6_B10 + ylim(280,310)
-
-# B6-B11
-optB6_B11 <- ggplot() + geom_boxplot(aes(y = B6_B11, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
-optB6_B11 <- optB6_B11 + labs(title="B6/B11 Reflectance of Land Cover Types in Tanintharyi", x="Land Cover Type", y="Reflectance", fill="Year")
-optB6_B11 <- optB6_B11 + ylim(280,310)
 
 # EVI
 optEVI <- ggplot() + geom_boxplot(aes(y = EVI, x = LC_TYPE, fill=factor(YEAR)), data=data, outlier.shape = 1, outlier.size = 1)
