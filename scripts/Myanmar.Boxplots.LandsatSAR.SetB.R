@@ -217,7 +217,6 @@ ggsave(optB5, file="Boxplot-B5.png", width=19.89, height=15, units="cm", dpi=300
 ggsave(optB6, file="Boxplot-B6.png", width=19.89, height=15, units="cm", dpi=300)
 ggsave(optB7, file="Boxplot-B7.png", width=19.89, height=15, units="cm", dpi=300)
 ggsave(optB10, file="Boxplot-B10.png", width=19.89, height=15, units="cm", dpi=300)
-ggsave(optB11, file="Boxplot-B11.png", width=19.89, height=15, units="cm", dpi=300)
 
 ggsave(optEVI, file="Boxplot-EVI.png", width=19.89, height=15, units="cm", dpi=300)
 ggsave(optLSWI, file="Boxplot-LSWI.png", width=19.89, height=15, units="cm", dpi=300)
