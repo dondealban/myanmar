@@ -6,7 +6,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   03 Mar 2017
-# Last Modified:  10 Mar 2017
+# Last Modified:  18 Apr 2017
 
 
 # LOAD LIBRARIES AND DATA
@@ -18,8 +18,8 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
 library(VSURF)
 
 # Read data, define variables, and store data in variables
-SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
-SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_1D_30m_RF_ForR.csv", header=TRUE, sep=",")
+SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, sep=",")
+SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # SET RANDOM SEED
