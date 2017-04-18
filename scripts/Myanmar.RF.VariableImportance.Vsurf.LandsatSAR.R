@@ -59,7 +59,7 @@ vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
 
 # Save Set A summaries as txt files
 
-numSetA <- c(4:25)
+numSetA <- c(4:24)
 
 sink("output-rf-summary-SetA1995.txt", append=FALSE, split=TRUE)
 print(summary(vsSetA1995))
