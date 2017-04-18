@@ -48,11 +48,11 @@ SetB2015$YEAR <- factor(SetB2015$YEAR)
 
 # Set A vsurf package implementation
 # Note: total predictor variables n=22; default values used for mtry=n and ntree=2000
-vsSetA1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+vsSetA1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
               HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               LSWI + NDTI + NDVI + SATVI, data=SetA1995, 
               na.action = na.omit)
-vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
+vsSetA2015 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
               HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               LSWI + NDTI + NDVI + SATVI, data=SetA2015, 
               na.action = na.omit)
