@@ -47,7 +47,7 @@ SetB2015$YEAR <- factor(SetB2015$YEAR)
 # RUN RANDOM FOREST IMPLEMENTATION ON SET A
 
 # Set A vsurf package implementation
-# Note: total predictor variables n=22; default values used for mtry=n and ntree=2000
+# Note: total predictor variables n=21; default values used for mtry=n and ntree=2000
 vsSetA1995 <- VSURF(formula=LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
               HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               LSWI + NDTI + NDVI + SATVI, data=SetA1995, 
@@ -108,8 +108,8 @@ dev.off()
 # RUN RANDOM FOREST IMPLEMENTATION ON SET B
 
 # Set B vsurf package implementation
-# Note: total predictor variables n=37; default values used for mtry=n and ntree=2000
-vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + B11 + DIF + EVI +
+# Note: total predictor variables n=36; default values used for mtry=n and ntree=2000
+vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + DIF + EVI +
               HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
               HV + HV_ASM + HV_CON + HV_COR + HV_DIS + HV_ENT + HV_IDM + HV_SAVG + HV_VAR +
               LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015,
@@ -117,7 +117,7 @@ vsSetB2015 <- VSURF(formula=LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + 
 
 # Save Set B summaries as txt files
 
-numSetB <- c(4:40)
+numSetB <- c(4:39)
 
 sink("output-rf-summary-SetB2015.txt", append=FALSE, split=TRUE)
 print(summary(vsSetB2015))
