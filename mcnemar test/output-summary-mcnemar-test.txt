@@ -1,12 +1,19 @@
+McNemar's Tests: Consolidated Results
+Critical values:
+For alpha = 0.01, critical value:[1] 6.634897
+For alpha = 0.05, critical value:[1] 3.841459
+For alpha = 0.10, critical value:[1] 2.705543
+
+SET A 1995: LANDSAT+SAR vs. LANDSAT
 
 	McNemar's Chi-squared test with continuity correction
 
-data:  mat1
-McNemar's chi-squared = 27.574, df = 1, p-value = 1.512e-07
+data:  mat01
+McNemar's chi-squared = 11.574, df = 1, p-value = 0.0006688
 
 
 	McNemar's Chi-squared test
 
-data:  mat1
-McNemar's chi-squared = 29.128, df = 1, p-value = 6.776e-08
+data:  mat01
+McNemar's chi-squared = 12.519, df = 1, p-value = 0.0004029
 
