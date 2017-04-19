@@ -12,6 +12,15 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/mcnemar test/")
 
 
+# CALCULATE CRITICAL VALUE OF THE TEST
+# Note: this will determine the stringency of the test
+# Formula: cv = qchisq(1-alpha,df), where df=1 for 2x2 matrix  
+
+cv99 <- qchisq(1-0.01, 1) # alpha=0.01
+cv95 <- qchisq(1-0.05, 1) # alpha=0.05
+cv90 <- qchisq(1-0.10, 1) # alpha=0.10
+
+
 # CREATE 2x2 CONTINGENCY MATRICES
 # Note: value taken from separate spreadsheets
 
@@ -21,14 +30,10 @@ mat02 = matrix(c(883,39,15,35), ncol=2, byrow=TRUE) # SetA 2015: Landsat+SAR vs.
 mat03 = matrix(c(882,45,16,29), ncol=2, byrow=TRUE) # SetB 2015: Landsat+SAR vs. Landsat
 mat04 = matrix(c(915, 7,12,38), ncol=2, byrow=TRUE) # SetA 2015 vs. SetB 2015: Landsat+SAR
 
-
-# CALCULATE CRITICAL VALUE OF THE TEST
-# Note: this will determine the stringency of the test
-# Formula: cv = qchisq(1-alpha,df), where df=1 for 2x2 matrix  
-
-cv99 <- qchisq(1-0.01, 1) # alpha=0.01
-cv95 <- qchisq(1-0.05, 1) # alpha=0.05
-cv90 <- qchisq(1-0.10, 1) # alpha=0.10
+# Compare using Landsat+SAR selected variables vs. all variables
+mat05 = matrix(c(898, 5, 3,35), ncol=2, byrow=TRUE) # SetA 1995 Landsat+SAR: All vs. VI
+mat06 = matrix(c(913, 9,10,40), ncol=2, byrow=TRUE) # SetA 2015 Landsat+SAR: All vs. VI
+mat07 = matrix(c(906,21,13,32), ncol=2, byrow=TRUE) # SetB 2015 Landsat+SAR: All vs. VI
 
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITH CONTINUITY CORRECTION)
@@ -39,6 +44,13 @@ mcw02 <- mcnemar.test(mat02, correct=TRUE)
 mcw03 <- mcnemar.test(mat03, correct=TRUE)
 mcw04 <- mcnemar.test(mat04, correct=TRUE)
 
+# Compare using Landsat+SAR selected variables vs. all variables
+mcw05 <- mcnemar.test(mat05, correct=TRUE)
+mcw06 <- mcnemar.test(mat06, correct=TRUE)
+mcw07 <- mcnemar.test(mat07, correct=TRUE)
+
+
+
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITHOUT CONTINUITY CORRECTION)
 
@@ -47,6 +59,11 @@ mco01 <- mcnemar.test(mat01, correct=FALSE)
 mco02 <- mcnemar.test(mat02, correct=FALSE)
 mco03 <- mcnemar.test(mat03, correct=FALSE)
 mco04 <- mcnemar.test(mat04, correct=FALSE)
+
+# Compare using Landsat+SAR selected variables vs. all variables
+mco05 <- mcnemar.test(mat05, correct=FALSE)
+mco06 <- mcnemar.test(mat06, correct=FALSE)
+mco07 <- mcnemar.test(mat07, correct=FALSE)
 
 
 # SAVE OUTPUT FILES
@@ -79,4 +96,16 @@ cat("USING ALL PREDICTOR VARIABLES", sep="\n")
 cat("SET A 2015 vs SET B 2015: LANDSAT+SAR", sep="\n")
 print(mcw04)
 print(mco04)
+cat("USING LANDSAT+SAR SELECTED VARIABLES vs. ALL VARIABLES", sep="\n")
+cat("SET A 1995 LANDSAT+SAR: ALL vs. VI", sep="\n")
+print(mcw05)
+print(mco05)
+cat("USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES", sep="\n")
+cat("SET A 2015 LANDSAT+SAR: ALL vs. VI", sep="\n")
+print(mcw06)
+print(mco06)
+cat("USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES", sep="\n")
+cat("SET B 1995 LANDSAT+SAR: ALL vs. VI", sep="\n")
+print(mcw07)
+print(mco07)
 sink()
