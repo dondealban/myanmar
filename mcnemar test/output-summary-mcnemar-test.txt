@@ -90,7 +90,7 @@ data:  mat06
 McNemar's chi-squared = 0.052632, df = 1, p-value = 0.8185
 
 USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES
-SET B 1995 LANDSAT+SAR: ALL vs. VI
+SET B 2015 LANDSAT+SAR: ALL vs. VI
 
 	McNemar's Chi-squared test with continuity correction
 
@@ -102,4 +102,46 @@ McNemar's chi-squared = 1.4412, df = 1, p-value = 0.2299
 
 data:  mat07
 McNemar's chi-squared = 1.8824, df = 1, p-value = 0.1701
+
+USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
+SET A 1995 LANDSAT+SAR VI vs. LANDSAT ALL
+
+	McNemar's Chi-squared test with continuity correction
+
+data:  mat08
+McNemar's chi-squared = 11.5, df = 1, p-value = 0.000696
+
+
+	McNemar's Chi-squared test
+
+data:  mat08
+McNemar's chi-squared = 12.522, df = 1, p-value = 0.0004022
+
+USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
+SET A 2015 LANDSAT+SAR VI vs. LANDSAT ALL
+
+	McNemar's Chi-squared test with continuity correction
+
+data:  mat09
+McNemar's chi-squared = 11.294, df = 1, p-value = 0.0007775
+
+
+	McNemar's Chi-squared test
+
+data:  mat09
+McNemar's chi-squared = 12.255, df = 1, p-value = 0.000464
+
+USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
+SET B 2015 LANDSAT+SAR VI vs. LANDSAT ALL
+
+	McNemar's Chi-squared test with continuity correction
+
+data:  mat10
+McNemar's chi-squared = 8.5106, df = 1, p-value = 0.003531
+
+
+	McNemar's Chi-squared test
+
+data:  mat10
+McNemar's chi-squared = 9.383, df = 1, p-value = 0.00219
 

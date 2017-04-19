@@ -35,6 +35,11 @@ mat05 = matrix(c(898, 5, 3,35), ncol=2, byrow=TRUE) # SetA 1995 Landsat+SAR: All
 mat06 = matrix(c(913, 9,10,40), ncol=2, byrow=TRUE) # SetA 2015 Landsat+SAR: All vs. VI
 mat07 = matrix(c(906,21,13,32), ncol=2, byrow=TRUE) # SetB 2015 Landsat+SAR: All vs. VI
 
+# Compare using all variables for Landsat vs. selected variables for Landsat+SAR
+mat08 = matrix(c(866,35,11,29), ncol=2, byrow=TRUE) # SetA 1995: Landsat+SAR VI vs. Landsat All
+mat09 = matrix(c(885,38,13,36), ncol=2, byrow=TRUE) # SetA 2015: Landsat+SAR VI vs. Landsat All
+mat10 = matrix(c(885,34,13,40), ncol=2, byrow=TRUE) # SetB 2015: Landsat+SAR VI vs. Landsat All
+
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITH CONTINUITY CORRECTION)
 
@@ -49,7 +54,10 @@ mcw05 <- mcnemar.test(mat05, correct=TRUE)
 mcw06 <- mcnemar.test(mat06, correct=TRUE)
 mcw07 <- mcnemar.test(mat07, correct=TRUE)
 
-
+# Compare using all variables for Landsat vs. selected variables for Landsat+SAR
+mcw08 <- mcnemar.test(mat08, correct=TRUE)
+mcw09 <- mcnemar.test(mat09, correct=TRUE)
+mcw10 <- mcnemar.test(mat10, correct=TRUE)
 
 
 # CALCULATE McNEMAR's TEST STATISTIC (WITHOUT CONTINUITY CORRECTION)
@@ -64,6 +72,11 @@ mco04 <- mcnemar.test(mat04, correct=FALSE)
 mco05 <- mcnemar.test(mat05, correct=FALSE)
 mco06 <- mcnemar.test(mat06, correct=FALSE)
 mco07 <- mcnemar.test(mat07, correct=FALSE)
+
+# Compare using all variables for Landsat vs. selected variables for Landsat+SAR
+mco08 <- mcnemar.test(mat08, correct=FALSE)
+mco09 <- mcnemar.test(mat09, correct=FALSE)
+mco10 <- mcnemar.test(mat10, correct=FALSE)
 
 
 # SAVE OUTPUT FILES
@@ -105,7 +118,19 @@ cat("SET A 2015 LANDSAT+SAR: ALL vs. VI", sep="\n")
 print(mcw06)
 print(mco06)
 cat("USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES", sep="\n")
-cat("SET B 1995 LANDSAT+SAR: ALL vs. VI", sep="\n")
+cat("SET B 2015 LANDSAT+SAR: ALL vs. VI", sep="\n")
 print(mcw07)
 print(mco07)
+cat("USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES", sep="\n")
+cat("SET A 1995 LANDSAT+SAR VI vs. LANDSAT ALL", sep="\n")
+print(mcw08)
+print(mco08)
+cat("USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES", sep="\n")
+cat("SET A 2015 LANDSAT+SAR VI vs. LANDSAT ALL", sep="\n")
+print(mcw09)
+print(mco09)
+cat("USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES", sep="\n")
+cat("SET B 2015 LANDSAT+SAR VI vs. LANDSAT ALL", sep="\n")
+print(mcw10)
+print(mco10)
 sink()
