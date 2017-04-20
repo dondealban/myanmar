@@ -86,19 +86,19 @@ mco10 <- mcnemar.test(mat10, correct=FALSE)
 
 # Compare using all predictor variables
 mce01 <- mcnemar.exact(mat01)
-mce02 <- mcnemar.exact(mat01)
-mce03 <- mcnemar.exact(mat01)
-mce04 <- mcnemar.exact(mat01)
+mce02 <- mcnemar.exact(mat02)
+mce03 <- mcnemar.exact(mat03)
+mce04 <- mcnemar.exact(mat04)
 
 # Compare using Landsat+SAR selected variables vs. all variables
-mce05 <- mcnemar.exact(mat01)
-mce06 <- mcnemar.exact(mat01)
-mce07 <- mcnemar.exact(mat01)
+mce05 <- mcnemar.exact(mat05)
+mce06 <- mcnemar.exact(mat06)
+mce07 <- mcnemar.exact(mat07)
 
 # Compare using all variables for Landsat vs. selected variables for Landsat+SAR
-mce08 <- mcnemar.exact(mat01)
-mce09 <- mcnemar.exact(mat01)
-mce10 <- mcnemar.exact(mat01)
+mce08 <- mcnemar.exact(mat08)
+mce09 <- mcnemar.exact(mat09)
+mce10 <- mcnemar.exact(mat10)
 
 
 # SAVE OUTPUT FILES
