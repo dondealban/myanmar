@@ -11,6 +11,9 @@
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/mcnemar test/")
 
+# Load the required R libraries
+library(exact2x2)
+
 
 # CALCULATE CRITICAL VALUE OF THE TEST
 # Note: this will determine the stringency of the test
@@ -77,6 +80,25 @@ mco07 <- mcnemar.test(mat07, correct=FALSE)
 mco08 <- mcnemar.test(mat08, correct=FALSE)
 mco09 <- mcnemar.test(mat09, correct=FALSE)
 mco10 <- mcnemar.test(mat10, correct=FALSE)
+
+
+# CALCULATE McNEMAR's EXACT TEST STATISTIC
+
+# Compare using all predictor variables
+mce01 <- mcnemar.exact(mat01)
+mce02 <- mcnemar.exact(mat01)
+mce03 <- mcnemar.exact(mat01)
+mce04 <- mcnemar.exact(mat01)
+
+# Compare using Landsat+SAR selected variables vs. all variables
+mce05 <- mcnemar.exact(mat01)
+mce06 <- mcnemar.exact(mat01)
+mce07 <- mcnemar.exact(mat01)
+
+# Compare using all variables for Landsat vs. selected variables for Landsat+SAR
+mce08 <- mcnemar.exact(mat01)
+mce09 <- mcnemar.exact(mat01)
+mce10 <- mcnemar.exact(mat01)
 
 
 # SAVE OUTPUT FILES
