@@ -19,6 +19,18 @@ McNemar's chi-squared = 11.574, df = 1, p-value = 0.0006688
 data:  mat01
 McNemar's chi-squared = 12.519, df = 1, p-value = 0.0004029
 
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat01
+b = 40, c = 14, p-value = 0.0005354
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.521784 5.685535
+sample estimates:
+odds ratio 
+  2.857143 
+
 USING ALL PREDICTOR VARIABLES
 SET A 2015: LANDSAT+SAR vs. LANDSAT
 
@@ -32,6 +44,18 @@ McNemar's chi-squared = 9.7963, df = 1, p-value = 0.001749
 
 data:  mat02
 McNemar's chi-squared = 10.667, df = 1, p-value = 0.001091
+
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat02
+b = 39, c = 15, p-value = 0.001496
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.401335 5.077006
+sample estimates:
+odds ratio 
+       2.6 
 
 USING ALL PREDICTOR VARIABLES
 SET B 2015: LANDSAT+SAR vs. LANDSAT
@@ -47,6 +71,18 @@ McNemar's chi-squared = 12.852, df = 1, p-value = 0.000337
 data:  mat03
 McNemar's chi-squared = 13.787, df = 1, p-value = 0.0002048
 
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat03
+b = 45, c = 16, p-value = 0.0002643
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.559470 5.330693
+sample estimates:
+odds ratio 
+    2.8125 
+
 USING ALL PREDICTOR VARIABLES
 SET A 2015 vs SET B 2015: LANDSAT+SAR
 
@@ -60,6 +96,18 @@ McNemar's chi-squared = 0.84211, df = 1, p-value = 0.3588
 
 data:  mat04
 McNemar's chi-squared = 1.3158, df = 1, p-value = 0.2513
+
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat04
+b = 7, c = 12, p-value = 0.3593
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.1945802 1.6070322
+sample estimates:
+odds ratio 
+ 0.5833333 
 
 USING LANDSAT+SAR SELECTED VARIABLES vs. ALL VARIABLES
 SET A 1995 LANDSAT+SAR: ALL vs. VI
@@ -75,6 +123,18 @@ McNemar's chi-squared = 0.125, df = 1, p-value = 0.7237
 data:  mat05
 McNemar's chi-squared = 0.5, df = 1, p-value = 0.4795
 
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat05
+b = 5, c = 3, p-value = 0.7266
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+  0.3242634 10.7324879
+sample estimates:
+odds ratio 
+  1.666667 
+
 USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES
 SET A 2015 LANDSAT+SAR: ALL vs. VI
 
@@ -88,6 +148,18 @@ McNemar's chi-squared = 0, df = 1, p-value = 1
 
 data:  mat06
 McNemar's chi-squared = 0.052632, df = 1, p-value = 0.8185
+
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat06
+b = 9, c = 10, p-value = 1
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.3235824 2.4644843
+sample estimates:
+odds ratio 
+       0.9 
 
 USING LANDSAT+SAR SELECTED VARIABLES VS. ALL VARIABLES
 SET B 2015 LANDSAT+SAR: ALL vs. VI
@@ -103,6 +175,18 @@ McNemar's chi-squared = 1.4412, df = 1, p-value = 0.2299
 data:  mat07
 McNemar's chi-squared = 1.8824, df = 1, p-value = 0.1701
 
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat07
+b = 21, c = 13, p-value = 0.2295
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.7719177 3.5113034
+sample estimates:
+odds ratio 
+  1.615385 
+
 USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
 SET A 1995 LANDSAT+SAR VI vs. LANDSAT ALL
 
@@ -116,6 +200,18 @@ McNemar's chi-squared = 11.5, df = 1, p-value = 0.000696
 
 data:  mat08
 McNemar's chi-squared = 12.522, df = 1, p-value = 0.0004022
+
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat08
+b = 35, c = 11, p-value = 0.0005356
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.579521 6.945248
+sample estimates:
+odds ratio 
+  3.181818 
 
 USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
 SET A 2015 LANDSAT+SAR VI vs. LANDSAT ALL
@@ -131,6 +227,18 @@ McNemar's chi-squared = 11.294, df = 1, p-value = 0.0007775
 data:  mat09
 McNemar's chi-squared = 12.255, df = 1, p-value = 0.000464
 
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat09
+b = 38, c = 13, p-value = 0.000621
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.523123 5.980190
+sample estimates:
+odds ratio 
+  2.923077 
+
 USING LANDSAT+SAR SELECTED VARIABLES vs. LANDSAT ALL VARIABLES
 SET B 2015 LANDSAT+SAR VI vs. LANDSAT ALL
 
@@ -144,4 +252,16 @@ McNemar's chi-squared = 8.5106, df = 1, p-value = 0.003531
 
 data:  mat10
 McNemar's chi-squared = 9.383, df = 1, p-value = 0.00219
+
+
+	Exact McNemar test (with central confidence intervals)
+
+data:  mat10
+b = 34, c = 13, p-value = 0.003088
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 1.345325 5.400259
+sample estimates:
+odds ratio 
+  2.615385 
 
