@@ -28,8 +28,9 @@ This study explored the synergy of optical and SAR data for mapping and monitori
     + party package: conditional permutation importance was calculated through conditional inference trees to address biased variable selection and to account for correlated variables, both of which are limitations in the randomForest package. However, cforest is computationally intensive and results in errors and crashes, once conditional settings are set to true, perhaps due to the huge set of predictor variables, tree depth, and random variables to permute.
     + VSURF package: an automatic stepwise calculation of variable selection and assessment of variable importance was implemented consisting of thresholding, interpretation, and prediction. The process results in the selection of the most parsimonious variables that contribute to the model performance (lowest error) based on permutation-based score of importance.
 
-#### Variable importance
-1. The variable importance from a Random Forest classification was assessed to determine the relative contribution of variables to the performance of the model. From this, variables will be excluded to improve model performance.
+#### McNemar test
+1. The McNemar test is used to compare proportions between two groups of paired categorical data and to evaluate hypothesis about the data.
+2. The McNemar test statistic was computed to compare the proportions of misclassifications between two classified data and to test whether they are similar or not. Three groups were compared: (a) classifications between Landsat and combined Landsat+SAR data with all predictor variables; (b) classifications between selected and all variables using combined Landsat+SAR data; and (c) classifications between Landsat using all variables and Landsat+SAR data using selected variables.
 
 ### Acronyms
 
