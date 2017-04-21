@@ -53,6 +53,8 @@ BUA     | Built-Up Area
 BSG     | Bare Soil/Ground
 WTR     | Water
 
+The final land cover categories used consist of nine classes including: FOR, MNG, OPM, RBM, SHB, RPD, BUA, BSG, and WTR.
+
 #### Predictor Variables
 Predictor variables consist mainly of Landsat bands and L-band SAR polarisation channels. Additional predictors were calculated from the main bands/channels, specifically indices and texture measures (see below). SAR indices indicated by an asterisk (*).
 
