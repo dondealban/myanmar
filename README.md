@@ -21,7 +21,7 @@ This study explored the synergy of optical and SAR data for mapping and monitori
     + B6: rubber; oil palm
 
 #### Variable importance
-1. The variable importance from a [Random Forests](https://en.wikipedia.org/wiki/Random_forest) classification was assessed to determine the relative contribution of variables to the performance of the model. From this, variables will be excluded to improve model performance.
+1. The variable importance from a [Random Forest](https://en.wikipedia.org/wiki/Random_forest) classification was assessed to determine the relative contribution of variables to the performance of the model. From this, variables will be excluded to improve model performance.
 2. Variable importance and selection was tested and computed using three packages, of which VSURF was the final package used:
     + [randomForest](https://cran.r-project.org/web/packages/randomForest/index.html) package: variable importance was calculated using both mean decrease in accuracy (permutation importance) and mean decrease in impurity (Gini index).
     + [party](https://cran.r-project.org/web/packages/party/index.html) package: conditional permutation importance was calculated through conditional inference trees to address biased variable selection and to account for correlated variables, both of which are limitations in the randomForest package. However, cforest is computationally intensive and results in errors and crashes, once conditional settings are set to true, perhaps due to the huge set of predictor variables, tree depth, and random variables to permute.
@@ -35,8 +35,6 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 #### Intensity analysis
 1. The [Intensity Analysis](https://sites.google.com/site/intensityanalysis/home) framework was employed to compute land cover transition matrices, which will inform the development of land use transition rules for simulation modeling.
 2. A cross-tabulation matrix was computed using the Quantum GIS [Semi-Automatic Classification Plugin](https://plugins.qgis.org/plugins/SemiAutomaticClassificationPlugin/) with the 1995 and 2015 land cover rasters as inputs.
-
-
 
 ### Acronyms
 
