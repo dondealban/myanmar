@@ -33,7 +33,7 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 3. Three tests were computed: with continuity correction, without continuity correction, and the exact 2x2 test with central confidence intervals. These were assessed at three critical values: alpha = 0.01, 0.05, and 0.10. For the exact 2x2 test, only the critical value at 0.05 (95% confidence intervals) was used.
 
 #### Intensity analysis
-1. The [Intensity Analysis](https://sites.google.com/site/intensityanalysis/home) framework was employed to compute land cover transition matrices, which will inform the development of land use transition rules for simulation modeling.
+1. The [Intensity Analysis](https://sites.google.com/site/intensityanalysis/home) framework was employed to compute land cover transition matrices, which will inform the development of land use transition rules for simulation modeling. It is commonly applied to the analysis of land change analysis through time.
 2. A cross-tabulation matrix was computed using the Quantum GIS [Semi-Automatic Classification Plugin](https://plugins.qgis.org/plugins/SemiAutomaticClassificationPlugin/) with the 1995 and 2015 land cover rasters as inputs.
 
 ### Acronyms
