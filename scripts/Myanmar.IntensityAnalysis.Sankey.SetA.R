@@ -11,3 +11,14 @@
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
 # Last Modified:
+
+
+# LOAD LIBRARIES AND DATA
+
+# Set working directory
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
+
+# Load the required R libraries
+library(riverplot)
+library(RColorBrewer)
+
