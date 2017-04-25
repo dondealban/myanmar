@@ -27,16 +27,22 @@ tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",
 
 
 # MELT AND SUBSET DATA
-meltFOR <- melt(tniFOR, id.vars="Category.Transitions")
-frFOR <- subset(meltFOR, variable=="From.FOR")
-toFOR <- subset(meltFOR, variable=="To.FOR")
+mtFOR <- melt(tniFOR, id.vars="Category.Transitions")
+frFOR <- subset(mtFOR, variable=="From.FOR")
+toFOR <- subset(mtFOR, variable=="To.FOR")
 
 
 # GENERATE PLOTS
 # Generate intensity analysis barplots for each land cover type
 
 # Forest
-intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value), stat="identity", fill="#8ACD66")
-intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=value), stat="identity", fill="#C9400E")
+intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value),  stat="identity", fill="#8ACD66")
+intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value), stat="identity", fill="#C9400E")
 intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
 intFOR <- intFOR   + theme_minimal()
+
+
+# OUTPUT PLOTS
+# Output boxplots to a PNG file
+
+ggsave(intFOR, file="IntensityAnalysis-FOr.png", width=19.89, height=15, units="cm", dpi=300)
