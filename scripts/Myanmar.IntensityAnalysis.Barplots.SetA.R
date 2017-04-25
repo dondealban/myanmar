@@ -16,18 +16,27 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/tanintharyi/")
 
 # Load the required R libraries
 library(ggplot2)
+library(plyr)
 
 # Read data, define variables, and store data in variables
 tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
+
+
+# MELT AND SUBSET DATA
+meltFOR <- melt(tniFOR, id.vars="Category.Transitions")
+frFOR <- subset(meltFOR, variable=="From.FOR")
+toFOR <- subset(meltFOR, variable=="To.FOR")
+
 
 # GENERATE PLOTS
 # Generate intensity analysis barplots for each land cover type
 
 # Forest
-frFOR <- ggplot() + geom_bar(aes(y = From.FOR, x = Category.Transitions), data=tniFOR)
-frFOR <- frFOR + labs(title="Intensity Analysis: Forest", x="Land Cover Type", y="Transition Intensity")
-
+intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value), stat="identity", fill="#8ACD66")
+intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=value), stat="identity", fill="#C9400E")
+intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
+intFOR <- intFOR   + theme_minimal()
