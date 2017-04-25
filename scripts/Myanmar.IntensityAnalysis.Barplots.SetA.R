@@ -51,7 +51,21 @@ toMNG <- subset(mtMNG, variable=="To.MNG")
 
 
 # GENERATE PLOTS
-# Generate intensity analysis barplots for each land cover type
+# Generate category level intensity analysis barplots for each land cover type
+
+# Category Level
+intALL <- ggplot() + geom_bar(data=gainALL, aes(x=Categories, y=value, fill="#8ACD66"),  stat="identity")
+intALL <- intALL   + geom_bar(data=lossALL, aes(x=Categories, y=-value, fill="#B43507"), stat="identity")
+intALL <- intALL   + geom_hline(yintercept=0, colour="grey90")
+intALL <- intALL   + geom_hline(aes(yintercept=1.54, colour="#009404"), linetype="dashed") # TO uniform line
+intALL <- intALL   + geom_hline(aes(yintercept=-1.54, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intALL <- intALL   + labs(title="Transition Intensity for Forest", x="Category", y="Category Intensity (% of Category)")
+intALL <- intALL   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("Category Gain", "Category Loss"))
+intALL <- intALL   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intALL <- intALL   + theme_minimal()
+
+
+# Generate transition level intensity analysis barplots for each land cover type
 
 # Forest
 intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
