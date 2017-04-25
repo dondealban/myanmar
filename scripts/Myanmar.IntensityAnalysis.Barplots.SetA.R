@@ -16,7 +16,7 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/tanintharyi/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
 
 # Load the required R libraries
 library(ggplot2)
