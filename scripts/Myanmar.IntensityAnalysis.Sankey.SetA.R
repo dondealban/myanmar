@@ -19,6 +19,22 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
 
 # Load the required R libraries
+library(dplyr)
 library(riverplot)
 library(RColorBrewer)
+
+# Read data, define variables, and store data in variables
+
+edges <- read.csv(file="Change_TNI_SetA_1995_2015_ALL_SANKEY_EDGES.csv", header=TRUE, sep=",")
+nodes <- read.csv(file="Change_TNI_SetA_1995_2015_ALL_SANKEY_NODES.csv", header=TRUE, sep=",")
+
+colnames(edges) <- c("N1", "N2", "Value")
+colnames(nodes) <- c("ID", "x", "y")
+
+# Generate the riverplot object
+river <- makeRiver(nodes, edges)
+style <- list( edgestyle= "straight", nodestyle= "invisible" )
+
+# Plot the generated object
+plot( river, lty= 1, default.style= style )
 
