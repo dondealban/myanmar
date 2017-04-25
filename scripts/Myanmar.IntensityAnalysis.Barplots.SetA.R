@@ -39,6 +39,10 @@ toFOR <- subset(mtFOR, variable=="To.FOR")
 intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
 intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value, fill="#C9400E"), stat="identity")
 intFOR <- intFOR   + geom_hline(yintercept=0, colour="grey90")
+intFOR <- intFOR   + geom_hline(yintercept=-1.03, linetype="dashed", colour="gray30") # FROM uniform line
+intFOR <- intFOR   + geom_hline(yintercept=0.52, linetype="dashed", colour="gray30") # TO uniform line
+intFOR <- intFOR   + geom_text() + annotate("text", label="uniform loss", x=1, y=-1.13, colour="gray30")
+intFOR <- intFOR   + geom_text() + annotate("text", label="uniform gain", x=1, y=0.62, colour="gray30")
 intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
 intFOR <- intFOR   + scale_fill_manual(values=c("#8ACD66", "#C9400E"), name="", labels = c("FROM Forest", "TO Forest"))
 intFOR <- intFOR   + theme_minimal()
