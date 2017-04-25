@@ -36,13 +36,17 @@ toFOR <- subset(mtFOR, variable=="To.FOR")
 # Generate intensity analysis barplots for each land cover type
 
 # Forest
-intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value),  stat="identity", fill="#8ACD66")
-intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value), stat="identity", fill="#C9400E")
+intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value, fill="#C9400E"), stat="identity")
+intFOR <- intFOR   + geom_hline(yintercept=0, colour="grey90")
 intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
+intFOR <- intFOR   + scale_fill_manual(values=c("#8ACD66", "#C9400E"), name="", labels = c("FROM Forest", "TO Forest"))
 intFOR <- intFOR   + theme_minimal()
+
+
 
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
 
-ggsave(intFOR, file="IntensityAnalysis-FOr.png", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intFOR, file="IntensityAnalysis-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
