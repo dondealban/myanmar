@@ -7,7 +7,6 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 ### Tasks
 
 #### Image statistics
-
 1. Image statistics were extracted from all regions of interest and exported from the Google Earth Engine platform as csv files, which were subsequently imported in R for visualisation and analysis. 
 2. Box-whisker plots were generated to visualise the distribution of SAR backscatter and Landsat TOA reflectance values for each predictor variable consisting of the image channels/bands, derived indices, and texture measures.
 3. The plots show land cover types (x-axis) against backscatter/reflectance/index values (y-axis) for each predictor variable.
@@ -32,6 +31,9 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 1. The McNemar test is used to compare proportions between two groups of paired categorical data and to evaluate hypothesis about the data.
 2. The McNemar test statistic was computed to compare the proportions of misclassifications between two classified data and to test whether they are similar or not. Three groups were compared: (a) classifications between Landsat and combined Landsat+SAR data with all predictor variables; (b) classifications between selected and all variables using combined Landsat+SAR data; and (c) classifications between Landsat using all variables and Landsat+SAR data using selected variables.
 3. Three tests were computed: with continuity correction, without continuity correction, and the exact 2x2 test with central confidence intervals. These were assessed at three critical values: alpha = 0.01, 0.05, and 0.10. For the exact 2x2 test, only the critical value at 0.05 (95% confidence intervals) was used.
+
+#### Intensity analysis
+1. Using the cross-tabulation matrices resulting from analysing change between 1995 and 2015 land cover maps
 
 ### Acronyms
 
