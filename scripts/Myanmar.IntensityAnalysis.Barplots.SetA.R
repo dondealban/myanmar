@@ -24,3 +24,10 @@ library(ggplot2)
 # Read data, define variables, and store data in variables
 tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
 
+# GENERATE PLOTS
+# Generate intensity analysis barplots for each land cover type
+
+# Forest
+frFOR <- ggplot() + geom_bar(aes(y = From.FOR, x = Category.Transitions), data=tniFOR)
+frFOR <- frFOR + labs(title="Intensity Analysis: Forest", x="Land Cover Type", y="Transition Intensity")
+
