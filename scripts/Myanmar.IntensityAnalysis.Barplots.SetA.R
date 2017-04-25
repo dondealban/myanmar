@@ -92,7 +92,7 @@ intMNG <- intMNG   + theme_minimal()
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
-
+ggsave(intALL, file="IntensityAnalysis-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intFOR, file="IntensityAnalysis-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intMNG, file="IntensityAnalysis-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
 
