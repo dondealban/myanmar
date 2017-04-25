@@ -59,7 +59,7 @@ intALL <- intALL   + geom_bar(data=lossALL, aes(x=Categories, y=-value, fill="#B
 intALL <- intALL   + geom_hline(yintercept=0, colour="grey90")
 intALL <- intALL   + geom_hline(aes(yintercept=1.54, colour="#009404"), linetype="dashed") # TO uniform line
 intALL <- intALL   + geom_hline(aes(yintercept=-1.54, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intALL <- intALL   + labs(title="Transition Intensity for Forest", x="Category", y="Category Intensity (% of Category)")
+intALL <- intALL   + labs(title="Intensity of Gains and Losses by Category", x="Category", y="Category Intensity (% of Category)")
 intALL <- intALL   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("Category Gain", "Category Loss"))
 intALL <- intALL   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intALL <- intALL   + theme_minimal()
@@ -73,7 +73,7 @@ intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value, 
 intFOR <- intFOR   + geom_hline(yintercept=0, colour="grey90")
 intFOR <- intFOR   + geom_hline(aes(yintercept=0.52, colour="#009404"), linetype="dashed") # TO uniform line
 intFOR <- intFOR   + geom_hline(aes(yintercept=-1.03, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intFOR <- intFOR   + labs(title="Intensity of Gains and Losses by Category", x="Transition Category", y="Transition Intensity (% of Category)")
+intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
 intFOR <- intFOR   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Forest", "FROM Forest"))
 intFOR <- intFOR   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intFOR <- intFOR   + theme_minimal()
