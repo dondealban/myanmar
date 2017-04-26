@@ -31,6 +31,7 @@ tniALL <- read.csv(file="Change_TNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRU
 tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
 tniMNG <- read.csv(file="Change_TNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
 tniOPM <- read.csv(file="Change_TNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
+tniRBM <- read.csv(file="Change_TNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
@@ -54,6 +55,11 @@ toMNG <- subset(mtMNG, variable=="To.MNG")
 mtOPM <- melt(tniOPM, id.vars="Category.Transitions")
 frOPM <- subset(mtOPM, variable=="From.OPM")
 toOPM <- subset(mtOPM, variable=="To.OPM")
+
+# Rubber Mature
+mtRBM <- melt(tniRBM, id.vars="Category.Transitions")
+frRBM <- subset(mtRBM, variable=="From.RBM")
+toRBM <- subset(mtRBM, variable=="To.RBM")
 
 
 # GENERATE PLOTS
@@ -105,6 +111,17 @@ intOPM <- intOPM   + labs(title="Transition Intensity for Oil Palm Mature", x="T
 intOPM <- intOPM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Oil Palm", "FROM Oil Palm"))
 intOPM <- intOPM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intOPM <- intOPM   + theme_minimal()
+
+# Rubber Mature
+intRBM <- ggplot() + geom_bar(data=toRBM, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intRBM <- intRBM   + geom_bar(data=frRBM, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intRBM <- intRBM   + geom_hline(yintercept=0, colour="grey90")
+intRBM <- intRBM   + geom_hline(aes(yintercept=0.43, colour="#009404"), linetype="dashed") # TO uniform line
+intRBM <- intRBM   + geom_hline(aes(yintercept=-0.101, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intRBM <- intRBM   + labs(title="Transition Intensity for Rubber Mature", x="Transition Category", y="Transition Intensity (% of Category)")
+intRBM <- intRBM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rubber", "FROM Rubber"))
+intRBM <- intRBM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intRBM <- intRBM   + theme_minimal()
 
 
 # OUTPUT PLOTS
