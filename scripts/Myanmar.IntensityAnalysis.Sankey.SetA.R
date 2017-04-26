@@ -32,9 +32,16 @@ colnames(edges) <- c("N1", "N2", "Value")
 colnames(nodes) <- c("ID", "x", "y")
 
 # Generate the riverplot object
-river <- makeRiver(nodes, edges)
-style <- list( edgestyle= "straight", nodestyle= "invisible" )
+#river <- makeRiver(nodes, edges)
+
+
+palette = paste0(brewer.pal(4, "Set1"), "60")
+styles = lapply(nodes$y, function(n) {list(col = palette[n+1], lty = 0, textcol = "black")})
+names(styles) = nodes$ID
+
+rp <- list(nodes = nodes, edges = edges, styles = styles)
+class(rp) <- c(class(rp), "riverplot")
 
 # Plot the generated object
-plot( river, lty= 1, default.style= style )
+plot(rp, plot_area = 0.95, yscale=0.06)
 
