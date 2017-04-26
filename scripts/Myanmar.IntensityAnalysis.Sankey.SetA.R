@@ -33,8 +33,10 @@ colnames(nodes) <- c("ID", "x", "y")
 
 # Generate the riverplot object
 river <- makeRiver(nodes, edges)
+style <- list( edgestyle= "straight", nodestyle= "invisible" )
 
-
+# Plot the generated object
+plot( river, lty= 1, default.style= style )
 
 # Alternative style
 # palette = paste0(brewer.pal(4, "Set1"), "60")
