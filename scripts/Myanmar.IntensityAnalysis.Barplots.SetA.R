@@ -36,6 +36,7 @@ tniSHB <- read.csv(file="Change_TNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",
 tniRPD <- read.csv(file="Change_TNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
 tniBUA <- read.csv(file="Change_TNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
 tniBSG <- read.csv(file="Change_TNI_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
+tniWTR <- read.csv(file="Change_TNI_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
@@ -84,6 +85,11 @@ toBUA <- subset(mtBUA, variable=="To.BUA")
 mtBSG <- melt(tniBSG, id.vars="Category.Transitions")
 frBSG <- subset(mtBSG, variable=="From.BSG")
 toBSG <- subset(mtBSG, variable=="To.BSG")
+
+# Water
+mtWTR <- melt(tniWTR, id.vars="Category.Transitions")
+frWTR <- subset(mtWTR, variable=="From.WTR")
+toWTR <- subset(mtWTR, variable=="To.WTR")
 
 
 # GENERATE PLOTS
@@ -191,6 +197,17 @@ intBSG <- intBSG   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Cha
 intBSG <- intBSG   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intBSG <- intBSG   + theme_minimal()
 
+# Water
+intWTR <- ggplot() + geom_bar(data=toWTR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intWTR <- intWTR   + geom_bar(data=frWTR, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intWTR <- intWTR   + geom_hline(yintercept=0, colour="grey90")
+intWTR <- intWTR   + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
+intWTR <- intWTR   + geom_hline(aes(yintercept=-0.02, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intWTR <- intWTR   + labs(title="Transition Intensity for Water", x="Transition Category", y="Transition Intensity (% of Category)")
+intWTR <- intWTR   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Water", "FROM Water"))
+intWTR <- intWTR   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intWTR <- intWTR   + theme_minimal()
+
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
@@ -203,4 +220,5 @@ ggsave(intSHB, file="IntensityAnalysis-SHB.pdf", width=19.89, height=15, units="
 ggsave(intRPD, file="IntensityAnalysis-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intBUA, file="IntensityAnalysis-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intBSG, file="IntensityAnalysis-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intWTR, file="IntensityAnalysis-WTR.pdf", width=19.89, height=15, units="cm", dpi=300)
 
