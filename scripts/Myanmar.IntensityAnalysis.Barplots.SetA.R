@@ -34,6 +34,8 @@ tniOPM <- read.csv(file="Change_TNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",
 tniRBM <- read.csv(file="Change_TNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
 tniSHB <- read.csv(file="Change_TNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
 tniRPD <- read.csv(file="Change_TNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
+tniBUA <- read.csv(file="Change_TNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
+
 
 
 # MELT AND SUBSET DATA
@@ -72,6 +74,11 @@ toSHB <- subset(mtSHB, variable=="To.SHB")
 mtRPD <- melt(tniRPD, id.vars="Category.Transitions")
 frRPD <- subset(mtRPD, variable=="From.RPD")
 toRPD <- subset(mtRPD, variable=="To.RPD")
+
+# Built-Up Area
+mtBUA <- melt(tniBUA, id.vars="Category.Transitions")
+frBUA <- subset(mtBUA, variable=="From.BUA")
+toBUA <- subset(mtBUA, variable=="To.BUA")
 
 
 # GENERATE PLOTS
@@ -157,6 +164,17 @@ intRPD <- intRPD   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Cha
 intRPD <- intRPD   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intRPD <- intRPD   + theme_minimal()
 
+# Built-Up Area
+intBUA <- ggplot() + geom_bar(data=toBUA, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intBUA <- intBUA   + geom_bar(data=frBUA, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intBUA <- intBUA   + geom_hline(yintercept=0, colour="grey90")
+intBUA <- intBUA   + geom_hline(aes(yintercept=0.0005, colour="#009404"), linetype="dashed") # TO uniform line
+intBUA <- intBUA   + geom_hline(aes(yintercept=-0.00185, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intBUA <- intBUA   + labs(title="Transition Intensity for Rice Paddy", x="Transition Category", y="Transition Intensity (% of Category)")
+intBUA <- intBUA   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rice Paddy", "FROM Rice Paddy"))
+intBUA <- intBUA   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intBUA <- intBUA   + theme_minimal()
+
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
@@ -167,4 +185,5 @@ ggsave(intOPM, file="IntensityAnalysis-OPM.pdf", width=19.89, height=15, units="
 ggsave(intRBM, file="IntensityAnalysis-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intSHB, file="IntensityAnalysis-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intRPD, file="IntensityAnalysis-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBUA, file="IntensityAnalysis-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
 
