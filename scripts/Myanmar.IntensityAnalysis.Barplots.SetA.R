@@ -32,6 +32,7 @@ tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",
 tniMNG <- read.csv(file="Change_TNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
 tniOPM <- read.csv(file="Change_TNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
 tniRBM <- read.csv(file="Change_TNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
+tniSHB <- read.csv(file="Change_TNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
@@ -60,6 +61,11 @@ toOPM <- subset(mtOPM, variable=="To.OPM")
 mtRBM <- melt(tniRBM, id.vars="Category.Transitions")
 frRBM <- subset(mtRBM, variable=="From.RBM")
 toRBM <- subset(mtRBM, variable=="To.RBM")
+
+# Shrub/Orchard
+mtSHB <- melt(tniSHB, id.vars="Category.Transitions")
+frSHB <- subset(mtSHB, variable=="From.SHB")
+toSHB <- subset(mtSHB, variable=="To.SHB")
 
 
 # GENERATE PLOTS
@@ -117,11 +123,22 @@ intRBM <- ggplot() + geom_bar(data=toRBM, aes(x=Category.Transitions, y=value, f
 intRBM <- intRBM   + geom_bar(data=frRBM, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
 intRBM <- intRBM   + geom_hline(yintercept=0, colour="grey90")
 intRBM <- intRBM   + geom_hline(aes(yintercept=0.43, colour="#009404"), linetype="dashed") # TO uniform line
-intRBM <- intRBM   + geom_hline(aes(yintercept=-0.101, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intRBM <- intRBM   + geom_hline(aes(yintercept=-0.11, colour="#FF0000"), linetype="dashed") # FROM uniform line
 intRBM <- intRBM   + labs(title="Transition Intensity for Rubber Mature", x="Transition Category", y="Transition Intensity (% of Category)")
 intRBM <- intRBM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rubber", "FROM Rubber"))
 intRBM <- intRBM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intRBM <- intRBM   + theme_minimal()
+
+# Shrubs/Orchard
+intSHB <- ggplot() + geom_bar(data=toSHB, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intSHB <- intSHB   + geom_bar(data=frSHB, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intSHB <- intSHB   + geom_hline(yintercept=0, colour="grey90")
+intSHB <- intSHB   + geom_hline(aes(yintercept=0.71, colour="#009404"), linetype="dashed") # TO uniform line
+intSHB <- intSHB   + geom_hline(aes(yintercept=-0.75, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intSHB <- intSHB   + labs(title="Transition Intensity for Shrub/Orchard", x="Transition Category", y="Transition Intensity (% of Category)")
+intSHB <- intSHB   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Shrub/Orchard", "FROM Shrub/Orchard"))
+intSHB <- intSHB   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intSHB <- intSHB   + theme_minimal()
 
 
 # OUTPUT PLOTS
@@ -130,4 +147,6 @@ ggsave(intALL, file="IntensityAnalysis-ALL.pdf", width=19.89, height=15, units="
 ggsave(intFOR, file="IntensityAnalysis-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intMNG, file="IntensityAnalysis-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intOPM, file="IntensityAnalysis-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intRBM, file="IntensityAnalysis-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intSHB, file="IntensityAnalysis-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
 
