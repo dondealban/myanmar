@@ -21,6 +21,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
 # Load the required R libraries
 library(ggplot2)
 library(plyr)
+library(reshape2)
 
 # Read data, define variables, and store data in variables
 
