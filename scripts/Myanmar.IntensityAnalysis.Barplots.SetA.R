@@ -35,7 +35,7 @@ tniRBM <- read.csv(file="Change_TNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",
 tniSHB <- read.csv(file="Change_TNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
 tniRPD <- read.csv(file="Change_TNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
 tniBUA <- read.csv(file="Change_TNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
-
+tniBSG <- read.csv(file="Change_TNI_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
@@ -79,6 +79,11 @@ toRPD <- subset(mtRPD, variable=="To.RPD")
 mtBUA <- melt(tniBUA, id.vars="Category.Transitions")
 frBUA <- subset(mtBUA, variable=="From.BUA")
 toBUA <- subset(mtBUA, variable=="To.BUA")
+
+# Bare Soil/Ground
+mtBSG <- melt(tniBSG, id.vars="Category.Transitions")
+frBSG <- subset(mtBSG, variable=="From.BSG")
+toBSG <- subset(mtBSG, variable=="To.BSG")
 
 
 # GENERATE PLOTS
@@ -170,10 +175,21 @@ intBUA <- intBUA   + geom_bar(data=frBUA, aes(x=Category.Transitions, y=-value, 
 intBUA <- intBUA   + geom_hline(yintercept=0, colour="grey90")
 intBUA <- intBUA   + geom_hline(aes(yintercept=0.0005, colour="#009404"), linetype="dashed") # TO uniform line
 intBUA <- intBUA   + geom_hline(aes(yintercept=-0.00185, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intBUA <- intBUA   + labs(title="Transition Intensity for Rice Paddy", x="Transition Category", y="Transition Intensity (% of Category)")
-intBUA <- intBUA   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rice Paddy", "FROM Rice Paddy"))
+intBUA <- intBUA   + labs(title="Transition Intensity for Built-Up Area", x="Transition Category", y="Transition Intensity (% of Category)")
+intBUA <- intBUA   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Built-Up Area", "FROM Built-Up Area"))
 intBUA <- intBUA   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intBUA <- intBUA   + theme_minimal()
+
+# Bare Soil/Ground
+intBSG <- ggplot() + geom_bar(data=toBSG, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intBSG <- intBSG   + geom_bar(data=frBSG, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intBSG <- intBSG   + geom_hline(yintercept=0, colour="grey90")
+intBSG <- intBSG   + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
+intBSG <- intBSG   + geom_hline(aes(yintercept=-0.09, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intBSG <- intBSG   + labs(title="Transition Intensity for Bare Soil/Ground", x="Transition Category", y="Transition Intensity (% of Category)")
+intBSG <- intBSG   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Bare Soil/Ground", "FROM Bare Soil/Ground"))
+intBSG <- intBSG   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intBSG <- intBSG   + theme_minimal()
 
 
 # OUTPUT PLOTS
@@ -186,4 +202,5 @@ ggsave(intRBM, file="IntensityAnalysis-RBM.pdf", width=19.89, height=15, units="
 ggsave(intSHB, file="IntensityAnalysis-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intRPD, file="IntensityAnalysis-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intBUA, file="IntensityAnalysis-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBSG, file="IntensityAnalysis-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
 
