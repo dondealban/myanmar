@@ -36,14 +36,14 @@ river <- makeRiver(nodes, edges)
 
 # Initial style for plotting diagram
 # style <- list( edgestyle= "straight", nodestyle= "invisible" )
-# plot( river, lty= 1, default.style= style )
+# plot(river, lty= 1, default.style= style )
 
 
 # Alternative style for plotting diagram
-palette = paste0(brewer.pal(4, "Set1"), "60")
-styles = lapply(nodes$y, function(n) {list(col = palette[n+1], lty = 0, textcol = "black")})
+palette = paste0(brewer.pal(10, "Set3"), "65")
+styles = lapply(nodes$y, function(n) {list(col = palette[n+1], lty = 0, textcol = "black", textcex =0.6)})
 names(styles) = nodes$ID
 rp <- list(nodes = nodes, edges = edges, styles = styles)
 class(rp) <- c(class(rp), "riverplot")
-plot(rp, plot_area = 0.95, yscale=0.06)
+plot(rp, plot_area = 1.3, yscale=0.2)
 
