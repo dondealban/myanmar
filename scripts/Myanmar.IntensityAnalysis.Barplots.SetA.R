@@ -10,7 +10,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
-# Last Modified:
+# Last Modified:  26 Apr 2017
 
 
 # LOAD LIBRARIES AND DATA
@@ -30,6 +30,7 @@ tniALL <- read.csv(file="Change_TNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRU
 # Transition level
 tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
 tniMNG <- read.csv(file="Change_TNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
+tniOPM <- read.csv(file="Change_TNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
@@ -48,6 +49,11 @@ toFOR <- subset(mtFOR, variable=="To.FOR")
 mtMNG <- melt(tniMNG, id.vars="Category.Transitions")
 frMNG <- subset(mtMNG, variable=="From.MNG")
 toMNG <- subset(mtMNG, variable=="To.MNG")
+
+# Oil Palm Mature
+mtOPM <- melt(tniOPM, id.vars="Category.Transitions")
+frOPM <- subset(mtOPM, variable=="From.OPM")
+toOPM <- subset(mtOPM, variable=="To.OPM")
 
 
 # GENERATE PLOTS
@@ -89,10 +95,22 @@ intMNG <- intMNG   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Cha
 intMNG <- intMNG   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 intMNG <- intMNG   + theme_minimal()
 
+# Oil Palm Mature
+intOPM <- ggplot() + geom_bar(data=toOPM, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intOPM <- intOPM   + geom_bar(data=frOPM, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intOPM <- intOPM   + geom_hline(yintercept=0, colour="grey90")
+intOPM <- intOPM   + geom_hline(aes(yintercept=0.22, colour="#009404"), linetype="dashed") # TO uniform line
+intOPM <- intOPM   + geom_hline(aes(yintercept=-0.10, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intOPM <- intOPM   + labs(title="Transition Intensity for Oil Palm Mature", x="Transition Category", y="Transition Intensity (% of Category)")
+intOPM <- intOPM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Oil Palm", "FROM Oil Palm"))
+intOPM <- intOPM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intOPM <- intOPM   + theme_minimal()
+
 
 # OUTPUT PLOTS
 # Output boxplots to a PNG file
 ggsave(intALL, file="IntensityAnalysis-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intFOR, file="IntensityAnalysis-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(intMNG, file="IntensityAnalysis-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intOPM, file="IntensityAnalysis-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
 
