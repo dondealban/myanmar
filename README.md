@@ -35,6 +35,7 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 #### Intensity analysis
 1. The [Intensity Analysis](https://sites.google.com/site/intensityanalysis/home) framework was employed to compute land cover transition matrices, which will inform the development of land use transition rules for simulation modeling. It is commonly applied to the analysis of land change analysis through time.
 2. A cross-tabulation matrix was computed using the Quantum GIS [Semi-Automatic Classification Plugin](https://plugins.qgis.org/plugins/SemiAutomaticClassificationPlugin/) with the 1995 and 2015 land cover rasters as inputs.
+3. In addition to barplots, a preliminary [Sankey diagram](https://en.wikipedia.org/wiki/Sankey_diagram) was developed to visualise the transitions of land cover types from 1995 to 2015. The diagram was developed using the [riverplot](https://cran.r-project.org/web/packages/riverplot/index.html) package.
 
 ### Acronyms
 
