@@ -28,19 +28,21 @@ library(reshape2)
 
 # Read data, define variables, and store data in variables
 
+# WITHIN TANINTHARYI DIVISION
+
 # Category level
-tniALL <- read.csv(file="Change_TNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
+tniALL <- read.csv(file="Change_wTNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
 
 # Transition level
-tniFOR <- read.csv(file="Change_TNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
-tniMNG <- read.csv(file="Change_TNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
-tniOPM <- read.csv(file="Change_TNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
-tniRBM <- read.csv(file="Change_TNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
-tniSHB <- read.csv(file="Change_TNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
-tniRPD <- read.csv(file="Change_TNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
-tniBUA <- read.csv(file="Change_TNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
-tniBSG <- read.csv(file="Change_TNI_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
-tniWTR <- read.csv(file="Change_TNI_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
+tniFOR <- read.csv(file="Change_wTNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
+tniMNG <- read.csv(file="Change_wTNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
+tniOPM <- read.csv(file="Change_wTNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
+tniRBM <- read.csv(file="Change_wTNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
+tniSHB <- read.csv(file="Change_wTNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
+tniRPD <- read.csv(file="Change_wTNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
+tniBUA <- read.csv(file="Change_wTNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
+tniBSG <- read.csv(file="Change_wTNI_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
+tniWTR <- read.csv(file="Change_wTNI_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
 
 
 # MELT AND SUBSET DATA
