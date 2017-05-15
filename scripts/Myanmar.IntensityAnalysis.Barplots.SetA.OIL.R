@@ -172,121 +172,120 @@ toWTRo <- subset(mtWTRo, variable=="To.WTR")
 # ---------------------------
 
 # Generate category level intensity analysis barplots for each land cover type
-
-# Within Tanintharyi Division
+# Within oil palm plantations in Tanintharyi Division
 
 # Category Level
-intALL <- ggplot() + geom_bar(data=gainALL, aes(x=Categories, y=value, fill="#8ACD66"),  stat="identity")
-intALL <- intALL   + geom_bar(data=lossALL, aes(x=Categories, y=-value, fill="#B43507"), stat="identity")
-intALL <- intALL   + geom_hline(yintercept=0, colour="grey90")
-intALL <- intALL   + geom_hline(aes(yintercept=1.54, colour="#009404"), linetype="dashed") # TO uniform line
-intALL <- intALL   + geom_hline(aes(yintercept=-1.54, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intALL <- intALL   + labs(title="Intensity of Gains and Losses by Category", x="Category", y="Category Intensity (% of Category)")
-intALL <- intALL   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("Category Gain", "Category Loss"))
-intALL <- intALL   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intALL <- intALL   + theme_minimal()
-
+intALLw <- ggplot() + geom_bar(data=gainALLw, aes(x=Categories, y=value, fill="#8ACD66"),  stat="identity")
+intALLw <- intALLw  + geom_bar(data=lossALLw, aes(x=Categories, y=-value, fill="#B43507"), stat="identity")
+intALLw <- intALLw  + geom_hline(yintercept=0, colour="grey90")
+intALLw <- intALLw  + geom_hline(aes(yintercept=2.01, colour="#009404"), linetype="dashed") # TO uniform line
+intALLw <- intALLw  + geom_hline(aes(yintercept=-2.01, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intALLw <- intALLw  + labs(title="Intensity of Gains and Losses by Category (within oil palm concessions)", x="Category", y="Category Intensity (% of Category)")
+intALLw <- intALLw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("Category Gain", "Category Loss"))
+intALLw <- intALLw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intALLw <- intALLw  + theme_minimal()
 
 # Generate transition level intensity analysis barplots for each land cover type
+# Within oil palm plantations in Tanintharyi Division
 
 # Forest
-intFOR <- ggplot() + geom_bar(data=toFOR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intFOR <- intFOR   + geom_bar(data=frFOR, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intFOR <- intFOR   + geom_hline(yintercept=0, colour="grey90")
-intFOR <- intFOR   + geom_hline(aes(yintercept=0.52, colour="#009404"), linetype="dashed") # TO uniform line
-intFOR <- intFOR   + geom_hline(aes(yintercept=-1.03, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intFOR <- intFOR   + labs(title="Transition Intensity for Forest", x="Transition Category", y="Transition Intensity (% of Category)")
-intFOR <- intFOR   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Forest", "FROM Forest"))
-intFOR <- intFOR   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intFOR <- intFOR   + theme_minimal()
+intFORw <- ggplot() + geom_bar(data=toFORw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intFORw <- intFORw  + geom_bar(data=frFORw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intFORw <- intFORw  + geom_hline(yintercept=0, colour="grey90")
+intFORw <- intFORw  + geom_hline(aes(yintercept=0.52, colour="#009404"), linetype="dashed") # TO uniform line
+intFORw <- intFORw  + geom_hline(aes(yintercept=-1.03, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intFORw <- intFORw  + labs(title="Transition Intensity for Forest (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intFORw <- intFORw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Forest", "FROM Forest"))
+intFORw <- intFORw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intFORw <- intFORw  + theme_minimal()
 
 # Mangrove
-intMNG <- ggplot() + geom_bar(data=toMNG, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intMNG <- intMNG   + geom_bar(data=frMNG, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intMNG <- intMNG   + geom_hline(yintercept=0, colour="grey90")
-intMNG <- intMNG   + geom_hline(aes(yintercept=0.07, colour="#009404"), linetype="dashed") # TO uniform line
-intMNG <- intMNG   + geom_hline(aes(yintercept=-0.10, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intMNG <- intMNG   + labs(title="Transition Intensity for Mangrove", x="Transition Category", y="Transition Intensity (% of Category)")
-intMNG <- intMNG   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Mangrove", "FROM Mangrove"))
-intMNG <- intMNG   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intMNG <- intMNG   + theme_minimal()
+intMNGw <- ggplot() + geom_bar(data=toMNGw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intMNGw <- intMNGw  + geom_bar(data=frMNGw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intMNGw <- intMNGw  + geom_hline(yintercept=0, colour="grey90")
+intMNGw <- intMNGw  + geom_hline(aes(yintercept=0.07, colour="#009404"), linetype="dashed") # TO uniform line
+intMNGw <- intMNGw  + geom_hline(aes(yintercept=-0.10, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intMNGw <- intMNGw  + labs(title="Transition Intensity for Mangrove (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intMNGw <- intMNGw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Mangrove", "FROM Mangrove"))
+intMNGw <- intMNGw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intMNGw <- intMNGw  + theme_minimal()
 
 # Oil Palm Mature
-intOPM <- ggplot() + geom_bar(data=toOPM, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intOPM <- intOPM   + geom_bar(data=frOPM, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intOPM <- intOPM   + geom_hline(yintercept=0, colour="grey90")
-intOPM <- intOPM   + geom_hline(aes(yintercept=0.22, colour="#009404"), linetype="dashed") # TO uniform line
-intOPM <- intOPM   + geom_hline(aes(yintercept=-0.10, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intOPM <- intOPM   + labs(title="Transition Intensity for Oil Palm Mature", x="Transition Category", y="Transition Intensity (% of Category)")
-intOPM <- intOPM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Oil Palm", "FROM Oil Palm"))
-intOPM <- intOPM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intOPM <- intOPM   + theme_minimal()
+intOPMw <- ggplot() + geom_bar(data=toOPMw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intOPMw <- intOPMw  + geom_bar(data=frOPMw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intOPMw <- intOPMw  + geom_hline(yintercept=0, colour="grey90")
+intOPMw <- intOPMw  + geom_hline(aes(yintercept=0.22, colour="#009404"), linetype="dashed") # TO uniform line
+intOPMw <- intOPMw  + geom_hline(aes(yintercept=-0.10, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intOPMw <- intOPMw  + labs(title="Transition Intensity for Oil Palm Mature (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intOPMw <- intOPMw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Oil Palm", "FROM Oil Palm"))
+intOPMw <- intOPMw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intOPMw <- intOPMw  + theme_minimal()
 
 # Rubber Mature
-intRBM <- ggplot() + geom_bar(data=toRBM, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intRBM <- intRBM   + geom_bar(data=frRBM, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intRBM <- intRBM   + geom_hline(yintercept=0, colour="grey90")
-intRBM <- intRBM   + geom_hline(aes(yintercept=0.43, colour="#009404"), linetype="dashed") # TO uniform line
-intRBM <- intRBM   + geom_hline(aes(yintercept=-0.11, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intRBM <- intRBM   + labs(title="Transition Intensity for Rubber Mature", x="Transition Category", y="Transition Intensity (% of Category)")
-intRBM <- intRBM   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rubber", "FROM Rubber"))
-intRBM <- intRBM   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intRBM <- intRBM   + theme_minimal()
+intRBMw <- ggplot() + geom_bar(data=toRBMw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intRBMw <- intRBMw  + geom_bar(data=frRBMw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intRBMw <- intRBMw  + geom_hline(yintercept=0, colour="grey90")
+intRBMw <- intRBMw  + geom_hline(aes(yintercept=0.43, colour="#009404"), linetype="dashed") # TO uniform line
+intRBMw <- intRBMw  + geom_hline(aes(yintercept=-0.11, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intRBMw <- intRBMw  + labs(title="Transition Intensity for Rubber Mature (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intRBMw <- intRBMw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rubber", "FROM Rubber"))
+intRBMw <- intRBMw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intRBMw <- intRBMw  + theme_minimal()
 
 # Shrubs/Orchard
-intSHB <- ggplot() + geom_bar(data=toSHB, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intSHB <- intSHB   + geom_bar(data=frSHB, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intSHB <- intSHB   + geom_hline(yintercept=0, colour="grey90")
-intSHB <- intSHB   + geom_hline(aes(yintercept=0.71, colour="#009404"), linetype="dashed") # TO uniform line
-intSHB <- intSHB   + geom_hline(aes(yintercept=-0.75, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intSHB <- intSHB   + labs(title="Transition Intensity for Shrub/Orchard", x="Transition Category", y="Transition Intensity (% of Category)")
-intSHB <- intSHB   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Shrub/Orchard", "FROM Shrub/Orchard"))
-intSHB <- intSHB   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intSHB <- intSHB   + theme_minimal()
+intSHBw <- ggplot() + geom_bar(data=toSHBw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intSHBw <- intSHBw  + geom_bar(data=frSHBw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intSHBw <- intSHBw  + geom_hline(yintercept=0, colour="grey90")
+intSHBw <- intSHBw  + geom_hline(aes(yintercept=0.71, colour="#009404"), linetype="dashed") # TO uniform line
+intSHBw <- intSHBw  + geom_hline(aes(yintercept=-0.75, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intSHBw <- intSHBw  + labs(title="Transition Intensity for Shrub/Orchard (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intSHBw <- intSHBw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Shrub/Orchard", "FROM Shrub/Orchard"))
+intSHBw <- intSHBw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intSHBw <- intSHBw  + theme_minimal()
 
 # Rice Paddy
-intRPD <- ggplot() + geom_bar(data=toRPD, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intRPD <- intRPD   + geom_bar(data=frRPD, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intRPD <- intRPD   + geom_hline(yintercept=0, colour="grey90")
-intRPD <- intRPD   + geom_hline(aes(yintercept=0.07, colour="#009404"), linetype="dashed") # TO uniform line
-intRPD <- intRPD   + geom_hline(aes(yintercept=-0.06, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intRPD <- intRPD   + labs(title="Transition Intensity for Rice Paddy", x="Transition Category", y="Transition Intensity (% of Category)")
-intRPD <- intRPD   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rice Paddy", "FROM Rice Paddy"))
-intRPD <- intRPD   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intRPD <- intRPD   + theme_minimal()
+intRPDw <- ggplot() + geom_bar(data=toRPDw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intRPDw <- intRPDw  + geom_bar(data=frRPDw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intRPDw <- intRPDw  + geom_hline(yintercept=0, colour="grey90")
+intRPDw <- intRPDw  + geom_hline(aes(yintercept=0.07, colour="#009404"), linetype="dashed") # TO uniform line
+intRPDw <- intRPDw  + geom_hline(aes(yintercept=-0.06, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intRPDw <- intRPDw  + labs(title="Transition Intensity for Rice Paddy (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intRPDw <- intRPDw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Rice Paddy", "FROM Rice Paddy"))
+intRPDw <- intRPDw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intRPDw <- intRPDw  + theme_minimal()
 
 # Built-Up Area
-intBUA <- ggplot() + geom_bar(data=toBUA, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intBUA <- intBUA   + geom_bar(data=frBUA, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intBUA <- intBUA   + geom_hline(yintercept=0, colour="grey90")
-intBUA <- intBUA   + geom_hline(aes(yintercept=0.0005, colour="#009404"), linetype="dashed") # TO uniform line
-intBUA <- intBUA   + geom_hline(aes(yintercept=-0.00185, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intBUA <- intBUA   + labs(title="Transition Intensity for Built-Up Area", x="Transition Category", y="Transition Intensity (% of Category)")
-intBUA <- intBUA   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Built-Up Area", "FROM Built-Up Area"))
-intBUA <- intBUA   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intBUA <- intBUA   + theme_minimal()
+intBUAw <- ggplot() + geom_bar(data=toBUAw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intBUAw <- intBUAw  + geom_bar(data=frBUAw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intBUAw <- intBUAw  + geom_hline(yintercept=0, colour="grey90")
+intBUAw <- intBUAw  + geom_hline(aes(yintercept=0.0005, colour="#009404"), linetype="dashed") # TO uniform line
+intBUAw <- intBUAw  + geom_hline(aes(yintercept=-0.00185, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intBUAw <- intBUAw  + labs(title="Transition Intensity for Built-Up Area (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intBUAw <- intBUAw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Built-Up Area", "FROM Built-Up Area"))
+intBUAw <- intBUAw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intBUAw <- intBUAw  + theme_minimal()
 
 # Bare Soil/Ground
-intBSG <- ggplot() + geom_bar(data=toBSG, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intBSG <- intBSG   + geom_bar(data=frBSG, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intBSG <- intBSG   + geom_hline(yintercept=0, colour="grey90")
-intBSG <- intBSG   + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
-intBSG <- intBSG   + geom_hline(aes(yintercept=-0.09, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intBSG <- intBSG   + labs(title="Transition Intensity for Bare Soil/Ground", x="Transition Category", y="Transition Intensity (% of Category)")
-intBSG <- intBSG   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Bare Soil/Ground", "FROM Bare Soil/Ground"))
-intBSG <- intBSG   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intBSG <- intBSG   + theme_minimal()
+intBSGw <- ggplot() + geom_bar(data=toBSGw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intBSGw <- intBSGw  + geom_bar(data=frBSGw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intBSGw <- intBSGw  + geom_hline(yintercept=0, colour="grey90")
+intBSGw <- intBSGw  + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
+intBSGw <- intBSGw  + geom_hline(aes(yintercept=-0.09, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intBSGw <- intBSGw  + labs(title="Transition Intensity for Bare Soil/Ground (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intBSGw <- intBSGw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Bare Soil/Ground", "FROM Bare Soil/Ground"))
+intBSGw <- intBSGw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intBSGw <- intBSGw  + theme_minimal()
 
 # Water
-intWTR <- ggplot() + geom_bar(data=toWTR, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
-intWTR <- intWTR   + geom_bar(data=frWTR, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
-intWTR <- intWTR   + geom_hline(yintercept=0, colour="grey90")
-intWTR <- intWTR   + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
-intWTR <- intWTR   + geom_hline(aes(yintercept=-0.02, colour="#FF0000"), linetype="dashed") # FROM uniform line
-intWTR <- intWTR   + labs(title="Transition Intensity for Water", x="Transition Category", y="Transition Intensity (% of Category)")
-intWTR <- intWTR   + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Water", "FROM Water"))
-intWTR <- intWTR   + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
-intWTR <- intWTR   + theme_minimal()
+intWTRw <- ggplot() + geom_bar(data=toWTRw, aes(x=Category.Transitions, y=value, fill="#8ACD66"),  stat="identity")
+intWTRw <- intWTRw  + geom_bar(data=frWTRw, aes(x=Category.Transitions, y=-value, fill="#B43507"), stat="identity")
+intWTRw <- intWTRw  + geom_hline(yintercept=0, colour="grey90")
+intWTRw <- intWTRw  + geom_hline(aes(yintercept=0.01, colour="#009404"), linetype="dashed") # TO uniform line
+intWTRw <- intWTRw  + geom_hline(aes(yintercept=-0.02, colour="#FF0000"), linetype="dashed") # FROM uniform line
+intWTRw <- intWTRw  + labs(title="Transition Intensity for Water (within oil palm concessions)", x="Transition Category", y="Transition Intensity (% of Category)")
+intWTRw <- intWTRw  + scale_fill_manual(values=c("#8ACD66", "#B43507"), name="Change Direction", labels = c("TO Water", "FROM Water"))
+intWTRw <- intWTRw  + scale_colour_manual(values=c("#009404", "#FF0000"), name="Uniform Line", labels = c("Gain", "Loss"))
+intWTRw <- intWTRw  + theme_minimal()
 
 
 # ---------------------------
@@ -294,14 +293,16 @@ intWTR <- intWTR   + theme_minimal()
 # ---------------------------
 
 # Output boxplots to a PNG file
-ggsave(intALL, file="IntensityAnalysis-wTNI-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intFOR, file="IntensityAnalysis-wTNI-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intMNG, file="IntensityAnalysis-wTNI-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intOPM, file="IntensityAnalysis-wTNI-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intRBM, file="IntensityAnalysis-wTNI-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intSHB, file="IntensityAnalysis-wTNI-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intRPD, file="IntensityAnalysis-wTNI-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intBUA, file="IntensityAnalysis-wTNI-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intBSG, file="IntensityAnalysis-wTNI-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intWTR, file="IntensityAnalysis-wTNI-WTR.pdf", width=19.89, height=15, units="cm", dpi=300)
+
+# Within oil palm plantations in Tanintharyi Division
+ggsave(intALLw, file="IntensityAnalysis-wOIL-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intFORw, file="IntensityAnalysis-wOIL-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intMNGw, file="IntensityAnalysis-wOIL-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intOPMw, file="IntensityAnalysis-wOIL-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intRBMw, file="IntensityAnalysis-wOIL-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intSHBw, file="IntensityAnalysis-wOIL-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intRPDw, file="IntensityAnalysis-wOIL-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBUAw, file="IntensityAnalysis-wOIL-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBSGw, file="IntensityAnalysis-wOIL-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intWTRw, file="IntensityAnalysis-wOIL-WTR.pdf", width=19.89, height=15, units="cm", dpi=300)
 
