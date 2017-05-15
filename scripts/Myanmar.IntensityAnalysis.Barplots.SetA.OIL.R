@@ -29,21 +29,33 @@ library(reshape2)
 
 # Read data, define variables, and store data in variables
 
-# Within Tanintharyi Division
+# Oil palm concessions in Tanintharyi Division
 
 # Category level
-tniALL <- read.csv(file="Change_wTNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
+wOilALL <- read.csv(file="Change_wOIL_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
+oOilALL <- read.csv(file="Change_oOIL_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
 
-# Transition level
-tniFOR <- read.csv(file="Change_wTNI_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
-tniMNG <- read.csv(file="Change_wTNI_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
-tniOPM <- read.csv(file="Change_wTNI_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
-tniRBM <- read.csv(file="Change_wTNI_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
-tniSHB <- read.csv(file="Change_wTNI_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
-tniRPD <- read.csv(file="Change_wTNI_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
-tniBUA <- read.csv(file="Change_wTNI_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
-tniBSG <- read.csv(file="Change_wTNI_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
-tniWTR <- read.csv(file="Change_wTNI_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
+# Transition level (within oil palm concessions)
+wOilFOR <- read.csv(file="Change_wOIL_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
+wOilMNG <- read.csv(file="Change_wOIL_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
+wOilOPM <- read.csv(file="Change_wOIL_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
+wOilRBM <- read.csv(file="Change_wOIL_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
+wOilSHB <- read.csv(file="Change_wOIL_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
+wOilRPD <- read.csv(file="Change_wOIL_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
+wOilBUA <- read.csv(file="Change_wOIL_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
+wOilBSG <- read.csv(file="Change_wOIL_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
+wOilWTR <- read.csv(file="Change_wOIL_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
+
+# Transition level (outside oil palm concessions)
+oOilFOR <- read.csv(file="Change_oOIL_SetA_1995_2015_FOR.csv", header=TRUE, sep=",")
+oOilMNG <- read.csv(file="Change_oOIL_SetA_1995_2015_MNG.csv", header=TRUE, sep=",")
+oOilOPM <- read.csv(file="Change_oOIL_SetA_1995_2015_OPM.csv", header=TRUE, sep=",")
+oOilRBM <- read.csv(file="Change_oOIL_SetA_1995_2015_RBM.csv", header=TRUE, sep=",")
+oOilSHB <- read.csv(file="Change_oOIL_SetA_1995_2015_SHB.csv", header=TRUE, sep=",")
+oOilRPD <- read.csv(file="Change_oOIL_SetA_1995_2015_RPD.csv", header=TRUE, sep=",")
+oOilBUA <- read.csv(file="Change_oOIL_SetA_1995_2015_BUA.csv", header=TRUE, sep=",")
+oOilBSG <- read.csv(file="Change_oOIL_SetA_1995_2015_BSG.csv", header=TRUE, sep=",")
+oOilWTR <- read.csv(file="Change_oOIL_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
 
 
 # ---------------------------
