@@ -15,8 +15,9 @@
 # Date Created:   25 Apr 2017
 # Last Modified:  15 May 2017
 
-
+# ---------------------------
 # LOAD LIBRARIES AND DATA
+# ---------------------------
 
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/")
@@ -28,7 +29,7 @@ library(reshape2)
 
 # Read data, define variables, and store data in variables
 
-# WITHIN TANINTHARYI DIVISION
+# Within Tanintharyi Division
 
 # Category level
 tniALL <- read.csv(file="Change_wTNI_SetA_1995_2015_ALL_CATEGORY.csv", header=TRUE, sep=",")
@@ -45,7 +46,11 @@ tniBSG <- read.csv(file="Change_wTNI_SetA_1995_2015_BSG.csv", header=TRUE, sep="
 tniWTR <- read.csv(file="Change_wTNI_SetA_1995_2015_WTR.csv", header=TRUE, sep=",")
 
 
+# ---------------------------
 # MELT AND SUBSET DATA
+# ---------------------------
+
+# Within Tanintharyi Division
 
 # Category Level
 meltALL <- melt(tniALL, id.vars="Categories")
@@ -98,8 +103,13 @@ frWTR <- subset(mtWTR, variable=="From.WTR")
 toWTR <- subset(mtWTR, variable=="To.WTR")
 
 
+# ---------------------------
 # GENERATE PLOTS
+# ---------------------------
+
 # Generate category level intensity analysis barplots for each land cover type
+
+# Within Tanintharyi Division
 
 # Category Level
 intALL <- ggplot() + geom_bar(data=gainALL, aes(x=Categories, y=value, fill="#8ACD66"),  stat="identity")
@@ -215,16 +225,19 @@ intWTR <- intWTR   + scale_colour_manual(values=c("#009404", "#FF0000"), name="U
 intWTR <- intWTR   + theme_minimal()
 
 
+# ---------------------------
 # OUTPUT PLOTS
+# ---------------------------
+
 # Output boxplots to a PNG file
-ggsave(intALL, file="IntensityAnalysis-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intFOR, file="IntensityAnalysis-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intMNG, file="IntensityAnalysis-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intOPM, file="IntensityAnalysis-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intRBM, file="IntensityAnalysis-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intSHB, file="IntensityAnalysis-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intRPD, file="IntensityAnalysis-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intBUA, file="IntensityAnalysis-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intBSG, file="IntensityAnalysis-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(intWTR, file="IntensityAnalysis-WTR.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intALL, file="IntensityAnalysis-wTNI-ALL.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intFOR, file="IntensityAnalysis-wTNI-FOR.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intMNG, file="IntensityAnalysis-wTNI-MNG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intOPM, file="IntensityAnalysis-wTNI-OPM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intRBM, file="IntensityAnalysis-wTNI-RBM.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intSHB, file="IntensityAnalysis-wTNI-SHB.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intRPD, file="IntensityAnalysis-wTNI-RPD.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBUA, file="IntensityAnalysis-wTNI-BUA.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intBSG, file="IntensityAnalysis-wTNI-BSG.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(intWTR, file="IntensityAnalysis-wTNI-WTR.pdf", width=19.89, height=15, units="cm", dpi=300)
 
