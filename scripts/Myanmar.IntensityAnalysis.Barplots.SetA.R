@@ -2,7 +2,10 @@
 # intensity analysis of changes between 9 land cover types derived from combined
 # Landsat and L-band SAR data covering Tanintharyi, Myanmar. This script plots SetA
 # values consisting of 1995 and 2015 data from Landsat-5 (7 bands, 5 indices) and
-# JERS-1 or ALOS/PALSAR-2 (1 polarisation and 8 GLCM textures).
+# JERS-1 or ALOS/PALSAR-2 (1 polarisation and 8 GLCM textures). Intensity analysis
+# was calculated for the following domains: within Tanintharyi Division; and then
+# within and outside protected areas, oil palm concessions, and permanent forest
+# estates that are located in Tanintharyi.
 #
 # Land cover types include: forest (FOR); mangrove (MNG); oil palm mature (OPM);
 # rubber mature (RBM); shrub/orchard (SHB); rice paddy (RPD); built-up area (BUA);
@@ -10,7 +13,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
-# Last Modified:  26 Apr 2017
+# Last Modified:  15 May 2017
 
 
 # LOAD LIBRARIES AND DATA
