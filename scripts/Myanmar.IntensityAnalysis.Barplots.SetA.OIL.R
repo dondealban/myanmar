@@ -62,57 +62,109 @@ oOilWTR <- read.csv(file="Change_oOIL_SetA_1995_2015_WTR.csv", header=TRUE, sep=
 # MELT AND SUBSET DATA
 # ---------------------------
 
-# Within Tanintharyi Division
+# Within oil palm concessions in Tanintharyi Division
 
 # Category Level
-meltALL <- melt(tniALL, id.vars="Categories")
-lossALL <- subset(meltALL, variable=="Loss.Intensity")
-gainALL <- subset(meltALL, variable=="Gain.Intensity")
+meltALLw <- melt(wOilALL, id.vars="Categories")
+lossALLw <- subset(meltALLw, variable=="Loss.Intensity")
+gainALLw <- subset(meltALLw, variable=="Gain.Intensity")
 
 # Forest
-mtFOR <- melt(tniFOR, id.vars="Category.Transitions")
-frFOR <- subset(mtFOR, variable=="From.FOR")
-toFOR <- subset(mtFOR, variable=="To.FOR")
+mtFORw <- melt(wOilFOR, id.vars="Category.Transitions")
+frFORw <- subset(mtFORw, variable=="From.FOR")
+toFORw <- subset(mtFORw, variable=="To.FOR")
 
 # Mangrove
-mtMNG <- melt(tniMNG, id.vars="Category.Transitions")
-frMNG <- subset(mtMNG, variable=="From.MNG")
-toMNG <- subset(mtMNG, variable=="To.MNG")
+mtMNGw <- melt(wOilMNG, id.vars="Category.Transitions")
+frMNGw <- subset(mtMNGw, variable=="From.MNG")
+toMNGw <- subset(mtMNGw, variable=="To.MNG")
 
 # Oil Palm Mature
-mtOPM <- melt(tniOPM, id.vars="Category.Transitions")
-frOPM <- subset(mtOPM, variable=="From.OPM")
-toOPM <- subset(mtOPM, variable=="To.OPM")
+mtOPMw <- melt(wOilOPM, id.vars="Category.Transitions")
+frOPMw <- subset(mtOPMw, variable=="From.OPM")
+toOPMw <- subset(mtOPMw, variable=="To.OPM")
 
 # Rubber Mature
-mtRBM <- melt(tniRBM, id.vars="Category.Transitions")
-frRBM <- subset(mtRBM, variable=="From.RBM")
-toRBM <- subset(mtRBM, variable=="To.RBM")
+mtRBMw <- melt(wOilRBM, id.vars="Category.Transitions")
+frRBMw <- subset(mtRBMw, variable=="From.RBM")
+toRBMw <- subset(mtRBMw, variable=="To.RBM")
 
 # Shrub/Orchard
-mtSHB <- melt(tniSHB, id.vars="Category.Transitions")
-frSHB <- subset(mtSHB, variable=="From.SHB")
-toSHB <- subset(mtSHB, variable=="To.SHB")
+mtSHBw <- melt(wOilSHB, id.vars="Category.Transitions")
+frSHBw <- subset(mtSHBw, variable=="From.SHB")
+toSHBw <- subset(mtSHBw, variable=="To.SHB")
 
 # Rice Paddy
-mtRPD <- melt(tniRPD, id.vars="Category.Transitions")
-frRPD <- subset(mtRPD, variable=="From.RPD")
-toRPD <- subset(mtRPD, variable=="To.RPD")
+mtRPDw <- melt(wOilRPD, id.vars="Category.Transitions")
+frRPDw <- subset(mtRPDw, variable=="From.RPD")
+toRPDw <- subset(mtRPDw, variable=="To.RPD")
 
 # Built-Up Area
-mtBUA <- melt(tniBUA, id.vars="Category.Transitions")
-frBUA <- subset(mtBUA, variable=="From.BUA")
-toBUA <- subset(mtBUA, variable=="To.BUA")
+mtBUAw <- melt(wOilBUA, id.vars="Category.Transitions")
+frBUAw <- subset(mtBUAw, variable=="From.BUA")
+toBUAw <- subset(mtBUAw, variable=="To.BUA")
 
 # Bare Soil/Ground
-mtBSG <- melt(tniBSG, id.vars="Category.Transitions")
-frBSG <- subset(mtBSG, variable=="From.BSG")
-toBSG <- subset(mtBSG, variable=="To.BSG")
+mtBSGw <- melt(wOilBSG, id.vars="Category.Transitions")
+frBSGw <- subset(mtBSGw, variable=="From.BSG")
+toBSGw <- subset(mtBSGw, variable=="To.BSG")
 
 # Water
-mtWTR <- melt(tniWTR, id.vars="Category.Transitions")
-frWTR <- subset(mtWTR, variable=="From.WTR")
-toWTR <- subset(mtWTR, variable=="To.WTR")
+mtWTRw <- melt(wOilWTR, id.vars="Category.Transitions")
+frWTRw <- subset(mtWTRw, variable=="From.WTR")
+toWTRw <- subset(mtWTRw, variable=="To.WTR")
+
+# Outside oil palm concessions in Tanintharyi Division
+
+# Category Level
+meltALLo <- melt(oOilALL, id.vars="Categories")
+lossALLo <- subset(meltALLo, variable=="Loss.Intensity")
+gainALLo <- subset(meltALLo, variable=="Gain.Intensity")
+
+# Forest
+mtFORo <- melt(oOilFOR, id.vars="Category.Transitions")
+frFORo <- subset(mtFORo, variable=="From.FOR")
+toFORo <- subset(mtFORo, variable=="To.FOR")
+
+# Mangrove
+mtMNGo <- melt(oOilMNG, id.vars="Category.Transitions")
+frMNGo <- subset(mtMNGo, variable=="From.MNG")
+toMNGo <- subset(mtMNGo, variable=="To.MNG")
+
+# Oil Palm Mature
+mtOPMo <- melt(oOilOPM, id.vars="Category.Transitions")
+frOPMo <- subset(mtOPMo, variable=="From.OPM")
+toOPMo <- subset(mtOPMo, variable=="To.OPM")
+
+# Rubber Mature
+mtRBMo <- melt(oOilRBM, id.vars="Category.Transitions")
+frRBMo <- subset(mtRBMo, variable=="From.RBM")
+toRBMo <- subset(mtRBMo, variable=="To.RBM")
+
+# Shrub/Orchard
+mtSHBo <- melt(oOilSHB, id.vars="Category.Transitions")
+frSHBo <- subset(mtSHBo, variable=="From.SHB")
+toSHBo <- subset(mtSHBo, variable=="To.SHB")
+
+# Rice Paddy
+mtRPDo <- melt(oOilRPD, id.vars="Category.Transitions")
+frRPDo <- subset(mtRPDo, variable=="From.RPD")
+toRPDo <- subset(mtRPDo, variable=="To.RPD")
+
+# Built-Up Area
+mtBUAo <- melt(oOilBUA, id.vars="Category.Transitions")
+frBUAo <- subset(mtBUAo, variable=="From.BUA")
+toBUAo <- subset(mtBUAo, variable=="To.BUA")
+
+# Bare Soil/Ground
+mtBSGo <- melt(oOilBSG, id.vars="Category.Transitions")
+frBSGo <- subset(mtBSGo, variable=="From.BSG")
+toBSGo <- subset(mtBSGo, variable=="To.BSG")
+
+# Water
+mtWTRo <- melt(oOilWTR, id.vars="Category.Transitions")
+frWTRo <- subset(mtWTRo, variable=="From.WTR")
+toWTRo <- subset(mtWTRo, variable=="To.WTR")
 
 
 # ---------------------------
