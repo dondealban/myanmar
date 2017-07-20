@@ -15,23 +15,31 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
 # Load the required R libraries
 library(randomForest)
 
-
 # Read data, define variables, and store data in variables
-data <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_ForR.csv", header=TRUE, sep=",")
-
 SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, sep=",")
 SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # SUBSET DATA AND STORE INTO VARIABLES
 
-# Subset data by year
-data1995 <- subset(data, data$YEAR=="1995")
-data2015 <- subset(data, data$YEAR=="2015")
+# Select training observations (random )
 
-# Subset data containing only numerical type variables by year
-ndata1995 <- data1995[, c(4:24)]
-ndata2015 <- data2015[, c(4:24)]
+
+# Subset data by year
+SetA1995 <- subset(SetA, SetA$YEAR=="1995")
+SetA2015 <- subset(SetA, SetA$YEAR=="2015")
+SetB2015 <- subset(SetB, SetB$YEAR=="2015")
+
+# Define factor predictor variables
+# LC_TYPE
+SetA1995$LC_TYPE <- factor(SetA1995$LC_TYPE)
+SetA2015$LC_TYPE <- factor(SetA2015$LC_TYPE)
+SetB2015$LC_TYPE <- factor(SetB2015$LC_TYPE)
+# Year
+SetA1995$YEAR <- factor(SetA1995$YEAR)
+SetA2015$YEAR <- factor(SetA2015$YEAR)
+SetB2015$YEAR <- factor(SetB2015$YEAR)
+
 
 
 # SET RANDOM SEED
