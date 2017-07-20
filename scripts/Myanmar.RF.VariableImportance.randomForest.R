@@ -16,14 +16,16 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/")
 library(randomForest)
 
 # Read data, define variables, and store data in variables
-SetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, sep=",")
-SetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
+dataSetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, sep=",")
+dataSetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 
 # SUBSET DATA AND STORE INTO VARIABLES
 
-# Select training observations (random )
+# Select TRAINING observations only (Random column values: <=0.7 training, >0.7 testing)
 
+SetA <- subset(dataSetA, dataSetA$Random<=0.7)
+SetB <- subset(dataSetB, dataSetB$Random<=0.7)
 
 # Subset data by year
 SetA1995 <- subset(SetA, SetA$YEAR=="1995")
@@ -41,47 +43,98 @@ SetA2015$YEAR <- factor(SetA2015$YEAR)
 SetB2015$YEAR <- factor(SetB2015$YEAR)
 
 
-
 # SET RANDOM SEED
 set.seed(2017)
 
 
-# CALCULATE AND PLOT CORRELATION MATRICES
-
-# Calculate correlation matrices
-cor1995 <- cor(ndata1995)
-cor2015 <- cor(ndata2015)
-
-# Plot correlation matrices for visualisation
-cor1995cm <- ggcorrplot(cor1995, hc.order=TRUE)
-cor2015cm <- ggcorrplot(cor2015, hc.order=TRUE)
-
-
 # RUN RANDOM FOREST IMPLEMENTATION
 
-# Define factor predictor variables
-data1995$LC_TYPE <- factor(data1995$LC_TYPE)
-data2015$LC_TYPE <- factor(data2015$LC_TYPE)
-data1995$YEAR <- factor(data1995$YEAR)
-data2015$YEAR <- factor(data2015$YEAR)
-
 # randomForest package implementation
-rf1995 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-                       HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
-                       HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data1995,
-                       mtry=7, ntree=100, importance=TRUE)
-rf2015 <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B7 + B6_B10 + B6_B11 + EVI +
-                       HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG +
-                       HH_VAR + LSWI + NDTI + NDVI + SATVI, data=data2015,
-                       mtry=7, ntree=100, importance=TRUE)
+# Note: mtry uses default value which is sqrt of number of predictor variables
 
-# randomForest variable importance based on permutation importance (mean decrease in accuracy)
-rf1995t1 <- importance(rf1995, type=1)
-rf2015t1 <- importance(rf2015, type=1)
+# Set A 1995
 
-# randomForest variable importance based on Gini importance (mean decrease in impurity)
-rf1995t2 <- importance(rf1995, type=2)
-rf2015t2 <- importance(rf2015, type=2)
+# Landsat only (n=12)
+rfSetA1995l <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+              LSWI + NDTI + NDVI + SATVI, data=SetA1995,
+              ntree=100, importance=TRUE)
+# SAR only (n=9)
+rfSetA1995s <- randomForest(LC_TYPE ~ HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + 
+              HH_IDM + HH_SAVG + HH_VAR, data=SetA1995,
+              ntree=100, importance=TRUE)
+# Landsat+SAR (n=21)
+rfSetA1995ls <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+              HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+              LSWI + NDTI + NDVI + SATVI, data=SetA1995, 
+              ntree=100, importance=TRUE)
+
+# Set A 2015
+
+# Landsat only (n=12)
+rfSetA2015l <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+               LSWI + NDTI + NDVI + SATVI, data=SetA2015,
+               ntree=100, importance=TRUE)
+# SAR only (n=9)
+rfSetA2015s <- randomForest(LC_TYPE ~ HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + 
+               HH_IDM + HH_SAVG + HH_VAR, data=SetA2015,
+               ntree=100, importance=TRUE)
+# Landsat+SAR (n=21)
+rfSetA2015ls <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+                LSWI + NDTI + NDVI + SATVI, data=SetA2015, 
+                ntree=100, importance=TRUE)
+
+# Set B 2015
+
+# Landsat only (n=12)
+rfSetB2015l <- randomForest(LC_TYPE ~ B2 + B3 + B4 + B5 + B6 + B7 + B10 + EVI +
+               LSWI + NDTI + NDVI + SATVI, data=SetB2015,
+               ntree=100, importance=TRUE)
+# SAR only (n=24)
+rfSetB2015s <- randomForest(LC_TYPE ~ AVE + DIF +
+               HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+               HV + HV_ASM + HV_CON + HV_COR + HV_DIS + HV_ENT + HV_IDM + HV_SAVG + HV_VAR +
+               NDI + NLI + RT1 + RT2, data=SetB2015,
+               ntree=100, importance=TRUE)
+# Landsat+SAR (n=36)
+rfSetB2015ls <- randomForest(LC_TYPE ~ AVE + B2 + B3 + B4 + B5 + B6 + B7 + B10 + DIF + EVI +
+                HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
+                HV + HV_ASM + HV_CON + HV_COR + HV_DIS + HV_ENT + HV_IDM + HV_SAVG + HV_VAR +
+                LSWI + NDI + NDTI + NDVI + NLI + RT1 + RT2 + SATVI, data=SetB2015, 
+                ntree=100, importance=TRUE)
+
+
+# RANDOM FOREST VARIABLE IMPORTANCE
+
+# Variable importance based on permutation importance (mean decrease in accuracy)
+
+# Set A 1995
+rfSetA1995lt1  <- importance(rfSetA1995l,  type=1)
+rfSetA1995st1  <- importance(rfSetA1995s,  type=1)
+rfSetA1995lst1 <- importance(rfSetA1995ls, type=1)
+# Set A 2015
+rfSetA2015lt1  <- importance(rfSetA2015l,  type=1)
+rfSetA2015st1  <- importance(rfSetA2015s,  type=1)
+rfSetA2015lst1 <- importance(rfSetA2015ls, type=1)
+# Set B 2015
+rfSetB2015lt1  <- importance(rfSetB2015l,  type=1)
+rfSetB2015st1  <- importance(rfSetB2015s,  type=1)
+rfSetB2015lst1 <- importance(rfSetB2015ls, type=1)
+
+# Variable importance based on Gini importance (mean decrease in impurity)
+
+# Set A 1995
+rfSetA1995lt2  <- importance(rfSetA1995l,  type=2)
+rfSetA1995st2  <- importance(rfSetA1995s,  type=2)
+rfSetA1995lst2 <- importance(rfSetA1995ls, type=2)
+# Set A 2015
+rfSetA2015lt2  <- importance(rfSetA2015l,  type=2)
+rfSetA2015st2  <- importance(rfSetA2015s,  type=2)
+rfSetA2015lst2 <- importance(rfSetA2015ls, type=2)
+# Set B 2015
+rfSetB2015lt2  <- importance(rfSetB2015l,  type=2)
+rfSetB2015st2  <- importance(rfSetB2015s,  type=2)
+rfSetB2015lst2 <- importance(rfSetB2015ls, type=2)
 
 
 
