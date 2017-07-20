@@ -1,0 +1,147 @@
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 +      B7 + EVI + LSWI + NDTI + NDVI + SATVI, data = SetA1995, ntree = 100,      importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 100
+No. of variables tried at each split: 3
+
+        OOB estimate of  error rate: 3.7%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 441   0   0   1   0   1  16   1   0 0.041304348
+BUA  11 188   0   0   0   0   0   0   0 0.055276382
+FOR   0   0 186   0   9   1   0   0   0 0.051020408
+MNG   1   0   0 270   0   0   6   1   0 0.028776978
+OPM   0   0   1   0 224   0   0   0   0 0.004444444
+RBM   0   0   0   0   0 187   0   1   0 0.005319149
+RPD  17   0   0   3   0   0 290   2   0 0.070512821
+SHB  10   0   1   0   0   1   1  87   0 0.130000000
+WTR   0   0   0   0   0   0   0   0 340 0.000000000
+      MeanDecreaseAccuracy
+B1                10.56446
+B2                13.65378
+B3                11.23056
+B4                17.93462
+B5                12.00743
+B6                17.94399
+B7                11.26409
+EVI               15.57896
+LSWI              10.00388
+NDTI              13.39768
+NDVI              12.41796
+SATVI             19.01976
+      MeanDecreaseGini
+B1            91.91684
+B2           105.60063
+B3           158.57227
+B4           214.48690
+B5           199.56999
+B6           107.94365
+B7           145.73223
+EVI          272.38163
+LSWI          94.30809
+NDTI         176.14754
+NDVI         242.46747
+SATVI        194.02010
+
+Call:
+ randomForest(formula = LC_TYPE ~ HH + HH_ASM + HH_CON + HH_COR +      HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR, data = SetA1995,      ntree = 100, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 100
+No. of variables tried at each split: 3
+
+        OOB estimate of  error rate: 45.08%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 292   0  35  20  21  17  57   7  11  0.36521739
+BUA   2 183   9   2   1   0   2   0   0  0.08040201
+FOR  32   4  60  36  22  18  17   7   0  0.69387755
+MNG  32   2  35  71  66  26  43   3   0  0.74460432
+OPM   9   0  13  34 117  40   9   3   0  0.48000000
+RBM  13   0  16  26  48  62  18   5   0  0.67021277
+RPD  82   2  15  26   8  17 151  11   0  0.51602564
+SHB  15   0   6  14   9   9  38   9   0  0.91000000
+WTR  23   0   0   0   0   0   0   0 317  0.06764706
+        MeanDecreaseAccuracy
+HH                 19.753995
+HH_ASM              3.386218
+HH_CON             13.459247
+HH_COR              5.375530
+HH_DIS             15.650067
+HH_ENT              4.194107
+HH_IDM             15.406757
+HH_SAVG            38.174752
+HH_VAR             14.284323
+        MeanDecreaseGini
+HH            446.366732
+HH_ASM          3.380905
+HH_CON        190.867622
+HH_COR        182.335879
+HH_DIS        198.067437
+HH_ENT          3.415478
+HH_IDM        212.250124
+HH_SAVG       590.194135
+HH_VAR        176.188738
+
+Call:
+ randomForest(formula = LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 +      B7 + EVI + HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT +      HH_IDM + HH_SAVG + HH_VAR + LSWI + NDTI + NDVI + SATVI, data = SetA1995,      ntree = 100, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 100
+No. of variables tried at each split: 4
+
+        OOB estimate of  error rate: 2.7%
+Confusion matrix:
+    BSG BUA FOR MNG OPM RBM RPD SHB WTR class.error
+BSG 447   0   0   2   0   0  10   1   0 0.028260870
+BUA   6 193   0   0   0   0   0   0   0 0.030150754
+FOR   0   0 192   0   4   0   0   0   0 0.020408163
+MNG   2   0   0 274   0   0   1   1   0 0.014388489
+OPM   0   0   4   0 221   0   0   0   0 0.017777778
+RBM   0   0   0   0   0 187   0   1   0 0.005319149
+RPD  15   1   0   1   0   0 293   2   0 0.060897436
+SHB   5   0   2   0   0   0   4  89   0 0.110000000
+WTR   0   0   0   0   0   0   0   0 340 0.000000000
+        MeanDecreaseAccuracy
+B1                  9.088152
+B2                 10.061746
+B3                  8.783431
+B4                 14.520201
+B5                 13.759598
+B6                 10.532800
+B7                 10.796546
+EVI                14.266923
+HH                 12.026062
+HH_ASM              1.005038
+HH_CON              9.201526
+HH_COR              1.247690
+HH_DIS             10.022034
+HH_ENT              1.690905
+HH_IDM              4.516942
+HH_SAVG            18.515209
+HH_VAR              8.968995
+LSWI                8.775278
+NDTI                9.463747
+NDVI               11.811998
+SATVI              17.965708
+        MeanDecreaseGini
+B1            62.1605747
+B2           103.5923671
+B3           122.4652054
+B4           193.9500773
+B5           197.7055965
+B6            79.0852102
+B7            99.1239168
+EVI          212.0564554
+HH           116.5923275
+HH_ASM         0.1954128
+HH_CON        16.0174366
+HH_COR         6.6184253
+HH_DIS        18.1992988
+HH_ENT         0.2184727
+HH_IDM         7.3957645
+HH_SAVG      147.9024760
+HH_VAR        15.9143612
+LSWI          81.0390558
+NDTI         126.4148982
+NDVI         200.2225514
+SATVI        196.1239192
