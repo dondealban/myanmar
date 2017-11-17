@@ -11,7 +11,24 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked are
 
 # Load Libraries and Data ---------------
 library(ggplot2)
+library(data.table)
 
+# Read csv files in the directory and store as a list
+filenames <- list.files()
 
-# Read data, define variables, and store data in variables
-c1992 <- read.csv(file="Landscape_1992_Reclass.csv", header=TRUE, sep=",")
+# Function to read data
+readdata <- function(filename) {
+  df <- read.csv(filename, sep="\t")
+  vec <- df[,3]           # Read column with percentage values
+  names(vec) <- df[,1]    # Read column with class codes
+  return(vec)
+}
+
+# Combine as class codes and percentage values in a matrix
+result <- do.call(rbind, lapply(filenames, readdata))
+
+# Add years as row names 
+row.names(result) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
+                       "2000","2001","2002","2003","2004","2005","2006","2007",
+                       "2008","2009","2010","2011","2012","2013","2014","2015")
+
