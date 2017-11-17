@@ -12,6 +12,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked are
 # Load Libraries and Data ---------------
 library(ggplot2)
 library(reshape2)
+library(plyr)
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
@@ -41,3 +42,12 @@ row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
 
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
 colnames(data) <- c("Years","Class","Percentage")
+
+# Create Stacked Area Graphs ------------
+
+#ggplot(data, aes(x=Years, y=Percentage, fill=Class)) + geom_area()
+
+ipcc <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
+ipcc <- ipcc + labs(title="Land Cover Transitions", x="Year", y="Percentage", fill="Land Cover")
+ipcc <- ipcc + theme_bw()
+  
