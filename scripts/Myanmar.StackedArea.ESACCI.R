@@ -11,7 +11,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked are
 
 # Load Libraries and Data ---------------
 library(ggplot2)
-library(data.table)
+library(reshape2)
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
@@ -25,10 +25,19 @@ readdata <- function(filename) {
 }
 
 # Combine as class codes and percentage values in a matrix
-result <- do.call(rbind, lapply(filenames, readdata))
+temp <- do.call(rbind, lapply(filenames, readdata))
 
-# Add years as row names 
-row.names(result) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-                       "2000","2001","2002","2003","2004","2005","2006","2007",
-                       "2008","2009","2010","2011","2012","2013","2014","2015")
+# Add years as another column
+row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
+           "2000","2001","2002","2003","2004","2005","2006","2007",
+           "2008","2009","2010","2011","2012","2013","2014","2015")
+#years <- c("1992","1993","1994","1995","1996","1997","1998","1999",
+#           "2000","2001","2002","2003","2004","2005","2006","2007",
+#           "2008","2009","2010","2011","2012","2013","2014","2015")
+#output <- cbind(years,temp)
 
+# Convert wide format data frame into long format data frame
+#melt(anthoming, id.vars="angle", variable.name="condition", value.name="count")
+
+data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
+colnames(data) <- c("Years","Class","Percentage")
