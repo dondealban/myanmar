@@ -27,11 +27,12 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
+colnames(temp) <- c("6","5","4","3","2","1")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-           "2000","2001","2002","2003","2004","2005","2006","2007",
-           "2008","2009","2010","2011","2012","2013","2014","2015")
+                     "2000","2001","2002","2003","2004","2005","2006","2007",
+                     "2008","2009","2010","2011","2012","2013","2014","2015")
 
 # Convert wide format data frame into long format data frame
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
@@ -43,5 +44,5 @@ colnames(data) <- c("Years","Class","Percentage")
 
 ipcc <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
 ipcc <- ipcc + labs(title="Land Cover Transitions", x="Year", y="Percentage", fill="Land Cover")
-ipcc <- ipcc + theme_bw()
+ipcc <- ipcc + theme_bw() +scale_fill_manual(values=c("#8ca000","#5f1400","#a6cee3","#ffcc66","#ffff64","#003c00"))
   
