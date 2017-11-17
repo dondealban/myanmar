@@ -32,14 +32,8 @@ temp <- do.call(rbind, lapply(filenames, readdata))
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
            "2000","2001","2002","2003","2004","2005","2006","2007",
            "2008","2009","2010","2011","2012","2013","2014","2015")
-#years <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-#           "2000","2001","2002","2003","2004","2005","2006","2007",
-#           "2008","2009","2010","2011","2012","2013","2014","2015")
-#output <- cbind(years,temp)
 
 # Convert wide format data frame into long format data frame
-#melt(anthoming, id.vars="angle", variable.name="condition", value.name="count")
-
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
 colnames(data) <- c("Years","Class","Percentage")
 
