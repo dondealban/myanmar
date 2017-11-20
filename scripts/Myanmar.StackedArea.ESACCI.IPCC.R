@@ -1,6 +1,6 @@
 # Script Description --------------------
 # This script creates a stacked area graph of time-series land cover data, particularly
-# the ESA CCI land cover data (1992-2015), reclassifed to follow IPCC lbroad land cover
+# the ESA CCI land cover data (1992-2015), reclassifed to follow IPCC broad land cover
 # categories. 
 #
 # Script By:      Jose Don T De Alban
