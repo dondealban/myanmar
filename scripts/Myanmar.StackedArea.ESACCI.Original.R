@@ -53,6 +53,8 @@ colnames(data) <- c("Years","Class","Percentage")
 #orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
 #orig <- orig + theme_bw() + theme(legend.position="bottom")
 
+
+
 orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                    labels=c("Cropland, rainfed",
                             "Cropland, herbaceous cover",
@@ -79,9 +81,19 @@ orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Water bodies"))), 
                    data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-orig <- orig + theme(legend.direction="vertical", legend.position="bottom") + guides(fill=guide_legend(ncol=1))
+orig <- orig + guides(fill=guide_legend(ncol=1))
+orig <- orig + theme(legend.position="bottom")
 orig <- orig + theme_bw()
+orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#ffff00","#aaf0f0","#dcf064","#c8c864",
+                                          "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432","#ffebaf",
+                                          "#006400","#00a000","#00a000","#003c00","#285000",
+                                          "#00785a","#009678","#00dc82","#c31400","#0046c8"))
+
+#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
+#orig <- orig + theme(legend.direction="vertical", legend.position="bottom")
+#orig <- orig + guides(fill=guide_legend(ncol=2))
+#orig <- orig + theme_bw()
 
 #ggsave(orig, file="StackedArea-Original.pdf", width=19.89, height=15, units="cm", dpi=300)
 
-ggsave(orig, file="StackedArea-Original.pdf", width=16, height=25, units="cm", dpi=300)
+ggsave(orig, file="StackedArea-Original.pdf", width=29, height=16, units="cm", dpi=300)
