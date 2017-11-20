@@ -79,7 +79,9 @@ orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Water bodies"))), 
                    data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-orig <- orig + theme_bw() + theme(legend.position="bottom")
+orig <- orig + theme(legend.direction="vertical", legend.position="bottom") + guides(fill=guide_legend(ncol=1))
+orig <- orig + theme_bw()
 
-ggsave(orig, file="StackedArea-Original.pdf", width=19.89, height=15, units="cm", dpi=300)
+#ggsave(orig, file="StackedArea-Original.pdf", width=19.89, height=15, units="cm", dpi=300)
 
+ggsave(orig, file="StackedArea-Original.pdf", width=16, height=25, units="cm", dpi=300)
