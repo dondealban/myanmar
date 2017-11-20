@@ -45,16 +45,6 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 
-#orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Other","Settlement","Wetland","Grassland","Agriculture","Forest"))), data=data)
-#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-#orig <- orig + theme_bw() #+scale_fill_manual(values=c("#8ca000","#5f1400","#a6cee3","#ffcc66","#ffff64","#003c00"))
-
-#orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
-#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-#orig <- orig + theme_bw() + theme(legend.position="bottom")
-
-
-
 orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                    labels=c("Cropland, rainfed",
                             "Cropland, herbaceous cover",
@@ -88,12 +78,5 @@ orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#ffff00","#aaf0f0
                                           "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432","#ffebaf",
                                           "#006400","#00a000","#00a000","#003c00","#285000",
                                           "#00785a","#009678","#00dc82","#c31400","#0046c8"))
-
-#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-#orig <- orig + theme(legend.direction="vertical", legend.position="bottom")
-#orig <- orig + guides(fill=guide_legend(ncol=2))
-#orig <- orig + theme_bw()
-
-#ggsave(orig, file="StackedArea-Original.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 ggsave(orig, file="StackedArea-Original.pdf", width=29, height=16, units="cm", dpi=300)
