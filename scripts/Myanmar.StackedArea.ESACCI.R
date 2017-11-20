@@ -20,8 +20,8 @@ filenames <- list.files()
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
-  vec <- df[,3]           # Read column with percentage values
-  names(vec) <- df[,1]    # Read column with class codes
+  vec <- df[, 3]           # Read column with percentage values
+  names(vec) <- df[, 1]    # Read column with class codes
   return(vec)
 }
 
@@ -40,9 +40,9 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 
-#ggplot(data, aes(x=Years, y=Percentage, fill=Class)) + geom_area()
-
 ipcc <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
 ipcc <- ipcc + labs(title="Land Cover Transitions", x="Year", y="Percentage", fill="Land Cover")
 ipcc <- ipcc + theme_bw() +scale_fill_manual(values=c("#8ca000","#5f1400","#a6cee3","#ffcc66","#ffff64","#003c00"))
-  
+
+ggsave(ipcc, file="StackedArea-IPCC.pdf", width=19.89, height=15, units="cm", dpi=300)
+
