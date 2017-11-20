@@ -53,7 +53,31 @@ colnames(data) <- c("Years","Class","Percentage")
 #orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
 #orig <- orig + theme_bw() + theme(legend.position="bottom")
 
-orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
+orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
+                   labels=c("Cropland, rainfed",
+                            "Cropland, herbaceous cover",
+                            "Cropland, tree or shrub cover",
+                            "Cropland, irrigated or post-flooding",
+                            "Mosaic cropland (>50%) / natural vegetation (tree, shrub, herbaceous cover) (<50%)",
+                            "Mosaic natural vegetation (tree, shrub, herbaceous cover) (>50%) / cropland (<50%)",
+                            "Mosaic tree and shrub (>50%) / herbaceous cover (<50%)",
+                            "Mosaic herbaceous cover (>50%) / tree and shrub (<50%)",
+                            "Shrubland",
+                            "Shrubland, evergreen",
+                            "Shrubland, deciduous",
+                            "Grassland",
+                            "Sparse vegetation (tree, shrub, herbaceous cover) (<15%)",
+                            "Tree cover, broadleaved, evergreen, closed to open (>15%)",
+                            "Tree cover, broadleaved, deciduous, closed to open (>15%)",
+                            "Tree cover, broadleaved, deciduous, closed (>40%)",
+                            "Tree cover, needleleaved, evergreen, closed to open (>15%)",
+                            "Tree cover, needleleaved, deciduous, closed to open (>15%)",
+                            "Tree cover, flooded, fresh or brakish water",
+                            "Tree cover, flooded, saline water",
+                            "Shrub or herbaceous cover, flooded, fresh/saline/brakish water",
+                            "Urban areas",
+                            "Water bodies"))), 
+                   data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
 orig <- orig + theme_bw() + theme(legend.position="bottom")
 
