@@ -8,7 +8,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/ipcc/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/original/")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
@@ -28,7 +28,11 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("6","5","4","3","2","1")
+colnames(temp) <- c("1","2","3","4","5","6",
+                    "14","15","16","17","18",
+                    "7","8","9","10","11","12","13",
+                    "19","20","21",
+                    "22","23")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
@@ -41,9 +45,17 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 
-ipcc <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Other","Settlement","Wetland","Grassland","Agriculture","Forest"))), data=data)
-ipcc <- ipcc + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (IPCC)")
-ipcc <- ipcc + theme_bw() +scale_fill_manual(values=c("#8ca000","#5f1400","#a6cee3","#ffcc66","#ffff64","#003c00"))
+#orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Other","Settlement","Wetland","Grassland","Agriculture","Forest"))), data=data)
+#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
+#orig <- orig + theme_bw() #+scale_fill_manual(values=c("#8ca000","#5f1400","#a6cee3","#ffcc66","#ffff64","#003c00"))
 
-ggsave(ipcc, file="StackedArea-IPCC.pdf", width=19.89, height=15, units="cm", dpi=300)
+#orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
+#orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
+#orig <- orig + theme_bw() + theme(legend.position="bottom")
+
+orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class)), data=data)
+orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
+orig <- orig + theme_bw() + theme(legend.position="bottom")
+
+ggsave(orig, file="StackedArea-Original.pdf", width=19.89, height=15, units="cm", dpi=300)
 
