@@ -4,12 +4,12 @@
 # categories. 
 #
 # Script By:      Jose Don T De Alban
-# Date Created:   17 Nov 2017
-# Last Modified:  20 Nov 2017
+# Date Created:   22 Nov 2017
+# Last Modified:  
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/ipcc/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/bespoke/")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
