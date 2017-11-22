@@ -29,7 +29,7 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("2","3","4","1")
+colnames(temp) <- c("3","2","1","4")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
@@ -42,9 +42,9 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 
-bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Other Vegetation","Cropland","Non-Vegetation","Forest"))), data=data)
+bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
 bespoke <- bespoke + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
-bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#8ca000","#ffff64","#a6cee3","#003c00"))
+bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
 
 ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
 
