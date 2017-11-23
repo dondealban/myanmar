@@ -18,9 +18,11 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/")
 
 # Load Libraries ------------------------
+library(dplyr)
 library(ggplot2)
 library(plyr)
 library(reshape2)
+library(tidyr)
 
 
 # Interval Level ------------------------
@@ -29,6 +31,11 @@ library(reshape2)
 dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
 
 # Select columns: interval number, annual change rate, uniform change rate
-dfINT <- subset(dataINT, select=c(1,4:5))
-colnames(dfINT) <- c("Interval", "Ann.Change", "Uni.Change") # Rename column names
+df <- subset(dataINT, select=c(1:2,4:5))
+colnames(df) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
+
+# Insert rows for missing intervals (Note: 1992 to 2015 = 24 years)
+tmin = 1
+tmax = 24
+dfINT <- complete(df, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
 
