@@ -17,7 +17,7 @@
 # Set Working Directory -----------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/")
 
-# Load Libraries and Data ---------------
+# Load Libraries ------------------------
 library(ggplot2)
 library(plyr)
 library(reshape2)
