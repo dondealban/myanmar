@@ -1,3 +1,4 @@
+# Script Description --------------------
 # This R script generates barlots using ggplot2 package to visualise the results of
 # intensity analysis of changes between 4 land cover types derived from ESA CCI land
 # cover data (1992-2015) covering Tanintharyi, Myanmar. The original land cover classes
@@ -11,3 +12,14 @@
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
 # Last Modified:  23 Nov 2017
+
+
+# Set Working Directory -----------------
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/")
+
+# Load Libraries and Data ---------------
+library(ggplot2)
+library(plyr)
+library(reshape2)
+
+
