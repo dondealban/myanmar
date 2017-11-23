@@ -28,11 +28,10 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("1","2","3","4","5","6",
-                    "14","15","16","17","18",
-                    "7","8","9","10","11","12","13",
-                    "19","20","21",
-                    "22","23")
+colnames(temp) <- c("1","2","3","4","5",
+                    "13","14","15","16",
+                    "6","7","8","9","10","11","12",
+                    "17","18","19","20","21")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
@@ -48,7 +47,6 @@ colnames(data) <- c("Years","Class","Percentage")
 orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                    labels=c("Cropland, rainfed",
                             "Cropland, herbaceous cover",
-                            "Cropland, tree or shrub cover",
                             "Cropland, irrigated or post-flooding",
                             "Mosaic cropland (>50%) / natural vegetation (tree, shrub, herbaceous cover) (<50%)",
                             "Mosaic natural vegetation (tree, shrub, herbaceous cover) (>50%) / cropland (<50%)",
@@ -63,20 +61,19 @@ orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Tree cover, broadleaved, deciduous, closed to open (>15%)",
                             "Tree cover, broadleaved, deciduous, closed (>40%)",
                             "Tree cover, needleleaved, evergreen, closed to open (>15%)",
-                            "Tree cover, needleleaved, deciduous, closed to open (>15%)",
-                            "Tree cover, flooded, fresh or brakish water",
                             "Tree cover, flooded, saline water",
                             "Shrub or herbaceous cover, flooded, fresh/saline/brakish water",
                             "Urban areas",
+                            "Bare areas",
                             "Water bodies"))), 
                              data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
 orig <- orig + guides(fill=guide_legend(ncol=1))
 orig <- orig + theme(legend.position="bottom")
 orig <- orig + theme_bw()
-orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#ffff00","#aaf0f0","#dcf064","#c8c864",
+orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#aaf0f0","#dcf064","#c8c864",
                                           "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432","#ffebaf",
-                                          "#006400","#00a000","#00a000","#003c00","#285000",
-                                          "#00785a","#009678","#00dc82","#c31400","#0046c8"))
+                                          "#006400","#00a000","#00a000","#003c00",
+                                          "#009678","#00dc82","#c31400","#fff5d7","#0046c8"))
 
 ggsave(orig, file="StackedArea-Original.pdf", width=29, height=16, units="cm", dpi=300)
