@@ -23,3 +23,12 @@ library(plyr)
 library(reshape2)
 
 
+# Interval Level ------------------------
+
+# Read CSV data file
+dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
+
+# Select columns: interval number, annual change rate, uniform change rate
+dfINT <- subset(dataINT, select=c(1,4:5))
+colnames(dfINT) <- c("Interval", "Ann.Change", "Uni.Change") # Rename column names
+
