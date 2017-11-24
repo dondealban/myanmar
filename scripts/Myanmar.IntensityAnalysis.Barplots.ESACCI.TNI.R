@@ -25,18 +25,16 @@ library(ggplot2)
 library(tidyr)
 
 
-# Interval Level ------------------------
+# INTERVAL Level ------------------------
 
 # Read CSV data file
 dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
 
 # Select columns: interval number, annual change rate, uniform change rate
-df <- subset(dataINT, select=c(1:2,4:5))
-colnames(df) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
+dfI <- subset(dataINT, select=c(1:2,4:5))
+colnames(dfI) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
 
 # Insert rows for missing intervals (Note: 1992 to 2015 = 24 years)
-
-# Using tidyr
 tmin = 1
 tmax = 23
 dfINT <- complete(df, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
@@ -50,6 +48,23 @@ dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
 dfINT <- as.data.frame(dfINT)
 uc <- dfINT[[1,4]]
 
+
+# CATEGORY Level ------------------------
+
+# Read CSV data file
+dataCATl <- read.csv(file="Categorical_level_loss.csv", header=TRUE, sep=",")
+dataCATg <- read.csv(file="Categorical_level_gain.csv", header=TRUE, sep=",")
+
+# Select columns from loss and gain of categories
+
+# Select columns: interval number, category, annual loss and gain change rate, uniform change rate
+dfL <- subset(dataCATl, select=c(1:3,5))
+dfG <- subset(dataCATg, select=c(5:6))
+colnames(dfL) <- c("Interval","Cat.Code","Category","Loss.Intensity") # Rename column names
+colnames(dfG) <- c("Gain.Intensity","Uni.Intensity") # Rename column names
+dfCAT <- cbind(dfL, dfG)
+
+
 # Generate Plots ------------------------
 
 # Interval Level
@@ -62,7 +77,8 @@ plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels =
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2014-2015"))
 plotINT <- plotINT  + theme_minimal()
 
+
 # Save Output Plots ---------------------
 
-# Output boxplots to a pdf file
+# Output boxplots to a PDF file
 ggsave(plotINT, file="IntensityAnalysis-Interval.pdf", width=19.89, height=15, units="cm", dpi=300)
