@@ -18,10 +18,10 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/")
 
 # Load Libraries ------------------------
-library(dplyr)
+#library(dplyr)
 library(ggplot2)
-library(plyr)
-library(reshape2)
+#library(plyr)
+#library(reshape2)
 library(tidyr)
 
 
