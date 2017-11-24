@@ -52,14 +52,13 @@ uc <- dfINT[[1,4]]
 
 # Generate Plots ------------------------
 
+# Interval Level
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Years, y=Ann.Change, fill="#c6c3bf"),  stat="identity")
 plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
 plotINT <- plotINT  + geom_hline(aes(yintercept=uc, colour="#000000"), linetype="dashed") # uniform line
 plotINT <- plotINT  + labs(title="Time Intensity Analysis: 1992-2015", x="Time Interval", y="Annual Change (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
-#plotINT <- plotINT  + scale_x_discrete(breaks=c("1996-1997","2001-2002","2006-2007","2011-2012"))
-#plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1995-1996","1998-1999","2001-2002","2004-2005","2007-2008","2010-2011","2013-2014"), size=0.5)
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2014-2015"))
 plotINT <- plotINT  + theme_minimal()
 
