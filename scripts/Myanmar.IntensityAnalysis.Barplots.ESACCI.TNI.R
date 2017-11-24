@@ -11,7 +11,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
-# Last Modified:  23 Nov 2017
+# Last Modified:  24 Nov 2017
 
 
 # Set Working Directory -----------------
@@ -38,8 +38,26 @@ colnames(df) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename co
 
 # Using tidyr
 tmin = 1
-tmax = 24
+tmax = 23
 dfINT <- complete(df, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
 dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[3,4]))
+dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
+                 "1996-1997","1997-1998","1998-1999","1999-2000",
+                 "2000-2001","2001-2002","2002-2003","2003-2004",
+                 "2004-2005","2005-2006","2006-2007","2007-2008",
+                 "2008-2009","2009-2010","2010-2011","2011-2012",
+                 "2012-2013","2013-2014","2014-2015")
+dfINT <- as.data.frame(dfINT)
+uc <- dfINT[1,4]
+
+# Generate Plots ------------------------
+
+plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Interval, y=Ann.Change, fill="#c6c3bf"),  stat="identity")
+plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
+plotINT <- plotINT  + geom_hline(aes(yintercept=0.2135, colour="#000000"), linetype="dashed") # uniform line
+plotINT <- plotINT  + labs(title="Time Intensity Analysis", x="Time Interval", y="Annual Change (% of Map)")
+plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
+plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
+plotINT <- plotINT  + theme_minimal()
 
 
