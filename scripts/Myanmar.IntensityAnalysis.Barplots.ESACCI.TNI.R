@@ -35,7 +35,11 @@ df <- subset(dataINT, select=c(1:2,4:5))
 colnames(df) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
 
 # Insert rows for missing intervals (Note: 1992 to 2015 = 24 years)
+
+# Using tidyr
 tmin = 1
 tmax = 24
 dfINT <- complete(df, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
+dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[3,4]))
+
 
