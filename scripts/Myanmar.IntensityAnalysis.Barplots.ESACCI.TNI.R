@@ -46,7 +46,7 @@ dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
                  "2008-2009","2009-2010","2010-2011","2011-2012",
                  "2012-2013","2013-2014","2014-2015")
 dfINT <- as.data.frame(dfINT)
-uc <- dfINT[[1,4]]
+uINT <- dfINT[[1,4]]
 
 
 # CATEGORY Level ------------------------
@@ -70,12 +70,19 @@ dfCAT <- cbind(dfL, dfG)
 # Interval Level
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Years, y=Ann.Change, fill="#c6c3bf"),  stat="identity")
 plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
-plotINT <- plotINT  + geom_hline(aes(yintercept=uc, colour="#000000"), linetype="dashed") # uniform line
+plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetype="dashed") # uniform line
 plotINT <- plotINT  + labs(title="Time Intensity Analysis: 1992-2015", x="Time Interval", y="Annual Change (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2014-2015"))
 plotINT <- plotINT  + theme_minimal()
+
+# Category Level
+
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity,  fill="#8ACD66"), stat="identity")
+plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fill="#B43507"), stat="identity")
+plotCAT <- plotCAT  + geom_hline(yintercept=0, colour="grey90")
+
 
 
 # Save Output Plots ---------------------
