@@ -93,6 +93,13 @@ plotINT <- plotINT  + theme_minimal()
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity,  fill="#000000"), stat="identity")
 plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fill="#FFFFFF"), stat="identity")
 plotCAT <- plotCAT  + facet_wrap(~ Year)
+plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
+                           x="Category", y="Category Intensity (% of Category)")
+plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","NON","OTH"))
+plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
+plotCAT <- plotCAT  + theme_minimal()
+
+
 
 plotCAT <- plotCAT  + geom_hline(yintercept=0, colour="grey90")
 
