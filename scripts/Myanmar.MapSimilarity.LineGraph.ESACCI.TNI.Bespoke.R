@@ -46,49 +46,6 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintha
 files <- list.files()
 
 # Function to read maximum similarity data
-readdata <- function(filename) {
-  df <- read.csv(filename, sep=",")
-  vec <- df[, 3]           # Read column with maximum similarity values
-  names(vec) <- df[, 1]    # Read column with window sizes
-  return(vec)
-}
-
-# Combine as window sizes and similarity values in a matrix
-set2 <- do.call(rbind, lapply(files, readdata))
-
-
-# Add years as another column
-row.names(set2) <- c("1992-1995","1993-1996","1994-1997","1995-1998","1996-1999",
-                     "1997-2000","1998-2001","1999-2002","2000-2003","2001-2004",
-                     "2002-2005","2003-2006","2004-2007","2005-2008","2006-2009",
-                     "2007-2010","2008-2011","2009-2012","2010-2013","2011-2014",
-                     "2012-2015")
-
-# Convert wide format data frame into long format data frame
-dfSet2 <- melt(set2, id.vars="years", variable.name="windowsize", value.name="percentage")
-
-colnames(dfSet2) <- c("Time.Interval","Window.Size","Percentage","Similarity")
-
-# Create line graphs
-plotSet2 <- ggplot() + geom_line(data=dfSet2, aes(x=Window.Size, y=Max.Similarity, colour=Time.Interval))
-plotSet2 <- plotSet2 + facet_wrap(~ Time.Interval)
-
-
-
-plotSet1 <- plotSet1 + labs(title="Observed vs Actual Map Similarity", 
-                            subtitle="Time Interval: 1992-2015",
-                            x="Window Size", y="% Similarity (x 100)")
-plotSet1 <- plotSet1 + scale_colour_manual(values=c("#b3cce6","#264d73"), name="Similarity", labels = c("Minimum","Maximum"))
-plotSet1 <- plotSet1 + ylim(0,1) + xlim(0.0,11)
-plotSet1 <- plotSet1 + theme_light()
-
-#####################
-
-
-# Read csv files in the directory and store as a list
-files <- list.files()
-
-# Function to read maximum similarity data
 readmax <- function(filename) {
   df <- read.csv(filename, sep=",")
   max <- df[, 3]           # Read column with maximum similarity values
@@ -139,6 +96,13 @@ colnames(dfSet2) <- c("Time.Interval","Window.Size","Percentage","Similarity")
 # Create line graphs
 plotSet2 <- ggplot() + geom_line(data=dfSet2, aes(x=Window.Size, y=Percentage, colour=Similarity))
 plotSet2 <- plotSet2 + facet_wrap(~ Time.Interval)
+
+plotSet2 <- plotSet2 + labs(title="Observed vs Actual Map Similarity", 
+                            subtitle="Moving 3-year time intervals from 1992 to 2015",
+                            x="Window Size", y="% Similarity (x 100)")
+plotSet2 <- plotSet2 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
+plotSet2 <- plotSet2 + theme_light()
+
 
 
 
