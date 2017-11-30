@@ -11,10 +11,10 @@
 # Last Modified:  30 Nov 2017
 
 
-# Load Libraries and Data ---------------
+# Load Libraries ------------------------
 library(ggplot2)
 library(reshape2)
-library(plyr)
+#library(plyr)
 
 
 # Set 01 --------------------------------
@@ -34,7 +34,7 @@ plotSet1 <- plotSet1 + labs(title="Observed vs Actual Map Similarity",
                             x="Window Size", y="% Similarity (x 100)")
 plotSet1 <- plotSet1 + scale_colour_manual(values=c("#b3cce6","#264d73"), name="Similarity", labels = c("Minimum","Maximum"))
 plotSet1 <- plotSet1 + ylim(0,1) + xlim(0.0,11)
-plotSet1 <- plotSet1 + theme_linedraw()
+plotSet1 <- plotSet1 + theme_light()
 
 
 # Set 02 --------------------------------
@@ -43,28 +43,30 @@ plotSet1 <- plotSet1 + theme_linedraw()
 setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintahryi/bespoke/set 02/")
 
 # Read csv files in the directory and store as a list
-filenames <- list.files()
+files <- list.files()
 
 # Function to read data
 readdata <- function(filename) {
-  df <- read.csv(filename, sep="\t")
-  vec <- df[, 3]           # Read column with percentage values
+  df <- read.csv(filename, sep=",")
+  vec <- df[, 2:3]         # Read column with percentage values
   names(vec) <- df[, 1]    # Read column with class codes
   return(vec)
 }
 
 # Combine as class codes and percentage values in a matrix
-temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("3","2","1","4")
+set2 <- do.call(rbind, lapply(files, readdata))
+#colnames(temp) <- c("3","2","1","4")
 
 # Add years as another column
-row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-                     "2000","2001","2002","2003","2004","2005","2006","2007",
-                     "2008","2009","2010","2011","2012","2013","2014","2015")
+row.names(set2) <- c("1992-1995","1993-1996","1994-1997","1995-1998","1996-1999",
+                     "1997-2000","1998-2001","1999-2002","2000-2003","2001-2004",
+                     "2002-2005","2003-2006","2004-2007","2005-2008","2006-2009",
+                     "2007-2010","2008-2011","2009-2012","2010-2013","2011-2014",
+                     "2012-2015")
 
 # Convert wide format data frame into long format data frame
-data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
-colnames(data) <- c("Years","Class","Percentage")
+dataSet2 <- melt(set2, id.vars="years", variable.name="class", value.name="percentage")
+colnames(dataSet2) <- c("Window","Class","Percentage")
 
 
 
