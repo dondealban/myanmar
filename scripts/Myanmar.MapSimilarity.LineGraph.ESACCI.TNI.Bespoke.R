@@ -14,7 +14,6 @@
 # Load Libraries ------------------------
 library(ggplot2)
 library(reshape2)
-#library(plyr)
 
 
 # Set 01 --------------------------------
