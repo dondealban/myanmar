@@ -37,7 +37,7 @@ colnames(dfI) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename c
 # Insert rows for missing intervals (Note: 1992 to 2015 = 24 years)
 tmin = 1
 tmax = 23
-dfINT <- complete(df, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
+dfINT <- complete(dfI, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
 dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[3,4]))
 dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
                  "1996-1997","1997-1998","1998-1999","1999-2000",
@@ -95,9 +95,9 @@ plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fi
 plotCAT <- plotCAT  + facet_wrap(~ Year)
 plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
                            x="Category", y="Category Intensity (% of Category)")
-plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","NON","OTH"))
+plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
 plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
-plotCAT <- plotCAT  + theme_minimal()
+plotCAT <- plotCAT  + theme_light()
 
 
 
@@ -109,3 +109,5 @@ plotCAT <- plotCAT  + geom_hline(yintercept=0, colour="grey90")
 
 # Output boxplots to a PDF file
 ggsave(plotINT, file="IntensityAnalysis-Interval.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category.pdf", width=19.89, height=15, units="cm", dpi=300)
+
