@@ -40,7 +40,7 @@ plotSet1 <- plotSet1 + theme_light()
 # Set 02 --------------------------------
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintahryi/bespoke/set 02/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 02/")
 
 # Read csv files in the directory and store as a list
 files <- list.files()
@@ -48,8 +48,8 @@ files <- list.files()
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep=",")
-  vec <- df[, 2:3]         # Read column with percentage values
-  names(vec) <- df[, 1]    # Read column with class codes
+  vec <- df[, 3]           # Read column with maximum similarity values
+  names(vec) <- df[, 1]    # Read column with window sizes
   return(vec)
 }
 
@@ -65,8 +65,8 @@ row.names(set2) <- c("1992-1995","1993-1996","1994-1997","1995-1998","1996-1999"
                      "2012-2015")
 
 # Convert wide format data frame into long format data frame
-dataSet2 <- melt(set2, id.vars="years", variable.name="class", value.name="percentage")
-colnames(dataSet2) <- c("Window","Class","Percentage")
+dataSet2 <- melt(set2, id.vars="years", variable.name="windowsize", value.name="percentage")
+colnames(dataSet2) <- c("Time.Interval","Window.Size","Max.Similarity")
 
 
 
