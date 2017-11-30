@@ -39,7 +39,7 @@ plotSet1 <- plotSet1 + theme_light()
 # Set 02 --------------------------------
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 02/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 02/similarity/")
 
 # Read csv files in the directory and store as a list
 files <- list.files()
