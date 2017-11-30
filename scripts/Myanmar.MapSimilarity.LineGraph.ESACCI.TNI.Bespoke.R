@@ -2,7 +2,9 @@
 # This script creates line graphs plotting the map similarity results to validate the
 # land use/cover change simulations using Dinamica EGO. The land cover datasets used
 # consists of time-series land cover data, particularly the ESA CCI land cover data 
-# (1992-2015), reclassifed to follow IPCC broad land cover categories. 
+# (1992-2015), covering Tanintharyi, Myanmar. The original land cover classes were
+# reclassified into four bespoke classes: Forest (FOR), Other Vegetation (VEG),
+# Cropland (CRP), and Non-Vegetation (NON).
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   22 Nov 2017
