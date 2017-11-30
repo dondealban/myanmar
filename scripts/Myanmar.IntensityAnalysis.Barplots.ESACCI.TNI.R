@@ -20,7 +20,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 # Load Libraries ------------------------
 #library(dplyr)
 library(ggplot2)
-#library(plyr)
+library(plyr)
 #library(reshape2)
 library(tidyr)
 
@@ -64,6 +64,17 @@ colnames(dfL) <- c("Interval","Cat.Code","Category","Loss.Intensity") # Rename c
 colnames(dfG) <- c("Gain.Intensity","Uni.Intensity") # Rename column names
 dfCAT <- cbind(dfL, dfG)
 
+# Create lookup table
+Interval <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
+Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
+          "1998-1999","1999-2000","2000-2001","2001-2002","2002-2003","2003-2004",
+          "2004-2005","2005-2006","2006-2007","2007-2008","2008-2009","2009-2010",
+          "2010-2011","2011-2012","2012-2013","2013-2014","2014-2015")
+lookup <- as.data.frame(cbind(Interval,Year), stringsAsFactors=FALSE)
+
+# Match time interval with year in new column based on lookup table 
+dfCAT <- join(dfCAT, lookup, by='Interval')
+
 
 # Generate Plots ------------------------
 
@@ -79,8 +90,10 @@ plotINT <- plotINT  + theme_minimal()
 
 # Category Level
 
-plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity,  fill="#8ACD66"), stat="identity")
-plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fill="#B43507"), stat="identity")
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity,  fill="#000000"), stat="identity")
+plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fill="#FFFFFF"), stat="identity")
+plotCAT <- plotCAT  + facet_wrap(~ Year)
+
 plotCAT <- plotCAT  + geom_hline(yintercept=0, colour="grey90")
 
 
