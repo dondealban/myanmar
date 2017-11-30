@@ -11,13 +11,37 @@
 # Last Modified:  30 Nov 2017
 
 
-# Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/bespoke/")
-
 # Load Libraries and Data ---------------
 library(ggplot2)
 library(reshape2)
 library(plyr)
+
+
+# Set 01 --------------------------------
+
+# Set working directory
+setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 01/")
+
+# Read CSV data file
+dataSet1 <- read.csv(file="tni_multiple_windows_similarity_sub_1992_2015.csv", header=TRUE, sep=",")
+colnames(dataSet1) <- c("Window.Size","Min.Sim","Max.Sim") # Rename column names
+dfSet1 <- melt(dataSet1, id.vars="Window.Size", na.rm=TRUE)
+
+# Create line graphs
+plotSet1 <- ggplot() + geom_line(data=dfSet1, aes(x=Window.Size, y=value, colour=variable))
+plotSet1 <- plotSet1 + labs(title="Observed vs Actual Map Similarity", 
+                            subtitle="Time Interval: 1992-2015",
+                            x="Window Size", y="Map Similarity (%)")
+plotSet1 <- plotSet1 + scale_colour_manual(values=variable, name="Similarity", labels = c("Minimum","Maximum"))
+plotSet1 <- plotSet1 + ylim(0,1) + xlim(0,12)
+plotSet1 <- plotSet1 + theme_minimal()
+
+# ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
+
+# Set 02 --------------------------------
+
+# Set working directory
+setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintahryi/bespoke/set 02/")
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
