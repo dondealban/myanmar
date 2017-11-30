@@ -31,12 +31,11 @@ dfSet1 <- melt(dataSet1, id.vars="Window.Size", na.rm=TRUE)
 plotSet1 <- ggplot() + geom_line(data=dfSet1, aes(x=Window.Size, y=value, colour=variable))
 plotSet1 <- plotSet1 + labs(title="Observed vs Actual Map Similarity", 
                             subtitle="Time Interval: 1992-2015",
-                            x="Window Size", y="Map Similarity (%)")
-plotSet1 <- plotSet1 + scale_colour_manual(values=variable, name="Similarity", labels = c("Minimum","Maximum"))
-plotSet1 <- plotSet1 + ylim(0,1) + xlim(0,12)
-plotSet1 <- plotSet1 + theme_minimal()
+                            x="Window Size", y="% Similarity (x 100)")
+plotSet1 <- plotSet1 + scale_colour_manual(values=c("#b3cce6","#264d73"), name="Similarity", labels = c("Minimum","Maximum"))
+plotSet1 <- plotSet1 + ylim(0,1) + xlim(0.0,11)
+plotSet1 <- plotSet1 + theme_linedraw()
 
-# ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 # Set 02 --------------------------------
 
@@ -67,11 +66,9 @@ row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
 colnames(data) <- c("Years","Class","Percentage")
 
-# Create Stacked Area Graphs ------------
 
-bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
-bespoke <- bespoke + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
-bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
 
-ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
+# Save Output Plots ---------------------
+
+ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
 
