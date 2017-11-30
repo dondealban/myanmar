@@ -29,8 +29,8 @@ dfSet1 <- melt(dataSet1, id.vars="Window.Size", na.rm=TRUE)
 
 # Create line graphs
 plotSet1 <- ggplot() + geom_line(data=dfSet1, aes(x=Window.Size, y=value, colour=variable))
-plotSet1 <- plotSet1 + labs(title="Observed vs Actual Map Similarity", 
-                            subtitle="Time Interval: 1992-2015",
+plotSet1 <- plotSet1 + labs(title="Observed vs Simulated Map Similarity", 
+                            subtitle="Single time interval from 1992 to 2015",
                             x="Window Size", y="% Similarity (x 100)")
 plotSet1 <- plotSet1 + scale_colour_manual(values=c("#b3cce6","#264d73"), name="Similarity", labels = c("Minimum","Maximum"))
 plotSet1 <- plotSet1 + ylim(0,1) + xlim(0.0,11)
@@ -97,17 +97,15 @@ colnames(dfSet2) <- c("Time.Interval","Window.Size","Percentage","Similarity")
 plotSet2 <- ggplot() + geom_line(data=dfSet2, aes(x=Window.Size, y=Percentage, colour=Similarity))
 plotSet2 <- plotSet2 + facet_wrap(~ Time.Interval)
 
-plotSet2 <- plotSet2 + labs(title="Observed vs Actual Map Similarity", 
-                            subtitle="Moving 3-year time intervals from 1992 to 2015",
+plotSet2 <- plotSet2 + labs(title="Observed vs Simulated Map Similarity", 
+                            subtitle="Moving 3-year time interval from 1992 to 2015",
                             x="Window Size", y="% Similarity (x 100)")
 plotSet2 <- plotSet2 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
 plotSet2 <- plotSet2 + theme_light()
 
 
-
-
-
 # Save Output Plots ---------------------
 
 ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15, units="cm", dpi=300)
 
