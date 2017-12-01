@@ -85,7 +85,7 @@ plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetyp
 plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1992-2015", x="Time Interval", y="Annual Change (% of Map, x 100)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
-plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1995-1996","1999-2000","2004-2005","2014-2015"))
+plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1996-1997","2000-2001","2004-2005","2009-2010","2014-2015"))
 plotINT <- plotINT  + theme_minimal()
 
 # Category Level
@@ -105,6 +105,6 @@ plotCAT <- plotCAT  + theme_light()
 # Save Output Plots ---------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="IntensityAnalysis-Interval.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(plotCAT, file="IntensityAnalysis-Category.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="IntensityAnalysis-Interval-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
 
