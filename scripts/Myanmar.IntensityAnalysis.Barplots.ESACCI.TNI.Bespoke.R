@@ -7,7 +7,7 @@
 #
 # Intensity analysis was calculated using Dinamica EGO platform using the 24 annual 
 # ESA CCI land cover data layers. The domain of the analysis is the landscape extent
-# within the following coordinates: 97 to 100 deg E longitude; 9 to 16 deg N latitude.
+# within the Tanintharyi Region, Myanmar only.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
