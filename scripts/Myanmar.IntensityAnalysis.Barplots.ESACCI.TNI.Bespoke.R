@@ -20,7 +20,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 # Load Libraries ------------------------
 #library(dplyr)
 library(ggplot2)
-library(plyr)
+#library(plyr)
 #library(reshape2)
 library(tidyr)
 
@@ -34,11 +34,11 @@ dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
 dfI <- subset(dataINT, select=c(1:2,4:5))
 colnames(dfI) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
 
-# Insert rows for missing intervals (Note: 1992 to 2015 = 24 years)
+# Insert rows for missing intervals (Note: 1992 to 2015 = 23 years)
 tmin = 1
 tmax = 23
 dfINT <- complete(dfI, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
-dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[3,4]))
+dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[13,4])) # Change [r,c] values of Uni.Change
 dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
                  "1996-1997","1997-1998","1998-1999","1999-2000",
                  "2000-2001","2001-2002","2002-2003","2003-2004",
@@ -46,7 +46,7 @@ dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996",
                  "2008-2009","2009-2010","2010-2011","2011-2012",
                  "2012-2013","2013-2014","2014-2015")
 dfINT <- as.data.frame(dfINT)
-uINT <- dfINT[[1,4]]
+uINT <- dfINT[[1,4]] # Store uniform intensity value as constant in a variable
 
 
 # CATEGORY Level ------------------------
