@@ -30,15 +30,13 @@ dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
 dfI <- subset(dataINT, select=c(1:2,4:5))
 colnames(dfI) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
 
-# Insert rows for missing intervals (Note: 1992 to 2015 = 23 years)
+# Insert rows for missing intervals (Note: 1992 to 2015 = 11 interval @ every 2 years)
 tmin = 1
-tmax = 23   # Change tmax depending on number of intervals in temporal domain
+tmax = 11   # Change tmax depending on number of intervals in temporal domain
 dfINT <- complete(dfI, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
-dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[13,4])) # Change [r,c] values of Uni.Change
-dfINT$Years <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
-                 "1998-1999","1999-2000","2000-2001","2001-2002","2002-2003","2003-2004",
-                 "2004-2005","2005-2006","2006-2007","2007-2008","2008-2009","2009-2010",
-                 "2010-2011","2011-2012","2012-2013","2013-2014","2014-2015")
+dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[1,4])) # Change [r,c] values of Uni.Change
+dfINT$Years <- c("1993-1995","1995-1997","1997-1999","1999-2001","2001-2003","2003-2005",
+                 "2005-2007","2007-2009","2009-2011","2011-2013","2013-2015")
 dfINT <- as.data.frame(dfINT)
 uINT <- dfINT[[1,4]] # Store uniform intensity value as constant in a variable
 
@@ -57,11 +55,9 @@ colnames(dfG) <- c("Gain.Intensity","Uni.Intensity") # Rename column names
 dfCAT <- cbind(dfL, dfG)
 
 # Create lookup table
-Interval <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
-Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
-          "1998-1999","1999-2000","2000-2001","2001-2002","2002-2003","2003-2004",
-          "2004-2005","2005-2006","2006-2007","2007-2008","2008-2009","2009-2010",
-          "2010-2011","2011-2012","2012-2013","2013-2014","2014-2015")
+Interval <- c(1,2,3,4,5,6,7,8,9,10,11)
+Year <- c("1993-1995","1995-1997","1997-1999","1999-2001","2001-2003","2003-2005",
+          "2005-2007","2007-2009","2009-2011","2011-2013","2013-2015")
 lookup <- as.data.frame(cbind(Interval,Year), stringsAsFactors=FALSE)
 
 # Match time interval with year in new column based on lookup table 
@@ -74,10 +70,10 @@ dfCAT <- join(dfCAT, lookup, by='Interval')
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Years, y=Ann.Change, fill="#c6c3bf"),  stat="identity")
 plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
 plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetype="dashed") # uniform line
-plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1992-2015", x="Time Interval", y="Annual Change (% of Map, x 100)")
+plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1993-2015", x="Time Interval", y="Annual Change (% of Map, x 100)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
-plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1996-1997","2000-2001","2004-2005","2009-2010","2014-2015"))
+plotINT <- plotINT  + scale_x_discrete(breaks=c("1993-1995","1999-2001","2003-2005","2013-2015"))
 plotINT <- plotINT  + theme_minimal()
 
 # Category Level
@@ -86,7 +82,7 @@ plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fi
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=Uni.Intensity, colour="#009404"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=-Uni.Intensity, colour="#ff0000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ Year)
-plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
+plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1993-2015", 
                            x="Category", y="Category Intensity (% of Category, x 100)")
 plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
 plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
@@ -97,5 +93,5 @@ plotCAT <- plotCAT  + theme_light()
 # Save Output Plots ---------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="IntensityAnalysis-Interval-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(plotCAT, file="IntensityAnalysis-Category-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="IntensityAnalysis-Interval-Set02.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category-Set02.pdf", width=19.89, height=15, units="cm", dpi=300)
