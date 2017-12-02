@@ -35,8 +35,10 @@ tmin = 1
 tmax = 11   # Change tmax depending on number of intervals in temporal domain
 dfINT <- complete(dfI, nesting(Int.Length), Interval=seq(min(tmin), max(tmax), 1L))
 dfINT <- replace_na(dfINT, list(Ann.Change=0, Uni.Change=dfINT[1,4])) # Change [r,c] values of Uni.Change
-dfINT$Years <- c("1993-1995","1995-1997","1997-1999","1999-2001","2001-2003","2003-2005",
-                 "2005-2007","2007-2009","2009-2011","2011-2013","2013-2015")
+dfINT$Years <- c("1993-1995","1995-1997","1997-1999",
+                 "1999-2001","2001-2003","2003-2005",
+                 "2005-2007","2007-2009","2009-2011",
+                 "2011-2013","2013-2015") # Note: need to change years depending on time intervals
 dfINT <- as.data.frame(dfINT)
 uINT <- dfINT[[1,4]] # Store uniform intensity value as constant in a variable
 
