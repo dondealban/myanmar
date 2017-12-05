@@ -186,7 +186,7 @@ w11yi4$Interval <- rep("4-year", nrow(w11yi4))
 dfSetComb <- rbind(w11yi3, w11yi4)
 
 # Create combined line graphs
-plotSetComb <- ggplot() + geom_rect(data=dfSetComb, aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), fill="#f2f2f2", alpha=0.4)
+plotSetComb <- ggplot() + geom_rect(data=dfSetComb, aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.1, fill="#e6e6e6")
 plotSetComb <- plotSetComb + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
@@ -199,4 +199,6 @@ plotSetComb <- plotSetComb + theme_light()
 ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
+
+ggsave(plotSetComb, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 
