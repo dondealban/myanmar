@@ -14,6 +14,7 @@
 # Load Libraries ------------------------
 library(ggplot2)
 library(reshape2)
+library(stringr)
 
 
 # Set 01 --------------------------------
@@ -171,11 +172,10 @@ plotSet3 <- plotSet3 + theme_light()
 # Select maximum similarity data values from 11x11 window size in all sets
 
 w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max")
+w11yi3$End.Year <- word(w11yi3$Time.Interval, 2, sep=fixed("-"))
 
 
 
-polillo_cm <- subset(data, Species=="Cinnamomum mercadoi" & Source=="Clements, 2001", 
-                     select=c(2,10:11))
 
 # Save Output Plots ---------------------
 ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
