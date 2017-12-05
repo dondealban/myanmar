@@ -187,10 +187,12 @@ dfSetComb <- rbind(w11yi3, w11yi4)
 
 # Create combined line graphs
 plotSetComb <- ggplot() + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
+plotSetComb <- plotSetComb + geom_vline(aes(xintercept=1997, colour="#000000"), linetype="dashed")
+plotSetComb <- plotSetComb + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of various time intervals from 1992 to 2015",
                                   x="Ending Year of Interval", y="% Similarity (x 100)")
-plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
 plotSetComb <- plotSetComb + theme_light()
 
 
