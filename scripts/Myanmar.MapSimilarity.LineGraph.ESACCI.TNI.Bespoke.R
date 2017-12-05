@@ -174,22 +174,22 @@ plotSet3 <- plotSet3 + theme_light()
 w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
 w11yi4 <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
 
-# Add End Year" column
-w11yi3$End.Year <- word(w11yi3$Time.Interval, 2, sep=fixed("-"))
-w11yi4$End.Year <- word(w11yi4$Time.Interval, 2, sep=fixed("-"))
+# Add "End Year" column
+w11yi3$End.Year <- as.numeric(word(w11yi3$Time.Interval, 2, sep=fixed("-")))
+w11yi4$End.Year <- as.numeric(word(w11yi4$Time.Interval, 2, sep=fixed("-")))
 
 # Add "Interval" column
-w11yi3$Interval <- rep("3-year", nrow(w11yi3)) # create new column with "3-year" value
-w11yi4$Interval <- rep("4-year", nrow(w11yi4)) # create new column with "4-year" value
+w11yi3$Interval <- rep("3-year", nrow(w11yi3)) 
+w11yi4$Interval <- rep("4-year", nrow(w11yi4)) 
 
 # Combine data frames
 dfSetComb <- rbind(w11yi3, w11yi4)
 
 # Create combined line graphs
-plotSetComb <- ggplot() + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, color="Interval"))
+plotSetComb <- ggplot() + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of various time intervals from 1992 to 2015",
-                                  x="End Year", y="% Similarity (x 100)")
+                                  x="Ending Year of Interval", y="% Similarity (x 100)")
 plotSetComb <- plotSetComb + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Intervals", labels = c("3-year","4-year"))
 plotSetComb <- plotSetComb + theme_light()
 
