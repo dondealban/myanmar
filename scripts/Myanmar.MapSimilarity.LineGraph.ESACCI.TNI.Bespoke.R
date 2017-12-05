@@ -8,7 +8,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   22 Nov 2017
-# Last Modified:  30 Nov 2017
+# Last Modified:  05 Dec 2017
 
 
 # Load Libraries ------------------------
@@ -166,8 +166,18 @@ plotSet3 <- plotSet3 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="
 plotSet3 <- plotSet3 + theme_light()
 
 
-# Save Output Plots ---------------------
+# Combined Line Graph -------------------
 
+# Select maximum similarity data values from 11x11 window size in all sets
+
+w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max")
+
+
+
+polillo_cm <- subset(data, Species=="Cinnamomum mercadoi" & Source=="Clements, 2001", 
+                     select=c(2,10:11))
+
+# Save Output Plots ---------------------
 ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
