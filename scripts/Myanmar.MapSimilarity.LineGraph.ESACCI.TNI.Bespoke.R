@@ -95,7 +95,6 @@ colnames(dfSet2) <- c("Time.Interval","Window.Size","Percentage","Similarity")
 # Create line graphs
 plotSet2 <- ggplot() + geom_line(data=dfSet2, aes(x=Window.Size, y=Percentage, colour=Similarity))
 plotSet2 <- plotSet2 + facet_wrap(~ Time.Interval)
-
 plotSet2 <- plotSet2 + labs(title="Observed vs Simulated Map Similarity", 
                             subtitle="Moving 3-year time interval from 1992 to 2015",
                             x="Window Size", y="% Similarity (x 100)")
@@ -158,7 +157,7 @@ dfSet3 <- rbind(mxSet3, mnSet3)
 colnames(dfSet3) <- c("Time.Interval","Window.Size","Percentage","Similarity")
 
 # Create line graphs
-plotSet3 <- ggplot() + geom_line(data=dfSet2, aes(x=Window.Size, y=Percentage, colour=Similarity))
+plotSet3 <- ggplot() + geom_line(data=dfSet3, aes(x=Window.Size, y=Percentage, colour=Similarity))
 plotSet3 <- plotSet3 + facet_wrap(~ Time.Interval)
 plotSet3 <- plotSet3 + labs(title="Observed vs Simulated Map Similarity", 
                             subtitle="Moving 4-year time interval from 1992 to 2015",
