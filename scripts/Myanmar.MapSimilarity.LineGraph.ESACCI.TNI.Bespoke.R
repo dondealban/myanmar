@@ -190,7 +190,7 @@ plotSetComb <- ggplot() + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of various time intervals from 1992 to 2015",
                                   x="Ending Year of Interval", y="% Similarity (x 100)")
-plotSetComb <- plotSetComb + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Intervals", labels = c("3-year","4-year"))
+plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
 plotSetComb <- plotSetComb + theme_light()
 
 
