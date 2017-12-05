@@ -189,7 +189,9 @@ dfSetComb[dfSetComb==1] <- NA
 # Create combined line graphs
 plotSetComb <- ggplot() + geom_rect(data=dfSetComb, aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.1, fill="#e6e6e6")
 plotSetComb <- plotSetComb + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetComb <- plotSetComb + geom_point(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
+plotSetComb <- plotSetComb + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of various time intervals from 1992 to 2015",
                                   x="Ending Year of Interval", y="% Similarity (x 100)")
