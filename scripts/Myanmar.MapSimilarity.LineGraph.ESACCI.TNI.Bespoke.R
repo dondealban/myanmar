@@ -171,8 +171,11 @@ plotSet3 <- plotSet3 + theme_light()
 
 # Select maximum similarity data values from 11x11 window size in all sets
 
-w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max")
+w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
+w11yi4 <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
+
 w11yi3$End.Year <- word(w11yi3$Time.Interval, 2, sep=fixed("-"))
+w11yi4$End.Year <- word(w11yi4$Time.Interval, 2, sep=fixed("-"))
 
 
 
