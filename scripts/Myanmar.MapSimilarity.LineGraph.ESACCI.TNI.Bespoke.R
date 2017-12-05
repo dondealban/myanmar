@@ -184,6 +184,7 @@ w11yi4$Interval <- rep("4-year", nrow(w11yi4))
 
 # Combine data frames
 dfSetComb <- rbind(w11yi3, w11yi4)
+dfSetComb[dfSetComb==1] <- NA
 
 # Create combined line graphs
 plotSetComb <- ggplot() + geom_rect(data=dfSetComb, aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.1, fill="#e6e6e6")
