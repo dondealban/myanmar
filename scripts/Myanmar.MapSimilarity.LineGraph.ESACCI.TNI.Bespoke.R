@@ -187,7 +187,7 @@ dfSetComb <- rbind(w11yi3, w11yi4)
 dfSetComb[dfSetComb==1] <- NA
 
 # Create combined line graphs
-plotSetComb <- ggplot() + geom_rect(data=dfSetComb, aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.1, fill="#e6e6e6")
+plotSetComb <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
 plotSetComb <- plotSetComb + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + geom_point(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
