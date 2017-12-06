@@ -193,8 +193,8 @@ plotSetComb <- plotSetComb + geom_point(data=dfSetComb, aes(x=End.Year, y=Percen
 plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year"))
 plotSetComb <- plotSetComb + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
-                                  subtitle="Comparison of various time intervals from 1992 to 2015",
-                                  x="Ending Year of Interval", y="% Similarity (x 100)")
+                                  subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
+                                  x="Ending Year of Time Interval", y="% Similarity (x 100)")
 plotSetComb <- plotSetComb + theme_light()
 
 
