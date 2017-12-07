@@ -18,7 +18,7 @@ library(stringr)
 
 
 # Set 01 --------------------------------
-
+# Full 24-year time interval
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 01/")
 
@@ -38,7 +38,7 @@ plotSet1 <- plotSet1 + theme_light()
 
 
 # Set 02 --------------------------------
-
+# 3-year time interval
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 02/similarity/")
 
@@ -104,7 +104,7 @@ plotSet2 <- plotSet2 + theme_light()
 
 
 # Set 03 --------------------------------
-
+# 4-year time interval
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 03/similarity/")
 
@@ -168,7 +168,7 @@ plotSet3 <- plotSet3 + theme_light()
 
 
 # Set 04 --------------------------------
-
+# 5-year time interval 
 # Set working directory
 setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 04/similarity/")
 
