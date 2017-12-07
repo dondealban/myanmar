@@ -231,24 +231,26 @@ plotSet4 <- plotSet4 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="
 plotSet4 <- plotSet4 + theme_light()
 
 
-
 # Combined Line Graph -------------------
 
 # Select maximum similarity data values from 11x11 window size in all sets
 
 w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
 w11yi4 <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
+w11yi5 <- subset(dfSet4, Window.Size==11 & Similarity=="Max") # 11x11 5-year interval
 
 # Add "End Year" column
 w11yi3$End.Year <- as.numeric(word(w11yi3$Time.Interval, 2, sep=fixed("-")))
 w11yi4$End.Year <- as.numeric(word(w11yi4$Time.Interval, 2, sep=fixed("-")))
+w11yi5$End.Year <- as.numeric(word(w11yi5$Time.Interval, 2, sep=fixed("-")))
 
 # Add "Interval" column
 w11yi3$Interval <- rep("3-year", nrow(w11yi3)) 
-w11yi4$Interval <- rep("4-year", nrow(w11yi4)) 
+w11yi4$Interval <- rep("4-year", nrow(w11yi4))
+w11yi5$Interval <- rep("5-year", nrow(w11yi5)) 
 
 # Combine data frames
-dfSetComb <- rbind(w11yi3, w11yi4)
+dfSetComb <- rbind(w11yi3, w11yi4, w11yi5)
 dfSetComb[dfSetComb==1] <- NA
 
 # Create combined line graphs
@@ -267,6 +269,7 @@ plotSetComb <- plotSetComb + theme_light()
 ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSet4, file="MapSimilarity-LineGraph-Set4.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 ggsave(plotSetComb, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 
