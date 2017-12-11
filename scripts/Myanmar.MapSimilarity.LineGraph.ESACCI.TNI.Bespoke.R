@@ -231,6 +231,72 @@ plotSet4 <- plotSet4 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="
 plotSet4 <- plotSet4 + theme_light()
 
 
+# Set 05 --------------------------------
+# 2-year time interval 
+# Set working directory
+setwd("/Users/dondealban/Dropbox/Research/myanmar/simulation/validation/tanintharyi/bespoke/set 05/similarity/")
+
+# Read csv files in the directory and store as a list
+files <- list.files()
+
+# Function to read maximum similarity data
+readmax <- function(filename) {
+  df <- read.csv(filename, sep=",")
+  max <- df[, 3]           # Read column with maximum similarity values
+  names(max) <- df[, 1]    # Read column with window sizes
+  return(max)
+}
+
+# Combine as window sizes and similarity values in a matrix
+maxSet5 <- do.call(rbind, lapply(files, readmax))
+
+# Add years as another column
+row.names(maxSet5) <- c("1992-1994","1993-1995","1994-1996","1995-1997","1996-1998",
+                        "1997-1999","1998-2000","1999-2001","2000-2002","2001-2003",
+                        "2002-2004","2003-2005","2004-2006","2005-2007","2006-2008",
+                        "2007-2009","2008-2010","2009-2011","2010-2012","2011-2013",
+                        "2012-2014","2013-2015")
+
+# Function to read minimum similarity data
+readmin <- function(filename) {
+  df <- read.csv(filename, sep=",")
+  min <- df[, 2]           # Read column with minimum similarity values
+  names(min) <- df[, 1]    # Read column with window sizes
+  return(min)
+}
+
+# Combine as window sizes and similarity values in a matrix
+minSet5 <- do.call(rbind, lapply(files, readmin))
+
+# Add years as another column
+row.names(minSet5) <- c("1992-1994","1993-1995","1994-1996","1995-1997","1996-1998",
+                        "1997-1999","1998-2000","1999-2001","2000-2002","2001-2003",
+                        "2002-2004","2003-2005","2004-2006","2005-2007","2006-2008",
+                        "2007-2009","2008-2010","2009-2011","2010-2012","2011-2013",
+                        "2012-2014","2013-2015")
+
+# Convert wide format data frame into long format data frame
+mxSet5 <- melt(maxSet5, id.vars="years", variable.name="windowsize", value.name="percentage")
+mnSet5 <- melt(minSet5, id.vars="years", variable.name="windowsize", value.name="percentage")
+
+# Add column to categorise maximum and minimum similarities
+mxSet5$Similarity <- rep("Max", nrow(mxSet5)) # create new column with value of "Max"
+mnSet5$Similarity <- rep("Min", nrow(mnSet5)) # create new column with value of "Min"
+
+# Combine two data frames
+dfSet5 <- rbind(mxSet5, mnSet5)
+colnames(dfSet5) <- c("Time.Interval","Window.Size","Percentage","Similarity")
+
+# Create line graphs
+plotSet4 <- ggplot() + geom_line(data=dfSet4, aes(x=Window.Size, y=Percentage, colour=Similarity))
+plotSet4 <- plotSet4 + facet_wrap(~ Time.Interval)
+plotSet4 <- plotSet4 + labs(title="Observed vs Simulated Map Similarity", 
+                            subtitle="Moving 5-year time interval from 1992 to 2015",
+                            x="Window Size", y="% Similarity (x 100)")
+plotSet4 <- plotSet4 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
+plotSet4 <- plotSet4 + theme_light()
+
+
 # Combined Line Graph -------------------
 
 # Select maximum similarity data values from 11x11 window size in all sets
