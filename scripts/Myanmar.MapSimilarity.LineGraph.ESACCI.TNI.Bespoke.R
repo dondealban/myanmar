@@ -301,29 +301,32 @@ plotSet5 <- plotSet5 + theme_light()
 
 # Select maximum similarity data values from 11x11 window size in all sets
 
+w11yi2 <- subset(dfSet5, Window.Size==11 & Similarity=="Max") # 11x11 2-year interval
 w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
 w11yi4 <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
 w11yi5 <- subset(dfSet4, Window.Size==11 & Similarity=="Max") # 11x11 5-year interval
 
 # Add "End Year" column
+w11yi2$End.Year <- as.numeric(word(w11yi2$Time.Interval, 2, sep=fixed("-")))
 w11yi3$End.Year <- as.numeric(word(w11yi3$Time.Interval, 2, sep=fixed("-")))
 w11yi4$End.Year <- as.numeric(word(w11yi4$Time.Interval, 2, sep=fixed("-")))
 w11yi5$End.Year <- as.numeric(word(w11yi5$Time.Interval, 2, sep=fixed("-")))
 
 # Add "Interval" column
+w11yi2$Interval <- rep("2-year", nrow(w11yi2)) 
 w11yi3$Interval <- rep("3-year", nrow(w11yi3)) 
 w11yi4$Interval <- rep("4-year", nrow(w11yi4))
 w11yi5$Interval <- rep("5-year", nrow(w11yi5)) 
 
 # Combine data frames
-dfSetComb <- rbind(w11yi3, w11yi4, w11yi5)
+dfSetComb <- rbind(w11yi2, w11yi3, w11yi4, w11yi5)
 dfSetComb[dfSetComb==1] <- NA
 
 # Create combined line graphs
 plotSetComb <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
 plotSetComb <- plotSetComb + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetComb <- plotSetComb + geom_point(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
-plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("3-year","4-year","5-year"))
+plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Intervals", labels = c("2-year","3-year","4-year","5-year"))
 plotSetComb <- plotSetComb + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
 plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
