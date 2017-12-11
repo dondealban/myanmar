@@ -300,39 +300,69 @@ plotSet5 <- plotSet5 + theme_light()
 # Combined Line Graph -------------------
 
 # Select maximum similarity data values from 11x11 window size in all sets
-
-w11yi2 <- subset(dfSet5, Window.Size==11 & Similarity=="Max") # 11x11 2-year interval
-w11yi3 <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
-w11yi4 <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
-w11yi5 <- subset(dfSet4, Window.Size==11 & Similarity=="Max") # 11x11 5-year interval
+# Maximum
+w11yi2max <- subset(dfSet5, Window.Size==11 & Similarity=="Max") # 11x11 2-year interval
+w11yi3max <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
+w11yi4max <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
+w11yi5max <- subset(dfSet4, Window.Size==11 & Similarity=="Max") # 11x11 5-year interval
+# Minimum
+w11yi2min <- subset(dfSet5, Window.Size==11 & Similarity=="Min") # 11x11 2-year interval
+w11yi3min <- subset(dfSet2, Window.Size==11 & Similarity=="Min") # 11x11 3-year interval
+w11yi4min <- subset(dfSet3, Window.Size==11 & Similarity=="Min") # 11x11 4-year interval
+w11yi5min <- subset(dfSet4, Window.Size==11 & Similarity=="Min") # 11x11 5-year interval
 
 # Add "End Year" column
-w11yi2$End.Year <- as.numeric(word(w11yi2$Time.Interval, 2, sep=fixed("-")))
-w11yi3$End.Year <- as.numeric(word(w11yi3$Time.Interval, 2, sep=fixed("-")))
-w11yi4$End.Year <- as.numeric(word(w11yi4$Time.Interval, 2, sep=fixed("-")))
-w11yi5$End.Year <- as.numeric(word(w11yi5$Time.Interval, 2, sep=fixed("-")))
+# Maximum
+w11yi2max$End.Year <- as.numeric(word(w11yi2max$Time.Interval, 2, sep=fixed("-")))
+w11yi3max$End.Year <- as.numeric(word(w11yi3max$Time.Interval, 2, sep=fixed("-")))
+w11yi4max$End.Year <- as.numeric(word(w11yi4max$Time.Interval, 2, sep=fixed("-")))
+w11yi5max$End.Year <- as.numeric(word(w11yi5max$Time.Interval, 2, sep=fixed("-")))
+# Minimum
+w11yi2min$End.Year <- as.numeric(word(w11yi2min$Time.Interval, 2, sep=fixed("-")))
+w11yi3min$End.Year <- as.numeric(word(w11yi3min$Time.Interval, 2, sep=fixed("-")))
+w11yi4min$End.Year <- as.numeric(word(w11yi4min$Time.Interval, 2, sep=fixed("-")))
+w11yi5min$End.Year <- as.numeric(word(w11yi5min$Time.Interval, 2, sep=fixed("-")))
 
 # Add "Interval" column
-w11yi2$Interval <- rep("2-year", nrow(w11yi2)) 
-w11yi3$Interval <- rep("3-year", nrow(w11yi3)) 
-w11yi4$Interval <- rep("4-year", nrow(w11yi4))
-w11yi5$Interval <- rep("5-year", nrow(w11yi5)) 
+# Maximum
+w11yi2max$Interval <- rep("2-year", nrow(w11yi2max)) 
+w11yi3max$Interval <- rep("3-year", nrow(w11yi3max)) 
+w11yi4max$Interval <- rep("4-year", nrow(w11yi4max))
+w11yi5max$Interval <- rep("5-year", nrow(w11yi5max))
+# Minimum
+w11yi2min$Interval <- rep("2-year", nrow(w11yi2min)) 
+w11yi3min$Interval <- rep("3-year", nrow(w11yi3min)) 
+w11yi4min$Interval <- rep("4-year", nrow(w11yi4min))
+w11yi5min$Interval <- rep("5-year", nrow(w11yi5min))
 
 # Combine data frames
-dfSetComb <- rbind(w11yi2, w11yi3, w11yi4, w11yi5)
-dfSetComb[dfSetComb==1] <- NA
+dfSetCombMax <- rbind(w11yi2max, w11yi3max, w11yi4max, w11yi5max) # Maximum
+dfSetCombMax[dfSetCombMax==1] <- NA
+dfSetCombMin <- rbind(w11yi2min, w11yi3min, w11yi4min, w11yi5min) # Minimum
+dfSetCombMin[dfSetCombMin==1] <- NA
 
 # Create combined line graphs
-plotSetComb <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
-plotSetComb <- plotSetComb + geom_line(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
-plotSetComb <- plotSetComb + geom_point(data=dfSetComb, aes(x=End.Year, y=Percentage, colour=Interval))
-plotSetComb <- plotSetComb + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("2-year","3-year","4-year","5-year"))
-plotSetComb <- plotSetComb + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
-plotSetComb <- plotSetComb + labs(title="Observed vs Simulated Maximum Map Similarities", 
+# Maximum
+plotSetCombMax <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
+plotSetCombMax <- plotSetCombMax + geom_line(data=dfSetCombMax, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetCombMax <- plotSetCombMax + geom_point(data=dfSetCombMax, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetCombMax <- plotSetCombMax + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("2-year","3-year","4-year","5-year"))
+plotSetCombMax <- plotSetCombMax + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
+plotSetCombMax <- plotSetCombMax + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
                                   x="Ending Year of Time Interval", y="% Similarity (x 100)")
-plotSetComb <- plotSetComb + ylim(0.3,1.0)
-plotSetComb <- plotSetComb + theme_light()
+plotSetCombMax <- plotSetCombMax + ylim(0.3,1.0)
+plotSetCombMax <- plotSetCombMax + theme_light()
+# Minimum
+plotSetCombMin <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
+plotSetCombMin <- plotSetCombMin + geom_line(data=dfSetCombMin, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetCombMin <- plotSetCombMin + geom_point(data=dfSetCombMin, aes(x=End.Year, y=Percentage, colour=Interval))
+plotSetCombMin <- plotSetCombMin + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("2-year","3-year","4-year","5-year"))
+plotSetCombMin <- plotSetCombMin + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
+plotSetCombMin <- plotSetCombMin + labs(title="Observed vs Simulated Minimum Map Similarities", 
+                                        subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
+                                        x="Ending Year of Time Interval", y="% Similarity (x 100)")
+plotSetCombMin <- plotSetCombMin + theme_light()
 
 
 # Save Output Plots ---------------------
@@ -341,6 +371,6 @@ ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet4, file="MapSimilarity-LineGraph-Set4.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet5, file="MapSimilarity-LineGraph-Set5.pdf", width=19.89, height=15, units="cm", dpi=300)
-
-ggsave(plotSetComb, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSetCombMax, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSetCombMin, file="MapSimilarity-LineGraph-Min-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 
