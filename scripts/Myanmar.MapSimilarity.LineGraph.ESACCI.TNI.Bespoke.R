@@ -288,13 +288,13 @@ dfSet5 <- rbind(mxSet5, mnSet5)
 colnames(dfSet5) <- c("Time.Interval","Window.Size","Percentage","Similarity")
 
 # Create line graphs
-plotSet4 <- ggplot() + geom_line(data=dfSet4, aes(x=Window.Size, y=Percentage, colour=Similarity))
-plotSet4 <- plotSet4 + facet_wrap(~ Time.Interval)
-plotSet4 <- plotSet4 + labs(title="Observed vs Simulated Map Similarity", 
-                            subtitle="Moving 5-year time interval from 1992 to 2015",
+plotSet5 <- ggplot() + geom_line(data=dfSet5, aes(x=Window.Size, y=Percentage, colour=Similarity))
+plotSet5 <- plotSet5 + facet_wrap(~ Time.Interval)
+plotSet5 <- plotSet5 + labs(title="Observed vs Simulated Map Similarity", 
+                            subtitle="Moving 2-year time interval from 1992 to 2015",
                             x="Window Size", y="% Similarity (x 100)")
-plotSet4 <- plotSet4 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
-plotSet4 <- plotSet4 + theme_light()
+plotSet5 <- plotSet5 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
+plotSet5 <- plotSet5 + theme_light()
 
 
 # Combined Line Graph -------------------
@@ -336,6 +336,7 @@ ggsave(plotSet1, file="MapSimilarity-LineGraph-Set1.pdf", width=19.89, height=15
 ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet4, file="MapSimilarity-LineGraph-Set4.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSet5, file="MapSimilarity-LineGraph-Set5.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 ggsave(plotSetComb, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 
