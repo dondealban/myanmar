@@ -411,7 +411,7 @@ w11yi5min$Interval <- rep("5-year", nrow(w11yi5min))
 dfSetCombMax <- rbind(w11yi1max, w11yi2max, w11yi3max, w11yi4max, w11yi5max) # Maximum
 dfSetCombMax[dfSetCombMax==1] <- NA
 dfSetCombMin <- rbind(w11yi1min, w11yi2min, w11yi3min, w11yi4min, w11yi5min) # Minimum
-dfSetCombMin[dfSetCombMin==0] <- NA
+dfSetCombMin[dfSetCombMin==0 | dfSetCombMin==1] <- NA
 
 # Create combined line graphs
 # Maximum
