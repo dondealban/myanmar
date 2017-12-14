@@ -437,6 +437,7 @@ ggsave(plotSet2, file="MapSimilarity-LineGraph-Set2.pdf", width=19.89, height=15
 ggsave(plotSet3, file="MapSimilarity-LineGraph-Set3.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet4, file="MapSimilarity-LineGraph-Set4.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSet5, file="MapSimilarity-LineGraph-Set5.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotSet6, file="MapSimilarity-LineGraph-Set6.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSetCombMax, file="MapSimilarity-LineGraph-Max-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotSetCombMin, file="MapSimilarity-LineGraph-Min-Combined.pdf", width=19.89, height=15, units="cm", dpi=300)
 
