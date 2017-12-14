@@ -423,7 +423,7 @@ plotSetCombMax <- plotSetCombMax + scale_fill_manual(values=c("#e6e6e6"), name="
 plotSetCombMax <- plotSetCombMax + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
                                   x="Ending Year of Time Interval", y="% Similarity (x 100)")
-plotSetCombMax <- plotSetCombMax + ylim(0.3,1.0)
+plotSetCombMax <- plotSetCombMax + ylim(0.2,1.0)
 plotSetCombMax <- plotSetCombMax + theme_light()
 # Minimum
 plotSetCombMin <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
