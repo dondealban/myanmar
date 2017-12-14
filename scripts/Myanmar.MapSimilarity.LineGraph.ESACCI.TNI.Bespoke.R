@@ -367,11 +367,13 @@ plotSet6 <- plotSet6 + theme_light()
 
 # Select maximum similarity data values from 11x11 window size in all sets
 # Maximum
+w11yi1max <- subset(dfSet6, Window.Size==11 & Similarity=="Max") # 11x11 1-year interval
 w11yi2max <- subset(dfSet5, Window.Size==11 & Similarity=="Max") # 11x11 2-year interval
 w11yi3max <- subset(dfSet2, Window.Size==11 & Similarity=="Max") # 11x11 3-year interval
 w11yi4max <- subset(dfSet3, Window.Size==11 & Similarity=="Max") # 11x11 4-year interval
 w11yi5max <- subset(dfSet4, Window.Size==11 & Similarity=="Max") # 11x11 5-year interval
 # Minimum
+w11yi1min <- subset(dfSet6, Window.Size==11 & Similarity=="Min") # 11x11 1-year interval
 w11yi2min <- subset(dfSet5, Window.Size==11 & Similarity=="Min") # 11x11 2-year interval
 w11yi3min <- subset(dfSet2, Window.Size==11 & Similarity=="Min") # 11x11 3-year interval
 w11yi4min <- subset(dfSet3, Window.Size==11 & Similarity=="Min") # 11x11 4-year interval
@@ -379,11 +381,13 @@ w11yi5min <- subset(dfSet4, Window.Size==11 & Similarity=="Min") # 11x11 5-year 
 
 # Add "End Year" column
 # Maximum
+w11yi1max$End.Year <- as.numeric(word(w11yi1max$Time.Interval, 2, sep=fixed("-")))
 w11yi2max$End.Year <- as.numeric(word(w11yi2max$Time.Interval, 2, sep=fixed("-")))
 w11yi3max$End.Year <- as.numeric(word(w11yi3max$Time.Interval, 2, sep=fixed("-")))
 w11yi4max$End.Year <- as.numeric(word(w11yi4max$Time.Interval, 2, sep=fixed("-")))
 w11yi5max$End.Year <- as.numeric(word(w11yi5max$Time.Interval, 2, sep=fixed("-")))
 # Minimum
+w11yi1min$End.Year <- as.numeric(word(w11yi1min$Time.Interval, 2, sep=fixed("-")))
 w11yi2min$End.Year <- as.numeric(word(w11yi2min$Time.Interval, 2, sep=fixed("-")))
 w11yi3min$End.Year <- as.numeric(word(w11yi3min$Time.Interval, 2, sep=fixed("-")))
 w11yi4min$End.Year <- as.numeric(word(w11yi4min$Time.Interval, 2, sep=fixed("-")))
@@ -391,20 +395,22 @@ w11yi5min$End.Year <- as.numeric(word(w11yi5min$Time.Interval, 2, sep=fixed("-")
 
 # Add "Interval" column
 # Maximum
+w11yi1max$Interval <- rep("1-year", nrow(w11yi1max)) 
 w11yi2max$Interval <- rep("2-year", nrow(w11yi2max)) 
 w11yi3max$Interval <- rep("3-year", nrow(w11yi3max)) 
 w11yi4max$Interval <- rep("4-year", nrow(w11yi4max))
 w11yi5max$Interval <- rep("5-year", nrow(w11yi5max))
 # Minimum
+w11yi1min$Interval <- rep("1-year", nrow(w11yi1min)) 
 w11yi2min$Interval <- rep("2-year", nrow(w11yi2min)) 
 w11yi3min$Interval <- rep("3-year", nrow(w11yi3min)) 
 w11yi4min$Interval <- rep("4-year", nrow(w11yi4min))
 w11yi5min$Interval <- rep("5-year", nrow(w11yi5min))
 
 # Combine data frames
-dfSetCombMax <- rbind(w11yi2max, w11yi3max, w11yi4max, w11yi5max) # Maximum
+dfSetCombMax <- rbind(w11yi1max, w11yi2max, w11yi3max, w11yi4max, w11yi5max) # Maximum
 dfSetCombMax[dfSetCombMax==1] <- NA
-dfSetCombMin <- rbind(w11yi2min, w11yi3min, w11yi4min, w11yi5min) # Minimum
+dfSetCombMin <- rbind(w11yi1min, w11yi2min, w11yi3min, w11yi4min, w11yi5min) # Minimum
 dfSetCombMin[dfSetCombMin==0] <- NA
 
 # Create combined line graphs
@@ -412,7 +418,7 @@ dfSetCombMin[dfSetCombMin==0] <- NA
 plotSetCombMax <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
 plotSetCombMax <- plotSetCombMax + geom_line(data=dfSetCombMax, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetCombMax <- plotSetCombMax + geom_point(data=dfSetCombMax, aes(x=End.Year, y=Percentage, colour=Interval))
-plotSetCombMax <- plotSetCombMax + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("2-year","3-year","4-year","5-year"))
+plotSetCombMax <- plotSetCombMax + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("1-year","2-year","3-year","4-year","5-year"))
 plotSetCombMax <- plotSetCombMax + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
 plotSetCombMax <- plotSetCombMax + labs(title="Observed vs Simulated Maximum Map Similarities", 
                                   subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
@@ -423,7 +429,7 @@ plotSetCombMax <- plotSetCombMax + theme_light()
 plotSetCombMin <- ggplot() + geom_rect(aes(xmin=1997, xmax=2004, ymin=-Inf, ymax=Inf), alpha=0.5, fill="#e6e6e6")
 plotSetCombMin <- plotSetCombMin + geom_line(data=dfSetCombMin, aes(x=End.Year, y=Percentage, colour=Interval))
 plotSetCombMin <- plotSetCombMin + geom_point(data=dfSetCombMin, aes(x=End.Year, y=Percentage, colour=Interval))
-plotSetCombMin <- plotSetCombMin + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("2-year","3-year","4-year","5-year"))
+plotSetCombMin <- plotSetCombMin + scale_colour_brewer(type="qual", palette=2, name="Time Interval", labels = c("1-year","2-year","3-year","4-year","5-year"))
 plotSetCombMin <- plotSetCombMin + scale_fill_manual(values=c("#e6e6e6"), name="", labels=c("Period of land use regime shift"))
 plotSetCombMin <- plotSetCombMin + labs(title="Observed vs Simulated Minimum Map Similarities", 
                                         subtitle="Comparison of similarities at various time intervals from 1992 to 2015; 11x11 window size",
