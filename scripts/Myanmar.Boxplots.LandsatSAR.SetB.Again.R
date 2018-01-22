@@ -4,10 +4,6 @@
 # This script plots SetB values consisting of 2015 data from Landsat-8 (7 bands,
 # 5 indices) and ALOS/PALSAR-2 (2 polarisations, 6 indices, and 16 GLCM textures).
 #
-# Land cover types include: forest (FOR); mangrove (MNG); oil palm mature (OPM);
-# rubber mature (RBM); shrub/orchard (SHB); rice paddy (RPD); built-up area (BUA);
-# bare soil/ground (BSG); and water (WTR).
-#
 # Script By:      Jose Don T De Alban
 # Date Created:   17 Feb 2017
 # Last Modified:  22 Jan 2018
