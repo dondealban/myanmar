@@ -6,18 +6,18 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   17 Feb 2017
-# Last Modified:  22 Jan 2018
+# Last Modified:  23 Jan 2018
 
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b again/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b final/")
 
 # Load the required R libraries
 library(ggplot2)
 
 # Read data, define variables, and store data in variables
-data <- read.csv(file="Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
+data <- read.csv(file="MERGE_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
 
 # GENERATE PLOTS
 # Generate boxplots of land cover types for each predictor variable
