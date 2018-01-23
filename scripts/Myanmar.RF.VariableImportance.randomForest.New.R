@@ -10,27 +10,61 @@
 # LOAD LIBRARIES AND DATA
 
 # Set working directory
-setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/rf randomforest/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/variable importance/rf randomforest/new/")
 
 # Load the required R libraries
 library(randomForest)
 
 # Read data, define variables, and store data in variables
-dataSetA <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set a/Table_SetA_1995_2015_Merge_Rev5_ForR.csv", header=TRUE, sep=",")
-dataSetB <- read.csv(file="/Users/dondealban/Dropbox/Research/myanmar/image statistics/distribution/set b/Table_SetB_2015_LP_30m_RF_ForR.csv", header=TRUE, sep=",")
+dataSetA1995 <- read.csv(file="Training_SetA_1995_LJ_30m_RF.csv", header=TRUE, sep=",")
+dataSetA2015 <- read.csv(file="Training_SetA_2015_LP_30m_RF.csv", header=TRUE, sep=",")
+dataSetB2015 <- read.csv(file="Training_SetB_2015_LP_30m_RF.csv", header=TRUE, sep=",")
 
+# PREPARE DATA
 
-# SUBSET DATA AND STORE INTO VARIABLES
+# Create year (YEAR) column
+dataSetA1995$YEAR <- rep(1995,nrow(dataSetA1995))
+dataSetA2015$YEAR <- rep(2015,nrow(dataSetA2015))
+dataSetB2015$YEAR <- rep(2015,nrow(dataSetB2015))
 
-# Select TRAINING observations only (Random column values: <=0.7 training, >0.7 testing)
+# Create land cover type (LC_TYPE) column 
+dataSetA1995$LC_TYPE <- ifelse(dataSetA1995$ClassID==0,"FOR",
+                               ifelse(dataSetA1995$ClassID==1,"MNG",
+                                      ifelse(dataSetA1995$ClassID==2,"OPM",
+                                             ifelse(dataSetA1995$ClassID==3,"RBM",
+                                                    ifelse(dataSetA1995$ClassID==4,"SHB",
+                                                           ifelse(dataSetA1995$ClassID==5,"RPD",
+                                                                  ifelse(dataSetA1995$ClassID==6,"BUA",
+                                                                         ifelse(dataSetA1995$ClassID==7,"BSG","WTR"))))))))
 
-SetA <- subset(dataSetA, dataSetA$Random<=0.7)
-SetB <- subset(dataSetB, dataSetB$Random<=0.7)
+dataSetA2015$LC_TYPE <- ifelse(dataSetA2015$ClassID==0,"FOR",
+                               ifelse(dataSetA2015$ClassID==1,"MNG",
+                                      ifelse(dataSetA2015$ClassID==2,"OPM",
+                                             ifelse(dataSetA2015$ClassID==3,"RBM",
+                                                    ifelse(dataSetA2015$ClassID==4,"SHB",
+                                                           ifelse(dataSetA2015$ClassID==5,"RPD",
+                                                                  ifelse(dataSetA2015$ClassID==6,"BUA",
+                                                                         ifelse(dataSetA2015$ClassID==7,"BSG","WTR"))))))))
+
+dataSetB2015$LC_TYPE <- ifelse(dataSetB2015$ClassID==0,"FOR",
+                               ifelse(dataSetB2015$ClassID==1,"MNG",
+                                      ifelse(dataSetB2015$ClassID==2,"OPM",
+                                             ifelse(dataSetB2015$ClassID==3,"RBM",
+                                                    ifelse(dataSetB2015$ClassID==4,"SHB",
+                                                           ifelse(dataSetB2015$ClassID==5,"RPD",
+                                                                  ifelse(dataSetB2015$ClassID==6,"BUA",
+                                                                         ifelse(dataSetB2015$ClassID==7,"BSG","WTR"))))))))
+
+# Rename column names
+names(dataSetA1995)[12:19] <- c("HH_ASM","HH_CON","HH_COR","HH_DIS","HH_ENT","HH_IDM","HH_SAVG","HH_VAR")
+names(dataSetA2015)[12:19] <- c("HH_ASM","HH_CON","HH_COR","HH_DIS","HH_ENT","HH_IDM","HH_SAVG","HH_VAR")
+names(dataSetB2015)[14:21] <- c("HH_ASM","HH_CON","HH_COR","HH_DIS","HH_ENT","HH_IDM","HH_SAVG","HH_VAR")
+names(dataSetB2015)[23:30] <- c("HV_ASM","HV_CON","HV_COR","HV_DIS","HV_ENT","HV_IDM","HV_SAVG","HV_VAR")
 
 # Subset data by year
-SetA1995 <- subset(SetA, SetA$YEAR=="1995")
-SetA2015 <- subset(SetA, SetA$YEAR=="2015")
-SetB2015 <- subset(SetB, SetB$YEAR=="2015")
+SetA1995 <- subset(dataSetA1995, dataSetA1995$YEAR=="1995")
+SetA2015 <- subset(dataSetA2015, dataSetA2015$YEAR=="2015")
+SetB2015 <- subset(dataSetB2015, dataSetB2015$YEAR=="2015")
 
 # Define factor predictor variables
 # LC_TYPE
@@ -44,7 +78,7 @@ SetB2015$YEAR <- factor(SetB2015$YEAR)
 
 
 # SET RANDOM SEED
-set.seed(2017)
+set.seed(2018)
 
 
 # RUN RANDOM FOREST IMPLEMENTATION
@@ -71,7 +105,7 @@ rfSetA1995ls <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
 # Set A 2015
 
 # Landsat only (n=12)
-rfSetA2015l <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+rfSetA2015l <- randomForest(LC_TYPE ~ B10 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
                LSWI + NDTI + NDVI + SATVI, data=SetA2015,
                ntree=100, importance=TRUE)
 # SAR only (n=9)
@@ -79,7 +113,7 @@ rfSetA2015s <- randomForest(LC_TYPE ~ HH + HH_ASM + HH_CON + HH_COR + HH_DIS + H
                HH_IDM + HH_SAVG + HH_VAR, data=SetA2015,
                ntree=100, importance=TRUE)
 # Landsat+SAR (n=21)
-rfSetA2015ls <- randomForest(LC_TYPE ~ B1 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
+rfSetA2015ls <- randomForest(LC_TYPE ~ B10 + B2 + B3 + B4 + B5 + B6 + B7 + EVI +
                 HH + HH_ASM + HH_CON + HH_COR + HH_DIS + HH_ENT + HH_IDM + HH_SAVG + HH_VAR +
                 LSWI + NDTI + NDVI + SATVI, data=SetA2015, 
                 ntree=100, importance=TRUE)
