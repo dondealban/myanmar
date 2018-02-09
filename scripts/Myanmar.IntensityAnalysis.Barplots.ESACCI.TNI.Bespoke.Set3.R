@@ -28,6 +28,7 @@ xlsxINT  <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
 xlsxCATl <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Losses")
 xlsxCATg <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Gains")
 
+    # Note: need to design a loop to read through numerous tables in each sheet!
 
 # INTERVAL Level ------------------------
 
