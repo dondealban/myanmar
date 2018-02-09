@@ -25,6 +25,7 @@ library(tidyr)
 
 # Read interval level XLSX data file
 xlsxINT <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
+xlsxINT <- xlsxINT[-c(1),] # Remove first row with unnecessary header name
 
 
 # INTERVAL Level ------------------------
