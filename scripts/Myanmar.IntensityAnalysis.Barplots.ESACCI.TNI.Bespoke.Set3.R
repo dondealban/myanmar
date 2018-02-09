@@ -30,11 +30,12 @@ xlsxINT <- xlsxINT[-c(1),] # Remove first row with unnecessary header name
 
 # INTERVAL Level ------------------------
 
-dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
+# Rename column names
+colnames(xlsxINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
+                       "Uni.Change","Hypo.Error","Comm.Intensity","Om.Intensity") 
 
-# Select columns: interval number, annual change rate, uniform change rate
-dfI <- subset(dataINT, select=c(1:2,4:5))
-colnames(dfI) <- c("Interval","Int.Length","Ann.Change","Uni.Change") # Rename column names
+# Select columns: time interval, observed change rate, uniform change rate
+dfI <- subset(xlsxINT, select=c(1:2,5))
 
 # Insert rows for missing intervals (Note: 1992 to 2015 = 11 interval @ every 2 years)
 tmin = 1
