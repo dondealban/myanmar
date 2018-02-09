@@ -25,18 +25,21 @@ library(tidyr)
 
 # Read interval level XLSX data file
 xlsxINT <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
-xlsxINT <- xlsxINT[-c(1),] # Remove first row with unnecessary header name
+
+# Remove first row with unnecessary header name, and save and then read CSV file
+xlsxINT <- xlsxINT[-c(1),] %>% write_csv("Interval_Level.csv")
+csvINT <- read.csv(file="Interval_Level.csv", header=TRUE, sep=",")
 
 
 # INTERVAL Level ------------------------
 
-# Rename column names
-colnames(xlsxINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
-                       "Uni.Change","Hypo.Error","Comm.Intensity","Om.Intensity") 
+# ReadRename column names
+colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
+                      "Uni.Change","Hypo.Error","Comm.Intensity","Om.Intensity") 
 
 # Select columns: time interval, observed change rate, uniform change rate
-dfINT <- subset(xlsxINT, select=c(1:2,5))
-dfINT <- as.data.frame(dfINT) # Change to dataframe
+dfINT <- subset(csvINT, select=c(1:2,5))
+dfINT[,3] <- as.numeric(dfINT[,3]) # Change column to numeric class
 uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a variable
 
 
@@ -66,13 +69,13 @@ dfCAT <- join(dfCAT, lookup, by='Interval')
 # Generate Plots ------------------------
 
 # Interval Level
-plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Years, y=Ann.Change, fill="#c6c3bf"),  stat="identity")
+plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Time.Interval, y=Obs.Change, fill="#c6c3bf"),  stat="identity")
 plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
 plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetype="dashed") # uniform line
-plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1993-2015", x="Time Interval", y="Annual Change (% of Map, x 100)")
-plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Annual Change"))
+plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1992-2015", x="Time Interval", y="Observed Change (% of Map, x 100)")
+plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
-plotINT <- plotINT  + scale_x_discrete(breaks=c("1993-1995","1999-2001","2003-2005","2013-2015"))
+plotINT <- plotINT  + scale_x_discrete(breaks=c("1992_1993","1997_1998","2001_2002","2004_2005","2009_2010","2014_2015"))
 plotINT <- plotINT  + theme_minimal()
 
 # Category Level
@@ -92,5 +95,5 @@ plotCAT <- plotCAT  + theme_light()
 # Save Output Plots ---------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="IntensityAnalysis-Interval-Set02.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="IntensityAnalysis-Interval-Set03.pdf", width=19.89, height=15, units="cm", dpi=300)
 ggsave(plotCAT, file="IntensityAnalysis-Category-Set02.pdf", width=19.89, height=15, units="cm", dpi=300)
