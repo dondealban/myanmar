@@ -3,9 +3,10 @@
 # intensity analysis of changes between 4 land cover types derived from ESA CCI land
 # cover data (1992-2015) covering Tanintharyi, Myanmar. The original land cover classes
 # were reclassified into four bespoke classes: Forest (FOR), Other Vegetation (VEG),
-# Cropland (CRP), and Non-Forest (NON). Intensity analysis was calculated using Dinamica 
-# EGO platform using the 24 annual ESA CCI land cover data layers. The domain of the 
-# analysis is the landscape extent within the Tanintharyi Region, Myanmar only.
+# Cropland (CRP), and Non-Forest (NON). Intensity analysis was calculated using an Excel
+# spreadsheet with a VBA macro (see https://sites.google.com/site/intensityanalysis/)
+# and the 24 annual ESA CCI land cover data layers. The domain of the analysis is the 
+# landscape extent within the Tanintharyi Region, Myanmar only.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
