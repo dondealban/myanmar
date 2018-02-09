@@ -24,16 +24,18 @@ library(plyr)
 library(tidyr)
 
 # Read interval level XLSX data file
-xlsxINT <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
+xlsxINT  <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
+xlsxCATl <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Losses")
+xlsxCATg <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Gains")
+
+
+# INTERVAL Level ------------------------
 
 # Remove first row with unnecessary header name, and save and then read CSV file
 xlsxINT <- xlsxINT[-c(1),] %>% write_csv("Interval_Level.csv")
 csvINT <- read.csv(file="Interval_Level.csv", header=TRUE, sep=",")
 
-
-# INTERVAL Level ------------------------
-
-# ReadRename column names
+# Rename column names
 colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
                       "Uni.Change","Hypo.Error","Comm.Intensity","Om.Intensity") 
 
