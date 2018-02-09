@@ -23,10 +23,12 @@ library(ggplot2)
 library(plyr)
 library(tidyr)
 
+# Read interval level XLSX data file
+xlsxINT <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
+
 
 # INTERVAL Level ------------------------
 
-# Read CSV data file
 dataINT <- read.csv(file="Interval_level.csv", header=TRUE, sep=",")
 
 # Select columns: interval number, annual change rate, uniform change rate
