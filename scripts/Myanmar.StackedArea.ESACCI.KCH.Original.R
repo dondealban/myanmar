@@ -18,6 +18,10 @@ library(plyr)
 # Read csv files in the directory and store as a list
 filenames <- list.files()
 
+# Class 12 is present only between 1992-2006, then need to split files into two groups
+period1 <- filenames[1:15]  # 1992-2006
+period2 <- filenames[16:24] # 2007-2015
+
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
