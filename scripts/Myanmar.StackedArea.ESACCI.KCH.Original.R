@@ -31,11 +31,19 @@ readdata <- function(filename) {
 }
 
 # Combine as class codes and percentage values in a matrix
-temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("1","2","3","4","5",
-                    "13","14","15","16",
-                    "6","7","8","9","10","11","12",
-                    "17","18","19","20","21")
+temp1 <- do.call(rbind, lapply(period1, readdata))
+temp2 <- do.call(rbind, lapply(period2, readdata))
+
+# Create new column with zeroes for Class 12 in 2nd period and insert in matrix
+newcol <- c(0,0,0,0,0,0,0,0,0)
+temp2a <- cbind(temp2[,1:2], newcol, temp2[,3:ncol(temp2)])
+
+# Combine matrices from two periods
+temp3 <- rbind(temp1, temp2a)
+colnames(temp3) <- c("1","2","3","4","5","6",
+                    "14","15","16","17",
+                    "7","8","9","10","11","12","13",
+                    "18","19","20","21","22","23","24","25")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
