@@ -70,8 +70,8 @@ orig <- orig + guides(fill=guide_legend(ncol=1))
 orig <- orig + theme(legend.position="bottom")
 orig <- orig + theme_bw()
 orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#aaf0f0","#dcf064","#c8c864",
-                                          "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432","#ffebaf",
+                                          "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432",
                                           "#006400","#00a000","#00a000","#003c00",
-                                          "#009678","#00dc82","#c31400","#fff5d7","#0046c8"))
+                                          "#009678","#00dc82","#c31400","#0046c8"))
 
 ggsave(orig, file="StackedArea-Original.pdf", width=29, height=16, units="cm", dpi=300)
