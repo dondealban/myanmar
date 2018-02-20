@@ -80,7 +80,8 @@ orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Bare areas",
                             "Bare areas, consolidated",
                             "Bare areas, unconsolidated",
-                            "Water bodies"))), 
+                            "Water bodies",
+                            "Permanent water and ice"))), 
                              data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
 orig <- orig + guides(fill=guide_legend(ncol=1))
