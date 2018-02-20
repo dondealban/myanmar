@@ -46,12 +46,12 @@ colnames(temp3) <- c("1","2","3","4","5","6",
                     "18","19","20","21","22","23","24","25")
 
 # Add years as another column
-row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
+row.names(temp3) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
                      "2000","2001","2002","2003","2004","2005","2006","2007",
                      "2008","2009","2010","2011","2012","2013","2014","2015")
 
 # Convert wide format data frame into long format data frame
-data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
+data <- melt(temp3, id.vars="years", variable.name="class", value.name="percentage")
 colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
@@ -59,6 +59,7 @@ colnames(data) <- c("Years","Class","Percentage")
 orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                    labels=c("Cropland, rainfed",
                             "Cropland, herbaceous cover",
+                            "Cropland, tree or shrub cover",
                             "Cropland, irrigated or post-flooding",
                             "Mosaic cropland (>50%) / natural vegetation (tree, shrub, herbaceous cover) (<50%)",
                             "Mosaic natural vegetation (tree, shrub, herbaceous cover) (>50%) / cropland (<50%)",
@@ -77,6 +78,8 @@ orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Shrub or herbaceous cover, flooded, fresh/saline/brakish water",
                             "Urban areas",
                             "Bare areas",
+                            "Bare areas, consolidated",
+                            "Bare areas, unconsolidated",
                             "Water bodies"))), 
                              data=data)
 orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
