@@ -9,7 +9,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/bespoke/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/tanintharyi/bespoke tier2/")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
@@ -32,9 +32,7 @@ temp <- do.call(rbind, lapply(filenames, readdata))
 colnames(temp) <- c("3","2","1","4")
 
 # Add years as another column
-row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-                     "2000","2001","2002","2003","2004","2005","2006","2007",
-                     "2008","2009","2010","2011","2012","2013","2014","2015")
+row.names(temp) <- c("1992","2015","2020","2025","2030")
 
 # Convert wide format data frame into long format data frame
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
@@ -46,5 +44,5 @@ bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, la
 bespoke <- bespoke + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
 bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
 
-ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(bespoke, file="StackedArea-Bespoke-Tier2.pdf", width=19.89, height=15, units="cm", dpi=300)
 
