@@ -90,7 +90,7 @@ plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=-Loss.Intensity, fi
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=Uni.Intensity, colour="#009404"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=-Uni.Intensity, colour="#ff0000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ Year)
-plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1993-2015", 
+plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
                            x="Category", y="Category Intensity (% of Category, x 100)")
 plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
 plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
