@@ -25,10 +25,11 @@ library(tidyr)
 
 # Read interval level XLSX data file
 xlsxINT  <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
-xlsxCATl <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Losses")
-xlsxCATg <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Gains")
 
-    # Note: need to design a loop to read through numerous tables in each sheet!
+  # Note: need to design a loop to read through numerous tables in each sheet!
+  # xlsxCATl <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Losses")
+  # xlsxCATg <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Category_Level_Gains")
+
 
 # INTERVAL Level ------------------------
 
@@ -49,8 +50,8 @@ uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a var
 # CATEGORY Level ------------------------
 
 # Read CSV data file
-dataCATl <- read.csv(file="Categorical_level_loss.csv", header=TRUE, sep=",")
-dataCATg <- read.csv(file="Categorical_level_gain.csv", header=TRUE, sep=",")
+dataCATl <- read.csv(file="Category_Level_Losses.csv", header=TRUE, sep=",")
+dataCATg <- read.csv(file="Category_Level_Gains.csv", header=TRUE, sep=",")
 
 # Select columns: interval number, category, annual loss and gain change rate, uniform change rate
 dfL <- subset(dataCATl, select=c(1:3,5))
@@ -60,9 +61,11 @@ colnames(dfG) <- c("Gain.Intensity","Uni.Intensity") # Rename column names
 dfCAT <- cbind(dfL, dfG)
 
 # Create lookup table
-Interval <- c(1,2,3,4,5,6,7,8,9,10,11)
-Year <- c("1993-1995","1995-1997","1997-1999","1999-2001","2001-2003","2003-2005",
-          "2005-2007","2007-2009","2009-2011","2011-2013","2013-2015")
+Interval <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
+Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
+          "1998-1999","1999-2000","2000-2001","2001-2002","2002-2003","2003-2004",
+          "2004-2005","2005-2006","2006-2007","2007-2008","2008-2009","2009-2010",
+          "2010-2011","2011-2012","2012-2013","2013-2014","2014-2015")
 lookup <- as.data.frame(cbind(Interval,Year), stringsAsFactors=FALSE)
 
 # Match time interval with year in new column based on lookup table 
