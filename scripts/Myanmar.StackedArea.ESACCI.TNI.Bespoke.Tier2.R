@@ -38,11 +38,13 @@ row.names(temp) <- c("1992","2015","2020","2025","2030")
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
 colnames(data) <- c("Years","Class","Percentage")
 
-# Create Stacked Area Graphs ------------
+# Create Stacked Bar Graphs ------------
+bespoke <- ggplot() + geom_bar(aes(x=as.factor(Years), y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data, stat="identity")
+bespoke <- bespoke + labs(x="Year", y="Percentage of Landscape")
+bespoke <- bespoke + theme_bw() + theme(legend.position="none")
+bespoke <- bespoke + scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
+bespoke <- bespoke + theme(panel.grid.minor=element_blank(), panel.grid.major=element_blank())
 
-bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
-bespoke <- bespoke + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
-bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
-
-ggsave(bespoke, file="StackedArea-Bespoke-Tier2.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(bespoke, file="StackedBar-Bespoke-Tier2.pdf", width=29.7, height=8, units="cm", dpi=400)
+ggsave(bespoke, file="StackedBar-Bespoke-Tier2.png", width=29.7, height=8, units="cm", dpi=400)
 
