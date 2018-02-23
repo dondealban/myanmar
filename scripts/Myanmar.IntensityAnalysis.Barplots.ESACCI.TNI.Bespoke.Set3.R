@@ -102,4 +102,4 @@ plotCAT <- plotCAT  + theme_light()
 
 # Output boxplots to a PDF file
 ggsave(plotINT, file="IntensityAnalysis-Interval-Set03.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(plotCAT, file="IntensityAnalysis-Category-Set02.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category-Set03.pdf", width=19.89, height=15, units="cm", dpi=300)
