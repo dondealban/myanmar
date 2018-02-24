@@ -5,7 +5,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   22 Nov 2017
-# Last Modified:  23 Feb 2018
+# Last Modified:  24 Feb 2018
 
 
 # Set Working Directory -----------------
@@ -41,9 +41,10 @@ colnames(data) <- c("Years","Class","Percentage")
 # Create Stacked Bar Graphs ------------
 bespoke <- ggplot() + geom_bar(aes(x=as.factor(Years), y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data, stat="identity")
 bespoke <- bespoke + labs(x="Year", y="Percentage of Landscape")
-bespoke <- bespoke + theme_bw() + theme(legend.position="none")
+bespoke <- bespoke + theme_minimal() + theme(legend.position="none")
 bespoke <- bespoke + scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
-bespoke <- bespoke + theme(panel.grid.minor=element_blank(), panel.grid.major=element_blank())
+bespoke <- bespoke + theme(panel.grid.minor=element_blank(), panel.grid.major.x=element_blank())
+bespoke <- bespoke + theme(axis.title.x=element_blank(), axis.text.x=element_text(size=10,face="bold"))
 
 ggsave(bespoke, file="StackedBar-Bespoke-Tier2.pdf", width=29.7, height=8, units="cm", dpi=400)
 ggsave(bespoke, file="StackedBar-Bespoke-Tier2.png", width=29.7, height=8, units="cm", dpi=400)
