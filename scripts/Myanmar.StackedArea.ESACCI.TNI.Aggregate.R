@@ -9,7 +9,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/aggregate/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/tanintharyi/aggregate/")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
