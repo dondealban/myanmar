@@ -41,10 +41,9 @@ data <- melt(temp, id.vars="years", variable.name="class", value.name="percentag
 colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
+aggreg <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
+aggreg <- aggreg + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
+aggreg <- aggreg + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
 
-bespoke <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
-bespoke <- bespoke + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
-bespoke <- bespoke + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#003c00","#a6cee3"))
-
-ggsave(bespoke, file="StackedArea-Bespoke.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(aggreg, file="StackedArea-Aggregate.pdf", width=19.89, height=15, units="cm", dpi=300)
 
