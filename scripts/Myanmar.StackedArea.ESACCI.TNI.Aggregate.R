@@ -29,7 +29,7 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("3","2","1","4")
+colnames(temp) <- c("3","5","4","2","6","1")
 
 # Add years as another column
 row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
