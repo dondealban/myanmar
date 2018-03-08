@@ -42,7 +42,7 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 aggreg <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, labels=c("Cropland","Mosaic Vegetation","Shrubland","Other Vegetation","Forest","Non-Vegetation"))), data=data)
-aggreg <- aggreg + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover")
+aggreg <- aggreg + labs(x="Year", y="Percentage of Landscape", fill="Land Cover")
 aggreg <- aggreg + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#784b00","#ffb432","#006400","#0046c8"))
 
 ggsave(aggreg, file="StackedArea-Aggregate.pdf", width=19.89, height=15, units="cm", dpi=300)
