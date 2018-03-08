@@ -97,6 +97,17 @@ plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Cha
 plotCAT <- plotCAT  + scale_colour_manual(values=c("#009404", "#ff0000"), name="Uniform Line", labels = c("Gain", "Loss"))
 plotCAT <- plotCAT  + theme_light()
 
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity, fill="#8acd66"), stat="identity")
+plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=Loss.Intensity, fill="#b43507"), stat="identity")
+plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=Uni.Intensity, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- plotCAT  + facet_wrap(~ Year)
+plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
+                           x="Category", y="Category Intensity (% of Category, x 100)")
+plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
+plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
+plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="Uniform Line", labels = c("Uniform Line"))
+plotCAT <- plotCAT  + theme_minimal()
+
 
 # Save Output Plots ---------------------
 
