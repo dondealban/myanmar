@@ -79,7 +79,7 @@ dfCAT <- join(dfCAT, lookup, by='Interval')
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Time.Interval, y=Obs.Change, fill="#c6c3bf"),  stat="identity")
 plotINT <- plotINT  + geom_hline(yintercept=0, colour="grey90")
 plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetype="dashed") # uniform line
-plotINT <- plotINT  + labs(title="Time Interval Intensity Analysis: 1992-2015", x="Time Interval", y="Observed Change (% of Map)")
+plotINT <- plotINT  + labs(x="Time Interval", y="Observed Change (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992_1993","1997_1998","2001_2002","2004_2005","2009_2010","2014_2015"))
