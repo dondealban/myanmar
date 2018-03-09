@@ -83,7 +83,7 @@ plotINT <- plotINT  + labs(x="Time Interval", y="Observed Change (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992_1993","1997_1998","2001_2002","2004_2005","2009_2010","2014_2015"))
-plotINT <- plotINT  + theme_minimal()
+plotINT <- plotINT  + theme_light()
 
 # Category Level
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity, fill="#8acd66"), stat="identity")
