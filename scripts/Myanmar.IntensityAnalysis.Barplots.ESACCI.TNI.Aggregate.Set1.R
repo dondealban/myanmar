@@ -44,6 +44,7 @@ colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change"
 
 # Select columns: time interval, observed change rate, uniform change rate
 dfINT <- subset(csvINT, select=c(1:2,5))
+dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character in column
 dfINT[,3] <- as.numeric(dfINT[,3]) # Change column to numeric class
 uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a variable
 
@@ -82,7 +83,7 @@ plotINT <- plotINT  + geom_hline(aes(yintercept=uINT, colour="#000000"), linetyp
 plotINT <- plotINT  + labs(x="Time Interval", y="Observed Change (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
-plotINT <- plotINT  + scale_x_discrete(breaks=c("1992_1993","1997_1998","2001_2002","2004_2005","2009_2010","2014_2015"))
+plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
 plotINT <- plotINT  + theme_light()
 
 # Category Level
