@@ -1,20 +1,21 @@
 # Script Description --------------------
 # This R script generates barplots using ggplot2 package to visualise the results of
-# intensity analysis of changes between 4 land cover types derived from ESA CCI land
+# intensity analysis of changes between 6 land cover types derived from ESA CCI land
 # cover data (1992-2015) covering Tanintharyi, Myanmar. The original land cover classes
-# were reclassified into four bespoke classes: Forest (FOR), Other Vegetation (VEG),
-# Cropland (CRP), and Non-Forest (NON). Intensity analysis was calculated using an Excel
-# spreadsheet with a VBA macro (see https://sites.google.com/site/intensityanalysis/)
-# and the 24 annual ESA CCI land cover data layers. The domain of the analysis is the 
-# landscape extent within the Tanintharyi Region, Myanmar only.
+# were reclassified/aggregated into six classes: Forest (FOR), Mosaic Vegetation (MOS),
+# Shrubland (SHB), Other Vegetation (OTH), Cropland (CRP), and Non-Vegetation (NON). 
+# Intensity analysis was calculated using an Excel spreadsheet with a VBA macro (see 
+# https://sites.google.com/site/intensityanalysis/) and the 24 annual ESA CCI land cover
+# data layers. The domain of the analysis is thelandscape extent within the Tanintharyi
+# Region, Myanmar.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
-# Last Modified:  23 Feb 2018
+# Last Modified:  09 Mar 2018
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/set 03/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/set 01 again/")
 
 # Load Libraries ------------------------
 library(tidyverse)
