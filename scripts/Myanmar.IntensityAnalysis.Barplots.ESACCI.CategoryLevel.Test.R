@@ -61,13 +61,6 @@ colnames(dfG) <- c(list)
 dfCAT <- rbind(dfL, dfG)
 
 
-# Select columns: interval number, category, annual loss and gain change rate, uniform change rate
-dfL <- subset(dataCATl, select=c(1:3,5))
-dfG <- subset(dataCATg, select=c(5:6))
-colnames(dfL) <- c("Interval","Cat.Code","Category","Loss.Intensity") # Rename column names
-colnames(dfG) <- c("Gain.Intensity","Uni.Intensity") # Rename column names
-dfCAT <- cbind(dfL, dfG)
-
 # Create lookup table
 Interval <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
 Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
