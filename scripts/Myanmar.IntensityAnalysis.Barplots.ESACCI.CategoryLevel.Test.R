@@ -32,7 +32,11 @@ dfG <- subset(dataCATg, select=c(1,3:11))
 type1 <- rep("Loss", nrow(dfL))
 type2 <- rep("Gain", nrow(dfG))
 dfL <- cbind(dfL, type1)
-dfG <- cbind(dfG, type1)
+dfG <- cbind(dfG, type2)
+
+# 3. Reorder columns before renaming
+dfL <- dfL[,c(1:2,11,3:10)]
+dfG <- dfG[,c(1:2,11,3:10)]
 
 # 3. Note the following description of category level column names
 # ColA - Interval
@@ -47,7 +51,8 @@ dfG <- cbind(dfG, type1)
 # ColJ - Omission Intensity [percent of t1/t2 category]
 # ColK - Hypothesized t1/t2 Error [percent of interval domain]
 
-# 3. Change column names
+# 3. Reorder and change column names
+
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ")
 colnames(dfL) <- c(list)
 colnames(dfG) <- c(list)
