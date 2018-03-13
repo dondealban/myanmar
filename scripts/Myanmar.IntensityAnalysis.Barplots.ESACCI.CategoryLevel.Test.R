@@ -34,7 +34,7 @@ type2 <- rep("Gain", nrow(dfG))
 dfL <- cbind(dfL, type1)
 dfG <- cbind(dfG, type2)
 
-# 6. Add years of interval in the dataframe
+# 3. Add years of interval in the dataframe
 # Create lookup table
 Interval. <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
 Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
@@ -47,35 +47,32 @@ lookup <- as.data.frame(cbind(Interval.,Year), stringsAsFactors=FALSE)
 dfL <- join(dfL, lookup, by='Interval.') # Need plyr package
 dfG <- join(dfG, lookup, by='Interval.')
 
-# 3. Reorder columns before renaming
-dfL <- dfL[,c(1:2,11,3:10)]
-dfG <- dfG[,c(1:2,11,3:10)]
+# 4. Reorder columns before renaming
+dfL <- dfL[,c(1,12,2,11,3:10)]
+dfG <- dfG[,c(1,12,2,11,3:10)]
 
-# 4. Change column names for easier reference
+# 5. Change column names for easier reference
 
 # Note the following description of category level column names
 # ColA - Interval
-# ColB - Category Name
-# ColC - Change Type
-# ColD - Observed Annual Loss/Gain [number of elements]
-# ColE - Loss/Gain Intensity [percent of t1/t2 category]
-# ColF - Uniform Intensity [percent of interval domain]
-# ColG - Uniform Annual Loss/Gain [number of elements]
-# ColH - Hypothesized Annual Error [number of elements]
-# ColI - Commission Intensity [percent of t1/t2 category]
-# ColJ - Omission Intensity [percent of t1/t2 category]
-# ColK - Hypothesized t1/t2 Error [percent of interval domain]
-# ColL - Years of Time Interval
+# ColB - Years of Time Interval
+# ColC - Category Name
+# ColD - Change Type
+# ColE - Observed Annual Loss/Gain [number of elements]
+# ColF - Loss/Gain Intensity [percent of t1/t2 category]
+# ColG - Uniform Intensity [percent of interval domain]
+# ColH - Uniform Annual Loss/Gain [number of elements]
+# ColI - Hypothesized Annual Error [number of elements]
+# ColJ - Commission Intensity [percent of t1/t2 category]
+# ColK - Omission Intensity [percent of t1/t2 category]
+# ColL - Hypothesized t1/t2 Error [percent of interval domain]
 
-list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK")
+list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK","ColL")
 colnames(dfL) <- c(list)
 colnames(dfG) <- c(list)
 
-# 5. Combine separate Loss and Gain datasets into one dataframe
+# 6. Combine separate Loss and Gain datasets into one dataframe
 dfCAT <- rbind(dfL, dfG)
-
-
-
 
 # Generate Plots ------------------------
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity, fill="#8acd66"), stat="identity")
