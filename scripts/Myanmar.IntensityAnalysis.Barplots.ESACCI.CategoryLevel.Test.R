@@ -57,6 +57,8 @@ list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ",
 colnames(dfL) <- c(list)
 colnames(dfG) <- c(list)
 
+# 5. Combine separate Loss and Gain datasets into one dataframe
+dfCAT <- rbind(dfL, dfG)
 
 
 # Select columns: interval number, category, annual loss and gain change rate, uniform change rate
