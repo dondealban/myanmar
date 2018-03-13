@@ -52,6 +52,7 @@ dfG <- dfG[,c(1:2,11,3:10)]
 # ColI - Commission Intensity [percent of t1/t2 category]
 # ColJ - Omission Intensity [percent of t1/t2 category]
 # ColK - Hypothesized t1/t2 Error [percent of interval domain]
+# ColL - Years of Time Interval
 
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK")
 colnames(dfL) <- c(list)
@@ -60,7 +61,7 @@ colnames(dfG) <- c(list)
 # 5. Combine separate Loss and Gain datasets into one dataframe
 dfCAT <- rbind(dfL, dfG)
 
-
+# 6. Add years of interval in the dataframe
 # Create lookup table
 Interval <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
 Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
@@ -70,7 +71,8 @@ Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998
 lookup <- as.data.frame(cbind(Interval,Year), stringsAsFactors=FALSE)
 
 # Match time interval with year in new column based on lookup table 
-dfCAT <- join(dfCAT, lookup, by='Interval')
+dfCAT <- join(dfCAT, lookup, by='ColA') # Need plyr package
+colnames(dfCAT$Year) <- c("ColJ")
 
 # Generate Plots ------------------------
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity, fill="#8acd66"), stat="identity")
