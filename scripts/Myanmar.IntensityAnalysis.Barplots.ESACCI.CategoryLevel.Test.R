@@ -38,7 +38,9 @@ dfG <- cbind(dfG, type2)
 dfL <- dfL[,c(1:2,11,3:10)]
 dfG <- dfG[,c(1:2,11,3:10)]
 
-# 3. Note the following description of category level column names
+# 4. Change column names for easier reference
+
+# Note the following description of category level column names
 # ColA - Interval
 # ColB - Category Name
 # ColC - Change Type
@@ -50,8 +52,6 @@ dfG <- dfG[,c(1:2,11,3:10)]
 # ColI - Commission Intensity [percent of t1/t2 category]
 # ColJ - Omission Intensity [percent of t1/t2 category]
 # ColK - Hypothesized t1/t2 Error [percent of interval domain]
-
-# 3. Reorder and change column names
 
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ")
 colnames(dfL) <- c(list)
