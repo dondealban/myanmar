@@ -31,6 +31,8 @@ dfG <- subset(dataCATg, select=c(1,3:11))
 # 2. Add Change Type column
 type1 <- rep("Loss", nrow(dfL))
 type2 <- rep("Gain", nrow(dfG))
+dfL <- cbind(dfL, type1)
+dfG <- cbind(dfG, type1)
 
 # 3. Note the following description of category level column names
 # ColA - Interval
