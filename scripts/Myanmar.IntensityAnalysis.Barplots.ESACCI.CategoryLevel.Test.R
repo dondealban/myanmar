@@ -53,7 +53,7 @@ dfG <- dfG[,c(1:2,11,3:10)]
 # ColJ - Omission Intensity [percent of t1/t2 category]
 # ColK - Hypothesized t1/t2 Error [percent of interval domain]
 
-list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ")
+list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK")
 colnames(dfL) <- c(list)
 colnames(dfG) <- c(list)
 
