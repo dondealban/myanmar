@@ -28,24 +28,27 @@ dataCATg <- read.csv(file="Category_Level_Gains.csv", header=TRUE, sep=",")
 dfL <- subset(dataCATl, select=c(1,3:11))
 dfG <- subset(dataCATg, select=c(1,3:11))
 
-# 2. Note the following description of category level column names
+# 2. Add Change Type column
+type1 <- rep("Loss", nrow(dfL))
+type2 <- rep("Gain", nrow(dfG))
+
+# 3. Note the following description of category level column names
 # ColA - Interval
 # ColB - Category Name
-# ColC - Observed Annual Loss/Gain [number of elements]
-# ColD - Loss/Gain Intensity [percent of t1/t2 category]
-# ColE - Uniform Intensity  [percent of interval domain]
-# ColF - Uniform Annual Loss/Gain [number of elements]
-# ColG - Hypothesized Annual Error [number of elements]
-# ColH - Commission Intensity [percent of t1/t2 category]
-# ColI - Omission Intensity [percent of t1/t2 category]
-# ColJ - Hypothesized t1/t2 Error [percent of interval domain]
+# ColC - Change Type
+# ColD - Observed Annual Loss/Gain [number of elements]
+# ColE - Loss/Gain Intensity [percent of t1/t2 category]
+# ColF - Uniform Intensity [percent of interval domain]
+# ColG - Uniform Annual Loss/Gain [number of elements]
+# ColH - Hypothesized Annual Error [number of elements]
+# ColI - Commission Intensity [percent of t1/t2 category]
+# ColJ - Omission Intensity [percent of t1/t2 category]
+# ColK - Hypothesized t1/t2 Error [percent of interval domain]
 
 # 3. Change column names
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ")
 colnames(dfL) <- c(list)
 colnames(dfG) <- c(list)
-
-
 
 
 
