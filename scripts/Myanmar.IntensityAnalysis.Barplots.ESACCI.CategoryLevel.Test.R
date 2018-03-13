@@ -28,7 +28,7 @@ dataCATg <- read.csv(file="Category_Level_Gains.csv", header=TRUE, sep=",")
 dfL <- subset(dataCATl, select=c(1,3:11))
 dfG <- subset(dataCATg, select=c(1,3:11))
 
-# 2. Description of category level column names
+# 2. Note the following description of category level column names
 # ColA - Interval
 # ColB - Category Name
 # ColC - Observed Annual Loss/Gain [number of elements]
@@ -40,10 +40,10 @@ dfG <- subset(dataCATg, select=c(1,3:11))
 # ColI - Omission Intensity [percent of t1/t2 category]
 # ColJ - Hypothesized t1/t2 Error [percent of interval domain]
 
-
-# Change column names
+# 3. Change column names
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ")
-colnames(sub2007) <- c(list)
+colnames(dfL) <- c(list)
+colnames(dfG) <- c(list)
 
 
 
