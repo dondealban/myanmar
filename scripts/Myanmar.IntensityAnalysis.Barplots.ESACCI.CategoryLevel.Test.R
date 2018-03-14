@@ -3,7 +3,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  
+# Last Modified:  14 Mar 2018
 
 # Set Working Directory -------------------
 
@@ -84,7 +84,7 @@ plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="", labels=c
 plotCAT <- plotCAT  + theme_light() + theme(panel.grid.minor=element_blank())
 
 # Plot 2: Loss Intensity only
-plotL <- ggplot() + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+plotL <- ggplot() + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
 plotL <- plotL + geom_hline(data=dfL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotL <- plotL + facet_wrap(~ColB)
 plotL <- plotL + labs(x="Category", y="Category Intensity (% of Category)")
@@ -94,7 +94,7 @@ plotL <- plotL + scale_colour_manual(values=c("#000000"), name="", labels=c("Uni
 plotL <- plotL + theme(panel.grid.minor=element_blank())
 
 # Plot 3: Gain Intensity only
-plotG <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+plotG <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
 plotG <- plotG + geom_hline(data=dfG, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotG <- plotG + facet_wrap(~ColB)
 plotG <- plotG + labs(x="Category", y="Category Intensity (% of Category)")
@@ -102,3 +102,17 @@ plotG <- plotG + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
 plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="Intensity", labels=c("Gain"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotG <- plotG + theme(panel.grid.minor=element_blank())
+plotG <- plotG + scale_y_log10()
+
+
+# Plot 4: 
+plotLE <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
+plotLE <- plotLE + geom_bar(data=dfL, aes(x=ColC, y=-ColF), stat="identity", position=position_dodge())
+plotLE <- plotLE + geom_hline(data=dfG, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotLE <- plotLE + geom_hline(data=dfL, aes(yintercept=-ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotLE <- plotLE + facet_wrap(~ColB)
+plotLE <- plotLE + labs(x="Category", y="Category Intensity (% of Category)")
+plotLE <- plotLE + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotLE <- plotLE + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels=c("Gain Intensity","Loss Intensity"))
+plotLE <- plotLE + scale_colour_manual(values=c("#000000","#000000"), name="", labels=c("Uniform Line"))
+plotLE <- plotLE + theme(panel.grid.minor=element_blank())
