@@ -102,17 +102,3 @@ plotG <- plotG + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
 plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="Intensity", labels=c("Gain"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotG <- plotG + theme(panel.grid.minor=element_blank())
-plotG <- plotG + scale_y_log10()
-
-
-# Plot 4: 
-plotLE <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
-plotLE <- plotLE + geom_bar(data=dfL, aes(x=ColC, y=-ColF), stat="identity", position=position_dodge())
-plotLE <- plotLE + geom_hline(data=dfG, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotLE <- plotLE + geom_hline(data=dfL, aes(yintercept=-ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotLE <- plotLE + facet_wrap(~ColB)
-plotLE <- plotLE + labs(x="Category", y="Category Intensity (% of Category)")
-plotLE <- plotLE + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotLE <- plotLE + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels=c("Gain Intensity","Loss Intensity"))
-plotLE <- plotLE + scale_colour_manual(values=c("#000000","#000000"), name="", labels=c("Uniform Line"))
-plotLE <- plotLE + theme(panel.grid.minor=element_blank())
