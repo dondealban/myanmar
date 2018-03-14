@@ -119,7 +119,7 @@ plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0
 # Save Output Plots ---------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="IntensityAnalysis-Category-Loss&Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
 
