@@ -79,22 +79,30 @@ dfCAT <- rbind(dfL, dfG)
 
 # Plot 1: Gain and Loss Intensities only
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
-plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG), linetype="dashed") # Uniform line
+plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ ColB)
 plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
 plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Intensity", labels = c("Gain","Loss"))
-plotCAT <- plotCAT  + theme_light() + theme(panel.grid.minor = element_blank())
+plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Intensity", labels=c("Gain","Loss"))
+plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotCAT <- plotCAT  + theme_light() + theme(panel.grid.minor=element_blank())
 
+# Plot 2: Loss Intensity only
+plotL <- ggplot() + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+plotL <- plotL + geom_hline(data=dfL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotL <- plotL + facet_wrap(~ ColB)
+plotL <- plotL + labs(x="Category", y="Category Intensity (% of Category)")
+plotL <- plotL + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotL <- plotL + scale_fill_manual(values=c("#b43507"), name="Intensity", labels=c("Loss"))
+plotL <- plotL + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotL <- plotL + theme_light() + theme(panel.grid.minor=element_blank())
 
-
-
-plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
-#plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=Loss.Intensity, fill="#b43507"), stat="identity")
-plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotCAT <- plotCAT  + facet_wrap(~ Year)
-plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category, x 100)")
-#plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
-#plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
-#plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="Uniform Line", labels = c("Uniform Line"))
-plotCAT <- plotCAT  + theme_minimal()
+# Plot 3: Loss Intensity only and subset regime shift time interval (1997-2004)
+plotLs <- ggplot(subset(dfL, ColB %in% c(6:12))) + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+plotLs <- plotLs + geom_hline(data=dfL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotLs <- plotLs + facet_wrap(~ ColB)
+plotLs <- plotLs + labs(x="Category", y="Category Intensity (% of Category)")
+plotLs <- plotLs + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotLs <- plotLs + scale_fill_manual(values=c("#b43507"), name="Intensity", labels=c("Loss"))
+plotLs <- plotLs + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotLs <- plotLs + theme_light() + theme(panel.grid.minor=element_blank())
