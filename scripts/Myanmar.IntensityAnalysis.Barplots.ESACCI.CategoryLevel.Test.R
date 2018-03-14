@@ -89,9 +89,9 @@ plotL <- plotL + geom_hline(data=dfL, aes(yintercept=ColG, colour="#000000"), li
 plotL <- plotL + facet_wrap(~ColB)
 plotL <- plotL + labs(x="Category", y="Category Intensity (% of Category)")
 plotL <- plotL + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotL <- plotL + scale_fill_manual(values=c("#b43507"), name="Intensity", labels=c("Loss"))
+plotL <- plotL + scale_fill_manual(values=c("#b43507"), name="", labels=c("Loss Intensity"))
 plotL <- plotL + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
-plotL <- plotL + theme(panel.grid.minor=element_blank())
+plotL <- plotL + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Plot 3: Gain Intensity only
 plotG <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
@@ -99,6 +99,15 @@ plotG <- plotG + geom_hline(data=dfG, aes(yintercept=ColG, colour="#000000"), li
 plotG <- plotG + facet_wrap(~ColB)
 plotG <- plotG + labs(x="Category", y="Category Intensity (% of Category)")
 plotG <- plotG + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="Intensity", labels=c("Gain"))
+plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="", labels=c("Gain Intensity"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
-plotG <- plotG + theme(panel.grid.minor=element_blank())
+plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
+
+
+# Save Output Plots ---------------------
+
+# Output boxplots to a PDF file
+ggsave(plotCAT, file="IntensityAnalysis-Category-Loss&Gain.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=19.89, height=15, units="cm", dpi=300)
+
