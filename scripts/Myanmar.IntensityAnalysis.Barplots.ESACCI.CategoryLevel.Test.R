@@ -13,7 +13,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 
 # library(tidyverse)
 # library(readxl)
-# library(ggplot2)
+library(ggplot2)
 library(plyr)
 # library(tidyr)
 
@@ -75,13 +75,22 @@ colnames(dfG) <- c(list)
 dfCAT <- rbind(dfL, dfG)
 
 # Generate Plots ------------------------
-plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=Category, y=Gain.Intensity, fill="#8acd66"), stat="identity")
-plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=Loss.Intensity, fill="#b43507"), stat="identity")
-plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=Uni.Intensity, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
+plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- plotCAT  + facet_wrap(~ ColB)
+plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category, x 100)")
+plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotCAT <- plotCAT  + theme_light()
+
+
+
+
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
+#plotCAT <- plotCAT  + geom_bar(data=dfCAT, aes(x=Category, y=Loss.Intensity, fill="#b43507"), stat="identity")
+plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ Year)
-plotCAT <- plotCAT  + labs(title="Category Intensity Analysis: 1992-2015", 
-                           x="Category", y="Category Intensity (% of Category, x 100)")
-plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
-plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
-plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="Uniform Line", labels = c("Uniform Line"))
+plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category, x 100)")
+#plotCAT <- plotCAT  + scale_x_discrete(labels=c("Crp","For","Non","Oth"))
+#plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Change Direction", labels = c("Category Gain","Category Loss"))
+#plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), name="Uniform Line", labels = c("Uniform Line"))
 plotCAT <- plotCAT  + theme_minimal()
