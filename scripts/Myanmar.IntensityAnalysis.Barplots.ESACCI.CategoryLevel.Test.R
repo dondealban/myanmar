@@ -15,6 +15,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 # library(readxl)
 library(ggplot2)
 library(plyr)
+
 # library(tidyr)
 
 # Read Input Data -------------------------
@@ -75,12 +76,12 @@ colnames(dfG) <- c(list)
 dfCAT <- rbind(dfL, dfG)
 
 # Generate Plots ------------------------
-plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
-plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ ColB)
-plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category, x 100)")
+plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
 plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotCAT <- plotCAT  + theme_light()
+plotCAT <- plotCAT  + theme_light() + theme(panel.grid.minor = element_blank())
 
 
 
