@@ -11,13 +11,8 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 
 # Load Libraries --------------------------
 
-# library(tidyverse)
-# library(readxl)
 library(ggplot2)
-library(magrittr)
 library(plyr)
-
-# library(tidyr)
 
 # Read Input Data -------------------------
 
