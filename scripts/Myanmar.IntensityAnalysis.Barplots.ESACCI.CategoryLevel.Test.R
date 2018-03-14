@@ -76,11 +76,14 @@ colnames(dfG) <- c(list)
 dfCAT <- rbind(dfL, dfG)
 
 # Generate Plots ------------------------
+
+# Plot 1: Gain and Loss Intensities only
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ ColB)
 plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
 plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), name="Intensity", labels = c("Gain","Loss"))
 plotCAT <- plotCAT  + theme_light() + theme(panel.grid.minor = element_blank())
 
 
