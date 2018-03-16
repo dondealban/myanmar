@@ -117,29 +117,30 @@ plotFOR <- plotFOR  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 plotMOS <- ggplot() + geom_bar(data=dfMOS, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
 plotMOS <- plotMOS  + geom_hline(data=dfMOS, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
 plotMOS <- plotMOS  + facet_wrap(~ColA)
-plotMOS <- plotMOS  + labs(x="Gaining Category", y="Transition Intensity (% of Category at Time Interval)")
+plotMOS <- plotMOS  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
 plotMOS <- plotMOS  + scale_x_discrete(labels=c("CRP","FOR","NON","OTH","SHB"))
 plotMOS <- plotMOS  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To MOS"))
 plotMOS <- plotMOS  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotMOS <- plotMOS  + theme(panel.grid.minor=element_blank())
 plotMOS <- plotMOS  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
-# Plot 3: Gain Intensity only
-plotG <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
-plotG <- plotG + geom_hline(data=dfG, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotG <- plotG + facet_wrap(~ColB)
-plotG <- plotG + labs(x="Category", y="Category Intensity (% of Category)")
-plotG <- plotG + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="", labels=c("Gain Intensity"))
-plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
-plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
+# Plot 3: TO SHRUBLAND transition level
+plotSHB <- ggplot() + geom_bar(data=dfSHB, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
+plotSHB <- plotSHB  + geom_hline(data=dfMOS, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotSHB <- plotSHB  + facet_wrap(~ColA)
+plotSHB <- plotSHB  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
+plotSHB <- plotSHB  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH"))
+plotSHB <- plotSHB  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To SHB"))
+plotSHB <- plotSHB  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotSHB <- plotSHB  + theme(panel.grid.minor=element_blank())
+plotSHB <- plotSHB  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
 ggsave(plotFOR, file="IntensityAnalysis-Transition-FromFOR.pdf", width=29.89, height=25, units="cm", dpi=300)
-ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
-ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotMOS, file="IntensityAnalysis-Transition-ToMOS.pdf",   width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotSHB, file="IntensityAnalysis-Transition-ToSHB.pdf",   width=29.89, height=25, units="cm", dpi=300)
 
 # Export dataframe to CSV file
 write.csv(dfCAT, file="Category_Level.csv")
