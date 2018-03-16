@@ -24,59 +24,53 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 
 library(tidyverse)
 library(ggplot2)
-library(plyr)
 library(readxl)
 
 # Read Input Data -------------------------
 
 # 1. Read specific Excel sheets for transition level intensity analysis
-  xlsxFOR <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="FROM_FOR")
-  xlsxMOS <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_MOS")
-  xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SHB")
-  xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
-  xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
-  xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
+xlsxFOR <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="FROM_FOR")
+xlsxMOS <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_MOS")
+xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SHB")
+xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
+xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
+xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
 
 # 2. Write dataframes to CSV files... 
-  write.csv(xlsxFOR, "Transition_Level_FROM_FOR.csv")
-  write.csv(xlsxMOS, "Transition_Level_TO_MOS.csv")
-  write.csv(xlsxSHB, "Transition_Level_TO_SHB.csv")
-  write.csv(xlsxOTH, "Transition_Level_TO_OTH.csv")
-  write.csv(xlsxCRP, "Transition_Level_TO_CRP.csv")
-  write.csv(xlsxNON, "Transition_Level_TO_NON.csv")
+write.csv(xlsxFOR, "Transition_Level_FROM_FOR.csv")
+write.csv(xlsxMOS, "Transition_Level_TO_MOS.csv")
+write.csv(xlsxSHB, "Transition_Level_TO_SHB.csv")
+write.csv(xlsxOTH, "Transition_Level_TO_OTH.csv")
+write.csv(xlsxCRP, "Transition_Level_TO_CRP.csv")
+write.csv(xlsxNON, "Transition_Level_TO_NON.csv")
 
 # 3 ...and then read CSV files into variables
-  csvFOR <- read.csv(file="Transition_Level_FROM_FOR.csv", header=TRUE, sep=",")
-  csvMOS <- read.csv(file="Transition_Level_TO_MOS.csv", header=TRUE, sep=",")
-  csvSHB <- read.csv(file="Transition_Level_TO_SHB.csv", header=TRUE, sep=",")
-  csvOTH <- read.csv(file="Transition_Level_TO_OTH.csv", header=TRUE, sep=",")
-  csvCRP <- read.csv(file="Transition_Level_TO_CRP.csv", header=TRUE, sep=",")
-  csvNON <- read.csv(file="Transition_Level_TO_NON.csv", header=TRUE, sep=",")
+csvFOR <- read.csv(file="Transition_Level_FROM_FOR.csv", header=TRUE, sep=",")
+csvMOS <- read.csv(file="Transition_Level_TO_MOS.csv", header=TRUE, sep=",")
+csvSHB <- read.csv(file="Transition_Level_TO_SHB.csv", header=TRUE, sep=",")
+csvOTH <- read.csv(file="Transition_Level_TO_OTH.csv", header=TRUE, sep=",")
+csvCRP <- read.csv(file="Transition_Level_TO_CRP.csv", header=TRUE, sep=",")
+csvNON <- read.csv(file="Transition_Level_TO_NON.csv", header=TRUE, sep=",")
 
 # Clean and Subset Data -------------------
 
-# 1. Select columns: include all columns except Category ID
-dfL <- subset(dataCATl, select=c(1,3:11))
-dfG <- subset(dataCATg, select=c(1,3:11))
+# 1. Select columns: include all columns except first column
+dfFOR <- subset(csvFOR, select=c(2:12))
+dfMOS <- subset(csvMOS, select=c(2:12))
+dfSHB <- subset(csvSHB, select=c(2:12))
+dfOTH <- subset(csvOTH, select=c(2:12))
+dfCRP <- subset(csvCRP, select=c(2:12))
+dfNON <- subset(csvNON, select=c(2:12))
 
-# 2. Add Change Type column
-type1 <- rep("Loss", nrow(dfL))
-type2 <- rep("Gain", nrow(dfG))
-dfL <- cbind(dfL, type1)
-dfG <- cbind(dfG, type2)
+# 2. Replace character in Time Interval column
+dfFOR$Interval. <- gsub('_', '-', dfFOR$Interval.)
+dfMOS$Interval. <- gsub('_', '-', dfMOS$Interval.)
+dfSHB$Interval. <- gsub('_', '-', dfSHB$Interval.)
+dfOTH$Interval. <- gsub('_', '-', dfOTH$Interval.)
+dfCRP$Interval. <- gsub('_', '-', dfCRP$Interval.)
+dfNON$Interval. <- gsub('_', '-', dfNON$Interval.)
 
-# 3. Add years of interval in the dataframe
-# Create lookup table
-Interval. <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
-Year <- c("1992-1993","1993-1994","1994-1995","1995-1996","1996-1997","1997-1998",
-          "1998-1999","1999-2000","2000-2001","2001-2002","2002-2003","2003-2004",
-          "2004-2005","2005-2006","2006-2007","2007-2008","2008-2009","2009-2010",
-          "2010-2011","2011-2012","2012-2013","2013-2014","2014-2015")
-lookup <- as.data.frame(cbind(Interval.,Year), stringsAsFactors=FALSE)
 
-# Match time interval with year in new column based on lookup table 
-dfL <- join(dfL, lookup, by='Interval.') # Need plyr package
-dfG <- join(dfG, lookup, by='Interval.')
 
 # 4. Reorder columns before renaming
 dfL <- dfL[,c(1,12,2,11,3:10)]
