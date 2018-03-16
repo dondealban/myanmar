@@ -29,30 +29,29 @@ library(readxl)
 
 # Read Input Data -------------------------
 
-# Loss classes
-xlsxFOR <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="FROM_FOR")
-# Gain classes
-xlsxMOS <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_MOS")
-xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SHB")
-xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
-xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
-xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
+# 1. Read specific Excel sheets for transition level intensity analysis
+  xlsxFOR <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="FROM_FOR")
+  xlsxMOS <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_MOS")
+  xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SHB")
+  xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
+  xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
+  xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
 
-# Write dataframes to CSV files... 
-write.csv(xlsxFOR, "Transition_Level_FROM_FOR.csv")
-write.csv(xlsxMOS, "Transition_Level_TO_MOS.csv")
-write.csv(xlsxSHB, "Transition_Level_TO_SHB.csv")
-write.csv(xlsxOTH, "Transition_Level_TO_OTH.csv")
-write.csv(xlsxCRP, "Transition_Level_TO_CRP.csv")
-write.csv(xlsxNON, "Transition_Level_TO_NON.csv")
+# 2. Write dataframes to CSV files... 
+  write.csv(xlsxFOR, "Transition_Level_FROM_FOR.csv")
+  write.csv(xlsxMOS, "Transition_Level_TO_MOS.csv")
+  write.csv(xlsxSHB, "Transition_Level_TO_SHB.csv")
+  write.csv(xlsxOTH, "Transition_Level_TO_OTH.csv")
+  write.csv(xlsxCRP, "Transition_Level_TO_CRP.csv")
+  write.csv(xlsxNON, "Transition_Level_TO_NON.csv")
 
-# ...and then read CSV files into variables
-csvFOR <- read.csv(file="Transition_Level_FROM_FOR.csv", header=TRUE, sep=",")
-csvMOS <- read.csv(file="Transition_Level_TO_MOS.csv", header=TRUE, sep=",")
-csvSHB <- read.csv(file="Transition_Level_TO_SHB.csv", header=TRUE, sep=",")
-csvOTH <- read.csv(file="Transition_Level_TO_OTH.csv", header=TRUE, sep=",")
-csvCRP <- read.csv(file="Transition_Level_TO_CRP.csv", header=TRUE, sep=",")
-csvNON <- read.csv(file="Transition_Level_TO_NON.csv", header=TRUE, sep=",")
+# 3 ...and then read CSV files into variables
+  csvFOR <- read.csv(file="Transition_Level_FROM_FOR.csv", header=TRUE, sep=",")
+  csvMOS <- read.csv(file="Transition_Level_TO_MOS.csv", header=TRUE, sep=",")
+  csvSHB <- read.csv(file="Transition_Level_TO_SHB.csv", header=TRUE, sep=",")
+  csvOTH <- read.csv(file="Transition_Level_TO_OTH.csv", header=TRUE, sep=",")
+  csvCRP <- read.csv(file="Transition_Level_TO_CRP.csv", header=TRUE, sep=",")
+  csvNON <- read.csv(file="Transition_Level_TO_NON.csv", header=TRUE, sep=",")
 
 # Clean and Subset Data -------------------
 
