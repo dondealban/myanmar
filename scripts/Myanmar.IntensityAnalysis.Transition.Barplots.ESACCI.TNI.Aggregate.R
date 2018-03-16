@@ -126,7 +126,7 @@ plotMOS <- plotMOS  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Plot 3: TO SHRUBLAND transition level
 plotSHB <- ggplot() + geom_bar(data=dfSHB, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
-plotSHB <- plotSHB  + geom_hline(data=dfMOS, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotSHB <- plotSHB  + geom_hline(data=dfSHB, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
 plotSHB <- plotSHB  + facet_wrap(~ColA)
 plotSHB <- plotSHB  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
 plotSHB <- plotSHB  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH"))
@@ -135,12 +135,25 @@ plotSHB <- plotSHB  + scale_colour_manual(values=c("#000000"), name="", labels=c
 plotSHB <- plotSHB  + theme(panel.grid.minor=element_blank())
 plotSHB <- plotSHB  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
+# Plot 4: TO OTHER VEGETATION transition level
+plotOTH <- ggplot() + geom_bar(data=dfOTH, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
+plotOTH <- plotOTH  + geom_hline(data=dfOTH, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotOTH <- plotOTH  + facet_wrap(~ColA)
+plotOTH <- plotOTH  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
+plotOTH <- plotOTH  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH"))
+plotOTH <- plotOTH  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To OTH"))
+plotOTH <- plotOTH  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotOTH <- plotOTH  + theme(panel.grid.minor=element_blank())
+plotOTH <- plotOTH  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
+
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
 ggsave(plotFOR, file="IntensityAnalysis-Transition-FromFOR.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotMOS, file="IntensityAnalysis-Transition-ToMOS.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotSHB, file="IntensityAnalysis-Transition-ToSHB.pdf",   width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotOTH, file="IntensityAnalysis-Transition-ToOTH.pdf",   width=29.89, height=25, units="cm", dpi=300)
+
 
 # Export dataframe to CSV file
 write.csv(dfCAT, file="Category_Level.csv")
