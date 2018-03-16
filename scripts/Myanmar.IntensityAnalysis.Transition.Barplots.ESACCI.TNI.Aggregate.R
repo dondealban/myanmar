@@ -113,15 +113,16 @@ plotFOR <- plotFOR  + scale_colour_manual(values=c("#000000"), name="", labels=c
 plotFOR <- plotFOR  + theme(panel.grid.minor=element_blank())
 plotFOR <- plotFOR  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
-# Plot 2: Loss Intensity only
-plotL <- ggplot() + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
-plotL <- plotL + geom_hline(data=dfL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotL <- plotL + facet_wrap(~ColB)
-plotL <- plotL + labs(x="Category", y="Category Intensity (% of Category)")
-plotL <- plotL + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotL <- plotL + scale_fill_manual(values=c("#b43507"), name="", labels=c("Loss Intensity"))
-plotL <- plotL + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
-plotL <- plotL + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
+# Plot 2: TO MOSAIC VEGETATION transition level
+plotMOS <- ggplot() + geom_bar(data=dfMOS, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
+plotMOS <- plotMOS  + geom_hline(data=dfMOS, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotMOS <- plotMOS  + facet_wrap(~ColA)
+plotMOS <- plotMOS  + labs(x="Gaining Category", y="Transition Intensity (% of Category at Time Interval)")
+plotMOS <- plotMOS  + scale_x_discrete(labels=c("CRP","FOR","NON","OTH","SHB"))
+plotMOS <- plotMOS  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To MOS"))
+plotMOS <- plotMOS  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotMOS <- plotMOS  + theme(panel.grid.minor=element_blank())
+plotMOS <- plotMOS  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Plot 3: Gain Intensity only
 plotG <- ggplot() + geom_bar(data=dfG, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
@@ -136,7 +137,7 @@ plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotFOR, file="IntensityAnalysis-Transition-FromFOR.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
 
