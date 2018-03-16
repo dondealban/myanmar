@@ -70,39 +70,40 @@ dfOTH$Interval. <- gsub('_', '-', dfOTH$Interval.)
 dfCRP$Interval. <- gsub('_', '-', dfCRP$Interval.)
 dfNON$Interval. <- gsub('_', '-', dfNON$Interval.)
 
+# 3. Reorder columns of 'TO class' transitions before renaming
+dfMOS <- dfMOS[,c(1,3,2,4:11)]
+dfSHB <- dfSHB[,c(1,3,2,4:11)]
+dfOTH <- dfOTH[,c(1,3,2,4:11)]
+dfCRP <- dfCRP[,c(1,3,2,4:11)]
+dfNON <- dfNON[,c(1,3,2,4:11)]
 
-
-# 4. Reorder columns before renaming
-dfL <- dfL[,c(1,12,2,11,3:10)]
-dfG <- dfG[,c(1,12,2,11,3:10)]
-
-# 5. Change column names for easier reference
+# 4. Change column names for easier reference
 
 # Note the following description of category level column names
-# ColA - Interval
-# ColB - Years of Time Interval
-# ColC - Category Name
-# ColD - Change Type
-# ColE - Observed Annual Loss/Gain [number of elements]
-# ColF - Loss/Gain Intensity [percent of t1/t2 category]
-# ColG - Uniform Intensity [percent of interval domain]
-# ColH - Uniform Annual Loss/Gain [number of elements]
-# ColI - Hypothesized Annual Error [number of elements]
-# ColJ - Commission Intensity [percent of t1/t2 category]
-# ColK - Omission Intensity [percent of t1/t2 category]
-# ColL - Hypothesized t1/t2 Error [percent of interval domain]
+# ColA - Years of Time Interval
+# ColB - Category Name From
+# ColC - Category Name To
+# ColD - Observed Annual Transition [number of elements]
+# ColE - Transition Intensity [percent of t1/t2 category]
+# ColF - Uniform Intensity [percent of t1/t2 non-category]
+# ColG - Uniform Annual Transition [number of elements]
+# ColH - Hypothesized Annual Error [number of elements]
+# ColI - Commission Intensity [percent of transition]
+# ColJ - Omission Intensity [percent of transition]
+# ColK - Hypothesized t1/t2 Error [percent of interval domain]
 
-list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK","ColL")
-colnames(dfL) <- c(list)
-colnames(dfG) <- c(list)
-
-# 6. Combine separate Loss and Gain datasets into one dataframe
-dfCAT <- rbind(dfL, dfG)
+list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK")
+colnames(dfFOR) <- c(list)
+colnames(dfMOS) <- c(list)
+colnames(dfSHB) <- c(list)
+colnames(dfOTH) <- c(list)
+colnames(dfCRP) <- c(list)
+colnames(dfNON) <- c(list)
 
 # Generate Plots ------------------------
 
-# Plot 1: Gain and Loss Intensities only
-plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
+# Plot 1: FROM FOREST transition level
+plotFOR <- ggplot() + geom_bar(data=dfFOR, aes(x=ColC, y=ColE, fill="#c6c3bf"), stat="identity")
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ColB)
 plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
