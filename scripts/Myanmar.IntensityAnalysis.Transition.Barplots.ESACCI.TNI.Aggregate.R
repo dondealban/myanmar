@@ -24,11 +24,18 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 
 library(ggplot2)
 library(plyr)
+library(readxl)
 
 # Read Input Data -------------------------
 
-dataCATl <- read.csv(file="Category_Level_Losses.csv", header=TRUE, sep=",")
-dataCATg <- read.csv(file="Category_Level_Gains.csv", header=TRUE, sep=",")
+# Loss classes
+xlsxFOR <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="FROM_FOR")
+# Gain classes
+xlsxMOS <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_MOS")
+xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SHB")
+xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
+xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
+xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
 
 # Clean and Subset Data -------------------
 
