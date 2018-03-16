@@ -104,14 +104,14 @@ colnames(dfNON) <- c(list)
 
 # Plot 1: FROM FOREST transition level
 plotFOR <- ggplot() + geom_bar(data=dfFOR, aes(x=ColC, y=ColE, fill="#c6c3bf"), stat="identity")
-plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
-plotCAT <- plotCAT  + facet_wrap(~ColB)
-plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
-plotCAT <- plotCAT  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
-plotCAT <- plotCAT  + scale_fill_manual(values=c("#b43507","#8acd66"), labels=c("Loss Intensity","Gain Intensity"))
-plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Line"))
-plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
-plotCAT <- plotCAT  + theme(legend.title=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
+plotFOR <- plotFOR  + geom_hline(data=dfFOR, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotFOR <- plotFOR  + facet_wrap(~ColA)
+plotFOR <- plotFOR  + labs(x="Gaining Category", y="Transition Intensity (% of Category at Time Interval)")
+#plotFOR <- plotFOR  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
+plotFOR <- plotFOR  + scale_fill_manual(values=c("#c6c3bf"), name="Transition Intensity", labels=c("From FOR"))
+plotFOR <- plotFOR  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotFOR <- plotFOR  + theme(panel.grid.minor=element_blank())
+#plotFOR <- plotFOR  + theme(legend.title=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Plot 2: Loss Intensity only
 plotL <- ggplot() + geom_bar(data=dfL, aes(x=ColC, y=ColF, fill=ColD), stat="identity")
