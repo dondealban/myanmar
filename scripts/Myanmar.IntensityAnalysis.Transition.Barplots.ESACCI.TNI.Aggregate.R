@@ -22,6 +22,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/es
 
 # Load Libraries --------------------------
 
+library(tidyverse)
 library(ggplot2)
 library(plyr)
 library(readxl)
@@ -36,6 +37,22 @@ xlsxSHB <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_SH
 xlsxOTH <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_OTH")
 xlsxCRP <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_CRP")
 xlsxNON <- read_excel("TNI_IntensityAnalysis_TransitionLevel.xlsx", sheet="TO_NON")
+
+# Write dataframes to CSV files... 
+write.csv(xlsxFOR, "Transition_Level_FROM_FOR.csv")
+write.csv(xlsxMOS, "Transition_Level_TO_MOS.csv")
+write.csv(xlsxSHB, "Transition_Level_TO_SHB.csv")
+write.csv(xlsxOTH, "Transition_Level_TO_OTH.csv")
+write.csv(xlsxCRP, "Transition_Level_TO_CRP.csv")
+write.csv(xlsxNON, "Transition_Level_TO_NON.csv")
+
+# ...and then read CSV files into variables
+csvFOR <- read.csv(file="Transition_Level_FROM_FOR.csv", header=TRUE, sep=",")
+csvMOS <- read.csv(file="Transition_Level_TO_MOS.csv", header=TRUE, sep=",")
+csvSHB <- read.csv(file="Transition_Level_TO_SHB.csv", header=TRUE, sep=",")
+csvOTH <- read.csv(file="Transition_Level_TO_OTH.csv", header=TRUE, sep=",")
+csvCRP <- read.csv(file="Transition_Level_TO_CRP.csv", header=TRUE, sep=",")
+csvNON <- read.csv(file="Transition_Level_TO_NON.csv", header=TRUE, sep=",")
 
 # Clean and Subset Data -------------------
 
