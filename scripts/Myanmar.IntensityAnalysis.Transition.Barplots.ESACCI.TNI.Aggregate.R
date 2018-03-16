@@ -177,6 +177,3 @@ ggsave(plotSHB, file="IntensityAnalysis-Transition-ToSHB.pdf",   width=29.89, he
 ggsave(plotOTH, file="IntensityAnalysis-Transition-ToOTH.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotCRP, file="IntensityAnalysis-Transition-ToCRP.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotNON, file="IntensityAnalysis-Transition-ToNON.pdf",   width=29.89, height=25, units="cm", dpi=300)
-
-# Export dataframe to CSV file
-write.csv(dfCAT, file="Category_Level.csv")
