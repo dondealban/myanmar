@@ -1,5 +1,5 @@
 # Script Description ----------------------
-# This R script generates barplots using ggplot2 package to visualise the category level
+# This R script generates barplots using ggplot2 package to visualise the transition level
 # intensity analysis of changes between 6 land cover types derived from ESA CCI land
 # cover data (1992-2015) covering Tanintharyi, Myanmar. The original land cover classes
 # were reclassified/aggregated into six classes: Forest (FOR), Mosaic Vegetation (MOS),
@@ -9,9 +9,12 @@
 # data layers. The domain of the analysis is thelandscape extent within the Tanintharyi
 # Region, Myanmar.
 #
+# Specifically, the land cover transitions of interest are: loss from forest into all 
+# other classes, and gain of these other individual classes from forest.
+#
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  14 Mar 2018
+# Last Modified:  16 Mar 2018
 
 # Set Working Directory -------------------
 
