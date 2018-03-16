@@ -112,9 +112,12 @@ plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="", labels=c("Gain 
 plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
 
-# Save Output Plots ---------------------
+# Save Outputs --------------------------
 
 # Output boxplots to a PDF file
 ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
+
+# Export dataframe to CSV file
+write.csv(dfCAT, file="CategoryLevel.csv")
