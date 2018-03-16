@@ -13,11 +13,11 @@
 # Date Created:   25 Apr 2017
 # Last Modified:  14 Mar 2018
 
-# Set Working Directory -----------------
+# Set Working Directory -------------------
 
 setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/set 01 again/")
 
-# Load Libraries ------------------------
+# Load Libraries --------------------------
 
 library(tidyverse)
 library(readxl)
@@ -25,10 +25,12 @@ library(ggplot2)
 library(plyr)
 library(tidyr)
 
+# Read Input Data -------------------------
+
 # Read interval level XLSX data file
 xlsxINT  <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
 
-# Clean and Subset Data -----------------
+# Clean and Subset Data -------------------
 
 # Remove first row with unnecessary header name, and save and then read CSV file
 xlsxINT <- xlsxINT[-c(1),] %>% write_csv("Interval_Level.csv")
@@ -44,7 +46,7 @@ dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character i
 dfINT[,3] <- as.numeric(dfINT[,3]) # Change column to numeric class
 uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a variable
 
-# Generate Plots ------------------------
+# Generate Plots --------------------------
 
 # Interval Level
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Time.Interval, y=Obs.Change, fill="#c6c3bf"),  stat="identity")
@@ -56,7 +58,7 @@ plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), name="", labels =
 plotINT <- plotINT  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
 plotINT <- plotINT  + theme_light()
 
-# Save Output Plots ---------------------
+# Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
 ggsave(plotINT, file="IntensityAnalysis-Interval-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
