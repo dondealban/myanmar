@@ -157,6 +157,17 @@ plotCRP <- plotCRP  + scale_colour_manual(values=c("#000000"), name="", labels=c
 plotCRP <- plotCRP  + theme(panel.grid.minor=element_blank())
 plotCRP <- plotCRP  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
+# Plot 6: TO NON-VEGETATION transition level
+plotNON <- ggplot() + geom_bar(data=dfNON, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
+plotNON <- plotNON  + geom_hline(data=dfNON, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotNON <- plotNON  + facet_wrap(~ColA)
+plotNON <- plotNON  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
+plotNON <- plotNON  + scale_x_discrete(labels=c("CRP","FOR","MOS","OTH","SHB"))
+plotNON <- plotNON  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To NON"))
+plotNON <- plotNON  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotNON <- plotNON  + theme(panel.grid.minor=element_blank())
+plotNON <- plotNON  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
+
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
@@ -165,7 +176,7 @@ ggsave(plotMOS, file="IntensityAnalysis-Transition-ToMOS.pdf",   width=29.89, he
 ggsave(plotSHB, file="IntensityAnalysis-Transition-ToSHB.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotOTH, file="IntensityAnalysis-Transition-ToOTH.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotCRP, file="IntensityAnalysis-Transition-ToCRP.pdf",   width=29.89, height=25, units="cm", dpi=300)
-
+ggsave(plotNON, file="IntensityAnalysis-Transition-ToNON.pdf",   width=29.89, height=25, units="cm", dpi=300)
 
 # Export dataframe to CSV file
 write.csv(dfCAT, file="Category_Level.csv")
