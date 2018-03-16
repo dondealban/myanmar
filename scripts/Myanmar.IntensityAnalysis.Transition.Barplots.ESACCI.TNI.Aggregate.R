@@ -140,11 +140,22 @@ plotOTH <- ggplot() + geom_bar(data=dfOTH, aes(x=ColB, y=ColE, fill="#c6c3bf"), 
 plotOTH <- plotOTH  + geom_hline(data=dfOTH, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
 plotOTH <- plotOTH  + facet_wrap(~ColA)
 plotOTH <- plotOTH  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
-plotOTH <- plotOTH  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH"))
+plotOTH <- plotOTH  + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","SHB"))
 plotOTH <- plotOTH  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To OTH"))
 plotOTH <- plotOTH  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotOTH <- plotOTH  + theme(panel.grid.minor=element_blank())
 plotOTH <- plotOTH  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
+
+# Plot 5: TO CROPLAND transition level
+plotCRP <- ggplot() + geom_bar(data=dfCRP, aes(x=ColB, y=ColE, fill="#c6c3bf"), stat="identity")
+plotCRP <- plotCRP  + geom_hline(data=dfCRP, aes(yintercept=ColF, colour="#000000"), linetype="dashed") # Uniform line
+plotCRP <- plotCRP  + facet_wrap(~ColA)
+plotCRP <- plotCRP  + labs(x="Losing Category", y="Transition Intensity (% of Category at Time Interval)")
+plotCRP <- plotCRP  + scale_x_discrete(labels=c("FOR","MOS","NON","OTH","SHB"))
+plotCRP <- plotCRP  + scale_fill_manual(values=c("#c6c3bf"), name="", labels=c("Transition Intensity To CRP"))
+plotCRP <- plotCRP  + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
+plotCRP <- plotCRP  + theme(panel.grid.minor=element_blank())
+plotCRP <- plotCRP  + theme(legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Save Outputs --------------------------
 
@@ -153,6 +164,7 @@ ggsave(plotFOR, file="IntensityAnalysis-Transition-FromFOR.pdf", width=29.89, he
 ggsave(plotMOS, file="IntensityAnalysis-Transition-ToMOS.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotSHB, file="IntensityAnalysis-Transition-ToSHB.pdf",   width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotOTH, file="IntensityAnalysis-Transition-ToOTH.pdf",   width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotCRP, file="IntensityAnalysis-Transition-ToCRP.pdf",   width=29.89, height=25, units="cm", dpi=300)
 
 
 # Export dataframe to CSV file
