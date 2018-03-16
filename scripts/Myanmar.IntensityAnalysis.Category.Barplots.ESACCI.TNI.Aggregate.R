@@ -120,4 +120,4 @@ ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
 
 # Export dataframe to CSV file
-write.csv(dfCAT, file="CategoryLevel.csv")
+write.csv(dfCAT, file="Category_Level.csv")
