@@ -6,12 +6,12 @@
 # Shrubland (SHB), Other Vegetation (OTH), Cropland (CRP), and Non-Vegetation (NON). 
 # Intensity analysis was calculated using an Excel spreadsheet with a VBA macro (see 
 # https://sites.google.com/site/intensityanalysis/) and the 24 annual ESA CCI land cover
-# data layers. The domain of the analysis is thelandscape extent within the Tanintharyi
+# data layers. The domain of the analysis is the landscape extent within the Tanintharyi
 # Region, Myanmar.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  14 Mar 2018
+# Last Modified:  19 Mar 2018
 
 # Set Working Directory -------------------
 
