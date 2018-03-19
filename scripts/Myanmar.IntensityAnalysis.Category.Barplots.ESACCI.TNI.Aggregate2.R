@@ -114,6 +114,13 @@ plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0
 
 # Plot 4: Combined Gain and Loss Intensities (grouped per category)
 
+plotCOM <- ggplot() + geom_bar(data=dfG, aes(x=ColB, y=ColF, fill="#8acd66"), stat="identity")
+plotCOM <- plotCOM  + geom_bar(data=dfL, aes(x=ColB, y=-ColF, fill="#b43507"), stat="identity")
+plotCOM <- plotCOM  + facet_grid(ColC ~.)
+plotCOM <- plotCOM  + labs(x="Time Interval", y="Category Intensity (% of Category)")
+plotCOM <- plotCOM  + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels = c("Category Gain","Category Loss"))
+plotCOM <- plotCOM  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
+plotCOM <- plotCOM  + theme(panel.grid.minor=element_blank())
 
 
 # Save Outputs --------------------------
