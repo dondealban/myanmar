@@ -113,10 +113,10 @@ plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uni
 plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
 
 # Plot 4: Combined Gain and Loss Intensities (grouped per category)
-
 plotCOM <- ggplot() + geom_bar(data=dfG, aes(x=ColB, y=ColF, fill="#8acd66"), stat="identity")
 plotCOM <- plotCOM  + geom_bar(data=dfL, aes(x=ColB, y=-ColF, fill="#b43507"), stat="identity")
 #plotCOM <- plotCOM  + geom_hline(data=dfG, aes(yintercept=ColG, colour="#009404"), linetype="dashed") # Uniform line
+#plotCOM <- plotCOM  + facet_grid(ColC ~., scales="free_y")
 plotCOM <- plotCOM  + facet_grid(ColC ~.)
 plotCOM <- plotCOM  + labs(x="Time Interval", y="Category Intensity (% of Category)")
 plotCOM <- plotCOM  + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels = c("Category Gain","Category Loss"))
@@ -124,6 +124,18 @@ plotCOM <- plotCOM  + scale_fill_manual(values=c("#8acd66","#b43507"), name="", 
 plotCOM <- plotCOM  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
 plotCOM <- plotCOM  + theme(panel.grid.minor=element_blank())
 
+
+# Plot 5: Combined Observed Gain and Loss Area in Pixels (grouped per category)
+plotPIX <- ggplot() + geom_bar(data=dfG, aes(x=ColB, y=ColE, fill="#8acd66"), stat="identity")
+plotPIX <- plotPIX  + geom_bar(data=dfL, aes(x=ColB, y=-ColE, fill="#b43507"), stat="identity")
+#plotPIX <- plotPIX  + geom_hline(data=dfG, aes(yintercept=ColG, colour="#009404"), linetype="dashed") # Uniform line
+#plotPIX <- plotPIX  + facet_grid(ColC ~., scales="free_y")
+plotPIX <- plotPIX  + facet_grid(ColC ~.)
+plotPIX <- plotPIX  + labs(x="Time Interval", y="Category Area (Number of Pixels in Category)")
+plotPIX <- plotPIX  + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels = c("Category Gain","Category Loss"))
+#plotPIX <- plotPIX  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
+plotPIX <- plotPIX  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
+plotPIX <- plotPIX  + theme(panel.grid.minor=element_blank())
 
 # Save Outputs --------------------------
 
