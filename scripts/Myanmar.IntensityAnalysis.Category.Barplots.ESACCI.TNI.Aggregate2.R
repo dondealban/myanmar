@@ -116,9 +116,11 @@ plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0
 
 plotCOM <- ggplot() + geom_bar(data=dfG, aes(x=ColB, y=ColF, fill="#8acd66"), stat="identity")
 plotCOM <- plotCOM  + geom_bar(data=dfL, aes(x=ColB, y=-ColF, fill="#b43507"), stat="identity")
+plotCOM <- plotCOM  + geom_hline(data=dfG, aes(yintercept=ColG, colour="#009404"), linetype="dashed") # Uniform line
 plotCOM <- plotCOM  + facet_grid(ColC ~.)
 plotCOM <- plotCOM  + labs(x="Time Interval", y="Category Intensity (% of Category)")
 plotCOM <- plotCOM  + scale_fill_manual(values=c("#8acd66","#b43507"), name="", labels = c("Category Gain","Category Loss"))
+plotCOM <- plotCOM  + scale_colour_manual(values=c("#000000"), name="", labels = c("Uniform Line"))
 plotCOM <- plotCOM  + scale_x_discrete(breaks=c("1992-1993","1997-1998","2001-2002","2004-2005","2009-2010","2014-2015"))
 plotCOM <- plotCOM  + theme(panel.grid.minor=element_blank())
 
@@ -129,7 +131,8 @@ plotCOM <- plotCOM  + theme(panel.grid.minor=element_blank())
 ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain-PerInterval.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
-ggsave(plotCOM, file="IntensityAnalysis-Category-LossGain-PerCategory.pdf", width=25, height=29.89, units="cm", dpi=300)
+ggsave(plotCOM, file="IntensityAnalysis-Category-LossGain-PerCategory1.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotCOM, file="IntensityAnalysis-Category-LossGain-PerCategory2.pdf", width=24, height=30.89, units="cm", dpi=300)
 
 
 # Export dataframe to CSV file
