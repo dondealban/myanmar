@@ -81,7 +81,7 @@ dfCAT <- rbind(dfL, dfG)
 
 # Generate Plots ------------------------
 
-# Plot 1: Gain and Loss Intensities only
+# Plot 1: Gain and Loss Intensities only (grouped per time interval)
 plotCAT <- ggplot() + geom_bar(data=dfCAT, aes(x=ColC, y=ColF, fill=ColD), stat="identity", position=position_dodge())
 plotCAT <- plotCAT  + geom_hline(data=dfCAT, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_wrap(~ColB)
@@ -111,6 +111,10 @@ plotG <- plotG + scale_x_discrete(labels=c("CRP","FOR","MOS","NON","OTH","SHB"))
 plotG <- plotG + scale_fill_manual(values=c("#8acd66"), name="", labels=c("Gain Intensity"))
 plotG <- plotG + scale_colour_manual(values=c("#000000"), name="", labels=c("Uniform Line"))
 plotG <- plotG + theme(panel.grid.minor=element_blank(), legend.position=c(0.8,0.1), legend.box="horizontal")
+
+# Plot 4: Combined Gain and Loss Intensities (grouped per category)
+
+
 
 # Save Outputs --------------------------
 
