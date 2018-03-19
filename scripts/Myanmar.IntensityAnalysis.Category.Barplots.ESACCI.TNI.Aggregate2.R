@@ -126,9 +126,11 @@ plotCOM <- plotCOM  + theme(panel.grid.minor=element_blank())
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="IntensityAnalysis-Category-LossGain-PerInterval.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotL,   file="IntensityAnalysis-Category-Loss.pdf", width=29.89, height=25, units="cm", dpi=300)
 ggsave(plotG,   file="IntensityAnalysis-Category-Gain.pdf", width=29.89, height=25, units="cm", dpi=300)
+ggsave(plotCOM, file="IntensityAnalysis-Category-LossGain-PerCategory.pdf", width=25, height=29.89, units="cm", dpi=300)
+
 
 # Export dataframe to CSV file
 write.csv(dfCAT, file="Category_Level.csv")
