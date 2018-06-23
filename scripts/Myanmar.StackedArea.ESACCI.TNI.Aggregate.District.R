@@ -9,7 +9,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/tanintharyi/aggregate/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/tanintharyi/aggregate kawthoung/")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
@@ -45,4 +45,4 @@ aggreg <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class, lab
 aggreg <- aggreg + labs(x="Year", y="Percentage of Landscape", fill="Land Cover")
 aggreg <- aggreg + theme_bw() +scale_fill_manual(values=c("#ffff64","#8ca000","#784b00","#ffb432","#006400","#0046c8"))
 
-ggsave(aggreg, file="StackedArea-Aggregate.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(aggreg, file="StackedArea-Aggregate-Kawthoung.pdf", width=19.89, height=15, units="cm", dpi=300)
