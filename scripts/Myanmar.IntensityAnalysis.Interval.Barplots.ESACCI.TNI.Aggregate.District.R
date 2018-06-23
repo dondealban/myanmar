@@ -15,7 +15,7 @@
 
 # Set Working Directory -------------------
 
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/set 01 again/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/barplots/esa cci/tanintharyi/set 01 district/")
 
 # Load Libraries --------------------------
 
