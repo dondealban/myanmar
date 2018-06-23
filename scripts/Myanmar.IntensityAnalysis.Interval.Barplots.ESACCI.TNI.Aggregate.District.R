@@ -28,13 +28,13 @@ library(tidyr)
 # Read Input Data -------------------------
 
 # Read interval level XLSX data file
-xlsxINT  <- read_excel("TNI_IntensityAnalysis.xlsx", sheet="Interval_Level")
+xlsxINT  <- read_excel("TNI_IntensityAnalysis_Kawthoung.xlsx", sheet="Interval_Level")
 
 # Clean and Subset Data -------------------
 
 # Remove first row with unnecessary header name, and save and then read CSV file
-xlsxINT <- xlsxINT[-c(1),] %>% write_csv("Interval_Level.csv")
-csvINT <- read.csv(file="Interval_Level.csv", header=TRUE, sep=",")
+xlsxINT <- xlsxINT[-c(1),] %>% write_csv("Interval_Level_Kawthoung.csv")
+csvINT <- read.csv(file="Interval_Level_Kawthoung.csv", header=TRUE, sep=",")
 
 # Rename column names
 colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
@@ -61,4 +61,4 @@ plotINT <- plotINT  + theme_light()
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="IntensityAnalysis-Interval-Set01.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="IntensityAnalysis-Interval-District-Kawthoung.pdf", width=19.89, height=15, units="cm", dpi=300)
