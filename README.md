@@ -1,5 +1,5 @@
-# Myanmar
-This repository contains my scripts pertaining to remote sensing image classification, land use change analysis, and scenario modeling of geospatial data in Myanmar. It also contains my working notes during workflow development and scripting.
+# Understanding Land System Change in Myanmar
+This is the main drawing-board repository for the 'Understanding Land System Change in Myanmar' project. The repository is organised into a series of studies or papers (i.e., planned, ongoing, and completed) that seek to explore and understand the land system change dynamics in Myanmar, a country experiencing profound social-economic-political transitions. Each study/paper is organised and contained in a folder, which contains relevant working files, data, scripts, outputs, and development notes for the specific study topic. Note that this repository contains working versions of files in varying stages of progress. Completed studies are noted and links are provided to a separate repository that contains the final versions.
 
 **Note: This repository is undergoing a major restructuring and reogranisation. Watch this space.**
 
@@ -39,55 +39,3 @@ This study explored the synergy of optical and SAR data for mapping and monitori
 2. A cross-tabulation matrix was computed using the Quantum GIS [Semi-Automatic Classification Plugin](https://plugins.qgis.org/plugins/SemiAutomaticClassificationPlugin/) with the 1995 and 2015 land cover rasters as inputs.
 3. In addition to barplots, a preliminary [Sankey diagram](https://en.wikipedia.org/wiki/Sankey_diagram) was developed to visualise the transitions of land cover types from 1995 to 2015. The diagram was developed using the [riverplot](https://cran.r-project.org/web/packages/riverplot/index.html) package.
 
-### Acronyms
-
-#### Land Cover Types
-The following land cover types were identified based on available ground-truth data and ancillary maps, and subsequently adopted as the land cover classification scheme.
-
-Acronym | Land Cover Type
-------- | ----------------
-FOR     | Forest
-MNG     | Mangrove
-OPM     | Oil Palm Mature
-OPY     | Oil Palm Young
-RBM     | Rubber Mature
-RBY     | Rubber Young
-RBN     | Rubber New
-SHB     | Shrub/Orchard
-RPD     | Rice Paddy
-BUA     | Built-Up Area
-BSG     | Bare Soil/Ground
-WTR     | Water
-
-The final land cover categories used consist of nine classes including: FOR, MNG, OPM, RBM, SHB, RPD, BUA, BSG, and WTR.
-
-#### Predictor Variables
-Predictor variables consist mainly of Landsat bands and L-band SAR polarisation channels. Additional predictors were calculated from the main bands/channels, specifically indices and texture measures (see below). SAR indices indicated by an asterisk (*).
-
-Acronym | Index
-------- | ----------------
-EVI     | Enhanced Vegetation Index
-LSWI    | Land Surface Water Index
-NDVI    | Normalised Difference Vegetation Index 
-NDTI    | Normalised Till Index
-SATVI   | Soil-Adjusted Vegetation Index
-AVE     | Average*
-DIF     | Difference*
-NDI     | Normalised Difference Index*
-NLI     | NL Index*
-RT1     | HH/HV Ratio*
-RT2     | HV/HH Ratio*
-
-#### Texture Measures
-Grey-level co-occurrence matrices were computed from the HH and HV polarisation channels of the SAR data. The following Haralick texture measures were computed:
-
-Acronym | Texture Measure
-------- | ----------------
-ASM     | Angular Second Moment 
-CON     | Contrast
-COR     | Correlation
-DIS     | Dissimilarity
-ENT     | Entropy
-IDM     | Homogeneity
-SVG     | Mean
-VAR     | Variance
