@@ -1,8 +1,6 @@
 # Understanding Land-System Change in Myanmar
 This is the main drawing-board repository for the 'Understanding Land-System Change in Myanmar' project. The repository is organised into a series of studies or papers (i.e., planned, ongoing, and completed) that seek to explore and understand the land-system change dynamics in Myanmar, a country experiencing profound social-economic-political transitions. Each study/paper is organised and contained in a folder, which contains relevant working files, data, scripts, outputs, development notes, as well as project boards (where available) for the specific study topic. Note that this main repository contains the working versions of files at varying stages of progress. Completed studies are noted and links are provided to a separate repository that contains the final versions.
 
-**Note: This repository is undergoing major restructuring and reogranisation. Watch this space.**
-
 ## List of Studies/Papers
 
 #### 1. Analysing land cover change in Tanintharyi, Myanmar
