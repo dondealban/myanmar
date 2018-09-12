@@ -16,6 +16,10 @@ The study has been completed and published as an open-access paper entitled, *Co
 This study examined the occurrence of land-system regime shifts in a dynamic landscape in southern Myanmar through the application of complementary analytical frameworks. The 24-year annual time-series ESA CCI global land cover product coupled with extensive literature review were used to explore the dynamics of the land-system regime shift. The manuscript has been submitted and is currently under review.
 
 #### 3. Land cover transitions in Myanmar
-This study analyses the land cover change transitions and the underlying drivers of these changes in Myanmar over a twenty-year period. Using the approach developed from a previous study (see item 1 above), this country-scale analysis utilises combined Landsat (5/7/8) and L-band SAR (JERS-1/PALSAR-1/PALSAR-2) data, including ancillary data layers, to generate historical land cover maps at three time-points: 1996, 2007, and 2016.
+This study analyses the land cover change transitions and the underlying drivers of these changes in Myanmar over a twenty-year period. Using the approach developed from a previous study (see item 1 above), this country-scale analysis utilises combined Landsat (5/7/8) and L-band SAR (JERS-1/PALSAR-1/PALSAR-2) data, including ancillary data layers, to generate historical land cover maps at three time-points: 1996, 2007, and 2016. The land cover transitions over two time -intervals, 1996-2007 and 2007-2016, are analysed using the Intensity Analysis framework.
 
-#### 4. Modeling future land cover change
+#### 4. Spatial patterns and determinants of land cover change in Tanintharyi, Myanmar
+This study intends to analyse the spatial patterns and spatial determinants that contribute to the explanation of land cover change in Tanintharyi Region, Myanmar.
+
+#### 5. Modeling future land cover change in Tanintharyi, Myanmar
+This study intends to develop spatially explicit models of future land cover change in Tanintharyi, Myanmar based on various policy and development scenarios in the region.
