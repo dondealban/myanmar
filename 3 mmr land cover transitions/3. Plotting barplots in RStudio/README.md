@@ -24,6 +24,6 @@ Specifically, it contains the following;
 
 As of the creation of this folder (17-09-18), these plots were created separately in RStudio as a post-hoc upload into this Github repository. Ideally, this should **NOT** be the case, and in fact, the preparation of these scripts should be done at the start via the synergistic use of RStudio, GitHub Desktop and Atom. 
 
-All previous work regarding this section is contained within the .zip folder [150918 MMR Barplots](myanmar/3 mmr land cover transitions/3. Plotting barplots in RStudio/150918 MMR Barplots.zip).
+All previous work regarding this section is contained within the .zip folder [150918 MMR Barplots](dondealban/myanmar/3 mmr land cover transitions/3. Plotting barplots in RStudio/150918 MMR Barplots.zip)
 
 **End**
