@@ -1,5 +1,4 @@
 ### Conducting LULC Change Analysis (and Intensity Analysis) using Dinamica EGO
-~~                                                                                                                                    ~~
 
 **Creator:** J Johanness
 
