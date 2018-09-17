@@ -29,7 +29,9 @@ This folder holds the following;
 These results are to be compared against the outputs from Dinamica EGO in conducting the LULC change analysis. The decision on which to use will be based upon the comparison between the following;
 
 1. Trends at each level of the Intensity Analysis 
+
 2. Values of Uniform Intensities
+
 3. Values for Commission/Omission error
 
 **End**
