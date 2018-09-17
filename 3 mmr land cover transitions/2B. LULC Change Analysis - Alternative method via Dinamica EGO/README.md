@@ -6,13 +6,17 @@ The contents of this folder specifically refer to the conduct of LULC change ana
 The reason for experimenting this method is because it automates everything from the LULC change analysis, to the IA results, which would have otherwise have to be iterated manually through the Macro-XLS.
 
 Keep in mind of the following;
-(1) Minor numerical differences after the 8t/9th decimal places for values
+(1) Minor numerical differences after the 8th/9th decimal places for values
+
 (2) At the category and transition level, there is no value for the 'Hypothesized error % required in the whole domain'
+
 *This calculation is done within the Macro-XLS but not in the Dinamica IA model
 
 
 This folder holds the following;
+
 (1) Model inputs
+
 (2) Model outputs
 
 
