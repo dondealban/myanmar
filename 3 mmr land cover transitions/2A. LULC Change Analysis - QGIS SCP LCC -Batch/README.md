@@ -1,4 +1,4 @@
-###Conducting LULC Change Analysis using QGIS SCP LCC (Batch) function
+### Conducting LULC Change Analysis using QGIS SCP LCC (Batch) function
 
 **Creator:** J Johanness
 
