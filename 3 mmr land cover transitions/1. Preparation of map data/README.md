@@ -11,7 +11,7 @@ The contents of this folder specifically deal with the procedures conducted prio
 
 These include;
 
-1. The preparation of the ESRI Shapefiles sourced by the [Database of Global Administrative Areas](https://gadm.org/)
+1. The ESRI Shapefiles sourced by the [Database of Global Administrative Areas](https://gadm.org/)
 
 2. The QGIS 2.18.15 Processing Modeler which was used to subset the country-wide raster map to each of the 15 division/states 
 
