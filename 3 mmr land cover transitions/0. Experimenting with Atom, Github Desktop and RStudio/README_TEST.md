@@ -33,5 +33,10 @@ This will be a .md file detailing the procedures I have managed to complete in l
 
  - Attempting Staging and Pushing to the GitHub repo.
 
-
+4. This final comment is done not in Atom, but in GitHub, signifying
+ - (1) the Push from Atom worked correctly
+ - (2) I can now see the code in the .md file
+ - (3) I am making these final comments to test if they show up on Atom after I push it from within GitHub
+ 
+ 
 **End**
