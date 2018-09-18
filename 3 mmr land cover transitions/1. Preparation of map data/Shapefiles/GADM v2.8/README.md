@@ -13,7 +13,6 @@ This folder contains the Shapefiles at all administrative unit levels within Mya
 
 #### **Correction**
 
-
 *The GADM v2.8 can still be downloaded from GADM at [LINK](https://gadm.org/download_country_v2.html).* 
 
 ~ ~ ~ ~ ~
