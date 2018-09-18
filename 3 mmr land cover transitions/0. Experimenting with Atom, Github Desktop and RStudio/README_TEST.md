@@ -47,4 +47,6 @@ This will be a .md file detailing the procedures I have managed to complete in l
  
 **Also**, while all these was being done, RStudio already has the .md file up to date, which suggests automatic updates, and not manually updating in Atom via Fetch > Pull, but maybe it takes some time, as although Point (4.) was already seen, the final comments after Point (5.) were still not yet showing in RStudio Project.
 
+*And yes, the Pulling seems to be automatic. This line will be Staged and Pushed to GitHub via RStudio as a Commit. 
+
 **End**
