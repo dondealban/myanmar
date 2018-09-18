@@ -34,7 +34,7 @@ This will be a .md file detailing the procedures I have managed to complete in l
  - Attempting Staging and Pushing to the GitHub repo.
 
 4. This final comment is done not in Atom, but in GitHub, signifying
-  
+
   (1) the Push from Atom worked correctly
 
   (2) I can now see the code in the .md file
@@ -44,9 +44,10 @@ This will be a .md file detailing the procedures I have managed to complete in l
  5. So, after pushing from within GitHub, the current version in Atom, is the last version that was pushed from Atom to GitHub, so the changes in Point (4.) were not seen yet.
 
  - However at the bottom right, I clicked "Fetch", and then after fetching, there is 1 file that can be "Pull"-ed. After Pulling, only then can I see the changes made.
- 
+
 **Also**, while all these was being done, RStudio already has the .md file up to date, which suggests automatic updates, and not manually updating in Atom via Fetch > Pull, but maybe it takes some time, as although Point (4.) was already seen, the final comments after Point (5.) were still not yet showing in RStudio Project.
 
-*And yes, the Pulling seems to be automatic. This line will be Staged and Pushed to GitHub via RStudio as a Commit. 
+*And yes, the Pulling seems to be automatic. This line will be Staged and Pushed to GitHub via RStudio as a Commit.
+You still **HAVE** to click the Green Push button in the Git Window within RStudio
 
 **End**
