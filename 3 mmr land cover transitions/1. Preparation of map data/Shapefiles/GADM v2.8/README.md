@@ -9,14 +9,14 @@
 
 This folder contains the Shapefiles at all administrative unit levels within Myanmar, sourced from [Database of Global Administrative Areas (GADM)](https://gadm.org/index.html). However, this version of the Shapefiles (which was sourced in mid-2017 to mid-2018) is no longer downloadable from GADM. Instead, the map data within GADM is actually to a more updated [GADM Version 3.6](https://gadm.org/download_country_v3.html). 
 
-///////////////////////////////////////////////////////////
+~ ~ ~ ~ ~
 
 #### **Correction**
 
 
 *The GADM v2.8 can still be downloaded from GADM at [LINK](https://gadm.org/download_country_v2.html).* 
 
-///////////////////////////////////////////////////////////
+~ ~ ~ ~ ~
 
 For some reason, using the GADM v3.1 Shapefiles caused some unknown errors when we attempted to use the QGIS 2.18.15/3.2.1 [Semi-automatic Classification Plugin (SCP)](https://media.readthedocs.org/pdf/semiautomaticclassificationmanual-v5/latest/semiautomaticclassificationmanual-v5.pdf), specifically when using the Land Cover Change (LCC) function. The change maps generated using the GADM v3.6 had negative values within the raster pixels, and preliminary quality-checking of the Land Cover Change Reports (LCCRs) which were generated as .csv outputs from the plugin revealed that for all changes that were documented between Land Use Land Cover (LULC) categories all indicated 0 (i.e. zero) pixels consistently in all changes in all .csv's. The maps could also not be seen within QGIS, suggesting another Spatial Reference System, however, checks revealed that the SRS was indeed WGS1984, therefore compromising our ability to proceed further using these set of change maps created using the GADM v3.6 Shapefiles.
 
