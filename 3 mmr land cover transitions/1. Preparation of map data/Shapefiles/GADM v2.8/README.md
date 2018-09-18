@@ -7,7 +7,7 @@
 
 **Purpose:**
 
-This folder contains the Shapefiles at all administrative unit levels within Myanmar, sourced from [Database of Global Administrative Areas (GADM)](https://gadm.org/index.html). However, this version of the Shapefiles (which was sourced in mid-2017 to mid-2018) is no longer downloadable from GADM. Instead, the map data within GADM is actually to a more updated [GADM Version 3.4](https://gadm.org/download_country_v3.html). 
+This folder contains the Shapefiles at all administrative unit levels within Myanmar, sourced from [Database of Global Administrative Areas (GADM)](https://gadm.org/index.html). However, this version of the Shapefiles (**which was sourced in mid-2017 to mid-2018**) is no longer downloadable from GADM. Instead, the map data within GADM is actually to a more updated [GADM Version 3.4](https://gadm.org/download_country_v3.html). 
 
 ~ ~ ~ ~ ~
 
