@@ -12,8 +12,8 @@
 
 # This test/experimentation for R Scripts for GitHub, will be done for the calculation of the proportions for each change from the QGIS SCP LCCR .csv's to generate a stacked area chart to see which transitions contributed the most to overall change in the landscape
 
-
-
+Note that if you try to open a .zip folder in R (through Git), it will open up WinRAR, unlike in Atom, where it opens up immediately
+So, of course, you can edit the code in Atom, but unlike in RStudio, you cannot "Run" the script
 # Start
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - -
