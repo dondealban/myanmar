@@ -1,56 +1,48 @@
-# Script purpose:
-# Generate panelled barplots for the Interval level of the Intensity Analysis 
-# for Myanmar country (national level)
+# Creator: J Johanness
 
-# Set Working Directory -------------------
-setwd("C:/150918 MMR Barplots/1-Interval")
+# Date: 21-09-2018 - 23-09-2018
 
+# Purpose: This is to experiment with creating and commiting an R script to test if
+# its changes will be documented by GitHub, GitHub Desktop, and Atom
+# and which of these can we manipulate the R Script directly (not R Markdown, unless they are interchangeably linked in some way)
 
-# Load Libraries --------------------------
+# Firstly, this Script was done via Ctrl + Shift + N (New R Script), which I believe once I save, I will need to Commit and Push to the repo
 
-library(ggplot2)
-library(plyr)
+# Script Example
 
-# Read Input Data -------------------------
+# This test/experimentation for R Scripts for GitHub, will be done for the calculation of the proportions for each change from the QGIS SCP LCCR .csv's to generate a stacked area chart to see which transitions contributed the most to overall change in the landscape
 
-dataINT <- read.csv(file="Interval Level (All Domains).csv", header=TRUE, sep=",")
+#Note that if you try to open a .zip folder in R (through Git), it will open up WinRAR, unlike in Atom, where it opens up immediately
 
-# Clean and Subset Data -------------------
+#So, of course, you can edit the code in Atom, but unlike in RStudio, you cannot "Run" the script
 
-# Select columns: include all columns except Category ID
-dfINT <- subset(dataINT, select=c(5,7,9,10))
+# My suggestion is: If you need to write a code and run it, just use RStudio, because the syntax is slightly different, and if you type an R-script in Atom, you may have to end up editing the script much more than if you just worked on RStudio from the start. But, yes, you can write an R script in Atom if you wish, especially if you are already extremely proficient in using RStudio.
 
+# Start
 
-# Change column names for easier reference
+# - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-# Note the following description of category level column names
-# ColA - Domain_name
-# ColB - Time_interval
-# ColC - Annual_Change_percent_of_interval's_domain
-# ColD - Uniform_Annual_Change_percrent_of_all_domains
+setwd("C:/150918 all newest CSVs from QGIS SCP LCC batch/4. QGIS SCP LCC_Change Maps and CSVs")
 
-list <- c("ColA","ColB","ColC","ColD")
-colnames(dfINT) <- c(list)
+Myanmar_Interval_1 <- read.csv(file="0_Myanmar_1996_to_2007.csv", header = TRUE, sep = "\t")
+names(Myanmar_Interval_1)
+str(Myanmar_Interval_1)
 
+Domain <- rep("1", nrow(Myanmar_Interval_1))
+Myanmar_Interval_1 <- cbind(Myanmar_Interval_1, Domain)
 
-# Generate Plots ------------------------
+Interval <- rep("1", nrow(Myanmar_Interval_1))
+Myanmar_Interval_1 <- cbind(Myanmar_Interval_1, Interval)
 
-# Plot 1: Interval Level all domains for both intervals
-plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=ColB, y=ColC), stat="identity", position=position_dodge())
-plotINT <- plotINT  + geom_hline(data=dfINT, aes(yintercept=ColD, colour="#000000"), linetype="dashed") # Uniform line
-plotINT <- plotINT  + facet_wrap(~ColA)
-plotINT <- plotINT  + labs(x="Time Interval", y="Change Intensity (%)")
-#plotINT <- plotINT  + scale_x_discrete(labels=c("1996 to 2007", "2007 to 2016"))
-#plotINT <- plotINT  + scale_fill_manual(values=c("#b43507","#8acd66"), labels=c("Loss Intensity","Gain Intensity"))
-plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
-plotINT <- plotINT  + theme(panel.grid.minor=element_blank())
-plotINT <- plotINT  + theme(legend.title=element_blank(), legend.position=c(0.94,0.975), legend.box="horizontal")
+head(Myanmar_Interval_1)
+
+Myanmar_Interval_1 ["PercentOfTotalLandscapeChange"] <- prop.table(Myanmar_Interval_1$PixelSum) *100
+head(Myanmar_Interval_1)
+
+sum(Myanmar_Interval_1$PercentOfTotalLandscapeChange)
+# The sum is 100%.
+
+# END
 
 
-# Save Outputs --------------------------
 
-# Output boxplots to a PDF file
-ggsave(plotINT, file="IA-Interval-All Domains.pdf", width=29.89, height=25, units="cm", dpi=300)
-
-# Export dataframe to CSV file
-write.csv(dfINT, file="IA-Interval-All Domains-Rscript-output.csv")
