@@ -8,13 +8,19 @@
 
 # START
 
+# - - -
+
 # 1. Define path to folder
 
 path <- "C:/150918 all newest CSVs from QGIS SCP LCC batch/4. QGIS SCP LCC_Change Maps and CSVs"
 
+# - - -
+
 # 2. Create file list
 
 files <- list.files(path=path, pattern = "*.csv")
+
+# - - -
 
 # 3. Load each file as an individual data frame, and remove the "_" and ".csv"
 
@@ -27,87 +33,91 @@ for(file in files)
 }
 
 
+# - - -
+
 # 4. Now to add the Domain and Interval Column (There must be a better way to do this, by inserting a column only if the file name has 1996_to_2007 etc)
 
 
 # Preparing new Domain column for all Interval 1 files, where A refers to interval 1 (this is because it will overwrite each other if it is only 'Domain')
 
-DomainA0  <- rep('0', nrow(`0Myanmar1996to2007`))
-DomainA1  <- rep('1', nrow(`1Ayeyarwady1996to2007`))
-DomainA2  <- rep('2', nrow(`2Bago1996to2007`))
-DomainA3  <- rep('3', nrow(`3Chin1996to2007`))
-DomainA4  <- rep('4', nrow(`4Kachin1996to2007`))
-DomainA5  <- rep('5', nrow(`5Kayah1996to2007`))
-DomainA6  <- rep('6', nrow(`6Kayin1996to2007`))
-DomainA7  <- rep('7', nrow(`7Magway1996to2007`))
-DomainA8  <- rep('8', nrow(`8Mandalay1996to2007`))
-DomainA9  <- rep('9', nrow(`9Mon1996to2007`))
-DomainA10 <- rep('10', nrow(`10Naypyitaw1996to2007`))
-DomainA11 <- rep('11', nrow(`11Rakhine1996to2007`))
-DomainA12 <- rep('12', nrow(`12Sagaing1996to2007`))
-DomainA13 <- rep('13', nrow(`13Shan1996to2007`))
-DomainA14 <- rep('14', nrow(`14Tanintharyi1996to2007`))
-DomainA15 <- rep('15', nrow(`15Yangon1996to2007`))
+DomainA0  <- rep('A. Myanmar', nrow(`0Myanmar1996to2007`))
+DomainA1  <- rep('B. Ayeyarwady', nrow(`1Ayeyarwady1996to2007`))
+DomainA2  <- rep('C. Bago', nrow(`2Bago1996to2007`))
+DomainA3  <- rep('D. Chin', nrow(`3Chin1996to2007`))
+DomainA4  <- rep('E. Kachin', nrow(`4Kachin1996to2007`))
+DomainA5  <- rep('F. Kayah', nrow(`5Kayah1996to2007`))
+DomainA6  <- rep('G. Kayin', nrow(`6Kayin1996to2007`))
+DomainA7  <- rep('H. Magway', nrow(`7Magway1996to2007`))
+DomainA8  <- rep('I. Mandalay', nrow(`8Mandalay1996to2007`))
+DomainA9  <- rep('J. Mon', nrow(`9Mon1996to2007`))
+DomainA10 <- rep('K. Naypyitaw', nrow(`10Naypyitaw1996to2007`))
+DomainA11 <- rep('L. Rakhine', nrow(`11Rakhine1996to2007`))
+DomainA12 <- rep('M. Sagaing', nrow(`12Sagaing1996to2007`))
+DomainA13 <- rep('N. Shan', nrow(`13Shan1996to2007`))
+DomainA14 <- rep('O. Tanintharyi', nrow(`14Tanintharyi1996to2007`))
+DomainA15 <- rep('P. Yangon', nrow(`15Yangon1996to2007`))
 
 # Preparing new Domain column for all Interval 2 files, where B refers to Interval 2
 
-DomainB0  <- rep('0', nrow(`0Myanmar2007to2016`))
-DomainB1  <- rep('1', nrow(`1Ayeyarwady2007to2016`))
-DomainB2  <- rep('2', nrow(`2Bago2007to2016`))
-DomainB3  <- rep('3', nrow(`3Chin2007to2016`))
-DomainB4  <- rep('4', nrow(`4Kachin2007to2016`))
-DomainB5  <- rep('5', nrow(`5Kayah2007to2016`))
-DomainB6  <- rep('6', nrow(`6Kayin2007to2016`))
-DomainB7  <- rep('7', nrow(`7Magway2007to2016`))
-DomainB8  <- rep('8', nrow(`8Mandalay2007to2016`))
-DomainB9  <- rep('9', nrow(`9Mon2007to2016`))
-DomainB10 <- rep('10', nrow(`10Naypyitaw2007to2016`))
-DomainB11 <- rep('11', nrow(`11Rakhine2007to2016`))
-DomainB12 <- rep('12', nrow(`12Sagaing2007to2016`))
-DomainB13 <- rep('13', nrow(`13Shan2007to2016`))
-DomainB14 <- rep('14', nrow(`14Tanintharyi2007to2016`))
-DomainB15 <- rep('15', nrow(`15Yangon2007to2016`))
+DomainB0  <- rep('A. Myanmar', nrow(`0Myanmar2007to2016`))
+DomainB1  <- rep('B. Ayeyarwady', nrow(`1Ayeyarwady2007to2016`))
+DomainB2  <- rep('C. Bago', nrow(`2Bago2007to2016`))
+DomainB3  <- rep('D. Chin', nrow(`3Chin2007to2016`))
+DomainB4  <- rep('E. Kachin', nrow(`4Kachin2007to2016`))
+DomainB5  <- rep('F. Kayah', nrow(`5Kayah2007to2016`))
+DomainB6  <- rep('G. Kayin', nrow(`6Kayin2007to2016`))
+DomainB7  <- rep('H. Magway', nrow(`7Magway2007to2016`))
+DomainB8  <- rep('I. Mandalay', nrow(`8Mandalay2007to2016`))
+DomainB9  <- rep('J. Mon', nrow(`9Mon2007to2016`))
+DomainB10 <- rep('K. Naypyitaw', nrow(`10Naypyitaw2007to2016`))
+DomainB11 <- rep('L. Rakhine', nrow(`11Rakhine2007to2016`))
+DomainB12 <- rep('M. Sagaing', nrow(`12Sagaing2007to2016`))
+DomainB13 <- rep('N. Shan', nrow(`13Shan2007to2016`))
+DomainB14 <- rep('O. Tanintharyi', nrow(`14Tanintharyi2007to2016`))
+DomainB15 <- rep('P. Yangon', nrow(`15Yangon2007to2016`))
 
 # Preparing new Interval column for all Interval 1 files
 
-IntervalA0  <- rep('1', nrow(`0Myanmar1996to2007`))
-IntervalA1  <- rep('1', nrow(`1Ayeyarwady1996to2007`))
-IntervalA2  <- rep('1', nrow(`2Bago1996to2007`))
-IntervalA3  <- rep('1', nrow(`3Chin1996to2007`))
-IntervalA4  <- rep('1', nrow(`4Kachin1996to2007`))
-IntervalA5  <- rep('1', nrow(`5Kayah1996to2007`))
-IntervalA6  <- rep('1', nrow(`6Kayin1996to2007`))
-IntervalA7  <- rep('1', nrow(`7Magway1996to2007`))
-IntervalA8  <- rep('1', nrow(`8Mandalay1996to2007`))
-IntervalA9  <- rep('1', nrow(`9Mon1996to2007`))
-IntervalA10 <- rep('1', nrow(`10Naypyitaw1996to2007`))
-IntervalA11 <- rep('1', nrow(`11Rakhine1996to2007`))
-IntervalA12 <- rep('1', nrow(`12Sagaing1996to2007`))
-IntervalA13 <- rep('1', nrow(`13Shan1996to2007`))
-IntervalA14 <- rep('1', nrow(`14Tanintharyi1996to2007`))
-IntervalA15 <- rep('1', nrow(`15Yangon1996to2007`))
+IntervalA0  <- rep('1996 to 2007', nrow(`0Myanmar1996to2007`))
+IntervalA1  <- rep('1996 to 2007', nrow(`1Ayeyarwady1996to2007`))
+IntervalA2  <- rep('1996 to 2007', nrow(`2Bago1996to2007`))
+IntervalA3  <- rep('1996 to 2007', nrow(`3Chin1996to2007`))
+IntervalA4  <- rep('1996 to 2007', nrow(`4Kachin1996to2007`))
+IntervalA5  <- rep('1996 to 2007', nrow(`5Kayah1996to2007`))
+IntervalA6  <- rep('1996 to 2007', nrow(`6Kayin1996to2007`))
+IntervalA7  <- rep('1996 to 2007', nrow(`7Magway1996to2007`))
+IntervalA8  <- rep('1996 to 2007', nrow(`8Mandalay1996to2007`))
+IntervalA9  <- rep('1996 to 2007', nrow(`9Mon1996to2007`))
+IntervalA10 <- rep('1996 to 2007', nrow(`10Naypyitaw1996to2007`))
+IntervalA11 <- rep('1996 to 2007', nrow(`11Rakhine1996to2007`))
+IntervalA12 <- rep('1996 to 2007', nrow(`12Sagaing1996to2007`))
+IntervalA13 <- rep('1996 to 2007', nrow(`13Shan1996to2007`))
+IntervalA14 <- rep('1996 to 2007', nrow(`14Tanintharyi1996to2007`))
+IntervalA15 <- rep('1996 to 2007', nrow(`15Yangon1996to2007`))
 
 # Preparing new Interval column for all Interval 2 files
 
-IntervalB0  <- rep('2', nrow(`0Myanmar2007to2016`))
-IntervalB1  <- rep('2', nrow(`1Ayeyarwady2007to2016`))
-IntervalB2  <- rep('2', nrow(`2Bago2007to2016`))
-IntervalB3  <- rep('2', nrow(`3Chin2007to2016`))
-IntervalB4  <- rep('2', nrow(`4Kachin2007to2016`))
-IntervalB5  <- rep('2', nrow(`5Kayah2007to2016`))
-IntervalB6  <- rep('2', nrow(`6Kayin2007to2016`))
-IntervalB7  <- rep('2', nrow(`7Magway2007to2016`))
-IntervalB8  <- rep('2', nrow(`8Mandalay2007to2016`))
-IntervalB9  <- rep('2', nrow(`9Mon2007to2016`))
-IntervalB10 <- rep('2', nrow(`10Naypyitaw2007to2016`))
-IntervalB11 <- rep('2', nrow(`11Rakhine2007to2016`))
-IntervalB12 <- rep('2', nrow(`12Sagaing2007to2016`))
-IntervalB13 <- rep('2', nrow(`13Shan2007to2016`))
-IntervalB14 <- rep('2', nrow(`14Tanintharyi2007to2016`))
-IntervalB15 <- rep('2', nrow(`15Yangon2007to2016`))
+IntervalB0  <- rep('2007 to 2016', nrow(`0Myanmar2007to2016`))
+IntervalB1  <- rep('2007 to 2016', nrow(`1Ayeyarwady2007to2016`))
+IntervalB2  <- rep('2007 to 2016', nrow(`2Bago2007to2016`))
+IntervalB3  <- rep('2007 to 2016', nrow(`3Chin2007to2016`))
+IntervalB4  <- rep('2007 to 2016', nrow(`4Kachin2007to2016`))
+IntervalB5  <- rep('2007 to 2016', nrow(`5Kayah2007to2016`))
+IntervalB6  <- rep('2007 to 2016', nrow(`6Kayin2007to2016`))
+IntervalB7  <- rep('2007 to 2016', nrow(`7Magway2007to2016`))
+IntervalB8  <- rep('2007 to 2016', nrow(`8Mandalay2007to2016`))
+IntervalB9  <- rep('2007 to 2016', nrow(`9Mon2007to2016`))
+IntervalB10 <- rep('2007 to 2016', nrow(`10Naypyitaw2007to2016`))
+IntervalB11 <- rep('2007 to 2016', nrow(`11Rakhine2007to2016`))
+IntervalB12 <- rep('2007 to 2016', nrow(`12Sagaing2007to2016`))
+IntervalB13 <- rep('2007 to 2016', nrow(`13Shan2007to2016`))
+IntervalB14 <- rep('2007 to 2016', nrow(`14Tanintharyi2007to2016`))
+IntervalB15 <- rep('2007 to 2016', nrow(`15Yangon2007to2016`))
 
 
-# Cbind both DomainXX and IntervalXX columns for all interval 1 files
+# - - -
+
+# 5. Cbind both DomainXX and IntervalXX columns for all interval 1 files
 
 `0Myanmar1996to2007`      <- cbind(`0Myanmar1996to2007`, DomainA0)
 `0Myanmar1996to2007`      <- cbind(`0Myanmar1996to2007`, IntervalA0)
@@ -208,7 +218,9 @@ IntervalB15 <- rep('2', nrow(`15Yangon2007to2016`))
 `15Yangon2007to2016`      <- cbind(`15Yangon2007to2016`, IntervalB15)
 
 
-# 5. Remove all rows that indicate land persistence, i.e. Reference class = X and New class = X, since I want to see contribution to change on the landscape
+# - - -
+
+# 6. Remove all rows that indicate land persistence, i.e. Reference class = X and New class = X, since I want to see contribution to change on the landscape
 
 #Template Code: d<-d[!(d$A=="B" & d$E==0),], i.e. when ColA = ColB, remove that row.
 
@@ -251,7 +263,9 @@ IntervalB15 <- rep('2', nrow(`15Yangon2007to2016`))
 `15Yangon2007to2016` <- `15Yangon2007to2016`[!(`15Yangon2007to2016`$ReferenceClass==`15Yangon2007to2016`$NewClass),]
 
 
-# 6. Adding the percentage of total landscape change column 
+# - - -
+
+# 7. Adding the percentage of total landscape change column 
 
 # For Interval 1,
 
@@ -298,7 +312,9 @@ sum(`1Ayeyarwady2007to2016`$"PercentOfTotalLandscapeChange")
 
 
 
-# 7. Renaming all the Domain and Interval columns for all domains both intervals
+# - - -
+
+# 8. Renaming all the Domain and Interval columns for all domains both intervals
 # Note: merging will not work because the column headers are different, thus they have to be standardized
 
 # For Interval 1, 
@@ -374,7 +390,9 @@ names(`14Tanintharyi2007to2016`)[6] <- "Interval"
 names(`15Yangon2007to2016`)     [6] <- "Interval"
 
 
-# 8. Merging all domains for each interval into one dataframe
+# - - -
+
+# 9. Merging all domains for each interval into one dataframe
 
 AllDomainsInterval1 <- do.call("rbind", list(`0Myanmar1996to2007`
                                              ,`1Ayeyarwady1996to2007`
@@ -410,11 +428,124 @@ AllDomainsInterval2 <- do.call("rbind", list(`0Myanmar2007to2016`
                                              ,`14Tanintharyi2007to2016`
                                              ,`15Yangon2007to2016`))
 
-# 9. Exporting the dataframe as a csv
-
-write.csv(AllDomainsInterval1, file = 'All Domains in Interval 1.csv')
-write.csv(AllDomainsInterval2, file = 'All Domains in Interval 2.csv')
+# - - -
 
 # 10. Plotting the stacked bar plots for each interval
 
-# Before this, the code still needs to be refined, when calculating the percentages using prop.table, we should be removing all the change codes that reflect persistence.
+#df$customer_id <- ifelse(df$customer %in% c('paramount', 'pixar'), 99, df$customer_id)
+# ifelse Template: ifelse(condition, result if TRUE, result if FALSE)
+
+
+# - - -
+
+# 11. Replacing the Reference/New Class numerals to their names
+
+?replace
+
+# Replacing for Reference Class column (Interval 1)
+
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==1, "BUA")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==2, "FOR")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==3, "IAS")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==4, "MNG")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==5, "OPM")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==6, "RPD")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==7, "RBR")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==8, "SHB")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==9, "WTR")
+AllDomainsInterval1$ReferenceClass <- replace(AllDomainsInterval1$ReferenceClass,
+                                              AllDomainsInterval1$ReferenceClass==10, "BRG")
+
+# Repeating for NewClass column (Interval 1)
+
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==1, "BUA")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==2, "FOR")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==3, "IAS")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==4, "MNG")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==5, "OPM")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==6, "RPD")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==7, "RBR")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==8, "SHB")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==9, "WTR")
+AllDomainsInterval1$NewClass <- replace(AllDomainsInterval1$NewClass,
+                                              AllDomainsInterval1$NewClass==10, "BRG")
+
+# Repeating for Reference class column (Interval 2)
+
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==1, "BUA")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==2, "FOR")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==3, "IAS")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==4, "MNG")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==5, "OPM")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==6, "RPD")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==7, "RBR")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==8, "SHB")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==9, "WTR")
+AllDomainsInterval2$ReferenceClass <- replace(AllDomainsInterval2$ReferenceClass,
+                                              AllDomainsInterval2$ReferenceClass==10, "BRG")
+
+# Repeating for NewClass column (Interval 2)
+
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==1, "BUA")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==2, "FOR")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==3, "IAS")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==4, "MNG")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==5, "OPM")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==6, "RPD")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==7, "RBR")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==8, "SHB")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==9, "WTR")
+AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
+                                        AllDomainsInterval2$NewClass==10, "BRG")
+
+# - - -
+
+# 12. Adding a new column that states the transition from Reference class to New class
+
+AllDomainsInterval1$Transition <- paste(AllDomainsInterval1$ReferenceClass, " to ", AllDomainsInterval1$NewClass)
+AllDomainsInterval2$Transition <- paste(AllDomainsInterval2$ReferenceClass, " to ", AllDomainsInterval2$NewClass)
+
+# The data is now ready to be plotted, we save it to a .csv first
+
+# - - -
+
+# 13. Exporting the dataframe as a csv
+
+write.csv(AllDomainsInterval1, file = 'All Domains in Interval 1.csv')
+write.csv(AllDomainsInterval2, file = 'All Domains in Interval 2.csv')
