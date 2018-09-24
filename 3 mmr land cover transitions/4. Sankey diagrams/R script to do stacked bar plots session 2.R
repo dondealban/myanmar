@@ -547,5 +547,28 @@ AllDomainsInterval2$Transition <- paste(AllDomainsInterval2$ReferenceClass, " to
 
 # 13. Exporting the dataframe as a csv
 
-write.csv(AllDomainsInterval1, file = 'All Domains in Interval 1.csv')
-write.csv(AllDomainsInterval2, file = 'All Domains in Interval 2.csv')
+#write.csv(AllDomainsInterval1, file = 'All Domains in Interval 1.csv')
+#write.csv(AllDomainsInterval2, file = 'All Domains in Interval 2.csv')
+
+# - - -
+
+# 14. Stacked Area Plots 
+library(ggplot2)
+StackedBarPlotInterval1 <- ggplot() + geom_bar(data=AllDomainsInterval1, 
+                               aes(x=AllDomainsInterval1$Interval, 
+                                   y=AllDomainsInterval1$PercentOfTotalLandscapeChange, 
+                                   fill = AllDomainsInterval1$Transition), 
+                               stat ="identity", 
+                               position = position_stack())
+StackedBarPlotInterval1 <- StackedBarPlotInterval1  + facet_wrap(~AllDomainsInterval1$Domain)
+
+ggsave(StackedAreaPlotInterval1, file="C:/150918 all newest CSVs from QGIS SCP LCC batch/4. QGIS SCP LCC_Change Maps and CSVs/Stacked Bar Plots/Stacked Area Plot for Interval 1.pdf", dpi=300)
+
+#test2 <- g + geom_bar(aes(x=AllDomainsInterval1$Interval,
+ #                         y=AllDomainsInterval1$PercentOfTotalLandscapeChange,
+  #                        ))
+
+#plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
+#plotCAT <- plotCAT  + scale_fill_manual(values=c("#b43507","#8acd66"), labels=c("Loss Intensity","Gain Intensity"))
+#plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
+#plotCAT <- plotCAT  + theme(legend.title=element_blank(), legend.position=c(0.9,0.9), legend.box="vertical")
