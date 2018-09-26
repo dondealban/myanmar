@@ -1,7 +1,7 @@
 # Script Description --------------------
 # This script creates a stacked area graph of multi-temporal land cover data, particularly
 # the land cover maps produced using combined Landsat+SAR data (optical Landsat 5 TM/8 OLI;
-# L-band SAR JERS-1/ALOS-PALSAR-1/ALOS-PALSAR-2) at three time-points: 1996,2007, 2016 for
+# L-band SAR JERS-1/ALOS-PALSAR-1/ALOS-PALSAR-2) at three time-points: 1996,2007,2016 for
 # Myanmar. The land cover maps consist of 10 categories including: bare ground, built-up,
 # forest, ice/snow, mangrove, oil palm, rice paddy, rubber, shrubland, water.
 #
@@ -14,9 +14,10 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area")
 
 # Load Libraries and Data ---------------
-library(ggplot2)
+#(ggplot2)
 library(reshape2)
-library(plyr)
+#library(plyr)
+library(tidyverse)
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
@@ -31,7 +32,7 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("1","2","3")
+colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
 
 # Add years as another column
 row.names(temp) <- c("1996","2007","2016")
@@ -60,5 +61,6 @@ plot <- plot + theme(legend.position="bottom")
 plot <- plot + theme_bw()
 plot <- plot + scale_fill_manual(values=c("#6a3d9a","#33a02c","#a6cee3","#e31a1c","#ff7f00",
                                           "#ffff99","#fdbf6f","#fb9a99","#1f78b4","#b15928"))
+plot <- plot + scale_x_discrete(breaks=c("1996","2007","2016"))
 
-ggsave(plot, file="StackedArea-01-Myanmar.pdf", width=29, height=16, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-01-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
