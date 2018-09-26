@@ -1,14 +1,14 @@
 # Script Description --------------------
-# This script creates a stacked area graph of time-series land cover data, particularly
-# the ESA CCI land cover data (1992-2015) using original land cover categories.
+# This script creates a stacked area graph of multi-temporal land cover data, particularly
+# the land cover maps produced using combined Landsat+SAR data.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  
+# Last Modified:  26 Sep 2018
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/original/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area")
 
 # Load Libraries and Data ---------------
 library(ggplot2)
