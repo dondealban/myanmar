@@ -1,6 +1,9 @@
 # Script Description --------------------
 # This script creates a stacked area graph of multi-temporal land cover data, particularly
-# the land cover maps produced using combined Landsat+SAR data.
+# the land cover maps produced using combined Landsat+SAR data (optical Landsat 5 TM/8 OLI; 
+# L-band SAR JERS-1/ALOS-PALSAR-1/ALOS-PALSAR-2) at three time-points: 1996,2007, 2016 for
+# Myanmar. The land cover maps consist of 10 categories including: bare ground, built-up,
+# forest, ice/snow, mangrove, oil palm, rice paddy, rubber, shrubland, water.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
