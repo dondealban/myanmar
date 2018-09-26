@@ -1,19 +1,23 @@
 # Script Description --------------------
-# This script creates a stacked area graph of time-series land cover data, particularly
-# the ESA CCI land cover data (1992-2015) using original land cover categories.
+# This script creates a stacked area graph of multi-temporal land cover data, particularly
+# the land cover maps produced using combined Landsat+SAR data (optical Landsat 5 TM/8 OLI;
+# L-band SAR JERS-1/ALOS-PALSAR-1/ALOS-PALSAR-2) at three time-points: 1996,2007,2016 for
+# Myanmar. The land cover maps consist of 10 categories including: bare ground, built-up,
+# forest, ice/snow, mangrove, oil palm, rice paddy, rubber, shrubland, water.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  
+# Last Modified:  26 Sep 2018
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/intensity analysis/stacked area/original/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area")
 
 # Load Libraries and Data ---------------
-library(ggplot2)
+#(ggplot2)
 library(reshape2)
-library(plyr)
+#library(plyr)
+library(tidyverse)
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
@@ -28,16 +32,10 @@ readdata <- function(filename) {
 
 # Combine as class codes and percentage values in a matrix
 temp <- do.call(rbind, lapply(filenames, readdata))
-colnames(temp) <- c("1","2","3","4","5","6",
-                    "14","15","16","17","18",
-                    "7","8","9","10","11","12","13",
-                    "19","20","21",
-                    "22","23")
+colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
 
 # Add years as another column
-row.names(temp) <- c("1992","1993","1994","1995","1996","1997","1998","1999",
-                     "2000","2001","2002","2003","2004","2005","2006","2007",
-                     "2008","2009","2010","2011","2012","2013","2014","2015")
+row.names(temp) <- c("1996","2007","2016")
 
 # Convert wide format data frame into long format data frame
 data <- melt(temp, id.vars="years", variable.name="class", value.name="percentage")
@@ -45,38 +43,24 @@ colnames(data) <- c("Years","Class","Percentage")
 
 # Create Stacked Area Graphs ------------
 
-orig <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
-                   labels=c("Cropland, rainfed",
-                            "Cropland, herbaceous cover",
-                            "Cropland, tree or shrub cover",
-                            "Cropland, irrigated or post-flooding",
-                            "Mosaic cropland (>50%) / natural vegetation (tree, shrub, herbaceous cover) (<50%)",
-                            "Mosaic natural vegetation (tree, shrub, herbaceous cover) (>50%) / cropland (<50%)",
-                            "Mosaic tree and shrub (>50%) / herbaceous cover (<50%)",
-                            "Mosaic herbaceous cover (>50%) / tree and shrub (<50%)",
+plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
+                   labels=c("Built-up",
+                            "Forest",
+                            "Ice and Snow",
+                            "Mangrove",
+                            "Oil Palm Mature",
+                            "Rice Paddy",
+                            "Rubber Mature",
                             "Shrubland",
-                            "Shrubland, evergreen",
-                            "Shrubland, deciduous",
-                            "Grassland",
-                            "Sparse vegetation (tree, shrub, herbaceous cover) (<15%)",
-                            "Tree cover, broadleaved, evergreen, closed to open (>15%)",
-                            "Tree cover, broadleaved, deciduous, closed to open (>15%)",
-                            "Tree cover, broadleaved, deciduous, closed (>40%)",
-                            "Tree cover, needleleaved, evergreen, closed to open (>15%)",
-                            "Tree cover, needleleaved, deciduous, closed to open (>15%)",
-                            "Tree cover, flooded, fresh or brakish water",
-                            "Tree cover, flooded, saline water",
-                            "Shrub or herbaceous cover, flooded, fresh/saline/brakish water",
-                            "Urban areas",
-                            "Water bodies"))), 
+                            "Water",
+                            "Bare Ground"))), 
                    data=data)
-orig <- orig + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover (Original)")
-orig <- orig + guides(fill=guide_legend(ncol=1))
-orig <- orig + theme(legend.position="bottom")
-orig <- orig + theme_bw()
-orig <- orig + scale_fill_manual(values=c("#ffff64","#ffff64","#ffff00","#aaf0f0","#dcf064","#c8c864",
-                                          "#8ca000","#be9600","#966400","#784b00","#966400","#ffb432","#ffebaf",
-                                          "#006400","#00a000","#00a000","#003c00","#285000",
-                                          "#00785a","#009678","#00dc82","#c31400","#0046c8"))
+plot <- plot + labs(title="Land Cover Transitions", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot <- plot + guides(fill=guide_legend(ncol=1))
+plot <- plot + theme(legend.position="bottom")
+plot <- plot + theme_bw()
+plot <- plot + scale_fill_manual(values=c("#6a3d9a","#33a02c","#a6cee3","#e31a1c","#ff7f00",
+                                          "#ffff99","#fdbf6f","#fb9a99","#1f78b4","#b15928"))
+plot <- plot + scale_x_discrete(breaks=c(1996,2007,2016))
 
-ggsave(orig, file="StackedArea-Original.pdf", width=29, height=16, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-01-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
