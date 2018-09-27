@@ -14,9 +14,7 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area")
 
 # Load Libraries and Data ---------------
-#(ggplot2)
 library(reshape2)
-#library(plyr)
 library(tidyverse)
 
 # Read csv files in the directory and store as a list
