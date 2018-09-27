@@ -7,7 +7,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  26 Sep 2018
+# Last Modified:  27 Sep 2018
 
 
 # Set Working Directory -----------------
@@ -59,6 +59,6 @@ plot <- plot + theme(legend.position="bottom")
 plot <- plot + theme_bw()
 plot <- plot + scale_fill_manual(values=c("#6a3d9a","#33a02c","#a6cee3","#e31a1c","#ff7f00",
                                           "#ffff99","#fdbf6f","#fb9a99","#1f78b4","#b15928"))
-plot <- plot + scale_x_discrete(breaks=c(1996,2007,2016))
+plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 
 ggsave(plot, file="StackedArea-01-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
