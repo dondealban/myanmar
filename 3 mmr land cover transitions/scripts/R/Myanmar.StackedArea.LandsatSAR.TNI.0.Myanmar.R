@@ -61,4 +61,4 @@ plot <- plot + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff
                                           "#a65400","#ff00ff","#ccff66","#66ccff","#ffff66"))
 plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 
-ggsave(plot, file="StackedArea-01-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-00-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
