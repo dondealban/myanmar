@@ -20,6 +20,10 @@ library(tidyverse)
 # Read csv files in the directory and store as a list
 filenames <- list.files()
 
+# Class 3 is present only in 2016, hence need to split files into two groups
+period1 <- filenames[1:2]  # 1996-2007
+period2 <- filenames[3]    # 2007-2016
+
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
@@ -29,7 +33,16 @@ readdata <- function(filename) {
 }
 
 # Combine as class codes and percentage values in a matrix
-temp <- do.call(rbind, lapply(filenames, readdata))
+temp1 <- do.call(rbind, lapply(period1, readdata))
+temp2 <- do.call(rbind, lapply(period2, readdata))
+
+# Create new column with zeroes for Class 3 in 1st period and insert in matrix
+newcol <- c(0,0)
+temp1a <- cbind(temp1[,1:2], newcol, temp1[,3:ncol(temp1)])
+
+# Combine matrices from two periods and change column names
+temp3 <- rbind(temp1a, temp2)
+temp <- temp3
 colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
 
 # Add years as another column
