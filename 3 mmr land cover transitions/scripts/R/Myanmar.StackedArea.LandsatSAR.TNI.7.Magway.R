@@ -20,9 +20,9 @@ library(tidyverse)
 # Read csv files in the directory and store as a list
 filenames <- list.files()
 
-# Class 3 is present only in 2007 and 2016, hence need to split files into two groups
-period1 <- filenames[1:2] # 1996-2007
-period2 <- filenames[3]   # 2007-2016
+# Class 3 is present only in 1996, hence need to split files into two groups
+period1 <- filenames[1]   # 1996
+period2 <- filenames[2:3] # 2007-2016
 
 # Function to read data
 readdata <- function(filename) {
@@ -37,11 +37,10 @@ temp1 <- do.call(rbind, lapply(period1, readdata))
 temp2 <- do.call(rbind, lapply(period2, readdata))
 
 # Create new column with zeroes for Class 3 in 1st period and insert in matrix
-temp1a <- t(as.matrix(c(temp1[,1:2], 0, temp1[,3:ncol(temp1)]))) # transposed 1x10 matrix
+temp2a <- cbind(temp2[,1:2], c(0,0), temp2[,3:ncol(temp2)])
 
 # Combine matrices from two periods and change column names
-temp3 <- rbind(temp1a, temp2)
-temp <- temp3
+temp <- rbind(temp1, temp2a)
 colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
 
 # Add years as another column
