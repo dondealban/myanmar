@@ -11,7 +11,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area/0_myanmar")
 
 # Load Libraries and Data ---------------
 library(reshape2)
