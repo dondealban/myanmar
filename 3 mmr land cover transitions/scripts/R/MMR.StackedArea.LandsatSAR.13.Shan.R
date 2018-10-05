@@ -11,7 +11,7 @@
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area/4_kachin")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area/13_shan")
 
 # Load Libraries and Data ---------------
 library(reshape2)
@@ -39,11 +39,12 @@ temp2 <- do.call(rbind, lapply(period2, readdata))
 temp3 <- do.call(rbind, lapply(period3, readdata))
 
 # Create new column with zeroes for Class 3 in 1st and 3rd period and insert in matrix
-temp1a <- t(as.matrix(c(temp1[,1:6], 0, temp1[,7:ncol(temp1)]))) # transposed 1x10 matrix
+temp1a <- t(as.matrix(c(temp1[,1:3], 0, temp1[,4:ncol(temp1)]))) # transposed 1x10 matrix
 temp2a <- t(as.matrix(c(temp2[,1:4], 0, temp2[,5], 0, temp2[,6:ncol(temp2)]))) # transposed 1x10 matrix
+temp3a <- t(as.matrix(c(temp3[,1:2], 0, temp3[,3:ncol(temp3)]))) # transposed 1x10 matrix
 
 # Combine matrices from two periods and change column names
-temp <- rbind(temp1a, temp2a, temp3)
+temp <- rbind(temp1a, temp2a, temp3a)
 colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
 
 # Add years as another column
@@ -67,7 +68,7 @@ plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Water",
                             "Bare Ground"))), 
                    data=data)
-plot <- plot + labs(title="Net Land Cover Transitions: Kachin State", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot <- plot + labs(title="Net Land Cover Transitions: Shan State", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot <- plot + guides(fill=guide_legend(ncol=1))
 plot <- plot + theme(legend.position="bottom")
 plot <- plot + theme_bw()
@@ -75,4 +76,4 @@ plot <- plot + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff
                                           "#a65400","#ff00ff","#ccff66","#66ccff","#ffff66"))
 plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 
-ggsave(plot, file="StackedArea-04-Kachin.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-13-Shan.pdf", width=19.89, height=15, units="cm", dpi=300)
