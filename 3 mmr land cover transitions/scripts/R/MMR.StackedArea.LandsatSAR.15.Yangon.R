@@ -7,11 +7,11 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  04 Oct 2018
+# Last Modified:  05 Oct 2018
 
 
 # Set Working Directory -----------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area/1_ayeyarwady")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/stacked area/15_yangon")
 
 # Load Libraries and Data ---------------
 library(reshape2)
@@ -52,7 +52,7 @@ plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
                             "Water",
                             "Bare Ground"))), 
                    data=data)
-plot <- plot + labs(title="Net Land Cover Transitions: Ayeyarwady Region", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
+plot <- plot + labs(title="Net Land Cover Transitions: Yangon Region", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot <- plot + guides(fill=guide_legend(ncol=1))
 plot <- plot + theme(legend.position="bottom")
 plot <- plot + theme_bw()
@@ -60,4 +60,4 @@ plot <- plot + scale_fill_manual(values=c("#ff0000","#246a24","#6666ff","#ff8000
                                           "#a65400","#ff00ff","#ccff66","#66ccff","#ffff66"))
 plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 
-ggsave(plot, file="StackedArea-01-Ayeyarwady.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-15-Yangon.pdf", width=19.89, height=15, units="cm", dpi=300)
