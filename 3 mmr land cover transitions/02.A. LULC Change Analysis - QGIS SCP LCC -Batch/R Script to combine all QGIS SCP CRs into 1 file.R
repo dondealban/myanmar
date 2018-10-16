@@ -432,7 +432,8 @@ AllClassificationReports ["Area (km2)"] <- AllClassificationReports$PixelSum*30*
 
 AllClassificationReports <- subset(AllClassificationReports, select = c(1,2,3,4,5,7,8))
 
-# 11. Saving this combined dataframe to a .csv
+# 13. Saving this combined dataframe to a .csv
 
-write.csv(AllClassificationReports, file = "C:/2018-10-05 Download of CRs/3.1. QGIS SCP CR/All Classification Reports.csv")
+#write.csv(AllClassificationReports, file = "C:/2018-10-05 Download of CRs/3.1. QGIS SCP CR/All Classification Reports.csv")
 
+# END
