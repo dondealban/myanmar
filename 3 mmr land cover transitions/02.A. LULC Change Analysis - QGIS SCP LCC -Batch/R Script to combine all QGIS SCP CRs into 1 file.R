@@ -425,15 +425,15 @@ AllClassificationReports <- AllClassificationReports[c(5,6,1,2,3,4)]
 
 # 11. Adding an area in hectares column
 
-AllClassificationReports ["Area (ha)"] <- AllClassificationReports$PixelSum*30*30/10000
+# AllClassificationReports ["Area (ha)"] <- AllClassificationReports$PixelSum*30*30/10000
 AllClassificationReports ["Area (km2)"] <- AllClassificationReports$PixelSum*30*30/1000/1000
 
 # 12. Keeping every column except the Area(Degrees) that is calculated by default in QGIS SCP CR
 
-AllClassificationReports <- subset(AllClassificationReports, select = c(1,2,3,4,5,7,8))
+AllClassificationReports <- subset(AllClassificationReports, select = c(1,2,3,4,5,7))
 
 # 13. Saving this combined dataframe to a .csv
 
-#write.csv(AllClassificationReports, file = "C:/2018-10-05 Download of CRs/3.1. QGIS SCP CR/All Classification Reports.csv")
+write.csv(AllClassificationReports, file = "C:/2018-10-05 Download of CRs/3.1. QGIS SCP CR/All Classification Reports and Area (only km2).csv")
 
 # END
