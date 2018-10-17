@@ -226,41 +226,41 @@ IntervalB15 <- rep('2007 to 2016', nrow(`15Yangon2007to2016`))
 
 #Removing all instances from Interval 1,
 
-`0Myanmar1996to2007` <- `0Myanmar1996to2007`[!(`0Myanmar1996to2007`$ReferenceClass==`0Myanmar1996to2007`$NewClass),]
-`1Ayeyarwady1996to2007` <- `1Ayeyarwady1996to2007`[!(`1Ayeyarwady1996to2007`$ReferenceClass==`1Ayeyarwady1996to2007`$NewClass),]
-`2Bago1996to2007` <- `2Bago1996to2007`[!(`2Bago1996to2007`$ReferenceClass==`2Bago1996to2007`$NewClass),]
-`3Chin1996to2007` <- `3Chin1996to2007`[!(`3Chin1996to2007`$ReferenceClass==`3Chin1996to2007`$NewClass),]
-`4Kachin1996to2007` <- `4Kachin1996to2007`[!(`4Kachin1996to2007`$ReferenceClass==`4Kachin1996to2007`$NewClass),]
-`5Kayah1996to2007` <- `5Kayah1996to2007`[!(`5Kayah1996to2007`$ReferenceClass==`5Kayah1996to2007`$NewClass),]
-`6Kayin1996to2007` <- `6Kayin1996to2007`[!(`6Kayin1996to2007`$ReferenceClass==`6Kayin1996to2007`$NewClass),]
-`7Magway1996to2007` <- `7Magway1996to2007`[!(`7Magway1996to2007`$ReferenceClass==`7Magway1996to2007`$NewClass),]
-`8Mandalay1996to2007` <- `8Mandalay1996to2007`[!(`8Mandalay1996to2007`$ReferenceClass==`8Mandalay1996to2007`$NewClass),]
-`9Mon1996to2007` <- `9Mon1996to2007`[!(`9Mon1996to2007`$ReferenceClass==`9Mon1996to2007`$NewClass),]
-`10Naypyitaw1996to2007` <- `10Naypyitaw1996to2007`[!(`10Naypyitaw1996to2007`$ReferenceClass==`10Naypyitaw1996to2007`$NewClass),]
-`11Rakhine1996to2007` <- `11Rakhine1996to2007`[!(`11Rakhine1996to2007`$ReferenceClass==`11Rakhine1996to2007`$NewClass),]
-`12Sagaing1996to2007` <- `12Sagaing1996to2007`[!(`12Sagaing1996to2007`$ReferenceClass==`12Sagaing1996to2007`$NewClass),]
-`13Shan1996to2007` <- `13Shan1996to2007`[!(`13Shan1996to2007`$ReferenceClass==`13Shan1996to2007`$NewClass),]
-`14Tanintharyi1996to2007` <- `14Tanintharyi1996to2007`[!(`14Tanintharyi1996to2007`$ReferenceClass==`14Tanintharyi1996to2007`$NewClass),]
-`15Yangon1996to2007` <- `15Yangon1996to2007`[!(`15Yangon1996to2007`$ReferenceClass==`15Yangon1996to2007`$NewClass),]
+#`0Myanmar1996to2007` <- `0Myanmar1996to2007`[!(`0Myanmar1996to2007`$ReferenceClass==`0Myanmar1996to2007`$NewClass),]
+#`1Ayeyarwady1996to2007` <- `1Ayeyarwady1996to2007`[!(`1Ayeyarwady1996to2007`$ReferenceClass==`1Ayeyarwady1996to2007`$NewClass),]
+#`2Bago1996to2007` <- `2Bago1996to2007`[!(`2Bago1996to2007`$ReferenceClass==`2Bago1996to2007`$NewClass),]
+#`3Chin1996to2007` <- `3Chin1996to2007`[!(`3Chin1996to2007`$ReferenceClass==`3Chin1996to2007`$NewClass),]
+#`4Kachin1996to2007` <- `4Kachin1996to2007`[!(`4Kachin1996to2007`$ReferenceClass==`4Kachin1996to2007`$NewClass),]
+#`5Kayah1996to2007` <- `5Kayah1996to2007`[!(`5Kayah1996to2007`$ReferenceClass==`5Kayah1996to2007`$NewClass),]
+#`6Kayin1996to2007` <- `6Kayin1996to2007`[!(`6Kayin1996to2007`$ReferenceClass==`6Kayin1996to2007`$NewClass),]
+#`7Magway1996to2007` <- `7Magway1996to2007`[!(`7Magway1996to2007`$ReferenceClass==`7Magway1996to2007`$NewClass),]
+#`8Mandalay1996to2007` <- `8Mandalay1996to2007`[!(`8Mandalay1996to2007`$ReferenceClass==`8Mandalay1996to2007`$NewClass),]
+#`9Mon1996to2007` <- `9Mon1996to2007`[!(`9Mon1996to2007`$ReferenceClass==`9Mon1996to2007`$NewClass),]
+#`10Naypyitaw1996to2007` <- `10Naypyitaw1996to2007`[!(`10Naypyitaw1996to2007`$ReferenceClass==`10Naypyitaw1996to2007`$NewClass),]
+#`11Rakhine1996to2007` <- `11Rakhine1996to2007`[!(`11Rakhine1996to2007`$ReferenceClass==`11Rakhine1996to2007`$NewClass),]
+#`12Sagaing1996to2007` <- `12Sagaing1996to2007`[!(`12Sagaing1996to2007`$ReferenceClass==`12Sagaing1996to2007`$NewClass),]
+#`13Shan1996to2007` <- `13Shan1996to2007`[!(`13Shan1996to2007`$ReferenceClass==`13Shan1996to2007`$NewClass),]
+#`14Tanintharyi1996to2007` <- `14Tanintharyi1996to2007`[!(`14Tanintharyi1996to2007`$ReferenceClass==`14Tanintharyi1996to2007`$NewClass),]
+#`15Yangon1996to2007` <- `15Yangon1996to2007`[!(`15Yangon1996to2007`$ReferenceClass==`15Yangon1996to2007`$NewClass),]
 
 # Removing all instances from Interval 2,
 
-`0Myanmar2007to2016` <- `0Myanmar2007to2016`[!(`0Myanmar2007to2016`$ReferenceClass==`0Myanmar2007to2016`$NewClass),]
-`1Ayeyarwady2007to2016` <- `1Ayeyarwady2007to2016`[!(`1Ayeyarwady2007to2016`$ReferenceClass==`1Ayeyarwady2007to2016`$NewClass),]
-`2Bago2007to2016` <- `2Bago2007to2016`[!(`2Bago2007to2016`$ReferenceClass==`2Bago2007to2016`$NewClass),]
-`3Chin2007to2016` <- `3Chin2007to2016`[!(`3Chin2007to2016`$ReferenceClass==`3Chin2007to2016`$NewClass),]
-`4Kachin2007to2016` <- `4Kachin2007to2016`[!(`4Kachin2007to2016`$ReferenceClass==`4Kachin2007to2016`$NewClass),]
-`5Kayah2007to2016` <- `5Kayah2007to2016`[!(`5Kayah2007to2016`$ReferenceClass==`5Kayah2007to2016`$NewClass),]
-`6Kayin2007to2016` <- `6Kayin2007to2016`[!(`6Kayin2007to2016`$ReferenceClass==`6Kayin2007to2016`$NewClass),]
-`7Magway2007to2016` <- `7Magway2007to2016`[!(`7Magway2007to2016`$ReferenceClass==`7Magway2007to2016`$NewClass),]
-`8Mandalay2007to2016` <- `8Mandalay2007to2016`[!(`8Mandalay2007to2016`$ReferenceClass==`8Mandalay2007to2016`$NewClass),]
-`9Mon2007to2016` <- `9Mon2007to2016`[!(`9Mon2007to2016`$ReferenceClass==`9Mon2007to2016`$NewClass),]
-`10Naypyitaw2007to2016` <- `10Naypyitaw2007to2016`[!(`10Naypyitaw2007to2016`$ReferenceClass==`10Naypyitaw2007to2016`$NewClass),]
-`11Rakhine2007to2016` <- `11Rakhine2007to2016`[!(`11Rakhine2007to2016`$ReferenceClass==`11Rakhine2007to2016`$NewClass),]
-`12Sagaing2007to2016` <- `12Sagaing2007to2016`[!(`12Sagaing2007to2016`$ReferenceClass==`12Sagaing2007to2016`$NewClass),]
-`13Shan2007to2016` <- `13Shan2007to2016`[!(`13Shan2007to2016`$ReferenceClass==`13Shan2007to2016`$NewClass),]
-`14Tanintharyi2007to2016` <- `14Tanintharyi2007to2016`[!(`14Tanintharyi2007to2016`$ReferenceClass==`14Tanintharyi2007to2016`$NewClass),]
-`15Yangon2007to2016` <- `15Yangon2007to2016`[!(`15Yangon2007to2016`$ReferenceClass==`15Yangon2007to2016`$NewClass),]
+#`0Myanmar2007to2016` <- `0Myanmar2007to2016`[!(`0Myanmar2007to2016`$ReferenceClass==`0Myanmar2007to2016`$NewClass),]
+#`1Ayeyarwady2007to2016` <- `1Ayeyarwady2007to2016`[!(`1Ayeyarwady2007to2016`$ReferenceClass==`1Ayeyarwady2007to2016`$NewClass),]
+#`2Bago2007to2016` <- `2Bago2007to2016`[!(`2Bago2007to2016`$ReferenceClass==`2Bago2007to2016`$NewClass),]
+#`3Chin2007to2016` <- `3Chin2007to2016`[!(`3Chin2007to2016`$ReferenceClass==`3Chin2007to2016`$NewClass),]
+#`4Kachin2007to2016` <- `4Kachin2007to2016`[!(`4Kachin2007to2016`$ReferenceClass==`4Kachin2007to2016`$NewClass),]
+#`5Kayah2007to2016` <- `5Kayah2007to2016`[!(`5Kayah2007to2016`$ReferenceClass==`5Kayah2007to2016`$NewClass),]
+#`6Kayin2007to2016` <- `6Kayin2007to2016`[!(`6Kayin2007to2016`$ReferenceClass==`6Kayin2007to2016`$NewClass),]
+#`7Magway2007to2016` <- `7Magway2007to2016`[!(`7Magway2007to2016`$ReferenceClass==`7Magway2007to2016`$NewClass),]
+#`8Mandalay2007to2016` <- `8Mandalay2007to2016`[!(`8Mandalay2007to2016`$ReferenceClass==`8Mandalay2007to2016`$NewClass),]
+#`9Mon2007to2016` <- `9Mon2007to2016`[!(`9Mon2007to2016`$ReferenceClass==`9Mon2007to2016`$NewClass),]
+#`10Naypyitaw2007to2016` <- `10Naypyitaw2007to2016`[!(`10Naypyitaw2007to2016`$ReferenceClass==`10Naypyitaw2007to2016`$NewClass),]
+#`11Rakhine2007to2016` <- `11Rakhine2007to2016`[!(`11Rakhine2007to2016`$ReferenceClass==`11Rakhine2007to2016`$NewClass),]
+#`12Sagaing2007to2016` <- `12Sagaing2007to2016`[!(`12Sagaing2007to2016`$ReferenceClass==`12Sagaing2007to2016`$NewClass),]
+#`13Shan2007to2016` <- `13Shan2007to2016`[!(`13Shan2007to2016`$ReferenceClass==`13Shan2007to2016`$NewClass),]
+#`14Tanintharyi2007to2016` <- `14Tanintharyi2007to2016`[!(`14Tanintharyi2007to2016`$ReferenceClass==`14Tanintharyi2007to2016`$NewClass),]
+#`15Yangon2007to2016` <- `15Yangon2007to2016`[!(`15Yangon2007to2016`$ReferenceClass==`15Yangon2007to2016`$NewClass),]
 
 
 # - - -
@@ -269,46 +269,46 @@ IntervalB15 <- rep('2007 to 2016', nrow(`15Yangon2007to2016`))
 
 # For Interval 1,
 
-`0Myanmar1996to2007`      ["PercentOfTotalLandscapeChange"] <- prop.table(`0Myanmar1996to2007`$PixelSum)      *100
-`1Ayeyarwady1996to2007`   ["PercentOfTotalLandscapeChange"] <- prop.table(`1Ayeyarwady1996to2007`$PixelSum)   *100
-`2Bago1996to2007`         ["PercentOfTotalLandscapeChange"] <- prop.table(`2Bago1996to2007`$PixelSum)         *100
-`3Chin1996to2007`         ["PercentOfTotalLandscapeChange"] <- prop.table(`3Chin1996to2007`$PixelSum)         *100
-`4Kachin1996to2007`       ["PercentOfTotalLandscapeChange"] <- prop.table(`4Kachin1996to2007`$PixelSum)       *100
-`5Kayah1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`5Kayah1996to2007`$PixelSum)        *100
-`6Kayin1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`6Kayin1996to2007`$PixelSum)        *100
-`7Magway1996to2007`       ["PercentOfTotalLandscapeChange"] <- prop.table(`7Magway1996to2007`$PixelSum)       *100
-`8Mandalay1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`8Mandalay1996to2007`$PixelSum)     *100
-`9Mon1996to2007`          ["PercentOfTotalLandscapeChange"] <- prop.table(`9Mon1996to2007`$PixelSum)          *100
-`10Naypyitaw1996to2007`   ["PercentOfTotalLandscapeChange"] <- prop.table(`10Naypyitaw1996to2007`$PixelSum)   *100
-`11Rakhine1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`11Rakhine1996to2007`$PixelSum)     *100
-`12Sagaing1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`12Sagaing1996to2007`$PixelSum)     *100
-`13Shan1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`13Shan1996to2007`$PixelSum)        *100
-`14Tanintharyi1996to2007` ["PercentOfTotalLandscapeChange"] <- prop.table(`14Tanintharyi1996to2007`$PixelSum) *100
-`15Yangon1996to2007`      ["PercentOfTotalLandscapeChange"] <- prop.table(`15Yangon1996to2007`$PixelSum)      *100
+#`0Myanmar1996to2007`      ["PercentOfTotalLandscapeChange"] <- prop.table(`0Myanmar1996to2007`$PixelSum)      *100
+#`1Ayeyarwady1996to2007`   ["PercentOfTotalLandscapeChange"] <- prop.table(`1Ayeyarwady1996to2007`$PixelSum)   *100
+#`2Bago1996to2007`         ["PercentOfTotalLandscapeChange"] <- prop.table(`2Bago1996to2007`$PixelSum)         *100
+#`3Chin1996to2007`         ["PercentOfTotalLandscapeChange"] <- prop.table(`3Chin1996to2007`$PixelSum)         *100
+#`4Kachin1996to2007`       ["PercentOfTotalLandscapeChange"] <- prop.table(`4Kachin1996to2007`$PixelSum)       *100
+#`5Kayah1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`5Kayah1996to2007`$PixelSum)        *100
+#`6Kayin1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`6Kayin1996to2007`$PixelSum)        *100
+#`7Magway1996to2007`       ["PercentOfTotalLandscapeChange"] <- prop.table(`7Magway1996to2007`$PixelSum)       *100
+#`8Mandalay1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`8Mandalay1996to2007`$PixelSum)     *100
+#`9Mon1996to2007`          ["PercentOfTotalLandscapeChange"] <- prop.table(`9Mon1996to2007`$PixelSum)          *100
+#`10Naypyitaw1996to2007`   ["PercentOfTotalLandscapeChange"] <- prop.table(`10Naypyitaw1996to2007`$PixelSum)   *100
+#`11Rakhine1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`11Rakhine1996to2007`$PixelSum)     *100
+#`12Sagaing1996to2007`     ["PercentOfTotalLandscapeChange"] <- prop.table(`12Sagaing1996to2007`$PixelSum)     *100
+#`13Shan1996to2007`        ["PercentOfTotalLandscapeChange"] <- prop.table(`13Shan1996to2007`$PixelSum)        *100
+#`14Tanintharyi1996to2007` ["PercentOfTotalLandscapeChange"] <- prop.table(`14Tanintharyi1996to2007`$PixelSum) *100
+#`15Yangon1996to2007`      ["PercentOfTotalLandscapeChange"] <- prop.table(`15Yangon1996to2007`$PixelSum)      *100
 
 # For Interval 2,
 
-`0Myanmar2007to2016`      ["PercentOfTotalLandscapeChange"] <- prop.table(`0Myanmar2007to2016`$PixelSum)      *100
-`1Ayeyarwady2007to2016`   ["PercentOfTotalLandscapeChange"] <- prop.table(`1Ayeyarwady2007to2016`$PixelSum)   *100
-`2Bago2007to2016`         ["PercentOfTotalLandscapeChange"] <- prop.table(`2Bago2007to2016`$PixelSum)         *100
-`3Chin2007to2016`         ["PercentOfTotalLandscapeChange"] <- prop.table(`3Chin2007to2016`$PixelSum)         *100
-`4Kachin2007to2016`       ["PercentOfTotalLandscapeChange"] <- prop.table(`4Kachin2007to2016`$PixelSum)       *100
-`5Kayah2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`5Kayah2007to2016`$PixelSum)        *100
-`6Kayin2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`6Kayin2007to2016`$PixelSum)        *100
-`7Magway2007to2016`       ["PercentOfTotalLandscapeChange"] <- prop.table(`7Magway2007to2016`$PixelSum)       *100
-`8Mandalay2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`8Mandalay2007to2016`$PixelSum)     *100
-`9Mon2007to2016`          ["PercentOfTotalLandscapeChange"] <- prop.table(`9Mon2007to2016`$PixelSum)          *100
-`10Naypyitaw2007to2016`   ["PercentOfTotalLandscapeChange"] <- prop.table(`10Naypyitaw2007to2016`$PixelSum)   *100
-`11Rakhine2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`11Rakhine2007to2016`$PixelSum)     *100
-`12Sagaing2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`12Sagaing2007to2016`$PixelSum)     *100
-`13Shan2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`13Shan2007to2016`$PixelSum)        *100
-`14Tanintharyi2007to2016` ["PercentOfTotalLandscapeChange"] <- prop.table(`14Tanintharyi2007to2016`$PixelSum) *100
-`15Yangon2007to2016`      ["PercentOfTotalLandscapeChange"] <- prop.table(`15Yangon2007to2016`$PixelSum)      *100
+#`0Myanmar2007to2016`      ["PercentOfTotalLandscapeChange"] <- prop.table(`0Myanmar2007to2016`$PixelSum)      *100
+#`1Ayeyarwady2007to2016`   ["PercentOfTotalLandscapeChange"] <- prop.table(`1Ayeyarwady2007to2016`$PixelSum)   *100
+#`2Bago2007to2016`         ["PercentOfTotalLandscapeChange"] <- prop.table(`2Bago2007to2016`$PixelSum)         *100
+#`3Chin2007to2016`         ["PercentOfTotalLandscapeChange"] <- prop.table(`3Chin2007to2016`$PixelSum)         *100
+#`4Kachin2007to2016`       ["PercentOfTotalLandscapeChange"] <- prop.table(`4Kachin2007to2016`$PixelSum)       *100
+#`5Kayah2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`5Kayah2007to2016`$PixelSum)        *100
+#`6Kayin2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`6Kayin2007to2016`$PixelSum)        *100
+#`7Magway2007to2016`       ["PercentOfTotalLandscapeChange"] <- prop.table(`7Magway2007to2016`$PixelSum)       *100
+#`8Mandalay2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`8Mandalay2007to2016`$PixelSum)     *100
+#`9Mon2007to2016`          ["PercentOfTotalLandscapeChange"] <- prop.table(`9Mon2007to2016`$PixelSum)          *100
+#`10Naypyitaw2007to2016`   ["PercentOfTotalLandscapeChange"] <- prop.table(`10Naypyitaw2007to2016`$PixelSum)   *100
+#`11Rakhine2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`11Rakhine2007to2016`$PixelSum)     *100
+#`12Sagaing2007to2016`     ["PercentOfTotalLandscapeChange"] <- prop.table(`12Sagaing2007to2016`$PixelSum)     *100
+#`13Shan2007to2016`        ["PercentOfTotalLandscapeChange"] <- prop.table(`13Shan2007to2016`$PixelSum)        *100
+#`14Tanintharyi2007to2016` ["PercentOfTotalLandscapeChange"] <- prop.table(`14Tanintharyi2007to2016`$PixelSum) *100
+#`15Yangon2007to2016`      ["PercentOfTotalLandscapeChange"] <- prop.table(`15Yangon2007to2016`$PixelSum)      *100
 
 # Testing 01 x random domain in each interval if the sums add up to 100%
 
-sum(`9Mon1996to2007`$"PercentOfTotalLandscapeChange")
-sum(`1Ayeyarwady2007to2016`$"PercentOfTotalLandscapeChange")
+#sum(`9Mon1996to2007`$"PercentOfTotalLandscapeChange")
+#sum(`1Ayeyarwady2007to2016`$"PercentOfTotalLandscapeChange")
 
 
 
@@ -538,8 +538,8 @@ AllDomainsInterval2$NewClass <- replace(AllDomainsInterval2$NewClass,
 
 # 12. Adding a new column that states the transition from Reference class to New class
 
-AllDomainsInterval1$Transition <- paste(AllDomainsInterval1$ReferenceClass, " to ", AllDomainsInterval1$NewClass)
-AllDomainsInterval2$Transition <- paste(AllDomainsInterval2$ReferenceClass, " to ", AllDomainsInterval2$NewClass)
+#AllDomainsInterval1$Transition <- paste(AllDomainsInterval1$ReferenceClass, " to ", AllDomainsInterval1$NewClass)
+#AllDomainsInterval2$Transition <- paste(AllDomainsInterval2$ReferenceClass, " to ", AllDomainsInterval2$NewClass)
 
 # The data is now ready to be plotted, we save it to a .csv first
 
@@ -553,16 +553,16 @@ AllDomainsInterval2$Transition <- paste(AllDomainsInterval2$ReferenceClass, " to
 # - - -
 
 # 14. Stacked Area Plots 
-library(ggplot2)
-StackedBarPlotInterval1 <- ggplot() + geom_bar(data=AllDomainsInterval1, 
-                               aes(x=AllDomainsInterval1$Interval, 
-                                   y=AllDomainsInterval1$PercentOfTotalLandscapeChange, 
-                                   fill = AllDomainsInterval1$Transition), 
-                               stat ="identity", 
-                               position = position_stack())
-StackedBarPlotInterval1 <- StackedBarPlotInterval1  + facet_wrap(~AllDomainsInterval1$Domain)
+#library(ggplot2)
+#StackedBarPlotInterval1 <- ggplot() + geom_bar(data=AllDomainsInterval1, 
+#                               aes(x=AllDomainsInterval1$Interval, 
+#                                   y=AllDomainsInterval1$PercentOfTotalLandscapeChange, 
+#                                   fill = AllDomainsInterval1$Transition), 
+#                               stat ="identity", 
+#                               position = position_stack())
+#StackedBarPlotInterval1 <- StackedBarPlotInterval1  + facet_wrap(~AllDomainsInterval1$Domain)
 
-ggsave(StackedAreaPlotInterval1, file="C:/150918 all newest CSVs from QGIS SCP LCC batch/4. QGIS SCP LCC_Change Maps and CSVs/Stacked Bar Plots/Stacked Area Plot for Interval 1.pdf", dpi=300)
+#ggsave(StackedAreaPlotInterval1, file="C:/150918 all newest CSVs from QGIS SCP LCC batch/4. QGIS SCP LCC_Change Maps and CSVs/Stacked Bar Plots/Stacked Area Plot for Interval 1.pdf", dpi=300)
 
 #test2 <- g + geom_bar(aes(x=AllDomainsInterval1$Interval,
  #                         y=AllDomainsInterval1$PercentOfTotalLandscapeChange,
@@ -572,3 +572,44 @@ ggsave(StackedAreaPlotInterval1, file="C:/150918 all newest CSVs from QGIS SCP L
 #plotCAT <- plotCAT  + scale_fill_manual(values=c("#b43507","#8acd66"), labels=c("Loss Intensity","Gain Intensity"))
 #plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
 #plotCAT <- plotCAT  + theme(legend.title=element_blank(), legend.position=c(0.9,0.9), legend.box="vertical")
+
+# ------
+# Update
+# ------
+
+# The following earlier steps were removed (as comments "#") because their purpose is no longer required in the current script
+
+# These steps are;
+
+# - Removal of rows that indicate land persistence
+# - Calculation of the percentage contribution of a transition to overall landscape change
+# - Plotting of these stacked bar plots intended to highlight changes of highest contribution to change over the landscape
+
+# Continuing on, now our 2 separate dataframes have all transitions + persistence, 
+
+# The next few lines of code will add the Area (km2) and Area (ha) columns for them both, and merge them as separate Sheets in an Excel.
+
+# Adding Area (km2)
+
+AllDomainsInterval1 ["Area (km2)"] <- AllDomainsInterval1$PixelSum*30*30/1000/1000
+AllDomainsInterval2 ["Area (km2)"] <- AllDomainsInterval2$PixelSum*30*30/1000/1000
+
+# Adding Area (ha)
+
+#AllDomainsInterval1 ["Area (ha)"] <- AllDomainsInterval1$PixelSum*30*30/10000
+#AllDomainsInterval2 ["Area (ha)"] <- AllDomainsInterval2$PixelSum*30*30/10000
+
+# Re-ordering the columns in both dataframes in a more meaningful way
+
+AllDomainsInterval1 <- AllDomainsInterval1[c(1,5,6,2,3,4,7)]
+AllDomainsInterval2 <- AllDomainsInterval2[c(1,5,6,2,3,4,7)]
+
+# Using "xlsx" package
+
+library(xlsx)
+
+write.xlsx(AllDomainsInterval1, file="C:/150918 all newest CSVs from QGIS SCP LCC batch/Included Land Persistence Rows and Added Area (km2 only)/LCCR Final.xlsx", sheetName ="Interval 1")
+write.xlsx(AllDomainsInterval2, file="C:/150918 all newest CSVs from QGIS SCP LCC batch/Included Land Persistence Rows and Added Area (km2 only)/LCCR Final.xlsx", sheetName ="Interval 2", append = TRUE)
+
+# The operation was successfully completed.
+
