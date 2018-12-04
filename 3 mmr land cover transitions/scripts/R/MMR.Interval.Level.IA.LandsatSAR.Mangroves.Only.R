@@ -10,7 +10,7 @@
 # Last Modified:  04 Dec 2018
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
 
 # Load Libraries --------------------------
 library(tidyverse)
@@ -69,14 +69,14 @@ dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character i
 plotINT <- ggplot() + geom_bar(data=dfINT, aes(x=Time.Interval, y=Ann.Change, fill="#c6c3bf"), stat="identity", position=position_dodge())
 plotINT <- plotINT  + geom_hline(data=dfINT, aes(yintercept=Uni.Ann.Change, colour="#000000"), linetype="dashed") # Uniform line
 plotINT <- plotINT  + facet_wrap(~Site)
-plotINT <- plotINT  + labs(x="Time Interval", y="Annual Change (% of Map)")
+plotINT <- plotINT  + labs(x="Time Interval", y="Annual Change Intensity (% of Map)")
 plotINT <- plotINT  + scale_fill_manual(values=c("#c6c3bf"), name="", labels = c("Observed Change"))
 plotINT <- plotINT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
-plotINT <- plotINT  + theme(legend.title=element_blank(), legend.position=c(0.85,0.2), legend.box="vertical")
+plotINT <- plotINT  + theme(legend.title=element_blank(), legend.position="bottom", legend.box="horizontal")
 plotINT <- plotINT  + theme(panel.grid.minor=element_blank())
 
 # Save Output Plots -----------------------
 
 # Output boxplots to a PDF file
-ggsave(plotINT, file="Mindoro-Interval-Level-Intensity-Analysis.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotINT, file="Interval-Level-Intensity-Analysis-Mangroves.pdf", width=19.89, height=15, units="cm", dpi=300)
 
