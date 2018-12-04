@@ -53,7 +53,7 @@ csvTNI$Site <- c("Tanintharyi")
 csvYGN$Site <- c("Yangon")
 
 # Combine data frames
-csvINT <- rbind(csvMINDR, csvARMNP, csvMCWS, csvMIBNP, csvNLNP)
+csvINT <- rbind(csvAYE, csvBAG, csvMON, csvRAK, csvTNI, csvYGN)
 
 # Rename column names
 colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change",
@@ -62,8 +62,6 @@ colnames(csvINT) <- c("Time.Interval","Obs.Change","Ann.Change","Uni.Ann.Change"
 # Select columns: time interval, observed change rate, uniform change rate, site
 dfINT <- subset(csvINT, select=c(1,3:4,9))
 dfINT$Time.Interval <- gsub('_', '-', dfINT$Time.Interval) # Replace character in column
-#dfINT[,3] <- as.numeric(dfINT[,3]) # Change column to numeric class
-#uINT <- dfINT$Uni.Change[1] # Store uniform intensity value as constant in a variable
 
 # Generate Plots ------------------------
 
