@@ -7,3 +7,11 @@
 # Date Created:   13 Dec 2018
 # Last Modified:  
 
+# Set Working Directory -------------------
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+
+# Load Libraries --------------------------
+library(tidyverse)
+
+
+
