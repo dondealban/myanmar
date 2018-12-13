@@ -13,5 +13,6 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/m
 # Load Libraries --------------------------
 library(tidyverse)
 
-
+# Read Input Data -------------------------
+csv <- read.csv(file="Loss & Gain Totals.csv", header=TRUE, sep=",")
 
