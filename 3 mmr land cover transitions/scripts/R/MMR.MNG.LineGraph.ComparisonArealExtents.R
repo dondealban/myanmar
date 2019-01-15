@@ -35,4 +35,7 @@ plot2 <- ggplot() + geom_line(data=dfAREAL, aes(x=Time_Point, y=Areal_Extent_Km2
 plot2 <- plot2 + facet_wrap(~Study_Area_Rev, scales="free")
 plot2 <- plot2 + labs(x="Year", y="Areal Extent (sq.km)")
 
+# Save Output Plots -----------------------
+ggsave(plot1, file="Linegraph-Areal-Extent-Comparison-Mangroves-SameScale.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plot2, file="Linegraph-Areal-Extent-Comparison-Mangroves-DiffScale.pdf", width=19.89, height=15, units="cm", dpi=300)
 
