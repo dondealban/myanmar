@@ -12,3 +12,6 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/m
 
 # Load Libraries --------------------------
 library(tidyverse)
+
+# Read Input Data -------------------------
+dfAREAL <- read.csv(file="Areal_Extents_Comparison.csv", header=TRUE, sep=",")
