@@ -12,9 +12,8 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/2 regime shifts/stacked area/tanintharyi/aggregate/")
 
 # Load Libraries and Data ---------------
-library(ggplot2)
 library(reshape2)
-library(plyr)
+library(tidyverse)
 
 # Read csv files in the directory and store as a list
 filenames <- list.files()
