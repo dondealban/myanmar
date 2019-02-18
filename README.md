@@ -1,5 +1,5 @@
 # Understanding Land-System Change in Myanmar
-This is the main drawing-board repository for the 'Understanding Land-System Change in Myanmar' project. The repository is organised into a series of studies or papers (i.e., planned, ongoing, and completed) that seek to explore and understand the land-system change dynamics in Myanmar, a country experiencing profound social-economic-political transitions. Each study/paper is organised and contained in a folder, which contains relevant working files, data, scripts, outputs, development notes, as well as project boards (where available) for the specific study topic. Note that this main repository contains the working versions of files at varying stages of progress. Completed studies are noted and links are provided to a separate repository that contains the final versions. 
+This is the main drawing-board repository for the 'Understanding Land-System Change in Myanmar' project. The repository is organised into a series of studies or papers (i.e., planned, ongoing, and completed) that seek to explore and understand the land-system change dynamics in Myanmar, a country experiencing profound social-economic-political transitions. Each study/paper is organised and contained in a folder, which contains relevant working files, data, scripts, outputs, development notes, as well as project boards (where available) for the specific study topic. Note that this main repository contains the working versions of files at varying stages of progress. Completed studies are noted and links are provided to a separate repository that contains the final versions.
 
 ## List of Studies/Papers
 
@@ -17,7 +17,7 @@ This study examined the occurrence of land-system regime shifts in a dynamic lan
 ![status-02](https://img.shields.io/badge/status-ongoing-brightgreen.svg)
 
 #### 3. Understanding land cover transitions at country and sub-national scales
-This study analyses the land cover change transitions and the underlying drivers of these changes in Myanmar over a twenty-year period. Using the approach developed from a previous study (see item 1 above), this country-scale analysis utilises combined Landsat (5/7/8) and L-band SAR (JERS-1/PALSAR-1/PALSAR-2) data, including ancillary data layers, to generate historical land cover maps at three time-points: 1996, 2007, and 2016. The land cover transitions over two time -intervals, 1996-2007 and 2007-2016, are analysed using the Intensity Analysis framework.
+This study analyses the land cover change transitions and the underlying drivers of these changes in Myanmar over a twenty-year period. Using the approach developed from a previous study (see item 1 above), this country-scale analysis utilises combined Landsat (5/7/8) and L-band SAR (JERS-1/PALSAR-1/PALSAR-2) data, including ancillary data layers, to generate historical land cover maps at three time-points: 1996, 2007, and 2016. The land cover transitions over two time -intervals, 1996-2007 and 2007-2016, are analysed using the [Intensity Analysis](https://www.sciencedirect.com/science/article/pii/S0169204612000618) framework.
 
 ![status-03](https://img.shields.io/badge/status-ongoing-brightgreen.svg)
 
