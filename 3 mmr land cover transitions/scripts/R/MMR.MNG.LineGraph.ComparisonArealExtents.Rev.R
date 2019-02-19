@@ -54,14 +54,17 @@ dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 # Plot #1: Myanmar
 plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
+plot1 <- plot1 + theme(legend.position="none",axis.title.x=element_blank())
 
 # Plot #2: Extensive mangrove regions
 plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
 plot2 <- plot2 + facet_wrap(~Study_Area)
+plot2 <- plot2 + theme(legend.position="none",axis.title.x=element_blank())
 
 # Plot #3: Non-extensive mangrove regions
 plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
 plot3 <- plot3 + facet_wrap(~Study_Area)
+plot3 <- plot3 + theme(legend.position="none")
 
 mergePlot <- ggarrange(plot1,plot2,plot3, nrow=3)
 
