@@ -44,15 +44,6 @@ lookup <- as.data.frame(cbind(Reference,RefID), stringsAsFactors=TRUE)
 # Match time interval with year in new column based on lookup table 
 dfAREAL <- join(dfAREAL, lookup, by='Reference') # Need plyr package
 
-# Reorder Factor Levels ------------------- # Is this part required?
-dfAREAL$Study_Area_Rev <- factor(dfAREAL$Study_Area, levels=c("Ayeyarwady",
-                                                              "Bago",
-                                                              "Mon",
-                                                              "Rakhine",
-                                                              "Tanintharyi",
-                                                              "Yangon",
-                                                              "Myanmar")) 
-
 # Subset Data -----------------------------
 dfSUB1 <- dfAREAL %>% filter(Study_Area %in% "Myanmar")
 dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
