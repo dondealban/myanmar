@@ -13,8 +13,8 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/m
 # Load Libraries --------------------------
 #library(tidyverse)
 library(dplyr)
-#library(ggplot2)
-#library(ggpubr)
+library(ggplot2)
+library(ggpubr)
 library(plyr)
 
 # Read Input Data -------------------------
@@ -49,9 +49,26 @@ dfSUB1 <- dfAREAL %>% filter(Study_Area %in% "Myanmar")
 dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
 dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
-
-
 # Generate Plots --------------------------
+
+# Plot #1: Myanmar
+plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot1 <- plot1 + facet_wrap(~Study_Area)
+
+# Plot #2: Extensive mangrove regions
+plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot2 <- plot2 + facet_wrap(~Study_Area)
+
+# Plot #3: Non-extensive mangrove regions
+plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot3 <- plot3 + facet_wrap(~Study_Area)
+
+mergePlot <- ggarrange(plot1,plot2,plot3, nrow=3)
+
+
+
+
+
 # Plot #1: Same y-scales
 plot1 <- ggplot() + geom_line(data=dfAREAL, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area_Rev)
