@@ -8,15 +8,43 @@
 # Last Modified:  19 Feb 2019
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
 
 # Load Libraries --------------------------
-library(tidyverse)
+#library(tidyverse)
+library(dplyr)
+#library(ggplot2)
+#library(ggpubr)
+library(plyr)
 
 # Read Input Data -------------------------
 dfAREAL <- read.csv(file="Areal_Extents_Comparison.csv", header=TRUE, sep=",")
 
-# Reorder Factor Levels -------------------
+# Reorganise Data -------------------------
+RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q")
+Reference <- c("This study",
+               "Blasco & Aizpuru, 2002",
+               "Blasco et al., 2001",
+               "Connette et al., 2016",
+               "De Alban et al., 2018",
+               "Estoque et al., 2018",
+               "FAO, 2010",
+               "Gaw et al., 2018",
+               "Giri et al., 2008",
+               "IUCN, 1983",
+               "Maung, 2012",
+               "Oo, 2002",
+               "Richards & Friess, 2015",
+               "Spalding et al., 1997",
+               "Webb et al., 2014",
+               "Weber et al., 2014",
+               "Zockler et al., 2013")
+lookup <- as.data.frame(cbind(Reference,RefID), stringsAsFactors=TRUE)
+
+# Match time interval with year in new column based on lookup table 
+dfAREAL <- join(dfAREAL, lookup, by='Reference') # Need plyr package
+
+# Reorder Factor Levels ------------------- # Is this part required?
 dfAREAL$Study_Area_Rev <- factor(dfAREAL$Study_Area, levels=c("Ayeyarwady",
                                                               "Bago",
                                                               "Mon",
@@ -24,6 +52,13 @@ dfAREAL$Study_Area_Rev <- factor(dfAREAL$Study_Area, levels=c("Ayeyarwady",
                                                               "Tanintharyi",
                                                               "Yangon",
                                                               "Myanmar")) 
+
+# Subset Data -----------------------------
+dfSUB1 <- dfAREAL %>% filter(Study_Area %in% "Myanmar")
+dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
+dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
+
+
 
 # Generate Plots --------------------------
 # Plot #1: Same y-scales
