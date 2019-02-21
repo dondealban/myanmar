@@ -64,20 +64,10 @@ plot2 <- plot2 + theme(legend.position="none",axis.title.x=element_blank()) + la
 # Plot #3: Non-extensive mangrove regions
 plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
 plot3 <- plot3 + facet_wrap(~Study_Area)
-plot3 <- plot3 + theme(legend.position="none",axis.title.y=element_blank()) + labs(x="Year")
+plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
 
 mergePlot <- ggarrange(plot1,plot2,plot3, nrow=3)
-mergePlot <- mergePlot + labs(x="Year", y="Areal Extent (sq.km)")
 
-
-# Plot #1: Same y-scales
-plot1 <- ggplot() + geom_line(data=dfAREAL, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
-plot1 <- plot1 + facet_wrap(~Study_Area_Rev)
-plot1 <- plot1 + labs(x="Year", y="Areal Extent (sq.km)")
-# Plot #2: Different y-scales
-plot2 <- ggplot() + geom_line(data=dfAREAL, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
-plot2 <- plot2 + facet_wrap(~Study_Area_Rev, scales="free")
-plot2 <- plot2 + labs(x="Year", y="Areal Extent (sq.km)")
 
 # Save Output Plots -----------------------
 #ggsave(plot1, file="Linegraph-Areal-Extent-Comparison-Mangroves-SameScale.pdf", width=19.89, height=15, units="cm", dpi=300)
