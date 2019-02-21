@@ -5,13 +5,12 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   15 Jan 2019
-# Last Modified:  19 Feb 2019
+# Last Modified:  21 Feb 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
 
 # Load Libraries --------------------------
-#library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
