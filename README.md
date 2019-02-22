@@ -14,7 +14,8 @@ The study has been completed and published as an open-access paper entitled, *Co
 #### 2. Investigating land-system regime shifts
 This study examined the occurrence of land-system regime shifts in a dynamic landscape in southern Myanmar through the application of complementary analytical frameworks. The 24-year annual time-series ESA CCI global land cover product coupled with extensive literature review were used to explore the dynamics of the land-system regime shift. The manuscript has been submitted and is currently under review.
 
-![status-02](https://img.shields.io/badge/status-ongoing-brightgreen.svg)
+![status-02](https://img.shields.io/badge/status-completed-red.svg)
+[![DOI](https://img.shields.io/badge/DOI-10.3390%2Fsu11041139-blue.svg)](https://doi.org/10.3390/su11041139)
 
 #### 3. Understanding land cover transitions at country and sub-national scales
 This study analyses the land cover change transitions and the underlying drivers of these changes in Myanmar over a twenty-year period. Using the approach developed from a previous study (see item 1 above), this country-scale analysis utilises combined Landsat (5/7/8) and L-band SAR (JERS-1/PALSAR-1/PALSAR-2) data, including ancillary data layers, to generate historical land cover maps at three time-points: 1996, 2007, and 2016. The land cover transitions over two time -intervals, 1996-2007 and 2007-2016, are analysed using the [Intensity Analysis](https://www.sciencedirect.com/science/article/pii/S0169204612000618) framework.
