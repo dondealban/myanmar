@@ -67,8 +67,8 @@ plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
 
 mergePlot <- ggarrange(plot1,plot2,plot3, nrow=3)
 
-
 # Save Output Plots -----------------------
+ggsave(mergePlot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot.pdf", width=19.89, height=15, units="cm", dpi=300)
 #ggsave(plot1, file="Linegraph-Areal-Extent-Comparison-Mangroves-SameScale.pdf", width=19.89, height=15, units="cm", dpi=300)
 #ggsave(plot2, file="Linegraph-Areal-Extent-Comparison-Mangroves-DiffScale.pdf", width=19.89, height=15, units="cm", dpi=300)
 
