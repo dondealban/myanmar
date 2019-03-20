@@ -5,7 +5,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Dec 2018
-# Last Modified:  
+# Last Modified:  20 Mar 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
