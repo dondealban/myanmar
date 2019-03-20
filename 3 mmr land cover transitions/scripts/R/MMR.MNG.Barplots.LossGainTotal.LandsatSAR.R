@@ -8,7 +8,7 @@
 # Last Modified:  20 Mar 2019
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
 
 # Load Libraries --------------------------
 library(tidyverse)
@@ -22,10 +22,11 @@ plot <- plot + facet_wrap(~Interval)
 plot <- plot + labs(x="Mangrove Change per Time-Interval", y="Areal Extent (sq.km)", fill="Category")
 plot <- plot + scale_fill_manual(values=c("#ffff66","#ff0000","#246a24","#ff8000",
                                           "#ff00ff","#a65400","#ccff66","#66ccff"))
+plot <- plot + theme_light() 
 
 # Save Output Plots -----------------------
 
-ggsave(plot, file="Barplot-Total-Gross-Loss-Gain-Mangroves.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plot, file="Barplot-Total-Gross-Loss-Gain-Mangroves_v2.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 
 
