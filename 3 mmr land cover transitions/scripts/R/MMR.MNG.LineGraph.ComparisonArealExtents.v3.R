@@ -81,6 +81,5 @@ mergeplot <- ggarrange(plot1, plot2, plot3)
 
 
 # Save Output Plots -----------------------
-ggsave(plot1, file="Linegraph-Areal-Extent-Comparison-Mangroves-SameScale.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(plot2, file="Linegraph-Areal-Extent-Comparison-Mangroves-DiffScale.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(mergeplot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot-Draft.pdf", width=19.89, height=15, units="cm", dpi=300)
 
