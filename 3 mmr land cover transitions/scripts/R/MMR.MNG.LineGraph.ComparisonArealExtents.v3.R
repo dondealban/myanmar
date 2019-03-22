@@ -76,7 +76,7 @@ grid.arrange(
 )
 
 # Generate Plots --------------------------
-ggarrange(plot1, plot2, plot3)
+mergeplot <- ggarrange(plot1, plot2, plot3)
 
 
 
