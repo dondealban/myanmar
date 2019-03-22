@@ -53,6 +53,13 @@ dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 # Plot #1: Myanmar
 plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
+text1 <- data.frame(
+  label = c("A","F","I","L","M"),
+  Study_Area = c("Myanmar"),
+  x = c(1996,2000,1975,1954,2000),
+  y = c(12381,6668,8515,2346,5025)
+)
+plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_light()
 plot1 <- plot1 + theme(legend.position="none", axis.title.x=element_blank()) + labs(y=" ")
 
