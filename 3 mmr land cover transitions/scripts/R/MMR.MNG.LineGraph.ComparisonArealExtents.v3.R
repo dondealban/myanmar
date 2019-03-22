@@ -78,7 +78,7 @@ text3 <- data.frame(
   x = c(1996,1996,1996,2000,2000),
   y = c(268,535,202,81,25)
 )
-plot3 <- plot3 + geom_text(data=text3, aes(x=x, y=y, label=label))
+plot3 <- plot3 + geom_text(data=text3, aes(x=x, y=y, label=label), nudge_x=-0.75, nudge_y=10)
 plot3 <- plot3 + theme_light()
 plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
 
