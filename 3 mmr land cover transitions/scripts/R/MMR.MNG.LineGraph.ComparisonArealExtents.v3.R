@@ -65,8 +65,18 @@ plot2 <- plot2 + theme(legend.position="none", axis.title.x=element_blank()) + l
 # Plot #3: Non-extensive mangrove regions
 plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot3 <- plot3 + facet_wrap(~Study_Area, nrow=1)
+text3 <- data.frame(
+  label = c("A","A","A","F","F"),
+  Study_Area = c("Bago","Mon","Yangon","Mon","Yangon"),
+  x = c(1996,1996,1996,2000,2000),
+  y = c(268,535,202,81,25)
+)
+plot3 <- plot3 + geom_text(data=text3, aes(x=x, y=y, label=label))
 plot3 <- plot3 + theme_light()
 plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
+
+
+
 
 # Expose ggplot2 Layouts ------------------
 plotlayout <- lapply(list(plot1, plot2, plot3), expose_layout, FALSE, FALSE)
