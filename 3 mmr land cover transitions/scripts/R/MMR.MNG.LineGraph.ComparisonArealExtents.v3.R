@@ -51,18 +51,21 @@ dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 # Define Plots ----------------------------
 
 # Plot #1: Myanmar
-plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
+plot1 <- plot1 + theme_light()
 plot1 <- plot1 + theme(legend.position="none", axis.title.x=element_blank()) + labs(y=" ")
 
 # Plot #2: Extensive mangrove regions
-plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
-plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1) 
+plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
+plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1)
+plot2 <- plot2 + theme_light()
 plot2 <- plot2 + theme(legend.position="none", axis.title.x=element_blank()) + labs(y="Areal Extent (sq.km)")
 
 # Plot #3: Non-extensive mangrove regions
-plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot3 <- plot3 + facet_wrap(~Study_Area, nrow=1)
+plot3 <- plot3 + theme_light()
 plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
 
 # Expose ggplot2 Layouts ------------------
