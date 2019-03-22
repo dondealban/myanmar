@@ -13,6 +13,8 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/m
 # Load Libraries --------------------------
 library(plyr)
 library(dplyr)
+library(ggplot2)
+library(egg)
 
 # Read Input Data -------------------------
 dfAREAL <- read.csv(file="Areal_Extents_Comparison.csv", header=TRUE, sep=",")
@@ -46,8 +48,26 @@ dfSUB1 <- dfAREAL %>% filter(Study_Area %in% "Myanmar")
 dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
 dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
+# Define Plots ----------------------------
+# Plot #1: Myanmar
+plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+# Plot #2: Extensive mangrove regions
+plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1)
+# Plot #3: Non-extensive mangrove regions
+plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=Reference), stat="identity")
+plot3 <- plot3 + facet_wrap(~Study_Area)
 
 
+# Exposing the ggplot2 layouts
+mergeplot <- lapply(list(plot1, plot2, plot3), expose_layout, FALSE, FALSE)
+grid.arrange(
+  grobs = mergeplot,
+  widths = c(1),
+  layout_matrix = rbind(c(1),
+                        c(2),
+                        c(3))
+)
 
 
 
