@@ -11,7 +11,6 @@
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
 
 # Load Libraries --------------------------
-#library(tidyverse)
 library(plyr)
 library(dplyr)
 
@@ -50,14 +49,8 @@ dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
 
 
-# Reorder Factor Levels -------------------
-dfAREAL$Study_Area_Rev <- factor(dfAREAL$Study_Area, levels=c("Ayeyarwady",
-                                                              "Bago",
-                                                              "Mon",
-                                                              "Rakhine",
-                                                              "Tanintharyi",
-                                                              "Yangon",
-                                                              "Myanmar")) 
+
+
 
 # Generate Plots --------------------------
 # Plot #1: Same y-scales
