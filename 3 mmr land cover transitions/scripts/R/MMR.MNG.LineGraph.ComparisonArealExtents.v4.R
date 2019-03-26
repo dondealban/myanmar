@@ -48,6 +48,12 @@ dfSUB1 <- dfAREAL %>% filter(Study_Area %in% "Myanmar")
 dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
 dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
+# Subset from Subset: Single-Year Studies
+dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "G" | 
+                               RefID %in% "J" | RefID %in% "N")
+dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "D" | RefID %in% "G" | RefID %in% "Q")
+
+
 # Define Plots ----------------------------
 
 # Plot #1: Myanmar
