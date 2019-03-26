@@ -62,8 +62,8 @@ plot1 <- plot1 + facet_wrap(~Study_Area)
 text1 <- data.frame(
   label = c("A","B,C","F","G","I","J","L","M","N"),
   Study_Area = c("Myanmar"),
-  x = c(1996,2000,2000,2009,1975,1983,1954,2000,1997),
-  y = c(12381,6950,6668,4379,8515,5170,2346,5025,3790)
+  x = c(1996,2002,2000,2009,1975,1983,1954,2000,1997),
+  y = c(12381,7500,6668,4450,8515,5250,2346,5025,3900)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_light()
@@ -71,13 +71,15 @@ plot1 <- plot1 + theme(legend.position="none", axis.title.x=element_blank()) + l
 
 # Plot #2: Extensive mangrove regions
 plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
+plot2 <- plot2 + geom_point(data=dfSUBSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1)
 text2 <- data.frame(
-  label = c("A","A","A","E","F","F","F","H","K","K","K","O","P","P","P"),
+  label = c("A","A","A","E","F","F","F","H","K","K","K","O","P","P","P","D","G","Q"),
   Study_Area = c("Ayeyarwady","Rakhine","Tanintharyi","Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi",
-                 "Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi","Ayeyarwady","Ayeyarwady","Rakhine","Tanintharyi"),
-  x = c(1996,1996,1996,1995,2000,2000,2000,1989,1980,1980,1980,1978,2000,2000,2000),
-  y = c(4150,2973,4253,3511,1740,2048,2774,2588,2964,1675,1951,2623,818,1734,2075)
+                 "Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi","Ayeyarwady","Ayeyarwady","Rakhine",
+                 "Tanintharyi","Tanintharyi","Ayeyarwady","Ayeyarwady"),
+  x = c(1996,1996,1996,1995,2000,2000,2000,1989,1980,1980,1980,1978,2000,2000,2000,2016,2005,2001),
+  y = c(4150,2973,4253,3511,1740,2048,2774,2588,2964,1675,1951,2623,818,1734,2075,2550,950,1250)
 )
 plot2 <- plot2 + geom_text(data=text2, aes(x=x, y=y, label=label), size=2.5, nudge_x=-1, nudge_y=100)
 plot2 <- plot2 + theme_light()
@@ -110,6 +112,5 @@ grid.arrange(
 mergeplot <- ggarrange(plot1, plot2, plot3)
 
 # Save Output Plots -----------------------
-ggsave(mergeplot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot-Draft.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(mergeplot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot-Final.pdf", width=19.89, height=15, units="cm", dpi=300)
-
+ggsave(mergeplot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot-White.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(mergeplot, file="Linegraph-Areal-Extent-Comparison-Mangroves-MergePlot-Gray.pdf", width=19.89, height=15, units="cm", dpi=300)
