@@ -53,17 +53,17 @@ dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "G" 
                                RefID %in% "J" | RefID %in% "N")
 dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "D" | RefID %in% "G" | RefID %in% "Q")
 
-
 # Define Plots ----------------------------
 
 # Plot #1: Myanmar
 plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
+plot1 <- plot1 + geom_point(data=dfSUBSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
 text1 <- data.frame(
-  label = c("A","F","I","L","M"),
+  label = c("A","B,C","F","G","I","J","L","M","N"),
   Study_Area = c("Myanmar"),
-  x = c(1996,2000,1975,1954,2000),
-  y = c(12381,6668,8515,2346,5025)
+  x = c(1996,2000,2000,2009,1975,1983,1954,2000,1997),
+  y = c(12381,6950,6668,4379,8515,5170,2346,5025,3790)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_light()
