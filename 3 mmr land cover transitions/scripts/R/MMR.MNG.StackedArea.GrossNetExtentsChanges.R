@@ -17,3 +17,9 @@ dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, se
 
 # Reorganise Data -------------------------
 mDATA <- melt(dfRAW, id=c('TimePoint','Change'))
+colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm2")
+
+# Subset Data -----------------------------
+dfMMR <- mDATA %>% filter(Study_Area %in% "Myanmar")
+dfAYE <- mDATA %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
+dfBAG <- mDATA %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
