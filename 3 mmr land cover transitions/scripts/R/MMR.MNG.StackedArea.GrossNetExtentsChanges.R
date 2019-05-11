@@ -20,6 +20,8 @@ dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, se
 # Reorganise Data -------------------------
 mDATA <- melt(dfRAW, id=c('TimePoint','Change')) # requires reshape2 package
 colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm")
+mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence"))
+
 
 # Subset Data -----------------------------
 # pipes require dplyr package
@@ -39,13 +41,13 @@ dfYGN <- mDATA %>% filter(Region %in% "Yangon")
 
 # Plot: Myanmar
 pMMR1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
-                                  labels=c("Persistence",
-                                           "Gross Loss",
+                                  labels=c("Gross Loss",
+                                           "Net Loss",
                                            "Gross Gain",
-                                           "Net Loss"))), 
+                                           "Persistence"))), 
                                   data=dfMMR1)
 pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="")
 pMMR1 <- pMMR1 + guides(fill=guide_legend(ncol=1))
 pMMR1 <- pMMR1 + theme_bw()
-pMMR1 <- pMMR1 + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff"))
+pMMR1 <- pMMR1 + scale_fill_manual(values=c("#bfbfbf","#ff0000","#a9d08e","#6666ff"))
 pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007))
