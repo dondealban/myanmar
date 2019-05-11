@@ -20,6 +20,10 @@ mDATA <- melt(dfRAW, id=c('TimePoint','Change'))
 colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm2")
 
 # Subset Data -----------------------------
-dfMMR <- mDATA %>% filter(Study_Area %in% "Myanmar")
-dfAYE <- mDATA %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Tanintharyi"))
-dfBAG <- mDATA %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
+dfMMR <- mDATA %>% filter(Region %in% "Myanmar")
+dfAYE <- mDATA %>% filter(Region %in% "Ayeyarwady")
+dfBAG <- mDATA %>% filter(Region %in% "Bago")
+dfMON <- mDATA %>% filter(Region %in% "Mon")
+dfRAK <- mDATA %>% filter(Region %in% "Rakhine")
+dfTNI <- mDATA %>% filter(Region %in% "Tanintharyi")
+dfYGN <- mDATA %>% filter(Region %in% "Yangon")
