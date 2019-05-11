@@ -23,7 +23,11 @@ colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm")
 
 # Subset Data -----------------------------
 # pipes require dplyr package
-dfMMR <- mDATA %>% filter(Region %in% "Myanmar")
+dfMMR  <- mDATA %>% filter(Region %in% "Myanmar")
+dfMMR1 <- dfMMR %>% filter(TimePoint %in% "1996" | TimePoint %in% "2007")
+dfMMR2 <- dfMMR %>% filter(TimePoint %in% "2007" | TimePoint %in% "2016")
+
+
 dfAYE <- mDATA %>% filter(Region %in% "Ayeyarwady")
 dfBAG <- mDATA %>% filter(Region %in% "Bago")
 dfMON <- mDATA %>% filter(Region %in% "Mon")
@@ -33,15 +37,15 @@ dfYGN <- mDATA %>% filter(Region %in% "Yangon")
 
 # Define Plots ----------------------------
 
-# Plot #1: Myanmar
-plot1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+# Plot: Myanmar
+pMMR1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Persistence",
                                            "Gross Loss",
                                            "Gross Gain",
                                            "Net Loss"))), 
-                                  data=dfMMR)
-plot1 <- plot1 + labs(title="Myanmar", x="Year", y="Area (sq.km)")
-plot1 <- plot1 + guides(fill=guide_legend(ncol=1))
-plot1 <- plot1 + theme_bw()
-plot1 <- plot1 + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff"))
-plot1 <- plot1 + scale_x_continuous(breaks=c(1996,2007,2016))
+                                  data=dfMMR1)
+pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="")
+pMMR1 <- pMMR1 + guides(fill=guide_legend(ncol=1))
+pMMR1 <- pMMR1 + theme_bw()
+pMMR1 <- pMMR1 + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff"))
+pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007))
