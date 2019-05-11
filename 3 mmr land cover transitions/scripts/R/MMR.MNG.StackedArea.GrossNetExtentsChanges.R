@@ -9,6 +9,8 @@
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/gross and net/")
 
+# Load Libraries --------------------------
+library(reshape2)
 
 # Read Input Data -------------------------
 dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, sep=",")
