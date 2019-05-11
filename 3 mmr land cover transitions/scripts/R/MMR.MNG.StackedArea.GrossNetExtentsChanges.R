@@ -14,3 +14,6 @@ library(reshape2)
 
 # Read Input Data -------------------------
 dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, sep=",")
+
+# Reorganise Data -------------------------
+mDATA <- melt(dfRAW, id=c('TimePoint','Change'))
