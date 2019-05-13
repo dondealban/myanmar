@@ -18,8 +18,8 @@ library(ggplot2)
 dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, sep=",")
 
 # Reorganise Data -------------------------
-mDATA <- melt(dfRAW, id=c('TimePoint','Change')) # requires reshape2 package
-colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm")
+mDATA <- melt(dfRAW, id=c('TimeInterval','TimePoint','Change')) # requires reshape2 package
+colnames(mDATA) <- c("TimeInterval","TimePoint","Change","Region","AreaSqKm")
 mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence","Undisturbed"))
 
 
