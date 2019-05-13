@@ -25,52 +25,52 @@ mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gai
 
 # Subset Data -----------------------------
 # pipes require dplyr package
-dfAYE  <- mDATA %>% filter(Region %in% "Ayeyarwady")
-dfAYE1 <- dfAYE %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
-dfAYE2 <- dfAYE %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+dfTNI  <- mDATA %>% filter(Region %in% "Tanintharyi")
+dfTNI1 <- dfTNI %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfTNI2 <- dfTNI %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
 # Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(4149.8883, 4149.8883, 1669.0383))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(2324.7666, 2324.7666, 1318.2435))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,1115.1100,1115.1100,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,1115.1100,1115.1100,0))     # undisturbed mangroves
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(4253.0850, 4253.0850, 2879.3646))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(3068.8749, 3068.8749, 2602.5507))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,2470.2400,2470.2400,0))     # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,2470.2400,2470.2400,0))     # undisturbed mangroves
 
 # Define Plots ----------------------------
 
 # Left panel
-pAYE1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+pTNI1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss",
                                            "Gross Gain",
                                            "Persistence"))), 
-                                  data=dfAYE1, alpha=0.6)
-pAYE1 <- pAYE1 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL1)
-pAYE1 <- pAYE1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN1)
-pAYE1 <- pAYE1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
-pAYE1 <- pAYE1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
-pAYE1 <- pAYE1 + guides(colour=guide_legend(reverse=TRUE))
-pAYE1 <- pAYE1 + labs(x="Interval 1", y="Area (sq.km)")
-pAYE1 <- pAYE1 + scale_x_continuous(breaks=c(1996,2007))
-pAYE1 <- pAYE1 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
-pAYE1 <- pAYE1 + theme_light() + theme(legend.position="none")
+                                  data=dfTNI1, alpha=0.6)
+pTNI1 <- pTNI1 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL1)
+pTNI1 <- pTNI1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN1)
+pTNI1 <- pTNI1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pTNI1 <- pTNI1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pTNI1 <- pTNI1 + guides(colour=guide_legend(reverse=TRUE))
+pTNI1 <- pTNI1 + labs(x="Interval 1", y="Area (sq.km)")
+pTNI1 <- pTNI1 + scale_x_continuous(breaks=c(1996,2007))
+pTNI1 <- pTNI1 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
+pTNI1 <- pTNI1 + theme_light() + theme(legend.position="none")
 
 # Right panel
-pAYE2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+pTNI2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss",
                                            "Gross Gain",
                                            "Persistence"))), 
-                                  data=dfAYE2, alpha=0.6)
-pAYE2 <- pAYE2 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL2)
-pAYE2 <- pAYE2 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN2)
-pAYE2 <- pAYE2 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
-pAYE2 <- pAYE2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
-pAYE2 <- pAYE2 + guides(colour=guide_legend(reverse=TRUE))
-pAYE2 <- pAYE2 + labs(x="Interval 2", fill=element_blank(), colour="")
-pAYE2 <- pAYE2 + scale_x_continuous(breaks=c(2007,2016))
-pAYE2 <- pAYE2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500), position="right")
-pAYE2 <- pAYE2 + theme_light() + theme(axis.title.y=element_blank())
+                                  data=dfTNI2, alpha=0.6)
+pTNI2 <- pTNI2 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL2)
+pTNI2 <- pTNI2 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN2)
+pTNI2 <- pTNI2 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pTNI2 <- pTNI2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pTNI2 <- pTNI2 + guides(colour=guide_legend(reverse=TRUE))
+pTNI2 <- pTNI2 + labs(x="Interval 2", fill=element_blank(), colour="")
+pTNI2 <- pTNI2 + scale_x_continuous(breaks=c(2007,2016))
+pTNI2 <- pTNI2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500), position="right")
+pTNI2 <- pTNI2 + theme_light() + theme(axis.title.y=element_blank())
 
 # Expose ggplot2 Layouts ------------------
-plotlayout <- lapply(list(pAYE1, pAYE2), expose_layout, FALSE, FALSE)
+plotlayout <- lapply(list(pTNI1, pTNI2), expose_layout, FALSE, FALSE)
 grid.arrange(
   grobs = plotlayout,
   widths = c(1,1.4),
@@ -78,8 +78,8 @@ grid.arrange(
 )
 
 # Generate Plots --------------------------
-mergeplot <- ggarrange(pAYE1, pAYE2, ncol=2)
+mergeplot <- ggarrange(pTNI1, pTNI2, ncol=2)
 
 # Save Output Plots -----------------------
-ggsave(mergeplot, file="StackedArea-GrossNet-Mangroves-01-Ayeyarwady.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(mergeplot, file="StackedArea-GrossNet-Mangroves-05-Tanintharyi.pdf", width=19.89, height=15, units="cm", dpi=300)
 
