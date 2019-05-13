@@ -44,10 +44,11 @@ pMMR1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Gross Loss",
                                            "Net Loss",
                                            "Gross Gain",
-                                           "Persistence"))), 
+                                           "Persistence",
+                                           "Undisturbed"))), 
                                   data=dfMMR1, alpha=0.6)
 pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="")
 pMMR1 <- pMMR1 + guides(fill=guide_legend(ncol=1))
 #pMMR1 <- pMMR1 + theme_bw()
-pMMR1 <- pMMR1 + scale_fill_manual(values=c("#bfbfbf","#ff0000","#00b050","#6666ff"))
+pMMR1 <- pMMR1 + scale_fill_manual(values=c("#bfbfbf","#ff0000","#00b050","#6666ff","000000"))
 pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007))
