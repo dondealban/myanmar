@@ -14,6 +14,7 @@ library(reshape2)
 library(dplyr)
 library(ggplot2)
 library(egg)
+library(grid)
 
 # Read Input Data -------------------------
 dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, sep=",")
@@ -44,7 +45,7 @@ dfYGN <- mDATA %>% filter(Region %in% "Yangon")
 
 # Define Plots ----------------------------
 
-# Plot: Myanmar
+# Left panel
 pMMR1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss",
                                            "Gross Gain",
@@ -56,11 +57,11 @@ pMMR1 <- pMMR1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfU
 pMMR1 <- pMMR1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
 pMMR1 <- pMMR1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pMMR1 <- pMMR1 + guides(colour=guide_legend(reverse=TRUE))
-pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="", colour="")
+pMMR1 <- pMMR1 + labs(x="Year", y="Area (sq.km)", fill="", colour="")
 pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007)) + ylim(0,13000)
-pMMR1 <- pMMR1 + theme_light()
+pMMR1 <- pMMR1 + theme_light() + theme(legend.position="none")
 
-
+# Right panel
 pMMR2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss",
                                            "Gross Gain",
@@ -76,38 +77,17 @@ pMMR2 <- pMMR2 + labs(fill="", colour="")
 pMMR2 <- pMMR2 + scale_x_continuous(breaks=c(2007,2016)) + ylim(0,13000)
 pMMR2 <- pMMR2 + theme_light()
 
+# Expose ggplot2 Layouts ------------------
+plotlayout <- lapply(list(pMMR1, pMMR2), expose_layout, FALSE, FALSE)
+grid.arrange(
+  grobs = plotlayout,
+  widths = c(1,1.4),
+  layout_matrix = rbind(c(1,2))
+)
+
+# Generate Plots --------------------------
+mergeplot <- ggarrange(pMMR1, pMMR2, ncol=2)
 
 
 
 
-
-
-pMMR1 <- pMMR1 + geom_polygon(aes(x=x, y=y, colour="#800000"), linetype=3, fill=NA, data=dfGL1)
-#pMMR1 <- pMMR1 + scale_colour_manual(values=c("#800000"), name="", labels=c("Gross Loss"))
-pMMR1 <- pMMR1 + geom_polygon(aes(x=x, y=y, colour="#000000"), linetype=1, fill=NA, data=dfUND)
-#pMMR1 <- pMMR1 + scale_colour_manual(values=c("#000000"), name="", labels=c("Undisturbed"))
-
-
-pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="")
-#pMMR1 <- pMMR1 + guides(fill=guide_legend(ncol=1))
-#pMMR1 <- pMMR1 + geom_polygon(aes(x=x, y=y), fill="#bfbfbf", linetype=3, data=dfGL1)
-#pMMR1 <- pMMR1 + geom_polygon(aes(x=x, y=y, color="#ff0000"), fill=NA, data=dfGL1)
-#pMMR1 <- pMMR1 + theme_bw()
-pMMR1 <- pMMR1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
-pMMR1 <- pMMR1 + scale_colour_manual(values=c("#000000","#800000"), labels=c("Undisturbed","Gross Loss"))
-#pMMR1 <- pMMR1 + scale_colour_manual(values=c("#800000"), name="", labels=c("Gross Loss"))
-pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007))
-
-# Plot: Myanmar
-#pMMR1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
-#                                                                       labels=c("Gross Loss",
-#                                                                                "Net Loss",
-#                                                                                "Gross Gain",
-#                                                                                "Persistence",
-#                                                                                "Undisturbed"))), 
-#                              data=dfMMR1, alpha=0.6)
-#pMMR1 <- pMMR1 + labs(title="Myanmar", x="Year", y="Area (sq.km)", fill="")
-#pMMR1 <- pMMR1 + guides(fill=guide_legend(ncol=1))
-#pMMR1 <- pMMR1 + theme_bw()
-#pMMR1 <- pMMR1 + scale_fill_manual(values=c("#bfbfbf","#ff0000","#00b050","#6666ff","#000000"))
-#pMMR1 <- pMMR1 + scale_x_continuous(breaks=c(1996,2007))
