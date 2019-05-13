@@ -20,7 +20,7 @@ dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, se
 # Reorganise Data -------------------------
 mDATA <- melt(dfRAW, id=c('TimePoint','Change')) # requires reshape2 package
 colnames(mDATA) <- c("TimePoint","Change","Region","AreaSqKm")
-mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence"))
+mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence","Undisturbed"))
 
 
 # Subset Data -----------------------------
