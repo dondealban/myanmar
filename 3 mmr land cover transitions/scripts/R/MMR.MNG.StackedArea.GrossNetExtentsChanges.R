@@ -22,12 +22,11 @@ mDATA <- melt(dfRAW, id=c('TimeInterval','TimePoint','Change')) # requires resha
 colnames(mDATA) <- c("TimeInterval","TimePoint","Change","Region","AreaSqKm")
 mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence","Undisturbed"))
 
-
 # Subset Data -----------------------------
 # pipes require dplyr package
 dfMMR  <- mDATA %>% filter(Region %in% "Myanmar")
-dfMMR1 <- dfMMR %>% filter((TimePoint %in% "1996" | TimePoint %in% "2007") & Change != "Gross Loss" & Change != "Undisturbed")
-dfMMR2 <- dfMMR %>% filter((TimePoint %in% "2007" | TimePoint %in% "2016") & Change != "Gross Loss" & Change != "Undisturbed")
+dfMMR1 <- dfMMR %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfMMR2 <- dfMMR %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
 # Define Polygons -------------------------
 dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(12380.8662, 12380.8662, 6206.2371))  # gross loss 1996-2007
