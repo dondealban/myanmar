@@ -87,8 +87,8 @@ grid.arrange(
 )
 
 # Generate Plots --------------------------
-mergeplot <- ggarrange(pMMR1, pMMR2, ncol=2)
+plotMMR <- ggarrange(pMMR1, pMMR2, ncol=2)
 
 # Save Output Plots -----------------------
-ggsave(mergeplot, file="StackedArea-GrossNet-Mangroves-00-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(plotMMR, file="StackedArea-GrossNet-Mangroves-00-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
 
