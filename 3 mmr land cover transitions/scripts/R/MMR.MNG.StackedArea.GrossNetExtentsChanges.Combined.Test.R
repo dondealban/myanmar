@@ -24,20 +24,46 @@ mDATA <- melt(dfRAW, id=c('TimeInterval','TimePoint','Change')) # requires resha
 colnames(mDATA) <- c("TimeInterval","TimePoint","Change","Region","AreaSqKm")
 mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence","Undisturbed"))
 
-# Subset Data -----------------------------
+# Subset Data into Regions/States ---------
 # pipes require dplyr package
-dfMMR  <- mDATA %>% filter(Region %in% "Myanmar")
-dfMMR1 <- dfMMR %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
-dfMMR2 <- dfMMR %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+
+# AYEYARWADY REGION
+dfAYE  <- mDATA %>% filter(Region %in% "Ayeyarwady")
+dfAYE1 <- dfAYE %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfAYE2 <- dfAYE %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+# BAGO REGION
+dfBAG  <- mDATA %>% filter(Region %in% "Bago")
+dfBAG1 <- dfBAG %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfBAG2 <- dfBAG %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+# MON STATE
+dfMON  <- mDATA %>% filter(Region %in% "Mon")
+dfMON1 <- dfMON %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfMON2 <- dfMON %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+# RAKHINE STATE
+dfRAK  <- mDATA %>% filter(Region %in% "Rakhine")
+dfRAK1 <- dfRAK %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfRAK2 <- dfRAK %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+# TANINTHARYI REGION
+dfTNI  <- mDATA %>% filter(Region %in% "Tanintharyi")
+dfTNI1 <- dfTNI %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfTNI2 <- dfTNI %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+# YANGON REGION
+dfYGN  <- mDATA %>% filter(Region %in% "Yangon")
+dfYGN1 <- dfYGN %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
+dfYGN2 <- dfYGN %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
+
+
+
+
 
 # Define Variables for Polygon Nodes ------
 # notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
 # ps = persistence; un = undisturbed
-ps11 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="1996" & dfMMR$Change=="Persistence"]
-ps12 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="2007" & dfMMR$Change=="Persistence"]
-ps22 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="2" & dfMMR$TimePoint=="2007" & dfMMR$Change=="Persistence"]
-ps23 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="2" & dfMMR$TimePoint=="2016" & dfMMR$Change=="Persistence"]
-un   <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="1996" & dfMMR$Change=="Undisturbed"]
+ps11 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Persistence"]
+ps12 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps22 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps23 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2016" & dfAYE$Change=="Persistence"]
+un   <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Undisturbed"]
 
 # Define Polygon Nodes --------------------
 dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
