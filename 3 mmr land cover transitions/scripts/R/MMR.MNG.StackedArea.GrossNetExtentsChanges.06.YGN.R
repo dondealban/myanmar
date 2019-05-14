@@ -4,7 +4,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   10 May 2019
-# Last Modified:  13 May 2019
+# Last Modified:  14 May 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/gross and net/")
@@ -29,11 +29,20 @@ dfYGN  <- mDATA %>% filter(Region %in% "Yangon")
 dfYGN1 <- dfYGN %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfYGN2 <- dfYGN %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(202.0977, 202.0977, 34.1811))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(103.6521, 103.6521, 23.3226))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,11.8580,11.8580,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,11.8580,11.8580,0))     # undisturbed mangroves
+# Define Variables for Polygon Nodes ------
+# notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
+# ps = persistence; un = undisturbed
+ps11 <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="1996" & dfYGN$Change=="Persistence"]
+ps12 <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="2007" & dfYGN$Change=="Persistence"]
+ps22 <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="2" & dfYGN$TimePoint=="2007" & dfYGN$Change=="Persistence"]
+ps23 <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="2" & dfYGN$TimePoint=="2016" & dfYGN$Change=="Persistence"]
+un   <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="1996" & dfYGN$Change=="Undisturbed"]
+
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
