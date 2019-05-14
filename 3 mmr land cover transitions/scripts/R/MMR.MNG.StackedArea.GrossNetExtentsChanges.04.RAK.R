@@ -4,7 +4,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   10 May 2019
-# Last Modified:  13 May 2019
+# Last Modified:  14 May 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/gross and net/")
@@ -29,11 +29,20 @@ dfRAK  <- mDATA %>% filter(Region %in% "Rakhine")
 dfRAK1 <- dfRAK %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfRAK2 <- dfRAK %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(2973.2418, 2973.2418, 1463.7924))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(1631.5965, 1631.5965, 1146.2652))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,1000.9060,1000.9060,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,1000.9060,1000.9060,0))     # undisturbed mangroves
+# Define Variables for Polygon Nodes ------
+# notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
+# ps = persistence; un = undisturbed
+ps11 <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="1996" & dfRAK$Change=="Persistence"]
+ps12 <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="2007" & dfRAK$Change=="Persistence"]
+ps22 <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="2" & dfRAK$TimePoint=="2007" & dfRAK$Change=="Persistence"]
+ps23 <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="2" & dfRAK$TimePoint=="2016" & dfRAK$Change=="Persistence"]
+un   <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="1996" & dfRAK$Change=="Undisturbed"]
+
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
