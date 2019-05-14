@@ -139,7 +139,7 @@ dfUN2YGN <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unYGN, unYGN, 0)) # undi
 
 
 
-# Define Plots ----------------------------
+# Define Plots: Extensive MNG Regions -----
 
 # EXTENSIVE MANGROVE REGIONS
 # AYEYARWADY REGION
