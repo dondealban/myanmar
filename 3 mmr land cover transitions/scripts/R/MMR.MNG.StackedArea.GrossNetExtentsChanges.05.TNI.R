@@ -29,11 +29,20 @@ dfTNI  <- mDATA %>% filter(Region %in% "Tanintharyi")
 dfTNI1 <- dfTNI %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfTNI2 <- dfTNI %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(4253.0850, 4253.0850, 2879.3646))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(3068.8749, 3068.8749, 2602.5507))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,2470.2400,2470.2400,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,2470.2400,2470.2400,0))     # undisturbed mangroves
+# Define Variables for Polygon Nodes ------
+# notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
+# ps = persistence; un = undisturbed
+ps11 <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="1996" & dfTNI$Change=="Persistence"]
+ps12 <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="2007" & dfTNI$Change=="Persistence"]
+ps22 <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="2" & dfTNI$TimePoint=="2007" & dfTNI$Change=="Persistence"]
+ps23 <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="2" & dfTNI$TimePoint=="2016" & dfTNI$Change=="Persistence"]
+un   <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="1996" & dfTNI$Change=="Undisturbed"]
+
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
