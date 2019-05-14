@@ -29,11 +29,20 @@ dfBAG  <- mDATA %>% filter(Region %in% "Bago")
 dfBAG1 <- dfBAG %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfBAG2 <- dfBAG %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(267.7725, 267.7725, 34.2855))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(152.4933, 152.4933, 13.9851))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,5.5660,5.5660,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,5.5660,5.5660,0))     # undisturbed mangroves
+# Define Variables for Polygon Nodes ------
+# notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
+# ps = persistence; un = undisturbed
+ps11 <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="1996" & dfBAG$Change=="Persistence"]
+ps12 <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="2007" & dfBAG$Change=="Persistence"]
+ps22 <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="2" & dfBAG$TimePoint=="2007" & dfBAG$Change=="Persistence"]
+ps23 <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="2" & dfBAG$TimePoint=="2016" & dfBAG$Change=="Persistence"]
+un   <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="1996" & dfBAG$Change=="Undisturbed"]
+
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
