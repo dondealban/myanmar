@@ -1,6 +1,7 @@
 # Script Description --------------------
 # This R script generates split stacked area plots to visualise gross+net extents and
-# changes of mangroves in Myanmar and in each sub-national administrative unit.
+# changes of mangroves in each sub-national administrative unit of Myanmar and combine
+# each region/state plot into a combined plot.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   10 May 2019
