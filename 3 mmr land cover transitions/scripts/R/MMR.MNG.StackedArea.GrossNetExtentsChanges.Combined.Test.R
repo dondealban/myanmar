@@ -141,6 +141,7 @@ dfUN2YGN <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unYGN, unYGN, 0)) # undi
 
 # Define Plots ----------------------------
 
+# EXTENSIVE MANGROVE REGIONS
 # AYEYARWADY REGION
 pAYE1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss","Gross Gain","Persistence"))), 
@@ -152,8 +153,8 @@ pAYE1 <- pAYE1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pAYE1 <- pAYE1 + guides(colour=guide_legend(reverse=TRUE))
 pAYE1 <- pAYE1 + labs(x="Interval 1", y="Area (sq.km)")
 pAYE1 <- pAYE1 + scale_x_continuous(breaks=c(1996,2007))
-pAYE1 <- pAYE1 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
-pAYE1 <- pAYE1 + annotate("text", x=1996, y=5000, label="Ayeyarwady", hjust=0, vjust="top", size=5, fontface="bold")
+pAYE1 <- pAYE1 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
+pAYE1 <- pAYE1 + annotate("text", x=1996, y=4500, label="Ayeyarwady", hjust=0, vjust="bottom", size=4, fontface="bold")
 pAYE1 <- pAYE1 + theme_light() + theme(legend.position="none")
 
 pAYE2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
@@ -166,7 +167,7 @@ pAYE2 <- pAYE2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pAYE2 <- pAYE2 + guides(colour=guide_legend(reverse=TRUE))
 pAYE2 <- pAYE2 + labs(x="Interval 2")
 pAYE2 <- pAYE2 + scale_x_continuous(breaks=c(2007,2016))
-pAYE2 <- pAYE2 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
+pAYE2 <- pAYE2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
 pAYE2 <- pAYE2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
 
 # RAKHINE STATE
@@ -180,8 +181,8 @@ pRAK1 <- pRAK1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pRAK1 <- pRAK1 + guides(colour=guide_legend(reverse=TRUE))
 pRAK1 <- pRAK1 + labs(x="Interval 1", y="Area (sq.km)")
 pRAK1 <- pRAK1 + scale_x_continuous(breaks=c(1996,2007))
-pRAK1 <- pRAK1 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
-pRAK1 <- pRAK1 + annotate("text", x=1996, y=5000, label="Rakhine", hjust=0, vjust="top", size=5, fontface="bold")
+pRAK1 <- pRAK1 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
+pRAK1 <- pRAK1 + annotate("text", x=1996, y=4500, label="Rakhine", hjust=0, vjust="bottom", size=4, fontface="bold")
 pRAK1 <- pRAK1 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
 
 pRAK2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
@@ -194,7 +195,7 @@ pRAK2 <- pRAK2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pRAK2 <- pRAK2 + guides(colour=guide_legend(reverse=TRUE))
 pRAK2 <- pRAK2 + labs(x="Interval 2")
 pRAK2 <- pRAK2 + scale_x_continuous(breaks=c(2007,2016))
-pRAK2 <- pRAK2 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
+pRAK2 <- pRAK2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
 pRAK2 <- pRAK2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
 
 # TANINTHARYI REGION
@@ -206,11 +207,11 @@ pTNI1 <- pTNI1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfU
 pTNI1 <- pTNI1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
 pTNI1 <- pTNI1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pTNI1 <- pTNI1 + guides(colour=guide_legend(reverse=TRUE))
-pTNI1 <- pTNI1 + labs(x="Interval 1", y="Area (sq.km)")
+pTNI1 <- pTNI1 + labs(x="Interval 1")
 pTNI1 <- pTNI1 + scale_x_continuous(breaks=c(1996,2007))
-pTNI1 <- pTNI1 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
-pTNI1 <- pTNI1 + annotate("text", x=1996, y=5000, label="Tanintharyi", hjust=0, vjust="top", size=5, fontface="bold")
-pTNI1 <- pTNI1 + theme_light() + theme(legend.position="none")
+pTNI1 <- pTNI1 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
+pTNI1 <- pTNI1 + annotate("text", x=1996, y=4500, label="Tanintharyi", hjust=0, vjust="bottom", size=4, fontface="bold")
+pTNI1 <- pTNI1 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
 
 pTNI2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
                                   labels=c("Net Loss","Gross Gain","Persistence"))), 
@@ -222,7 +223,7 @@ pTNI2 <- pTNI2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
 pTNI2 <- pTNI2 + guides(colour=guide_legend(reverse=TRUE))
 pTNI2 <- pTNI2 + labs(x="Interval 2", fill=element_blank(), colour="")
 pTNI2 <- pTNI2 + scale_x_continuous(breaks=c(2007,2016))
-pTNI2 <- pTNI2 + scale_y_continuous(limits=c(0,5000), breaks=c(0,1000,2000,3000,4000,5000))
+pTNI2 <- pTNI2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,4000,4500))
 pTNI2 <- pTNI2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank())
 
 
