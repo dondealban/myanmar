@@ -298,7 +298,7 @@ pYGN1 <- pYGN1 + guides(colour=guide_legend(reverse=TRUE))
 pYGN1 <- pYGN1 + labs(x="Interval 1")
 pYGN1 <- pYGN1 + scale_x_continuous(breaks=c(1996,2007))
 pYGN1 <- pYGN1 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
-pYGN1 <- pYGN1 + annotate("text", x=1996, y=4500, label="Yangon", hjust=0, vjust="bottom", size=4, fontface="bold")
+pYGN1 <- pYGN1 + annotate("text", x=1996, y=550, label="Yangon", hjust=0, vjust="bottom", size=4, fontface="bold")
 pYGN1 <- pYGN1 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
 
 pYGN2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
