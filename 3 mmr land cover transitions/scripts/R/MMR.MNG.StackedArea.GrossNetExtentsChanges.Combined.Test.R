@@ -133,12 +133,6 @@ dfUN1YGN <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unYGN, unYGN, 0)) # undi
 dfUN2YGN <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unYGN, unYGN, 0)) # undisturbed mangroves
 
 
-
-
-
-
-
-
 # Define Plots: Major MNG Regions ---------
 
 # EXTENSIVE MANGROVE REGIONS
@@ -314,6 +308,7 @@ pYGN2 <- pYGN2 + scale_x_continuous(breaks=c(2007,2016))
 pYGN2 <- pYGN2 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
 pYGN2 <- pYGN2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank())
 
+
 # Expose ggplot2 Layouts ------------------
 plotlayout <- lapply(list(pMMR1, pMMR2), expose_layout, FALSE, FALSE)
 grid.arrange(
@@ -322,9 +317,11 @@ grid.arrange(
   layout_matrix = rbind(c(1,2))
 )
 
+
 # Generate Plots --------------------------
 mergeMajorPlot <- ggarrange(pAYE1, pAYE2, pRAK1, pRAK2, pTNI1, pTNI2, ncol=6)
 mergeMinorPlot <- ggarrange(pBAG1, pBAG2, pMON1, pMON2, pYGN1, pYGN2, ncol=6)
+
 
 # Save Output Plots -----------------------
 ggsave(mergeMajorPlot, file="StackedArea-GrossNet-Mangroves-MajorRegions.pdf", width=24.89, height=19, units="cm", dpi=300)
