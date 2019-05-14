@@ -238,6 +238,7 @@ grid.arrange(
 plotAYE <- ggarrange(pAYE1, pAYE2, ncol=2)
 plotRAK <- ggarrange(pRAK1, pRAK2, ncol=2)
 plotTNI <- ggarrange(pTNI1, pTNI2, ncol=2)
+mergeplot <- ggarrange(pAYE1, pAYE2, pRAK1, pRAK2, pTNI1, pTNI2, ncol=6)
 
 # Save Output Plots -----------------------
 ggsave(plotMMR, file="StackedArea-GrossNet-Mangroves-00-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
