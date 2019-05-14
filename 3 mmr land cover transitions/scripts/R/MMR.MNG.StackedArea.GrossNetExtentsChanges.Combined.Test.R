@@ -10,19 +10,23 @@
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/gross and net/")
 
+
 # Load Libraries --------------------------
 library(reshape2)
 library(dplyr)
 library(ggplot2)
 library(egg)
 
+
 # Read Input Data -------------------------
 dfRAW <- read.csv(file="ForR_Data_Split-Stacked-Area-Plots.csv", header=TRUE, sep=",")
+
 
 # Reorganise Data -------------------------
 mDATA <- melt(dfRAW, id=c('TimeInterval','TimePoint','Change')) # requires reshape2 package
 colnames(mDATA) <- c("TimeInterval","TimePoint","Change","Region","AreaSqKm")
 mDATA$Change <- factor(mDATA$Change, levels=c("Gross Loss","Net Loss","Gross Gain","Persistence","Undisturbed"))
+
 
 # Subset Data into Regions/States ---------
 # pipes require dplyr package
@@ -51,9 +55,6 @@ dfTNI2 <- dfTNI %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Ch
 dfYGN  <- mDATA %>% filter(Region %in% "Yangon")
 dfYGN1 <- dfYGN %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfYGN2 <- dfYGN %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
-
-
-
 
 
 # Define Variables for Polygon Nodes ------
@@ -98,19 +99,45 @@ ps23YGN <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="2" & dfYGN$TimePoint=="2016" & df
 unYGN   <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="1996" & dfYGN$Change=="Undisturbed"]
 
 
-
-
-
-
-
-
-
-
 # Define Polygon Nodes --------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
+
+# AYEYARWADY REGION
+dfGL1AYE <- data.frame(x=c(1996,2007,2007), y=c(ps11AYE, ps11AYE, ps12AYE))  # gross loss 1996-2007
+dfGL2AYE <- data.frame(x=c(2007,2016,2016), y=c(ps22AYE, ps22AYE, ps23AYE))  # gross loss 2007-2016
+dfUN1AYE <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unAYE, unAYE, 0)) # undisturbed mangroves
+dfUN2AYE <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unAYE, unAYE, 0)) # undisturbed mangroves
+# BAGO REGION
+dfGL1BAG <- data.frame(x=c(1996,2007,2007), y=c(ps11BAG, ps11BAG, ps12BAG))  # gross loss 1996-2007
+dfGL2BAG <- data.frame(x=c(2007,2016,2016), y=c(ps22BAG, ps22BAG, ps23BAG))  # gross loss 2007-2016
+dfUN1BAG <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unBAG, unBAG, 0)) # undisturbed mangroves
+dfUN2BAG <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unBAG, unBAG, 0)) # undisturbed mangroves
+# MON STATE
+dfGL1MON <- data.frame(x=c(1996,2007,2007), y=c(ps11MON, ps11MON, ps12MON))  # gross loss 1996-2007
+dfGL2MON <- data.frame(x=c(2007,2016,2016), y=c(ps22MON, ps22MON, ps23MON))  # gross loss 2007-2016
+dfUN1MON <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unMON, unMON, 0)) # undisturbed mangroves
+dfUN2MON <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unMON, unMON, 0)) # undisturbed mangroves
+# RAKHINE STATE
+dfGL1RAK <- data.frame(x=c(1996,2007,2007), y=c(ps11RAK, ps11RAK, ps12RAK))  # gross loss 1996-2007
+dfGL2RAK <- data.frame(x=c(2007,2016,2016), y=c(ps22RAK, ps22RAK, ps23RAK))  # gross loss 2007-2016
+dfUN1RAK <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unRAK, unRAK, 0)) # undisturbed mangroves
+dfUN2RAK <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unRAK, unRAK, 0)) # undisturbed mangroves
+# TANINTHARYI REGION
+dfGL1TNI <- data.frame(x=c(1996,2007,2007), y=c(ps11TNI, ps11TNI, ps12TNI))  # gross loss 1996-2007
+dfGL2TNI <- data.frame(x=c(2007,2016,2016), y=c(ps22TNI, ps22TNI, ps23TNI))  # gross loss 2007-2016
+dfUN1TNI <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unTNI, unTNI, 0)) # undisturbed mangroves
+dfUN2TNI <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unTNI, unTNI, 0)) # undisturbed mangroves
+# YANGON REGION
+dfGL1YGN <- data.frame(x=c(1996,2007,2007), y=c(ps11YGN, ps11YGN, ps12YGN))  # gross loss 1996-2007
+dfGL2YGN <- data.frame(x=c(2007,2016,2016), y=c(ps22YGN, ps22YGN, ps23YGN))  # gross loss 2007-2016
+dfUN1YGN <- data.frame(x=c(1996,1996,2007,2007), y=c(0, unYGN, unYGN, 0)) # undisturbed mangroves
+dfUN2YGN <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unYGN, unYGN, 0)) # undisturbed mangroves
+
+
+
+
+
+
+
 
 # Define Plots ----------------------------
 
