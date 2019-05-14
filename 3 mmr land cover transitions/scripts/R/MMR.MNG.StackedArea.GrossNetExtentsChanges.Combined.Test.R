@@ -59,11 +59,52 @@ dfYGN2 <- dfYGN %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Ch
 # Define Variables for Polygon Nodes ------
 # notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
 # ps = persistence; un = undisturbed
-ps11 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Persistence"]
-ps12 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
-ps22 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
-ps23 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2016" & dfAYE$Change=="Persistence"]
-un   <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Undisturbed"]
+
+# AYEYARWADY REGION
+ps11AYE <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Persistence"]
+ps12AYE <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps22AYE <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps23AYE <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2016" & dfAYE$Change=="Persistence"]
+unAYE   <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Undisturbed"]
+# BAGO REGION
+ps11BAG <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="1996" & dfBAG$Change=="Persistence"]
+ps12BAG <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="2007" & dfBAG$Change=="Persistence"]
+ps22BAG <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="2" & dfBAG$TimePoint=="2007" & dfBAG$Change=="Persistence"]
+ps23BAG <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="2" & dfBAG$TimePoint=="2016" & dfBAG$Change=="Persistence"]
+unBAG   <- dfBAG$AreaSqKm[dfBAG$TimeInterval=="1" & dfBAG$TimePoint=="1996" & dfBAG$Change=="Undisturbed"]
+# MON STATE
+ps11MON <- dfMON$AreaSqKm[dfMON$TimeInterval=="1" & dfMON$TimePoint=="1996" & dfMON$Change=="Persistence"]
+ps12MON <- dfMON$AreaSqKm[dfMON$TimeInterval=="1" & dfMON$TimePoint=="2007" & dfMON$Change=="Persistence"]
+ps22MON <- dfMON$AreaSqKm[dfMON$TimeInterval=="2" & dfMON$TimePoint=="2007" & dfMON$Change=="Persistence"]
+ps23MON <- dfMON$AreaSqKm[dfMON$TimeInterval=="2" & dfMON$TimePoint=="2016" & dfMON$Change=="Persistence"]
+unMON   <- dfMON$AreaSqKm[dfMON$TimeInterval=="1" & dfMON$TimePoint=="1996" & dfMON$Change=="Undisturbed"]
+# RAKHINE STATE
+ps11RAK <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="1996" & dfRAK$Change=="Persistence"]
+ps12RAK <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="2007" & dfRAK$Change=="Persistence"]
+ps22RAK <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="2" & dfRAK$TimePoint=="2007" & dfRAK$Change=="Persistence"]
+ps23RAK <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="2" & dfRAK$TimePoint=="2016" & dfRAK$Change=="Persistence"]
+unRAK   <- dfRAK$AreaSqKm[dfRAK$TimeInterval=="1" & dfRAK$TimePoint=="1996" & dfRAK$Change=="Undisturbed"]
+# TANINTHARYI REGION
+ps11TNI <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="1996" & dfTNI$Change=="Persistence"]
+ps12TNI <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="2007" & dfTNI$Change=="Persistence"]
+ps22TNI <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="2" & dfTNI$TimePoint=="2007" & dfTNI$Change=="Persistence"]
+ps23TNI <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="2" & dfTNI$TimePoint=="2016" & dfTNI$Change=="Persistence"]
+unTNI   <- dfTNI$AreaSqKm[dfTNI$TimeInterval=="1" & dfTNI$TimePoint=="1996" & dfTNI$Change=="Undisturbed"]
+# YANGON REGION
+ps11YGN <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="1996" & dfYGN$Change=="Persistence"]
+ps12YGN <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="2007" & dfYGN$Change=="Persistence"]
+ps22YGN <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="2" & dfYGN$TimePoint=="2007" & dfYGN$Change=="Persistence"]
+ps23YGN <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="2" & dfYGN$TimePoint=="2016" & dfYGN$Change=="Persistence"]
+unYGN   <- dfYGN$AreaSqKm[dfYGN$TimeInterval=="1" & dfYGN$TimePoint=="1996" & dfYGN$Change=="Undisturbed"]
+
+
+
+
+
+
+
+
+
 
 # Define Polygon Nodes --------------------
 dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
