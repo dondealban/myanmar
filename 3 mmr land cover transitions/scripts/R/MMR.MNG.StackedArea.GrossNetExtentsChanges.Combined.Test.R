@@ -31,17 +31,18 @@ dfMMR2 <- dfMMR %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Ch
 
 # Define Variables for Polygon Nodes ------
 # notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
-# ps = persistence; gl = gross loss; gg = gross gain; nl = net loss
+# ps = persistence; un = undisturbed
 ps11 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="1996" & dfMMR$Change=="Persistence"]
 ps12 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="2007" & dfMMR$Change=="Persistence"]
 ps22 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="2" & dfMMR$TimePoint=="2007" & dfMMR$Change=="Persistence"]
 ps23 <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="2" & dfMMR$TimePoint=="2016" & dfMMR$Change=="Persistence"]
+un   <- dfMMR$AreaSqKm[dfMMR$TimeInterval=="1" & dfMMR$TimePoint=="1996" & dfMMR$Change=="Undisturbed"]
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(12380.8662, 12380.8662, 6206.2371))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c( 7438.2768,  7438.2768, 5168.6226))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,4646.2970,4646.2970,0))       # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,4646.2970,4646.2970,0))       # undisturbed mangroves
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
