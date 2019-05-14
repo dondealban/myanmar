@@ -29,11 +29,20 @@ dfAYE  <- mDATA %>% filter(Region %in% "Ayeyarwady")
 dfAYE1 <- dfAYE %>% filter((TimeInterval %in% "1") & Change != "Gross Loss" & Change != "Undisturbed")
 dfAYE2 <- dfAYE %>% filter((TimeInterval %in% "2") & Change != "Gross Loss" & Change != "Undisturbed")
 
-# Define Polygons -------------------------
-dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(4149.8883, 4149.8883, 1669.0383))  # gross loss 1996-2007
-dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(2324.7666, 2324.7666, 1318.2435))  # gross loss 2007-2016
-dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0,1115.1100,1115.1100,0))     # undisturbed mangroves
-dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0,1115.1100,1115.1100,0))     # undisturbed mangroves
+# Define Variables for Polygon Nodes ------
+# notation: chXY: ch = change; X = time-interval; Y = time-point (1=1996,2=2007,3=2016)
+# ps = persistence; un = undisturbed
+ps11 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Persistence"]
+ps12 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps22 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2007" & dfAYE$Change=="Persistence"]
+ps23 <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="2" & dfAYE$TimePoint=="2016" & dfAYE$Change=="Persistence"]
+un   <- dfAYE$AreaSqKm[dfAYE$TimeInterval=="1" & dfAYE$TimePoint=="1996" & dfAYE$Change=="Undisturbed"]
+
+# Define Polygon Nodes --------------------
+dfGL1 <- data.frame(x=c(1996,2007,2007), y=c(ps11, ps11, ps12))  # gross loss 1996-2007
+dfGL2 <- data.frame(x=c(2007,2016,2016), y=c(ps22, ps22, ps23))  # gross loss 2007-2016
+dfUN1 <- data.frame(x=c(1996,1996,2007,2007), y=c(0, un, un, 0)) # undisturbed mangroves
+dfUN2 <- data.frame(x=c(2007,2007,2016,2016), y=c(0, un, un, 0)) # undisturbed mangroves
 
 # Define Plots ----------------------------
 
