@@ -139,7 +139,7 @@ dfUN2YGN <- data.frame(x=c(2007,2007,2016,2016), y=c(0, unYGN, unYGN, 0)) # undi
 
 
 
-# Define Plots: Extensive MNG Regions -----
+# Define Plots: Major MNG Regions ---------
 
 # EXTENSIVE MANGROVE REGIONS
 # AYEYARWADY REGION
@@ -227,6 +227,93 @@ pTNI2 <- pTNI2 + scale_y_continuous(limits=c(0,4500), breaks=c(0,1000,2000,3000,
 pTNI2 <- pTNI2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank())
 
 
+# Define Plots: Minor MNG Regions ---------
+
+# NON-EXTENSIVE MANGROVE REGIONS
+# BAGO REGION
+pBAG1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfBAG1, alpha=0.6)
+pBAG1 <- pBAG1 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL1BAG)
+pBAG1 <- pBAG1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN1BAG)
+pBAG1 <- pBAG1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pBAG1 <- pBAG1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pBAG1 <- pBAG1 + guides(colour=guide_legend(reverse=TRUE))
+pBAG1 <- pBAG1 + labs(x="Interval 1", y="Area (sq.km)")
+pBAG1 <- pBAG1 + scale_x_continuous(breaks=c(1996,2007))
+pBAG1 <- pBAG1 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pBAG1 <- pBAG1 + annotate("text", x=1996, y=550, label="Bago", hjust=0, vjust="bottom", size=4, fontface="bold")
+pBAG1 <- pBAG1 + theme_light() + theme(legend.position="none")
+
+pBAG2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfBAG2, alpha=0.6)
+pBAG2 <- pBAG2 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL2BAG)
+pBAG2 <- pBAG2 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN2BAG)
+pBAG2 <- pBAG2 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pBAG2 <- pBAG2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pBAG2 <- pBAG2 + guides(colour=guide_legend(reverse=TRUE))
+pBAG2 <- pBAG2 + labs(x="Interval 2")
+pBAG2 <- pBAG2 + scale_x_continuous(breaks=c(2007,2016))
+pBAG2 <- pBAG2 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pBAG2 <- pBAG2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
+
+# MON STATE
+pMON1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfMON1, alpha=0.6)
+pMON1 <- pMON1 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL1MON)
+pMON1 <- pMON1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN1MON)
+pMON1 <- pMON1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pMON1 <- pMON1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pMON1 <- pMON1 + guides(colour=guide_legend(reverse=TRUE))
+pMON1 <- pMON1 + labs(x="Interval 1", y="Area (sq.km)")
+pMON1 <- pMON1 + scale_x_continuous(breaks=c(1996,2007))
+pMON1 <- pMON1 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pMON1 <- pMON1 + annotate("text", x=1996, y=550, label="Mon", hjust=0, vjust="bottom", size=4, fontface="bold")
+pMON1 <- pMON1 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
+
+pMON2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfMON2, alpha=0.6)
+pMON2 <- pMON2 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL2MON)
+pMON2 <- pMON2 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN2MON)
+pMON2 <- pMON2 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pMON2 <- pMON2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pMON2 <- pMON2 + guides(colour=guide_legend(reverse=TRUE))
+pMON2 <- pMON2 + labs(x="Interval 2")
+pMON2 <- pMON2 + scale_x_continuous(breaks=c(2007,2016))
+pMON2 <- pMON2 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pMON2 <- pMON2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
+
+# YANGON REGION
+pYGN1 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfYGN1, alpha=0.6)
+pYGN1 <- pYGN1 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL1YGN)
+pYGN1 <- pYGN1 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN1YGN)
+pYGN1 <- pYGN1 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pYGN1 <- pYGN1 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pYGN1 <- pYGN1 + guides(colour=guide_legend(reverse=TRUE))
+pYGN1 <- pYGN1 + labs(x="Interval 1")
+pYGN1 <- pYGN1 + scale_x_continuous(breaks=c(1996,2007))
+pYGN1 <- pYGN1 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pYGN1 <- pYGN1 + annotate("text", x=1996, y=4500, label="Yangon", hjust=0, vjust="bottom", size=4, fontface="bold")
+pYGN1 <- pYGN1 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank(), legend.position="none")
+
+pYGN2 <- ggplot() + geom_area(aes(x=TimePoint, y=AreaSqKm, fill=factor(Change,
+                                  labels=c("Net Loss","Gross Gain","Persistence"))), 
+                              data=dfYGN2, alpha=0.6)
+pYGN2 <- pYGN2 + geom_polygon(aes(x=x, y=y, colour="#ff0000"), fill=NA, data=dfGL2YGN)
+pYGN2 <- pYGN2 + geom_polygon(aes(x=x, y=y, colour="#000000"), fill=NA, data=dfUN2YGN)
+pYGN2 <- pYGN2 + scale_colour_manual(values=c("#000000","#ff0000"), labels=c("Undisturbed","Gross Loss"))
+pYGN2 <- pYGN2 + scale_fill_manual(values=c("#ff0000","#00b050","#6666ff"))
+pYGN2 <- pYGN2 + guides(colour=guide_legend(reverse=TRUE))
+pYGN2 <- pYGN2 + labs(x="Interval 2", fill=element_blank(), colour="")
+pYGN2 <- pYGN2 + scale_x_continuous(breaks=c(2007,2016))
+pYGN2 <- pYGN2 + scale_y_continuous(limits=c(0,550), breaks=c(0,100,200,300,400,500,550))
+pYGN2 <- pYGN2 + theme_light() + theme(axis.title.y=element_blank(), axis.text.y=element_blank())
+
 # Expose ggplot2 Layouts ------------------
 plotlayout <- lapply(list(pMMR1, pMMR2), expose_layout, FALSE, FALSE)
 grid.arrange(
@@ -239,7 +326,8 @@ grid.arrange(
 plotAYE <- ggarrange(pAYE1, pAYE2, ncol=2)
 plotRAK <- ggarrange(pRAK1, pRAK2, ncol=2)
 plotTNI <- ggarrange(pTNI1, pTNI2, ncol=2)
-mergeplot <- ggarrange(pAYE1, pAYE2, pRAK1, pRAK2, pTNI1, pTNI2, ncol=6)
+mergeMajorPlot <- ggarrange(pAYE1, pAYE2, pRAK1, pRAK2, pTNI1, pTNI2, ncol=6)
+mergeMinorPlot <- ggarrange(pBAG1, pBAG2, pMON1, pMON2, pYGN1, pYGN2, ncol=6)
 
 # Save Output Plots -----------------------
 ggsave(plotMMR, file="StackedArea-GrossNet-Mangroves-00-Myanmar.pdf", width=19.89, height=15, units="cm", dpi=300)
