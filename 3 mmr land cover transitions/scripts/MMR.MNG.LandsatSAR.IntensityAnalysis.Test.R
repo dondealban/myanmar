@@ -22,35 +22,25 @@ library(intensity.analysis)
 # ----------------------------------------
 # LOAD RASTER DATA
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/learning-intensity-analysis/raster data/")
-r1992 <- raster('Landscape_1992.tif')
-r1997 <- raster('Landscape_1997.tif')
-r2004 <- raster('Landscape_2004.tif')
-r2015 <- raster('Landscape_2015.tif')
+# Ayeyarwady
+r2007 <- raster('MMR_2007_AYE.tif')
+r2016 <- raster('MMR_2016_AYE.tif')
 
 # Copy raster data into new variables
-lc1992 <- r1992
-lc1997 <- r1997
-lc2004 <- r2004
-lc2015 <- r2015
+lc2007 <- r2007
+lc2016 <- r2016
 
 # Set 0 pixel values ('No Data') of raster data copies to NA
-lc1992[lc1992 <= 0] <- NA
-lc1997[lc1997 <= 0] <- NA
-lc2004[lc2004 <= 0] <- NA
-lc2015[lc2015 <= 0] <- NA
+lc2007[lc2007 <= 0] <- NA
+lc2016[lc2016 <= 0] <- NA
 
 # ----------------------------------------
 # CREATE LISTS AND VECTORS
 # ----------------------------------------
-raster.layers <- list(lc1992, lc1997, lc2004, lc2015) # Create a list of raster data
-time.points <- c("1992","1997","2004","2015") # Create character vector of time-points
-categories <- c("Forest",
-                "Mosaic Vegetation",
-                "Shrubland",
-                "Other Vegetation",
-                "Cropland",
-                "Non-Vegetation") # Create character vector of land cover categories
+raster.layers <- list(lc2007, lc2016) # Create a list of raster data
+time.points <- c("2007","2016") # Create character vector of time-points
+categories <- c("BRG","BUA","FOR","IAS","MNG",
+                "OPM","RPD","RBR","SHB","WTR") # Create character vector of land cover categories
 
 # ----------------------------------------
 # CROSS-TABULATION
@@ -73,7 +63,7 @@ TIA.output <- TIA(crosstabulation, time.points, categories)
 # ----------------------------------------
 # SAVE OUTPUT CSV FILES
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/learning-intensity-analysis/outputs/")
+
 IIAname <- file.path(normalizePath(getwd()), "IIA.csv")
 IIA2csv(IIA.output, time.points, IIAname)
 CIAname <- file.path(normalizePath(getwd()), "CIA.csv")
@@ -82,10 +72,5 @@ TIAname <- file.path(normalizePath(getwd()), "TIA.csv")
 TIA2csv(TIA.output, time.points, categories, TIAname)
 
 # Save the cross-tabulation matrices
-setwd("/Users/dondealban/Dropbox/Research/learning-intensity-analysis/outputs/")
-crosstab_1 <- crosstabulation[[1]] #1992-1997
+crosstab_1 <- crosstabulation[[1]] #2007-2016
 write.csv(crosstab_1, "CrossTab_I1.csv")
-crosstab_2 <- crosstabulation[[2]] #1997-2004
-write.csv(crosstab_2, "CrossTab_I2.csv")
-crosstab_3 <- crosstabulation[[3]] #2004-2015
-write.csv(crosstab_3, "CrossTab_I3.csv")
