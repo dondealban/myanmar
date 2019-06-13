@@ -23,8 +23,8 @@ library(intensity.analysis)
 # LOAD RASTER DATA
 # ----------------------------------------
 # Ayeyarwady
-r2007 <- raster('MMR_2007_AYE.tif')
-r2016 <- raster('MMR_2016_AYE.tif')
+r2007 <- raster('MMR_2007_TNI.tif')
+r2016 <- raster('MMR_2016_TNI.tif')
 
 # Copy raster data into new variables
 lc2007 <- r2007
