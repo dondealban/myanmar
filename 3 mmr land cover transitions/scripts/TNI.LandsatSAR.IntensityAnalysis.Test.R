@@ -39,7 +39,7 @@ lc2016[lc2016 <= 0] <- NA
 # ----------------------------------------
 raster.layers <- list(lc2007, lc2016) # Create a list of raster data
 time.points <- c("2007","2016") # Create character vector of time-points
-categories <- c("BRG","BUA","FOR","IAS","MNG",
+categories <- c("BRG","BUA","FOR","MNG",
                 "OPM","RPD","RBR","SHB","WTR") # Create character vector of land cover categories
 
 # ----------------------------------------
