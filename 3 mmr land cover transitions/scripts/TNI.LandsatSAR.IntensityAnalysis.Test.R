@@ -5,13 +5,13 @@
 # 
 # Script modified by: Jose Don T. De Alban
 # Date created:       30 May 2019
-# Date modified:      13 Jun 2019   
+# Date modified:      28 Jun 2019   
 
 
 # ----------------------------------------
 # SET WORKING DIRECTORY
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/")
 
 # ----------------------------------------
 # LOAD LIBRARIES
@@ -22,9 +22,9 @@ library(intensity.analysis)
 # ----------------------------------------
 # LOAD RASTER DATA
 # ----------------------------------------
-# Ayeyarwady
-r2007 <- raster('MMR_2007_TNI.tif')
-r2016 <- raster('MMR_2016_TNI.tif')
+# Tanintharyi
+r2007 <- raster('MMR_2007_TNI_Reclass.tif')
+r2016 <- raster('MMR_2016_TNI_Reclass.tif')
 
 # Copy raster data into new variables
 lc2007 <- r2007
