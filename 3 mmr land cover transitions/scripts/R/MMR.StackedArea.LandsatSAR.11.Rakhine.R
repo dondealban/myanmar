@@ -2,12 +2,13 @@
 # This script creates a stacked area graph of multi-temporal land cover data, particularly
 # the land cover maps produced using combined Landsat+SAR data (optical Landsat 5 TM/8 OLI;
 # L-band SAR JERS-1/ALOS-PALSAR-1/ALOS-PALSAR-2) at three time-points: 1996,2007,2016 for
-# Myanmar. The land cover maps consist of 10 categories including: bare ground, built-up,
-# forest, ice/snow, mangrove, oil palm, rice paddy, rubber, shrubland, water.
+# Myanmar. The land cover maps consist of 9 categories including: bare ground, built-up,
+# forest, mangrove, oil palm, rice paddy, rubber, shrubland, water (from an original 10
+# classes minus ice/snow)
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   20 Nov 2017
-# Last Modified:  09 May 2019
+# Last Modified:  09 Jul 2019
 
 
 # Set Working Directory -----------------
