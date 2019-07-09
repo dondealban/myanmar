@@ -66,15 +66,15 @@ TIA.output <- TIA(crosstabulation, time.points, categories)
 # SAVE OUTPUT CSV FILES
 # ----------------------------------------
 
-IIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_IIA_AYE.csv")
+IIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_AYE_IIA.csv")
 IIA2csv(IIA.output, time.points, IIAname)
-CIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_CIA_AYE.csv")
+CIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_AYE_CIA.csv")
 CIA2csv(CIA.output, time.points, categories, CIAname)
-TIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_TIA_AYE.csv")
+TIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_AYE_TIA.csv")
 TIA2csv(TIA.output, time.points, categories, TIAname)
 
 # Save the cross-tabulation matrices
 crosstab_1 <- crosstabulation[[1]] #1996-2007
-write.csv(crosstab_1, "IntensityAnalysis_CrossTab_I1_AYE.csv")
+write.csv(crosstab_1, "IntensityAnalysis_AYE_CrossTab_I1.csv")
 crosstab_2 <- crosstabulation[[2]] #2007-2016
-write.csv(crosstab_2, "IntensityAnalysis_CrossTab_I2_AYE.csv")
+write.csv(crosstab_2, "IntensityAnalysis_AYE_CrossTab_I2.csv")
