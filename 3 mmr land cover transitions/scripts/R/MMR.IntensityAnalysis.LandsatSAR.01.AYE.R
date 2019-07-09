@@ -5,13 +5,13 @@
 # 
 # Script modified by: Jose Don T. De Alban
 # Date created:       30 May 2019
-# Date modified:      13 Jun 2019   
+# Date modified:      09 Jul 2019   
 
 
 # ----------------------------------------
 # SET WORKING DIRECTORY
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/1_ayeyarwady")
 
 # ----------------------------------------
 # LOAD LIBRARIES
