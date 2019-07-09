@@ -21,10 +21,6 @@ library(tidyverse)
 # Read csv files in the directory and store as a list
 filenames <- list.files()
 
-# Class 3 is present only in 2016, hence need to split files into two groups
-period1 <- filenames[1:2]  # 1996-2007
-period2 <- filenames[3]    # 2007-2016
-
 # Function to read data
 readdata <- function(filename) {
   df <- read.csv(filename, sep="\t")
@@ -34,17 +30,8 @@ readdata <- function(filename) {
 }
 
 # Combine as class codes and percentage values in a matrix
-temp1 <- do.call(rbind, lapply(period1, readdata))
-temp2 <- do.call(rbind, lapply(period2, readdata))
-
-# Create new column with zeroes for Class 3 in 1st period and insert in matrix
-newcol <- c(0,0)
-temp1a <- cbind(temp1[,1:2], newcol, temp1[,3:ncol(temp1)])
-
-# Combine matrices from two periods and change column names
-temp3 <- rbind(temp1a, temp2)
-temp <- temp3
-colnames(temp) <- c("1","2","3","4","5","6","7","8","9","10")
+temp <- do.call(rbind, lapply(filenames, readdata))
+colnames(temp) <- c("1","2","3","4","5","6","7","8","9")
 
 # Add years as another column
 row.names(temp) <- c("1996","2007","2016")
@@ -56,22 +43,21 @@ colnames(data) <- c("Years","Class","Percentage")
 # Create Stacked Area Graphs ------------
 
 plot <- ggplot() + geom_area(aes(x=Years, y=Percentage, fill=factor(Class,
-                   labels=c("Built-up",
+                   labels=c("Bare Ground",
+                            "Built-up",
                             "Forest",
-                            "Ice and Snow",
                             "Mangrove",
                             "Oil Palm Mature",
                             "Rice Paddy",
                             "Rubber Mature",
-                            "Shrubland",
-                            "Water",
-                            "Bare Ground"))), 
+                            "Shrub/Orchard",
+                            "Water Body"))), 
                    data=data)
 plot <- plot + labs(title="Net Land Cover Transitions: Bago Region", x="Year", y="Percentage of Landscape", fill="Land Cover Category")
 plot <- plot + guides(fill=guide_legend(ncol=1))
 plot <- plot + theme_bw()
-plot <- plot + scale_fill_manual(values=c("#ff0000","#246a24","#a6cee3","#6666ff","#ff8000",
-                                          "#a65400","#ff00ff","#ccff66","#66ccff","#ffff66"))
+plot <- plot + scale_fill_manual(values=c("#ffff66","#ff0000","#246a24","#6666ff","#ff8000",
+                                          "#a65400","#ff00ff","#ccff66","#66ccff"))
 plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 plot <- plot + theme(legend.position="none")
 
