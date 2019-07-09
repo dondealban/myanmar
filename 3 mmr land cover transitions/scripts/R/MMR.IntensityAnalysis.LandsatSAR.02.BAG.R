@@ -11,7 +11,7 @@
 # ----------------------------------------
 # SET WORKING DIRECTORY
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/2_bago")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/1_ayeyarwady")
 
 # ----------------------------------------
 # LOAD LIBRARIES
