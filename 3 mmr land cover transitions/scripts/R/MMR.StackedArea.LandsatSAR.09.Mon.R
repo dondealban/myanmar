@@ -61,4 +61,4 @@ plot <- plot + scale_fill_manual(values=c("#ffff66","#ff0000","#246a24","#6666ff
 plot <- plot + scale_x_continuous(breaks=c(1996,2007,2016))
 plot <- plot + theme(legend.position="none")
 
-ggsave(plot, file="StackedArea-09-Mon.pdf", width=16, height=15, units="cm", dpi=300)
+ggsave(plot, file="StackedArea-03-Mon.pdf", width=16, height=15, units="cm", dpi=300)
