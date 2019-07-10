@@ -11,7 +11,7 @@
 # ----------------------------------------
 # SET WORKING DIRECTORY
 # ----------------------------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/6_yangon")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/4_rakhine")
 
 # ----------------------------------------
 # LOAD LIBRARIES
@@ -22,9 +22,9 @@ library(intensity.analysis)
 # ----------------------------------------
 # LOAD RASTER DATA
 # ----------------------------------------
-r1996 <- raster('MMR_1996_YGN_RCL.tif')
-r2007 <- raster('MMR_2007_YGN_RCL.tif')
-r2016 <- raster('MMR_2016_YGN_RCL.tif')
+r1996 <- raster('MMR_1996_RAK_RCL.tif')
+r2007 <- raster('MMR_2007_RAK_RCL.tif')
+r2016 <- raster('MMR_2016_RAK_RCL.tif')
 
 # Copy raster data into new variables
 lc1996 <- r1996
@@ -66,15 +66,15 @@ TIA.output <- TIA(crosstabulation, time.points, categories)
 # SAVE OUTPUT CSV FILES
 # ----------------------------------------
 
-IIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_YGN_IIA.csv")
+IIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_RAK_IIA.csv")
 IIA2csv(IIA.output, time.points, IIAname)
-CIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_YGN_CIA.csv")
+CIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_RAK_CIA.csv")
 CIA2csv(CIA.output, time.points, categories, CIAname)
-TIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_YGN_TIA.csv")
+TIAname <- file.path(normalizePath(getwd()), "IntensityAnalysis_RAK_TIA.csv")
 TIA2csv(TIA.output, time.points, categories, TIAname)
 
 # Save the cross-tabulation matrices
 crosstab_1 <- crosstabulation[[1]] #1996-2007
-write.csv(crosstab_1, "IntensityAnalysis_YGN_CrossTab_I1.csv")
+write.csv(crosstab_1, "IntensityAnalysis_RAK_CrossTab_I1.csv")
 crosstab_2 <- crosstabulation[[2]] #2007-2016
-write.csv(crosstab_2, "IntensityAnalysis_YGN_CrossTab_I2.csv")
+write.csv(crosstab_2, "IntensityAnalysis_RAK_CrossTab_I2.csv")
