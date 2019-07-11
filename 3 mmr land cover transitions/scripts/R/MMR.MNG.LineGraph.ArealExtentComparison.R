@@ -63,7 +63,7 @@ text1 <- data.frame(
   label = c("A","B,C","F","G","I","J","L","M","N"),
   Study_Area = c("Myanmar"),
   x = c(1996,2002,2000,2009,1975,1983,1954,2000,1997),
-  y = c(12381,7500,6668,4450,8515,5250,2346,5025,3900)
+  y = c(13230,7500,6668,4450,8515,5250,2346,5025,3900)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_gray()
@@ -79,10 +79,10 @@ text2 <- data.frame(
                  "Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi","Ayeyarwady","Ayeyarwady","Rakhine",
                  "Tanintharyi","Tanintharyi","Ayeyarwady","Ayeyarwady"),
   x = c(1996,1996,1996,1995,2000,2000,2000,1989,1980,1980,1980,1978,2000,2000,2000,2016,2005,2001),
-  y = c(4150,2973,4253,3511,1740,2048,2774,2588,2964,1675,1951,2623,818,1734,2075,2550,950,1250)
+  y = c(4290,3440,4220,3511,1740,2048,2774,2588,2964,1675,1951,2623,818,1734,2075,2550,950,1250)
 )
 plot2 <- plot2 + geom_text(data=text2, aes(x=x, y=y, label=label), size=2.5, nudge_x=-1, nudge_y=100)
-plot2 <- plot2 + theme_light()
+plot2 <- plot2 + theme_gray()
 plot2 <- plot2 + theme(legend.position="none", axis.title.x=element_blank()) + labs(y="Areal Extent (sq.km)")
 
 # Plot #3: Non-extensive mangrove regions
@@ -92,10 +92,10 @@ text3 <- data.frame(
   label = c("A","A","A","F","F"),
   Study_Area = c("Bago","Mon","Yangon","Mon","Yangon"),
   x = c(1996,1996,1996,2000,2000),
-  y = c(268,535,202,81,25)
+  y = c(240,850,205,81,25)
 )
 plot3 <- plot3 + geom_text(data=text3, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=10)
-plot3 <- plot3 + theme_light()
+plot3 <- plot3 + theme_gray()
 plot3 <- plot3 + theme(legend.position="none") + labs(x="Year", y=" ")
 
 # Expose ggplot2 Layouts ------------------
