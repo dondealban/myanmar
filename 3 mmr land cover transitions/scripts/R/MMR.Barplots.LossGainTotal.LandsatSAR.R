@@ -1,11 +1,11 @@
 # Script Description --------------------
-# This R script generates barplots using ggplot2 package to visualise the which land cover
+# This R script generates barplots using ggplot2 package to visualise to which land cover
 # categories are mangroves losing to and gaining from the most in each time-interval across
 # all mangrove regions in Myanmar.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Dec 2018
-# Last Modified:  20 Mar 2019
+# Last Modified:  11 Jul 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
@@ -14,7 +14,7 @@ setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/m
 library(tidyverse)
 
 # Read Input Data -------------------------
-dfGROSS <- read.csv(file="Loss & Gain Totals.csv", header=TRUE, sep=",")
+dfGROSS <- read.csv(file="R_MMR MNG Category Loss Gain Totals.csv", header=TRUE, sep=",")
 
 # Generate Plots --------------------------
 plot <- ggplot() + geom_bar(data=dfGROSS, aes(x=Change, y=AreaKm2, fill=Category), stat="identity")
@@ -26,7 +26,4 @@ plot <- plot + theme_light()
 
 # Save Output Plots -----------------------
 
-ggsave(plot, file="Barplot-Total-Gross-Loss-Gain-Mangroves_v2.pdf", width=19.89, height=15, units="cm", dpi=300)
-
-
-
+ggsave(plot, file="Barplot-Total-Gross-Loss-Gain-Mangroves.pdf", width=19.89, height=15, units="cm", dpi=300)
