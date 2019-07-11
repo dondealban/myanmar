@@ -1,11 +1,11 @@
 # Script Description --------------------
-# This R script generates line graphs using tidyverse package to visualise estimates of
-# areal extents of mangroves at specific time-points in Myanmar and its sub-national units
-# reported from published studies.
+# This R script generates line graphs to visualise estimates of net areal extents of
+# mangroves at specific time-points in Myanmar and its sub-national units reported 
+# from published studies.
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   15 Jan 2019
-# Last Modified:  26 Mar 2019
+# Last Modified:  11 Jul 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
@@ -17,7 +17,7 @@ library(ggplot2)
 library(egg)
 
 # Read Input Data -------------------------
-dfAREAL <- read.csv(file="Areal_Extents_Comparison.csv", header=TRUE, sep=",")
+dfAREAL <- read.csv(file="R_MMR MNG Net Areal Extent Comparison.csv", header=TRUE, sep=",")
 
 # Reorganise Data -------------------------
 RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q")
