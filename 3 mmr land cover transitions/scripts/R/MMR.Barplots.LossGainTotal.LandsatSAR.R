@@ -22,7 +22,7 @@ plot <- plot + facet_wrap(~Interval)
 plot <- plot + labs(x="Mangrove Change per Time-Interval", y="Areal Extent (sq.km)", fill="Category")
 plot <- plot + scale_fill_manual(values=c("#ffff66","#ff0000","#246a24","#ff8000",
                                           "#ff00ff","#a65400","#ccff66","#66ccff"))
-plot <- plot + theme_light() 
+plot <- plot + theme_gray()
 
 # Save Output Plots -----------------------
 
