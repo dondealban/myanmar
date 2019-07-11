@@ -66,7 +66,7 @@ text1 <- data.frame(
   y = c(12381,7500,6668,4450,8515,5250,2346,5025,3900)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
-plot1 <- plot1 + theme_light()
+plot1 <- plot1 + theme_gray()
 plot1 <- plot1 + theme(legend.position="none", axis.title.x=element_blank()) + labs(y=" ")
 
 # Plot #2: Extensive mangrove regions
