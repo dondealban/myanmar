@@ -7,10 +7,10 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   25 Apr 2017
-# Last Modified:  04 Dec 2018
+# Last Modified:  12 Jul 2019
 
 # Set Working Directory -------------------
-setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/")
+setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/macros")
 
 # Load Libraries --------------------------
 library(tidyverse)
