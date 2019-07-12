@@ -19,12 +19,12 @@ library(readxl)
 # Read Input Data -------------------------
 
 # Read interval level XLSX data file
-xlsxAYE <- read_excel("1_IA_Ayeyarwady.xlsx", sheet="Interval_Level")
-xlsxBAG <- read_excel("2_IA_Bago.xlsx", sheet="Interval_Level")
-xlsxMON <- read_excel("9_IA_Mon.xlsx", sheet="Interval_Level")
-xlsxRAK <- read_excel("11_IA_Rakhine.xlsx", sheet="Interval_Level")
-xlsxTNI <- read_excel("14_IA_Tanintharyi.xlsx", sheet="Interval_Level")
-xlsxYGN <- read_excel("15_IA_Yangon.xlsx", sheet="Interval_Level")
+xlsxAYE <- read_excel("01_IA_Ayeyarwady.xlsx", sheet="Interval_Level")
+xlsxBAG <- read_excel("02_IA_Bago.xlsx", sheet="Interval_Level")
+xlsxMON <- read_excel("03_IA_Mon.xlsx", sheet="Interval_Level")
+xlsxRAK <- read_excel("04_IA_Rakhine.xlsx", sheet="Interval_Level")
+xlsxTNI <- read_excel("05_IA_Tanintharyi.xlsx", sheet="Interval_Level")
+xlsxYGN <- read_excel("06_IA_Yangon.xlsx", sheet="Interval_Level")
 
 # Clean and Subset Data -------------------
 
