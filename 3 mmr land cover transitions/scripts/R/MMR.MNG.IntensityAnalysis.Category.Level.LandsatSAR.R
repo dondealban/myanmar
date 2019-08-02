@@ -29,60 +29,68 @@ dfRAKg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", she
 dfRAKl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_RAK"))
 dfTNIg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_TNI"))
 dfTNIl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_TNI"))
-dfTNIg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_YGN"))
-dfTNIl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_YGN"))
+dfYGNg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_YGN"))
+dfYGNl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_YGN"))
 
 # Clean and Subset Data -------------------
 
 # 1. Select columns: include all columns except Category ID
-subMINDRg <- subset(dfMINDRg, select=c(1,3:11))
-subMINDRl <- subset(dfMINDRl, select=c(1,3:11))
-subMCWSg  <- subset(dfMCWSg, select=c(1,3:11))
-subMCWSl  <- subset(dfMCWSl, select=c(1,3:11))
-subMIBNPg <- subset(dfMIBNPg, select=c(1,3:11)) 
-subMIBNPl <- subset(dfMIBNPl, select=c(1,3:11))
-subNLNPg  <- subset(dfNLNPg, select=c(1,3:11)) 
-subNLNPl  <- subset(dfNLNPl, select=c(1,3:11))
+subAYEg <- subset(dfAYEg, select=c(1,3:11))
+subAYEl <- subset(dfAYEl, select=c(1,3:11))
+subBAGg <- subset(dfBAGg, select=c(1,3:11))
+subBAGl <- subset(dfBAGl, select=c(1,3:11))
+subMONg <- subset(dfMONg, select=c(1,3:11)) 
+subMONl <- subset(dfMONl, select=c(1,3:11))
+subRAKg <- subset(dfRAKg, select=c(1,3:11)) 
+subRAKl <- subset(dfRAKl, select=c(1,3:11))
+subTNIg <- subset(dfTNIg, select=c(1,3:11)) 
+subTNIl <- subset(dfTNIl, select=c(1,3:11))
+subYGNg <- subset(dfYGNg, select=c(1,3:11)) 
+subYGNl <- subset(dfYGNl, select=c(1,3:11))
 
-# *Remove classes: MNG, BUA, WTR for this domain of analysis
-# Mts Iglit-Baco National Park
-remove.list1 <- paste(c("MNG","BUA","WTR"), collapse='|')
-subMIBNPg <- subMIBNPg %>% filter(!grepl(remove.list1, subMIBNPg$Category_Name))
-subMIBNPl <- subMIBNPl %>% filter(!grepl(remove.list1, subMIBNPl$Category_Name))
-# Naujan Lake National Park
-remove.list2 <- paste(c("GRA","BUA","ERK"), collapse='|')
-subNLNPg <- subNLNPg %>% filter(!grepl(remove.list2, subNLNPg$Category_Name))
-subNLNPl <- subNLNPl %>% filter(!grepl(remove.list2, subNLNPl$Category_Name))
-
-# 2. Add Change Type column
-# Mindoro Island
-type1a <- rep("Gain", nrow(subMINDRg))
-type2a <- rep("Loss", nrow(subMINDRl))
-site1a <- rep("Mindoro Island", nrow(subMINDRg))
-site2a <- rep("Mindoro Island", nrow(subMINDRl))
-subMINDRg <- cbind(subMINDRg, type1a, site1a)
-subMINDRl <- cbind(subMINDRl, type2a, site2a)
-# Mt Calavite Wildlife Sanctuary
-type1b <- rep("Gain", nrow(subMCWSg))
-type2b <- rep("Loss", nrow(subMCWSl))
-site1b <- rep("PA MCWS", nrow(subMCWSg))
-site2b <- rep("PA MCWS", nrow(subMCWSl))
-subMCWSg <- cbind(subMCWSg, type1b, site1b)
-subMCWSl <- cbind(subMCWSl, type2b, site2b)
-# Mts Iglit-Baco National Park
-type1c <- rep("Gain", nrow(subMIBNPg))
-type2c <- rep("Loss", nrow(subMIBNPl))
-site1c <- rep("PA MIBNP", nrow(subMIBNPg))
-site2c <- rep("PA MIBNP", nrow(subMIBNPl))
-subMIBNPg <- cbind(subMIBNPg, type1c, site1c)
-subMIBNPl <- cbind(subMIBNPl, type2c, site2c)
-# Naujan Lake National Park
-type1d <- rep("Gain", nrow(subNLNPg))
-type2d <- rep("Loss", nrow(subNLNPl))
-site1d <- rep("PA NLNP", nrow(subNLNPg))
-site2d <- rep("PA NLNP", nrow(subNLNPl))
-subNLNPg <- cbind(subNLNPg, type1d, site1d)
-subNLNPl <- cbind(subNLNPl, type2d, site2d)
+# 2. Add Change Type and Site Name column
+# Ayeyarwady
+type1a <- rep("Gain", nrow(subAYEg))
+type2a <- rep("Loss", nrow(subAYEl))
+site1a <- rep("Ayeyarwady", nrow(subAYEg))
+site2a <- rep("Ayeyarwady", nrow(subAYEl))
+subAYEg <- cbind(subAYEg, type1a, site1a)
+subAYEl <- cbind(subAYEl, type2a, site2a)
+# Bago
+type1b <- rep("Gain", nrow(subBAGg))
+type2b <- rep("Loss", nrow(subBAGl))
+site1b <- rep("Bago", nrow(subBAGg))
+site2b <- rep("Bago", nrow(subBAGl))
+subBAGg <- cbind(subBAGg, type1b, site1b)
+subBAGl <- cbind(subBAGl, type2b, site2b)
+# Mon
+type1c <- rep("Gain", nrow(subMONg))
+type2c <- rep("Loss", nrow(subMONl))
+site1c <- rep("Mon", nrow(subMONg))
+site2c <- rep("Mon", nrow(subMONl))
+subMONg <- cbind(subMONg, type1c, site1c)
+subMONl <- cbind(subMONl, type2c, site2c)
+# Rakhine
+type1d <- rep("Gain", nrow(subRAKg))
+type2d <- rep("Loss", nrow(subRAKl))
+site1d <- rep("Rakhine", nrow(subRAKg))
+site2d <- rep("Rakhine", nrow(subRAKl))
+subRAKg <- cbind(subRAKg, type1d, site1d)
+subRAKl <- cbind(subRAKl, type2d, site2d)
+# Tanintharyi
+type1e <- rep("Gain", nrow(subTNIg))
+type2e <- rep("Loss", nrow(subTNIl))
+site1e <- rep("Tanintharyi", nrow(subTNIg))
+site2e <- rep("Tanintharyi", nrow(subTNIl))
+subTNIg <- cbind(subTNIg, type1e, site1e)
+subTNIl <- cbind(subTNIl, type2e, site2e)
+# Yangon
+type1f <- rep("Gain", nrow(subYGNg))
+type2f <- rep("Loss", nrow(subYGNl))
+site1f <- rep("Yangon", nrow(subYGNg))
+site2f <- rep("Yangon", nrow(subYGNl))
+subYGNg <- cbind(subYGNg, type1f, site1f)
+subYGNl <- cbind(subYGNl, type2f, site2f)
 
 # 3. Reorder columns before renaming
 subMINDRg <- subMINDRg[,c(1:2,11,12,3:10)]
