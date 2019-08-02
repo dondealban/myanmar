@@ -164,3 +164,4 @@ plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", l
 
 # Output boxplots to a PDF file
 ggsave(plotCAT, file="Category-Level-Intensity-Analysis-Mangroves (different scales).pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis-Mangroves (same scales).pdf", width=20, height=25, units="cm", dpi=300)
