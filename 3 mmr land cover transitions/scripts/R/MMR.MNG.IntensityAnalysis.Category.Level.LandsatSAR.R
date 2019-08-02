@@ -93,14 +93,18 @@ subYGNg <- cbind(subYGNg, type1f, site1f)
 subYGNl <- cbind(subYGNl, type2f, site2f)
 
 # 3. Reorder columns before renaming
-subMINDRg <- subMINDRg[,c(1:2,11,12,3:10)]
-subMINDRl <- subMINDRl[,c(1:2,11,12,3:10)]
-subMCWSg  <- subMCWSg[,c(1:2,11,12,3:10)]
-subMCWSl  <- subMCWSl[,c(1:2,11,12,3:10)]
-subMIBNPg <- subMIBNPg[,c(1:2,11,12,3:10)]
-subMIBNPl <- subMIBNPl[,c(1:2,11,12,3:10)]
-subNLNPg  <- subNLNPg[,c(1:2,11,12,3:10)]
-subNLNPl  <- subNLNPl[,c(1:2,11,12,3:10)]
+subAYEg <- subAYEg[,c(1:2,11,12,3:10)]
+subAYEl <- subAYEl[,c(1:2,11,12,3:10)]
+subBAGg <- subBAGg[,c(1:2,11,12,3:10)]
+subBAGl <- subBAGl[,c(1:2,11,12,3:10)]
+subMONg <- subMONg[,c(1:2,11,12,3:10)]
+subMONl <- subMONl[,c(1:2,11,12,3:10)]
+subRAKg <- subRAKg[,c(1:2,11,12,3:10)]
+subRAKl <- subRAKl[,c(1:2,11,12,3:10)]
+subTNIg <- subTNIg[,c(1:2,11,12,3:10)]
+subTNIl <- subTNIl[,c(1:2,11,12,3:10)]
+subYGNg <- subYGNg[,c(1:2,11,12,3:10)]
+subYGNl <- subYGNl[,c(1:2,11,12,3:10)]
 
 # 4. Change column names for easier reference
 # Note the following description of category level column names
@@ -118,21 +122,25 @@ subNLNPl  <- subNLNPl[,c(1:2,11,12,3:10)]
 # ColL - Hypothesized t1/t2 Error [percent of interval domain]
 
 list <- c("ColA","ColB","ColC","ColD","ColE","ColF","ColG","ColH","ColI","ColJ","ColK","ColL")
-colnames(subMINDRg) <- c(list)
-colnames(subMINDRl) <- c(list)
-colnames(subMCWSg)  <- c(list)
-colnames(subMCWSl)  <- c(list)
-colnames(subMIBNPg) <- c(list)
-colnames(subMIBNPl) <- c(list)
-colnames(subNLNPg)  <- c(list)
-colnames(subNLNPl)  <- c(list)
+colnames(subAYEg) <- c(list)
+colnames(subAYEl) <- c(list)
+colnames(subBAGg) <- c(list)
+colnames(subBAGl) <- c(list)
+colnames(subMONg) <- c(list)
+colnames(subMONl) <- c(list)
+colnames(subRAKg) <- c(list)
+colnames(subRAKl) <- c(list)
+colnames(subTNIg) <- c(list)
+colnames(subTNIl) <- c(list)
+colnames(subYGNg) <- c(list)
+colnames(subYGNl) <- c(list)
 
 # 6. Combine separate Loss and Gain datasets into one dataframe
-catALL <- rbind(subMINDRg, subMINDRl, subMCWSg, subMCWSl, subMIBNPg, subMIBNPl, subNLNPg, subNLNPl)
+catALL <- rbind(subAYEg, subAYEl, subBAGg, subBAGl, subMONg, subMONl, subRAKg, subRAKl, subTNIg, subTNIl, subYGNg, subYGNl)
 
 # 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
 #catALL[catALL=="Undefined"] <- 0
-catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
+#catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
 
 # Generate Plots ------------------------
 
@@ -149,4 +157,4 @@ plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", l
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="Category-Level-Intensity-Analysis_Mindoro.pdf", width=25, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis-Mangroves.pdf", width=20, height=25, units="cm", dpi=300)
