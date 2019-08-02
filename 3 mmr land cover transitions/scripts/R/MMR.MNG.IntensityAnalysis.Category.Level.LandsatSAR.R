@@ -1,5 +1,5 @@
 # Script Description --------------------
-# This R script generates barplots using ggplot2 package to visualise the interval-level
+# This R script generates barplots using ggplot2 package to visualise the category-level
 # intensity analysis of mangrove cover changes in selected coastal regions of Myanmar,
 # derived from land cover classification of combined Landsat and L-band SAR data for two
 # time-intervals: 1996-2007 and 2007-2016. Intensity analysis was calculated using an 
