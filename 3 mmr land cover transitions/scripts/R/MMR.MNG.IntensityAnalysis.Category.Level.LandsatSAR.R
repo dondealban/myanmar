@@ -138,13 +138,9 @@ colnames(subYGNl) <- c(list)
 # 6. Combine separate Loss and Gain datasets into one dataframe
 catALL <- rbind(subAYEg, subAYEl, subBAGg, subBAGl, subMONg, subMONl, subRAKg, subRAKl, subTNIg, subTNIl, subYGNg, subYGNl)
 
-# 7. Replace "Undefined" cells as 0 and convert ColF and ColK to numeric data types
-#catALL[catALL=="Undefined"] <- 0
-#catALL <- transform(catALL, ColF = as.numeric(ColF), ColK = as.numeric(ColK))
-
 # Generate Plots ------------------------
 
-# Plot 1: Gain and Loss Intensities only
+# Plot 1: Different y-scales
 plotCAT <- ggplot() + geom_bar(data=catALL, aes(x=ColB, y=ColF, fill=ColC), stat="identity", position=position_dodge())
 plotCAT <- plotCAT  + geom_hline(data=catALL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
 plotCAT <- plotCAT  + facet_grid(ColD ~ ColA, scales="free_y")
@@ -154,7 +150,17 @@ plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform
 plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
 plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
 
+# Plot 2: Same y-scales
+plotCAT <- ggplot() + geom_bar(data=catALL, aes(x=ColB, y=ColF, fill=ColC), stat="identity", position=position_dodge())
+plotCAT <- plotCAT  + geom_hline(data=catALL, aes(yintercept=ColG, colour="#000000"), linetype="dashed") # Uniform line
+plotCAT <- plotCAT  + facet_grid(ColD ~ ColA)
+plotCAT <- plotCAT  + labs(x="Category", y="Category Intensity (% of Category)")
+plotCAT <- plotCAT  + scale_fill_manual(values=c("#8acd66","#b43507"), labels=c("Gain Intensity","Loss Intensity"))
+plotCAT <- plotCAT  + scale_colour_manual(values=c("#000000"), labels=c("Uniform Intensity"))
+plotCAT <- plotCAT  + theme(panel.grid.minor=element_blank())
+plotCAT <- plotCAT  + theme(legend.position="bottom", legend.box="horizontal", legend.title=element_blank())
+
 # Save Outputs --------------------------
 
 # Output boxplots to a PDF file
-ggsave(plotCAT, file="Category-Level-Intensity-Analysis-Mangroves.pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(plotCAT, file="Category-Level-Intensity-Analysis-Mangroves (different scales).pdf", width=20, height=25, units="cm", dpi=300)
