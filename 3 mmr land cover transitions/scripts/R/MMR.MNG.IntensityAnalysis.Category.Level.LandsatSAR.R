@@ -7,7 +7,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   13 Mar 2018
-# Last Modified:  30 Jul 2019
+# Last Modified:  02 Aug 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/intensity analysis/macros/")
@@ -19,14 +19,18 @@ library(readxl)
 # Read Input Data -------------------------
 
 # Read interval level XLSX data file, convert to data frame, and store into variable
-dfMINDRg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_Mindoro"))
-dfMINDRl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_Mindoro"))
-dfMCWSg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_MCWS"))
-dfMCWSl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MCWS"))
-dfMIBNPg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_MIBNP"))
-dfMIBNPl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_MIBNP"))
-dfNLNPg  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Gain_NLNP"))
-dfNLNPl  <- as.data.frame(read_excel("Category_Level_Intensity_Analysis_ALL.xlsx", sheet="Loss_NLNP"))
+dfAYEg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_AYE"))
+dfAYEl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_AYE"))
+dfBAGg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_BAG"))
+dfBAGl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_BAG"))
+dfMONg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_MON"))
+dfMONl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_MON"))
+dfRAKg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_RAK"))
+dfRAKl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_RAK"))
+dfTNIg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_TNI"))
+dfTNIl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_TNI"))
+dfTNIg <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Gain_YGN"))
+dfTNIl <- as.data.frame(read_excel("Category_Level_Intensity_Analysis.xlsx", sheet="Loss_YGN"))
 
 # Clean and Subset Data -------------------
 
