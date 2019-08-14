@@ -53,8 +53,8 @@ dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
 # Subset from Subset: Single-Year Studies
 dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "G" | 
-                               RefID %in% "J" | RefID %in% "N")
-dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "D" | RefID %in% "G" | RefID %in% "Q")
+                               RefID %in% "J" | RefID %in% "M" | RefID %in% "Q")
+dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "D" | RefID %in% "G" | RefID %in% "T")
 
 # Define Plots ----------------------------
 
@@ -63,10 +63,10 @@ plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2,
 plot1 <- plot1 + geom_point(data=dfSUBSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
 text1 <- data.frame(
-  label = c("A","B,C","F","G","I","J","L","M","N"),
+  label = c("A","B,C","F","G","I","J","K","L","M","O","P","Q"),
   Study_Area = c("Myanmar"),
-  x = c(1996,2002,2000,2009,1975,1983,1954,2000,1997),
-  y = c(13230,7500,6668,4450,8515,5250,2346,5025,3900)
+  x = c( 1996,2002,2000,2009,1975,2001.5,2000,2000,1983,1954,2000,1997),
+  y = c(13230,7500,6668,4450,8515,5600,2700,4150,5250,2346,5025,3900)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_gray()
@@ -77,7 +77,7 @@ plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2,
 plot2 <- plot2 + geom_point(data=dfSUBSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1)
 text2 <- data.frame(
-  label = c("A","A","A","E","F","F","F","H","K","K","K","O","P","P","P","D","G","Q"),
+  label = c("A","A","A","E","F","F","F","H","N","N","N","R","S","S","S","D","G","T"),
   Study_Area = c("Ayeyarwady","Rakhine","Tanintharyi","Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi",
                  "Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi","Ayeyarwady","Ayeyarwady","Rakhine",
                  "Tanintharyi","Tanintharyi","Ayeyarwady","Ayeyarwady"),
