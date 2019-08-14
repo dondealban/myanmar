@@ -5,7 +5,7 @@
 #
 # Script By:      Jose Don T De Alban
 # Date Created:   15 Jan 2019
-# Last Modified:  11 Jul 2019
+# Last Modified:  14 Aug 2019
 
 # Set Working Directory -------------------
 setwd("/Users/dondealban/Dropbox/Research/myanmar/3 mmr land cover transitions/mangroves/areal extent/")
