@@ -20,7 +20,7 @@ library(egg)
 dfAREAL <- read.csv(file="R_MMR MNG Net Areal Extent Comparison.csv", header=TRUE, sep=",")
 
 # Reorganise Data -------------------------
-RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q")
+RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T")
 Reference <- c("This study",
                "Blasco & Aizpuru, 2002",
                "Blasco et al., 2001",
@@ -30,6 +30,9 @@ Reference <- c("This study",
                "FAO, 2010",
                "Gaw et al., 2018",
                "Giri et al., 2008",
+               "Giri et al., 2011",
+               "Hamilton & Casey, 2016 [MFW]",
+               "Hamilton & Casey, 2016 [BIOME]",
                "IUCN, 1983",
                "Maung, 2012",
                "Oo, 2002",
