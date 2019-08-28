@@ -1,5 +1,5 @@
 # Set Working Directory -----------------
-setwd("C:/MMR-LCC-EndAugust/03-QGIS-SCP-CR/12-SAG")
+setwd("C:/MMR-LCC-EndAugust/03-QGIS-SCP-CR/12-SAG-REVISED")
 
 # Load Libraries and Data ---------------
 library(reshape2)
@@ -10,7 +10,7 @@ filenames <- list.files()
 
 # Function to read data
 readdata <- function(filename) {
-  df <- read.csv(filename, sep="\t")
+  df <- read.csv(filename, sep=",")
   vec <- df[, 3]           # Read column with percentage values
   names(vec) <- df[, 1]    # Read column with class codes
   return(vec)
