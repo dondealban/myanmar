@@ -24,36 +24,50 @@ for(file in files)
     read.delim(paste(path,file,sep="/")))
 }
 
-# 4.  Add a domain column for each file
+# 4. Write each dataframe into an individual Excel worksheet, and append them back to back
 
-Domain_01  <- rep('AYE', nrow(`MMR19962007AYE`))
-Domain_02  <- rep('BAG', nrow(`MMR19962007BAG`))
-Domain_03  <- rep('CHI', nrow(`MMR19962007CHI`))
-Domain_04  <- rep('KAC', nrow(`MMR19962007KAC`))
-Domain_05  <- rep('KYH', nrow(`MMR19962007KYH`))
-Domain_06  <- rep('KYN', nrow(`MMR19962007KYN`))
-Domain_07  <- rep('MAG', nrow(`MMR19962007MAG`))
-Domain_08  <- rep('MAN', nrow(`MMR19962007MAN`))
-Domain_09  <- rep('MON', nrow(`MMR19962007MON`))
-Domain_10  <- rep('NAY', nrow(`MMR19962007NAY`))
-Domain_11  <- rep('RAK', nrow(`MMR19962007RAK`))
-Domain_12  <- rep('SAG', nrow(`MMR19962007SAG`))
-Domain_13  <- rep('SHA', nrow(`MMR19962007SHA`))
-Domain_14  <- rep('TNI', nrow(`MMR19962007TNI`))
-Domain_15  <- rep('YGN', nrow(`MMR19962007YGN`))
+install.packages("openxlsx")
 
-Domain_16  <- rep('AYE', nrow(`MMR20072016AYE`))
-Domain_17  <- rep('BAG', nrow(`MMR20072016BAG`))
-Domain_18  <- rep('CHI', nrow(`MMR20072016CHI`))
-Domain_19  <- rep('KAC', nrow(`MMR20072016KAC`))
-Domain_20  <- rep('KYH', nrow(`MMR20072016KYH`))
-Domain_21  <- rep('KYN', nrow(`MMR20072016KYN`))
-Domain_22  <- rep('MAG', nrow(`MMR20072016MAG`))
-Domain_23  <- rep('MAN', nrow(`MMR20072016MAN`))
-Domain_24  <- rep('MON', nrow(`MMR20072016MON`))
-Domain_25  <- rep('NAY', nrow(`MMR20072016NAY`))
-Domain_26  <- rep('RAK', nrow(`MMR20072016RAK`))
-Domain_27  <- rep('SAG', nrow(`MMR20072016SAG`))
-Domain_28  <- rep('SHA', nrow(`MMR20072016SHA`))
-Domain_29  <- rep('TNI', nrow(`MMR20072016TNI`))
-Domain_30  <- rep('YGN', nrow(`MMR20072016YGN`))
+library(openxlsx)
+
+require(openxlsx)
+
+dataframe_list_1996_2007 <- list(
+  "1996-2007-AYE" = MMR19962007AYE,
+  "1996-2007-BAG" = MMR19962007BAG,
+  "1996-2007-CHI" = MMR19962007CHI,
+  "1996-2007-KAC" = MMR19962007KAC,
+  "1996-2007-KYH" = MMR19962007KYH,
+  "1996-2007-KYN" = MMR19962007KYN,
+  "1996-2007-MAG" = MMR19962007MAG,
+  "1996-2007-MAN" = MMR19962007MAN,
+  "1996-2007-MON" = MMR19962007MON,
+  "1996-2007-NAY" = MMR19962007NAY,
+  "1996-2007-RAK" = MMR19962007RAK,
+  "1996-2007-SAG" = MMR19962007SAG,
+  "1996-2007-SHA" = MMR19962007SHA,
+  "1996-2007-TNI" = MMR19962007TNI,
+  "1996-2007-YGN" = MMR19962007YGN
+)
+
+write.xlsx(dataframe_list_1996_2007, file = "C:/MMR-LCC-EndAugust/03-CROSSTAB/LCCR-PER-REGION-1996-2007.xlsx")
+
+dataframe_list_2007_2016 <- list(
+  "2007-2016-AYE" = MMR20072016AYE,
+  "2007-2016-BAG" = MMR20072016BAG,
+  "2007-2016-CHI" = MMR20072016CHI,
+  "2007-2016-KAC" = MMR20072016KAC,
+  "2007-2016-KYH" = MMR20072016KYH,
+  "2007-2016-KYN" = MMR20072016KYN,
+  "2007-2016-MAG" = MMR20072016MAG,
+  "2007-2016-MAN" = MMR20072016MAN,
+  "2007-2016-MON" = MMR20072016MON,
+  "2007-2016-NAY" = MMR20072016NAY,
+  "2007-2016-RAK" = MMR20072016RAK,
+  "2007-2016-SAG" = MMR20072016SAG,
+  "2007-2016-SHA" = MMR20072016SHA,
+  "2007-2016-TNI" = MMR20072016TNI,
+  "2007-2016-YGN" = MMR20072016YGN
+)
+
+write.xlsx(dataframe_list_2007_2016, file = "C:/MMR-LCC-EndAugust/03-CROSSTAB/LCCR-PER-REGION-2007-2016.xlsx")
