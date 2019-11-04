@@ -20,10 +20,11 @@ library(egg)
 dfAREAL <- read.csv(file="R_MMR MNG Net Areal Extent Comparison.csv", header=TRUE, sep=",")
 
 # Reorganise Data -------------------------
-RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T")
+RefID <- c("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U")
 Reference <- c("This study",
                "Blasco & Aizpuru, 2002",
                "Blasco et al., 2001",
+               "Bunting et al., 2018",
                "Connette et al., 2016",
                "De Alban et al., 2018",
                "Estoque et al., 2018",
@@ -52,9 +53,9 @@ dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Taninthar
 dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
 # Subset from Subset: Single-Year Studies
-dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "G" | 
-                               RefID %in% "J" | RefID %in% "M" | RefID %in% "Q")
-dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "D" | RefID %in% "G" | RefID %in% "T")
+dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "H" | 
+                               RefID %in% "K" | RefID %in% "N" | RefID %in% "R")
+dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "E" | RefID %in% "H" | RefID %in% "U")
 
 # Define Plots ----------------------------
 
@@ -63,10 +64,10 @@ plot1 <- ggplot() + geom_line(data=dfSUB1, aes(x=Time_Point, y=Areal_Extent_Km2,
 plot1 <- plot1 + geom_point(data=dfSUBSUB1, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot1 <- plot1 + facet_wrap(~Study_Area)
 text1 <- data.frame(
-  label = c("A","B,C","F","G","I","J","K","L","M","O","P","Q"),
+  label = c("A","B,C","D","G","H","J","K","L","M","N","P","Q","R"),
   Study_Area = c("Myanmar"),
-  x = c( 1996,2002,2000,2009,1975,2001.5,2000,2000,1983,1954,2000,1997),
-  y = c(13230,7500,6668,4450,8515,5600,2700,4150,5250,2346,5025,3900)
+  x = c( 1996,2002,2010,2000,2009,1975,2001.5,2000,2000,1983,1954,2000,1997),
+  y = c(13230,7500,5015,6668,4450,8515,5600,2700,4150,5250,2346,5025,3900)
 )
 plot1 <- plot1 + geom_text(data=text1, aes(x=x, y=y, label=label), size=2.5, nudge_x=-0.75, nudge_y=100)
 plot1 <- plot1 + theme_gray()
