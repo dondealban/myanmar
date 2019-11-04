@@ -53,7 +53,7 @@ dfSUB2 <- dfAREAL %>% filter(Study_Area %in% c("Ayeyarwady","Rakhine","Taninthar
 dfSUB3 <- dfAREAL %>% filter(Study_Area %in% c("Bago","Mon","Yangon"))
 
 # Subset from Subset: Single-Year Studies
-dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "H" | 
+dfSUBSUB1 <- dfSUB1 %>% filter(RefID %in% "B" | RefID %in% "C" | RefID %in% "D" | RefID %in% "H" | 
                                RefID %in% "K" | RefID %in% "N" | RefID %in% "R")
 dfSUBSUB2 <- dfSUB2 %>% filter(RefID %in% "E" | RefID %in% "H" | RefID %in% "U")
 
