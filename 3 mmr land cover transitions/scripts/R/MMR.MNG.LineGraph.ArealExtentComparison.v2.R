@@ -78,7 +78,7 @@ plot2 <- ggplot() + geom_line(data=dfSUB2, aes(x=Time_Point, y=Areal_Extent_Km2,
 plot2 <- plot2 + geom_point(data=dfSUBSUB2, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot2 <- plot2 + facet_wrap(~Study_Area, nrow=1)
 text2 <- data.frame(
-  label = c("A","A","A","E","F","F","F","H","N","N","N","R","S","S","S","D","G","T"),
+  label = c("A","A","A","F","G","G","G","I","O","O","O","S","T","T","T","E","H","U"),
   Study_Area = c("Ayeyarwady","Rakhine","Tanintharyi","Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi",
                  "Tanintharyi","Ayeyarwady","Rakhine","Tanintharyi","Ayeyarwady","Ayeyarwady","Rakhine",
                  "Tanintharyi","Tanintharyi","Ayeyarwady","Ayeyarwady"),
@@ -93,7 +93,7 @@ plot2 <- plot2 + theme(legend.position="none", axis.title.x=element_blank()) + l
 plot3 <- ggplot() + geom_line(data=dfSUB3, aes(x=Time_Point, y=Areal_Extent_Km2, color=RefID), stat="identity")
 plot3 <- plot3 + facet_wrap(~Study_Area, nrow=1)
 text3 <- data.frame(
-  label = c("A","A","A","F","F"),
+  label = c("A","A","A","G","G"),
   Study_Area = c("Bago","Mon","Yangon","Mon","Yangon"),
   x = c(1996,1996,1996,2000,2000),
   y = c(240,850,205,81,25)
