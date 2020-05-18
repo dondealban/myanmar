@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<script>
+    <property key="dff.charset" value="UTF-8" />
+    <property key="dff.date" value="2020-May-13 13:13:32" />
+    <property key="dff.version" value="4.22.11.20191030-Beta" />
+    <functor name="LoadWeights">
+        <property key="dff.functor.alias" value="loadWeights2871" />
+        <property key="dff.functor.comment" value="Weights of Evidence coefficients or ranges." />
+        <inputport name="filename">&quot;../step03/tni_weights.dcf&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="weights" id="v1" />
+    </functor>
+    <functor name="CalcDistanceMap">
+        <property key="dff.functor.alias" value="calcDistanceMap2796" />
+        <property key="dff.functor.comment" value="Calculate distance to class." />
+        <inputport name="categoricalMap" peerid="v3" />
+        <inputport name="categories">[ 5 ]</inputport>
+        <inputport name="cellType">.int32</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="truncateDistance">.no</inputport>
+        <outputport name="distance" id="v2" />
+    </functor>
+    <functor name="SaveTable">
+        <property key="dff.functor.alias" value="saveTable2877" />
+        <property key="dff.functor.comment" value="Save the report containing the result of the correlation calculations." />
+        <inputport name="table" peerid="v5" />
+        <inputport name="filename">&quot;tni_correlation.csv&quot;</inputport>
+        <inputport name="suffixDigits">2</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap502" />
+        <property key="dff.functor.comment" value="Initial landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2007_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v3" />
+    </functor>
+    <functor name="LoadMap">
+        <property key="dff.functor.alias" value="loadMap503" />
+        <property key="dff.functor.comment" value="Static variable map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/stack/TNI_STACK_FULL_OPM_150px_wND.tif&quot;</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v4" />
+    </functor>
+    <containerfunctor name="DetermineWeightsOfEvidenceCorrelation">
+        <property key="dff.container.collapsed" value="no" />
+        <property key="dff.functor.alias" value="determineWeightsOfEvidenceCorrelation2874" />
+        <property key="dff.functor.comment" value="Calculate correlation between pairs of maps." />
+        <inputport name="ranges" peerid="v1" />
+        <inputport name="transition">[ 3-&gt;5, 4-&gt;5, 6-&gt;5, 7-&gt;5, 8-&gt;5 ]</inputport>
+        <outputport name="report" id="v5" />
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2875" />
+            <inputport name="map" peerid="v2" />
+            <inputport name="mapName">&quot;distance&quot;</inputport>
+        </functor>
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2876" />
+            <inputport name="map" peerid="v4" />
+            <inputport name="mapName">&quot;static_var&quot;</inputport>
+        </functor>
+    </containerfunctor>
+</script>
