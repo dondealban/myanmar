@@ -1,8 +1,11 @@
-# This script implements a land cover change analysis workflow using the Intensity 
-# Analysis framework via the intensity.analysis R package (Pontius & Khallaghi 2019).
-# The script uses land cover image datasets from one of my land cover change studies
-# investigating land-cover regime shifts in Tanintharyi Region, Myanmar, published 
-# in Sustainability journal (https://doi.org/10.3390/su11041139).
+# This script implements the Intensity Analysis framework via the intensity.analysis 
+# R package (Pontius & Khallaghi 2019) for land cover change analysis of transitions
+# of agricultural expansion of major crop commodities (i.e., oil palm, rubber, rice)
+# in Tanintharyi Region, Myanmar. For Intensity Analysis, the land cover maps of the
+# Tanintharyi Region (1996, 2007, 2016) were extracted from country-level land cover
+# maps that were generated from our analysis of patterns and drivers of historical 
+# mangrove cover change for the entire country, published in Environmental Research
+# Letters journal (https://iopscience.iop.org/article/10.1088/1748-9326/ab666d).
 # 
 # Script modified by: Jose Don T. De Alban
 # Date created:       30 May 2019
