@@ -12,9 +12,10 @@
 
 # Load Libraries -------------------------
 library(tidyverse)
-#library(GGally)
 library(reshape2)
-#library(ggcorrplot)
+library(plot.matrix)
+library(viridis)
+library(viridisLite)
 
 # Set Working Directories ----------------
 MainDir  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
@@ -50,19 +51,31 @@ df3to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3" & dfOPMi1$Fi
 # Rename column names
 # colnames(df3to5i1CRM) <- c("x","y","coefficient","label")
 
-#Not this
-df2 <- spread(df3to5i1CRM, Second_Variable., Cramer)
-df2[is.na(df2)] <- 0
-ggcorrplot(df2, method="square")
-
-#This!
 df3 <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
 df3[is.na(df3)] <- 0
-ggcorrplot(df3, method="square")
+#ggcorrplot(df3, method="square")
 
 
-cMTCARS <- cor(mtcars)
-ggcorrplot(cMTCARS)
+#This!
+df <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df[is.na(df)] <- 0
+plot(df, border=NA, col=viridis, breaks=10)
+
+plot(df, border="lightgray", col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+
+
+par(mar=c(5, 5, 5, 5))
+plot(df, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Cramer's Coefficients",
+     col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+
+
+
+#ggcorrplot(df3, method="square")
+
 
 # Generate Plots -------------------------
 
