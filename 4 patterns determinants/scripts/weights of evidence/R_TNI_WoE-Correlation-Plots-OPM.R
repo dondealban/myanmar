@@ -62,13 +62,13 @@ df3to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "3" & dfOPMi2$Fi
 # MNG to OPM
 df4to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "4" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
 df4to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "4" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
+# RPD to OPM
 df6to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "6" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
 df6to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "6" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
+# RBR to OPM
 df7to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "7" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
 df7to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "7" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
+# SHB to OPM
 df8to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "8" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
 df8to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "8" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
 
