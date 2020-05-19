@@ -18,8 +18,8 @@ library(viridis)
 library(viridisLite)
 
 # Set Working Directories ----------------
-MainDir  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DataDir  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
+DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
+DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
 DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_1996_2007/step04/"
 DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_2007_2016/step04/"
 
@@ -37,51 +37,110 @@ dfOPMi2 <- read.csv(file="tni_correlation.csv", header=TRUE, sep=",")
 # Replace character strings
 dfOPMi1$First_Variable.  <- gsub(".*/", "", dfOPMi1$First_Variable.)
 dfOPMi1$Second_Variable. <- gsub(".*/", "", dfOPMi1$Second_Variable.)
-# Round off coefficients
-dfOPMi1$RoundCRM <- round(dfOPMi1$Cramer, digit=2)
-dfOPMi1$RoundJtU <- round(dfOPMi1$Joint_Uncertainty, digit=2)
+dfOPMi2$First_Variable.  <- gsub(".*/", "", dfOPMi2$First_Variable.)
+dfOPMi2$Second_Variable. <- gsub(".*/", "", dfOPMi2$Second_Variable.)
 
-
-#df3to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3") %>% select(3:4,6)
-
-
+# Extract Cramer's Coefficients
+# FOR to OPM
 df3to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
+df3to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "3" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
 
 
-# Rename column names
-# colnames(df3to5i1CRM) <- c("x","y","coefficient","label")
-
-df3 <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df3[is.na(df3)] <- 0
-#ggcorrplot(df3, method="square")
+# Extract Joint Information Uncertainty Coefficients
+# FOR to OPM
+df3to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
+df3to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "3" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
 
 
-#This!
-df <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df[is.na(df)] <- 0
-plot(df, border=NA, col=viridis, breaks=10)
+# Convert dataframes to numeric matrix
 
-plot(df, border="lightgray", col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+df3to5i1CRM <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df3to5i2CRM <- acast(df3to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+
+df3to5i1JIU <- acast(df3to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df3to5i2JIU <- acast(df3to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+
+# Convert NAs to 0
+#df3to5i1CRM[is.na(df3to5i1CRM)] <- 0
 
 
+# Generate and Save Plots ----------------
+
+# FOR to OPM: Cramer's V
+setwd(DirDATA)
+pdf("df3to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df, border="lightgray",
+plot(df3to5i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients",
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i1CRM",
+     col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i1CRM_REM.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i1CRM, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Cramer's Coefficients: df3to5i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i2CRM_ALL.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i2CRM, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i2CRM",
+     col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i2CRM_REM.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i2CRM, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Cramer's Coefficients: df3to5i2CRM",
+     col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
 
-
-
-#ggcorrplot(df3, method="square")
-
-
-# Generate Plots -------------------------
-
-plot <- ggcorr(df3to5i1CRM, geom="blank", label=TRUE, hjust=0.75)
-plot <- plot + geom_point(size=10, aes(color=coefficient > 0.45, alpha = abs(coefficient) > 0.5))
-plot <- plot + scale_alpha_manual(values=c("TRUE"=0.25, "FALSE"=0))
-plot <- plot + guides(color=FALSE, alpha=FALSE)
-
+# FOR to OPM: Joint Information Uncertainty
+setwd(DirDATA)
+pdf("df3to5i1JIU_ALL.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i1JIU, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i1JIU",
+     col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i1JIU_REM.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i1JIU, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i1JIU",
+     col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i2JIU_ALL.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i2JIU, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i2JIU",
+     col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
+pdf("df3to5i2JIU_REM.pdf")
+par(mar=c(5, 5, 5, 5))
+plot(df3to5i2JIU, border="lightgray",
+     key=list(side=4, cex.axis=0.7), 
+     axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
+     axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i2JIU",
+     col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
+dev.off()
 
