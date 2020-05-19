@@ -20,477 +20,477 @@ library(viridisLite)
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
 DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
-DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_1996_2007/step04/"
-DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_2007_2016/step04/"
+DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rpd/c_1996_2007/step04/"
+DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rpd/c_2007_2016/step04/"
 
 # Read Data Files ------------------------
-# Correlation data for OIL PALM
-setwd(DirOPMI1)
-dfOPMi1 <- read.csv(file="tni_correlation.csv", header=TRUE, sep=",")
-setwd(DirOPMI2)
-dfOPMi2 <- read.csv(file="tni_correlation.csv", header=TRUE, sep=",")
+# Correlation data for RICE PADDY
+setwd(DirRPDI1)
+dfRPDi1 <- read.csv(file="tni_correlation.csv", header=TRUE, sep=",")
+setwd(DirRPDI2)
+dfRPDi2 <- read.csv(file="tni_correlation.csv", header=TRUE, sep=",")
 
 # Extract Data Subsets -------------------
 
 # Replace character strings
-dfOPMi1$First_Variable.  <- gsub(".*/", "", dfOPMi1$First_Variable.)
-dfOPMi1$Second_Variable. <- gsub(".*/", "", dfOPMi1$Second_Variable.)
-dfOPMi2$First_Variable.  <- gsub(".*/", "", dfOPMi2$First_Variable.)
-dfOPMi2$Second_Variable. <- gsub(".*/", "", dfOPMi2$Second_Variable.)
+dfRPDi1$First_Variable.  <- gsub(".*/", "", dfRPDi1$First_Variable.)
+dfRPDi1$Second_Variable. <- gsub(".*/", "", dfRPDi1$Second_Variable.)
+dfRPDi2$First_Variable.  <- gsub(".*/", "", dfRPDi2$First_Variable.)
+dfRPDi2$Second_Variable. <- gsub(".*/", "", dfRPDi2$Second_Variable.)
 
 # Extract Cramer's V Coefficients
-# FOR to OPM
-df3to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
-df3to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "3" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
-# MNG to OPM
-df4to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "4" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
-df4to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "4" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
-# RPD to OPM
-df6to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "6" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
-df6to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "6" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
-# RBR to OPM
-df7to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "7" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
-df7to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "7" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
-# SHB to OPM
-df8to5i1CRM <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "8" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,6)
-df8to5i2CRM <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "8" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,6)
+# FOR to RPD
+df3to6i1CRM <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "3" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,6)
+df3to6i2CRM <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "3" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,6)
+# MNG to RPD
+df4to6i1CRM <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "4" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,6)
+df4to6i2CRM <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "4" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,6)
+# OPM to RPD
+df5to6i1CRM <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "5" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,6)
+df5to6i2CRM <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "5" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,6)
+# RBR to RPD
+df7to6i1CRM <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "7" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,6)
+df7to6i2CRM <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "7" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,6)
+# SHB to RPD
+df8to6i1CRM <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "8" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,6)
+df8to6i2CRM <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "8" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,6)
 
 # Extract Joint Information Uncertainty Coefficients
-# FOR to OPM
-df3to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "3" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
-df3to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "3" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
-df4to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "4" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
-df4to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "4" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
-df6to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "6" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
-df6to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "6" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
-df7to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "7" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
-df7to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "7" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
-# MNG to OPM
-df8to5i1JIU <- dfOPMi1 %>% filter(dfOPMi1$Transition_From. %in% "8" & dfOPMi1$First_Variable. != "distance_to_5") %>% select(3:4,9)
-df8to5i2JIU <- dfOPMi2 %>% filter(dfOPMi2$Transition_From. %in% "8" & dfOPMi2$First_Variable. != "distance_to_5") %>% select(3:4,9)
+# FOR to RPD
+df3to6i1JIU <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "3" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,9)
+df3to6i2JIU <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "3" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,9)
+# MNG to RPD
+df4to6i1JIU <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "4" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,9)
+df4to6i2JIU <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "4" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,9)
+# OPM to RPD
+df5to6i1JIU <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "5" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,9)
+df5to6i2JIU <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "5" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,9)
+# RBR to RPD
+df7to6i1JIU <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "7" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,9)
+df7to6i2JIU <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "7" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,9)
+# SHB to RPD
+df8to6i1JIU <- dfRPDi1 %>% filter(dfRPDi1$Transition_From. %in% "8" & dfRPDi1$First_Variable. != "distance_to_6") %>% select(3:4,9)
+df8to6i2JIU <- dfRPDi2 %>% filter(dfRPDi2$Transition_From. %in% "8" & dfRPDi2$First_Variable. != "distance_to_6") %>% select(3:4,9)
 
 # Convert Dataframes to Matrices ---------
 
 # Cramer's V Coefficients
-df3to5i1CRM <- acast(df3to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df3to5i2CRM <- acast(df3to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df4to5i1CRM <- acast(df4to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df4to5i2CRM <- acast(df4to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df6to5i1CRM <- acast(df6to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df6to5i2CRM <- acast(df6to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df7to5i1CRM <- acast(df7to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df7to5i2CRM <- acast(df7to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df8to5i1CRM <- acast(df8to5i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
-df8to5i2CRM <- acast(df8to5i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df3to6i1CRM <- acast(df3to6i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df3to6i2CRM <- acast(df3to6i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df4to6i1CRM <- acast(df4to6i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df4to6i2CRM <- acast(df4to6i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df5to6i1CRM <- acast(df5to6i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df5to6i2CRM <- acast(df5to6i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df7to6i1CRM <- acast(df7to6i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df7to6i2CRM <- acast(df7to6i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df8to6i1CRM <- acast(df8to6i1CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
+df8to6i2CRM <- acast(df8to6i2CRM, First_Variable. ~ Second_Variable., value.var="Cramer")
 
 # Joint Information Uncertainty Coefficients
-df3to5i1JIU <- acast(df3to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df3to5i2JIU <- acast(df3to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df4to5i1JIU <- acast(df4to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df4to5i2JIU <- acast(df4to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df6to5i1JIU <- acast(df6to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df6to5i2JIU <- acast(df6to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df7to5i1JIU <- acast(df7to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df7to5i2JIU <- acast(df7to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df8to5i1JIU <- acast(df8to5i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
-df8to5i2JIU <- acast(df8to5i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df3to6i1JIU <- acast(df3to6i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df3to6i2JIU <- acast(df3to6i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df4to6i1JIU <- acast(df4to6i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df4to6i2JIU <- acast(df4to6i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df5to6i1JIU <- acast(df5to6i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df5to6i2JIU <- acast(df5to6i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df7to6i1JIU <- acast(df7to6i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df7to6i2JIU <- acast(df7to6i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df8to6i1JIU <- acast(df8to6i1JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
+df8to6i2JIU <- acast(df8to6i2JIU, First_Variable. ~ Second_Variable., value.var="Joint_Uncertainty")
 
 # Convert NAs to 0, if needed
-#df3to5i1CRM[is.na(df3to5i1CRM)] <- 0
+#df3to6i1CRM[is.na(df3to6i1CRM)] <- 0
 
 # Generate and Save Plots ----------------
 
 # Cramer's V Coefficients
-# FOR to OPM
+# FOR to RPD
 setwd(DirDATA)
-pdf("df3to5i1CRM_ALL.pdf")
+pdf("df3to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i1CRM, border="lightgray",
+plot(df3to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to6i1CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i1CRM_REM.pdf")
+pdf("df3to6i1CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i1CRM, border="lightgray",
+plot(df3to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to6i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i2CRM_ALL.pdf")
+pdf("df3to6i2CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i2CRM, border="lightgray",
+plot(df3to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to6i2CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i2CRM_REM.pdf")
+pdf("df3to6i2CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i2CRM, border="lightgray",
+plot(df3to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df3to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df3to6i2CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# MNG to OPM
+# MNG to RPD
 setwd(DirDATA)
-pdf("df4to5i1CRM_ALL.pdf")
+pdf("df4to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i1CRM, border="lightgray",
+plot(df4to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df4to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df4to6i1CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i1CRM_REM.pdf")
+pdf("df4to6i1CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i1CRM, border="lightgray",
+plot(df4to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df4to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df4to6i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i2CRM_ALL.pdf")
+pdf("df4to6i2CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i2CRM, border="lightgray",
+plot(df4to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df4to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df4to6i2CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i2CRM_REM.pdf")
+pdf("df4to6i2CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i2CRM, border="lightgray",
+plot(df4to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df4to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df4to6i2CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# RPD to OPM
+# OPM to RPD
 setwd(DirDATA)
-pdf("df6to5i1CRM_ALL.pdf")
+pdf("df5to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i1CRM, border="lightgray",
+plot(df5to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df6to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df5to6i1CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i1CRM_REM.pdf")
+pdf("df5to6i1CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i1CRM, border="lightgray",
+plot(df5to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df6to5i1CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df5to6i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i2CRM_ALL.pdf")
+pdf("df5to6i2CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i2CRM, border="lightgray",
+plot(df5to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df6to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df5to6i2CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i2CRM_REM.pdf")
+pdf("df5to6i2CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i2CRM, border="lightgray",
+plot(df5to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df6to5i2CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df5to6i2CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# RBR to OPM
+# RBR to RPD
 setwd(DirDATA)
-pdf("df7to5i1CRM_ALL.pdf")
+pdf("df7to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i1CRM, border="lightgray",
+plot(df7to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df7to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df7to6i1CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i1CRM_REM.pdf")
+pdf("df7to6i1CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i1CRM, border="lightgray",
+plot(df7to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df7to5i1CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df7to6i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i2CRM_ALL.pdf")
+pdf("df7to6i2CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i2CRM, border="lightgray",
+plot(df7to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df7to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df7to6i2CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i2CRM_REM.pdf")
+pdf("df7to6i2CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i2CRM, border="lightgray",
+plot(df7to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df7to5i2CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df7to6i2CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# SHB to OPM
+# SHB to RPD
 setwd(DirDATA)
-pdf("df8to5i1CRM_ALL.pdf")
+pdf("df8to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i1CRM, border="lightgray",
+plot(df8to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df8to5i1CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df8to6i1CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i1CRM_REM.pdf")
+pdf("df8to6i1CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i1CRM, border="lightgray",
+plot(df8to6i1CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df8to5i1CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df8to6i1CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i2CRM_ALL.pdf")
+pdf("df8to6i2CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i2CRM, border="lightgray",
+plot(df8to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's V Coefficients: df8to5i2CRM",
+     xlab='', ylab='', main="Cramer's V Coefficients: df8to6i2CRM",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i2CRM_REM.pdf")
+pdf("df8to6i2CRM_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i2CRM, border="lightgray",
+plot(df8to6i2CRM, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Cramer's Coefficients: df8to5i2CRM",
+     xlab='', ylab='', main="Cramer's Coefficients: df8to6i2CRM",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
 # Joint Information Uncertainty
-# FOR to OPM
+# FOR to RPD
 setwd(DirDATA)
-pdf("df3to5i1JIU_ALL.pdf")
+pdf("df3to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i1JIU, border="lightgray",
+plot(df3to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to6i1JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i1JIU_REM.pdf")
+pdf("df3to6i1JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i1JIU, border="lightgray",
+plot(df3to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to6i1JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i2JIU_ALL.pdf")
+pdf("df3to6i2JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i2JIU, border="lightgray",
+plot(df3to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to6i2JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df3to5i2JIU_REM.pdf")
+pdf("df3to6i2JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df3to5i2JIU, border="lightgray",
+plot(df3to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df3to6i2JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# MNG to OPM
+# MNG to RPD
 setwd(DirDATA)
-pdf("df4to5i1JIU_ALL.pdf")
+pdf("df4to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i1JIU, border="lightgray",
+plot(df4to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to6i1JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i1JIU_REM.pdf")
+pdf("df4to6i1JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i1JIU, border="lightgray",
+plot(df4to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to6i1JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i2JIU_ALL.pdf")
+pdf("df4to6i2JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i2JIU, border="lightgray",
+plot(df4to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to6i2JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df4to5i2JIU_REM.pdf")
+pdf("df4to6i2JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df4to5i2JIU, border="lightgray",
+plot(df4to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df4to6i2JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# RPD to OPM
+# OPM to RPD
 setwd(DirDATA)
-pdf("df6to5i1JIU_ALL.pdf")
+pdf("df5to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i1JIU, border="lightgray",
+plot(df5to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df6to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df5to6i1JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i1JIU_REM.pdf")
+pdf("df5to6i1JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i1JIU, border="lightgray",
+plot(df5to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df6to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df5to6i1JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i2JIU_ALL.pdf")
+pdf("df5to6i2JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i2JIU, border="lightgray",
+plot(df5to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df6to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df5to6i2JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df6to5i2JIU_REM.pdf")
+pdf("df5to6i2JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df6to5i2JIU, border="lightgray",
+plot(df5to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df6to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df5to6i2JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# RBR to OPM
+# RBR to RPD
 setwd(DirDATA)
-pdf("df7to5i1JIU_ALL.pdf")
+pdf("df7to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i1JIU, border="lightgray",
+plot(df7to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to6i1JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i1JIU_REM.pdf")
+pdf("df7to6i1JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i1JIU, border="lightgray",
+plot(df7to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to6i1JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i2JIU_ALL.pdf")
+pdf("df7to6i2JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i2JIU, border="lightgray",
+plot(df7to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to6i2JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df7to5i2JIU_REM.pdf")
+pdf("df7to6i2JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df7to5i2JIU, border="lightgray",
+plot(df7to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df7to6i2JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
 
-# SHB to OPM
+# SHB to RPD
 setwd(DirDATA)
-pdf("df8to5i1JIU_ALL.pdf")
+pdf("df8to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i1JIU, border="lightgray",
+plot(df8to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to6i1JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i1JIU_REM.pdf")
+pdf("df8to6i1JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i1JIU, border="lightgray",
+plot(df8to6i1JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to5i1JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to6i1JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i2JIU_ALL.pdf")
+pdf("df8to6i2JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i2JIU, border="lightgray",
+plot(df8to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to6i2JIU",
      col=viridis, breaks=c(0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
-pdf("df8to5i2JIU_REM.pdf")
+pdf("df8to6i2JIU_REM.pdf")
 par(mar=c(5, 5, 5, 5))
-plot(df8to5i2JIU, border="lightgray",
+plot(df8to6i2JIU, border="lightgray",
      key=list(side=4, cex.axis=0.7), 
      axis.col=list(side=1, cex.axis=0.6, las=2, tcl=-0.3),
      axis.row=list(side=2, cex.axis=0.6, las=2, tcl=-0.3),
-     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to5i2JIU",
+     xlab='', ylab='', main="Joint Information Uncertainty Criterion: df8to6i2JIU",
      col=viridis, breaks=c(0.5,0.6,0.7,0.8,0.9,1.0))
 dev.off()
