@@ -78,6 +78,8 @@ pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
-
+# Save Output Plots ----------------------
+ggsave(pFORtoOPMcon, file="TNI_FORtoOPM_SD_Con.pdf", width=19.89, height=15, units="cm", dpi=300)
+ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=19.89, height=15, units="cm", dpi=300)
 
 
