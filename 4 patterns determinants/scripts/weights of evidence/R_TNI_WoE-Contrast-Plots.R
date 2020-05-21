@@ -21,30 +21,38 @@ DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/
 # Read Data Files ------------------------
 # WoE data for oil palm
 setwd(DirOPMI1)
-dfOPMI1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
-dfOPMI2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Extract Data Subsets -------------------
-# dfFOR <- subset(dfOPMI1, dfOPMI1$Transition_From.=="3")
-dfFOR1 <- dfOPMI1 %>% filter(dfOPMI1$Transition_From. %in% "3")
+
+# Replace character strings
+dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
+dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
+
+# Extract per transition
+#dfFOR1 <- dfOPMI1 %>% filter(dfOPMI1$Transition_From. %in% "3") OK
 
 # Generate Plots -------------------------
 
-# Plot with transition from one source land cover type only
-plotLN <- ggplot() + geom_line(data=dfFOR, aes(x=Range_Lower_Limit., y=Contrast))
-plotLN <- plotLN + facet_wrap(~ Variable., scales="free_x")
-plotPT <- ggplot() + geom_point(data=dfFOR, aes(x=Range_Lower_Limit., y=Contrast))
-plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
-
-
 # Plot with transitions from all source land cover types
-# Contrast values
-pOPMI1con <- ggplot() + geom_line(data=dfOPMI1, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
-pOPMI1con <- pOPMI1con + facet_wrap(~ Variable., scales="free")
-
-pOPMI2con <- ggplot() + geom_line(data=dfOPMI2, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
-pOPMI2con <- pOPMI2con + facet_wrap(~ Variable., scales="free")
+# WoE Contrast values: 1996-2007
+pOPMi1con <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
+pOPMi1con <- pOPMi1con + facet_wrap(~ Variable., scales="free_x")
+pOPMi1con <- pOPMi1con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
+                              subtitle="Time-Interval: 1996-2007", x="Ranges", y="Contrast")
+pOPMi1con <- pOPMi1con + scale_colour_manual(name="Source Land Cover",
+                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
+# WoE Contrast values: 2007-2016
+pOPMi2con <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
+pOPMi2con <- pOPMi2con + facet_wrap(~ Variable., scales="free_x")
+pOPMi2con <- pOPMi2con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
+                              subtitle="Time-Interval: 2007-2016", x="Ranges", y="Contrast")
+pOPMi2con <- pOPMi2con + scale_colour_manual(name="Source Land Cover",
+                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
 
 
 # WoE coefficients
@@ -53,6 +61,17 @@ pOPMI1woe <- pOPMI1woe + facet_wrap(~ Variable., scales="free")
 
 pOPMI2woe <- ggplot() + geom_line(data=dfOPMI2, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
 pOPMI2woe <- pOPMI2woe + facet_wrap(~ Variable., scales="free")
+
+
+# Plot with transition from one source land cover type only
+plotLN <- ggplot() + geom_line(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
+plotLN <- plotLN + facet_wrap(~ Variable., scales="free_x")
+plotPT <- ggplot() + geom_point(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
+plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
+
+
+
+
 
 # Tests
 #plotSet2 <- plotSet2 + labs(title="Observed vs Simulated Map Similarity", 
