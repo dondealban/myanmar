@@ -31,9 +31,6 @@ dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
 dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
 
-# Extract per transition
-#dfFOR1 <- dfOPMI1 %>% filter(dfOPMI1$Transition_From. %in% "3") OK
-
 # Generate Plots -------------------------
 
 # Plot with transitions from all source land cover types
@@ -53,7 +50,6 @@ pOPMi2con <- pOPMi2con + labs(title="Association of Spatial Determinants with Oi
 pOPMi2con <- pOPMi2con + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-
 # WoE Coefficients: 1996-2007
 pOPMi1woe <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
 pOPMi1woe <- pOPMi1woe + facet_wrap(~ Variable., scales="free")
@@ -76,14 +72,3 @@ plotLN <- ggplot() + geom_line(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast
 plotLN <- plotLN + facet_wrap(~ Variable., scales="free_x")
 plotPT <- ggplot() + geom_point(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
 plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
-
-
-
-
-
-# Tests
-#plotSet2 <- plotSet2 + labs(title="Observed vs Simulated Map Similarity", 
-#                            subtitle="Moving 3-year time interval from 1992 to 2015",
-#                            x="Window Size", y="% Similarity (x 100)")
-#plotSet2 <- plotSet2 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
-#plotSet2 <- plotSet2 + theme_light()
