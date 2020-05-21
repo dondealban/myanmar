@@ -38,12 +38,23 @@ dfOPMmerge <- rbind(dfOPMi1, dfOPMi2)
 # Extract Data Subsets -------------------
 # Extract relevant spatial determinants based on literature
 dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
+                               Variable. %in% "Acc15" | Variable. %in% "PDn15" |
                                Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
-                               Variable. %in% "Bio13" | Variable. %in% "Bio14" | Variable. %in% "distance_to_5" |
-                               Variable. %in% "D_Mill" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
-                               Variable. %in% "D_Town" | Variable. %in% "D_Vill" | Variable. %in% "D_Road" |
-                               Variable. %in% "BD000" | Variable. %in% "Cy000" | Variable. %in% "Sd000" |
-                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")  
+                               Variable. %in% "Bio13" | Variable. %in% "Bio14" |
+                               Variable. %in% "distance_to_5" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
+                               Variable. %in% "D_Town" | Variable. %in% "D_Vill" |
+                               Variable. %in% "Cy000" | Variable. %in% "Sd000" | Variable. %in% "BD000" | 
+                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")
+# Excluded spatial determinants
+#                               Variable. %in% "Bio02" | Variable. %in% "Bio03" | Variable. %in% "Bio04" |
+#                               Variable. %in% "Bio05" | Variable. %in% "Bio07" | Variable. %in% "Bio08" |
+#                               Variable. %in% "Bio09" | Variable. %in% "Bio10" | Variable. %in% "Bio11" |
+#                               Variable. %in% "Bio15" | Variable. %in% "Bio16" | Variable. %in% "Bio17" |
+#                               Variable. %in% "Bio18" | Variable. %in% "Bio19" |
+#                               Variable. %in% "S_Txn" | Variable. %in% "Tx000" |
+#                               Variable. %in% "D_Opm1996" | Variable. %in% "D_Opm2007" | Variable. %in% "D_Opm2016" |
+#                               Variable. %in% "D_Mill" | Variable. %in% "Acc00" | Variable. %in% "PDn05" |
+
 
 # Extract per transition
 dfFORtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "3")
@@ -65,6 +76,19 @@ pFORtoOPMwoe <- pFORtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pFORtoOPMwoe <- pFORtoOPMwoe + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
+# MNG to OPM
+
+# WoE contrast values
+pMNGtoOPMcon <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pMNGtoOPMcon <- pMNGtoOPMcon + facet_wrap(~ Variable., scales="free_x")
+pMNGtoOPMcon <- pMNGtoOPMcon + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
+# WoE coefficients
+pMNGtoOPMwoe <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pMNGtoOPMwoe <- pMNGtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+pMNGtoOPMwoe <- pMNGtoOPMwoe + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
 # RBR to OPM
 
 # WoE contrast values
@@ -79,7 +103,13 @@ pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants w
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # Save Output Plots ----------------------
-ggsave(pFORtoOPMcon, file="TNI_FORtoOPM_SD_Con.pdf", width=19.89, height=15, units="cm", dpi=300)
-ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=19.89, height=15, units="cm", dpi=300)
+setwd(DirDATA)
+ggsave(pFORtoOPMcon, file="TNI_FORtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
+ggsave(pMNGtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pMNGtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+
+ggsave(pRBRtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRBRtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
