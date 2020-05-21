@@ -13,8 +13,8 @@
 library(tidyverse)
 
 # Set Working Directories ----------------
-MainDir  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DataDir  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
+DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
+DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
 DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_1996_2007/step03/"
 DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_2007_2016/step03/"
 
