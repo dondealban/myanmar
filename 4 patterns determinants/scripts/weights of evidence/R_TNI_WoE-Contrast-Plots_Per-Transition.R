@@ -59,7 +59,9 @@ dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
 # Extract per transition
 dfFORtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "3")
 dfMNGtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "4")
+dfRPDtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "6")
 dfRBRtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "7")
+dfSHBtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "8")
 
 # Generate Per Transition Plots ----------
 
@@ -89,6 +91,19 @@ pMNGtoOPMwoe <- pMNGtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pMNGtoOPMwoe <- pMNGtoOPMwoe + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
+# RPD to OPM
+
+# WoE contrast values
+pRPDtoOPMcon <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRPDtoOPMcon <- pRPDtoOPMcon + facet_wrap(~ Variable., scales="free_x")
+pRPDtoOPMcon <- pRPDtoOPMcon + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
+# WoE coefficients
+pRPDtoOPMwoe <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRPDtoOPMwoe <- pRPDtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+pRPDtoOPMwoe <- pRPDtoOPMwoe + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
 # RBR to OPM
 
 # WoE contrast values
@@ -102,6 +117,20 @@ pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
+# SHB to OPM
+
+# WoE contrast values
+pSHBtoOPMcon <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pSHBtoOPMcon <- pSHBtoOPMcon + facet_wrap(~ Variable., scales="free_x")
+pSHBtoOPMcon <- pSHBtoOPMcon + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
+# WoE coefficients
+pSHBtoOPMwoe <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pSHBtoOPMwoe <- pSHBtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+pSHBtoOPMwoe <- pSHBtoOPMwoe + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
+
 # Save Output Plots ----------------------
 setwd(DirDATA)
 ggsave(pFORtoOPMcon, file="TNI_FORtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
@@ -110,6 +139,11 @@ ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=30, height=20, units=
 ggsave(pMNGtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pMNGtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
+ggsave(pRPDtoOPMcon, file="TNI_RPDtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRPDtoOPMwoe, file="TNI_RPDtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+
 ggsave(pRBRtoOPMcon, file="TNI_RBRtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pRBRtoOPMwoe, file="TNI_RBRtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
+ggsave(pSHBtoOPMcon, file="TNI_SHBtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pSHBtoOPMwoe, file="TNI_SHBtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
