@@ -47,78 +47,37 @@ dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
 
 # Extract per transition
 dfFORtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "3")
+dfMNGtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "4")
 dfRBRtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "7")
 
-# Generate Plots -------------------------
+# Generate Per Transition Plots ----------
 
-# Plot specific source transitions
 # FOR to OPM
+
 # WoE contrast values
 pFORtoOPMcon <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
 pFORtoOPMcon <- pFORtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-
+pFORtoOPMcon <- pFORtoOPMcon + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
 pFORtoOPMwoe <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pFORtoOPMwoe <- pFORtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-
+pFORtoOPMwoe <- pFORtoOPMwoe + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # RBR to OPM
+
 # WoE contrast values
 pRBRtoOPMcon <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
 pRBRtoOPMcon <- pRBRtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-
+pRBRtoOPMcon <- pRBRtoOPMcon + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
 pRBRtoOPMwoe <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 
-
-
-
-pOPMi1con <- pOPMi1con + facet_wrap(~ Variable., scales="free")
-pOPMi1con <- pOPMi1con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 1996-2007", x="Ranges", y="Contrast")
-pOPMi1con <- pOPMi1con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-
-
-
-
-
-
-
-
-
-# WoE Contrast values: 2007-2016
-pOPMi2con <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
-pOPMi2con <- pOPMi2con + facet_wrap(~ Variable., scales="free")
-pOPMi2con <- pOPMi2con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 2007-2016", x="Ranges", y="Contrast")
-pOPMi2con <- pOPMi2con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-# WoE Coefficients: 1996-2007
-pOPMi1woe <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
-pOPMi1woe <- pOPMi1woe + facet_wrap(~ Variable., scales="free")
-pOPMi1woe <- pOPMi1woe + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 1996-2007", x="Ranges", y="Weights-of-Evidence Coefficients")
-pOPMi1woe <- pOPMi1woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-# WoE Coefficients: 2007-2016
-pOPMi2woe <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
-pOPMi2woe <- pOPMi2woe + facet_wrap(~ Variable., scales="free")
-pOPMi2woe <- pOPMi2woe + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 2007-2016", x="Ranges", y="Weights-of-Evidence Coefficients")
-pOPMi2woe <- pOPMi2woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-
-# Plot with transition from one source land cover type only
-plotLN <- ggplot() + geom_line(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
-plotLN <- plotLN + facet_wrap(~ Variable., scales="free_x")
-plotPT <- ggplot() + geom_point(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
-plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
 
 
