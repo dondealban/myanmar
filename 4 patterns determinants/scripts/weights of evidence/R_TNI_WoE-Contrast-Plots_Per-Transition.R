@@ -25,26 +25,71 @@ dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
 dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
-# Extract Data Subsets -------------------
-
+# Clean Data Files -----------------------
 # Replace character strings
 dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
 dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
+# Add columns to indicate time-intervals
+dfOPMi1$Time.Interval <- rep("1996-2007", nrow(dfOPMi1))
+dfOPMi2$Time.Interval <- rep("2007-2016", nrow(dfOPMi2))
+# Combine dataframes
+dfOPMmerge <- rbind(dfOPMi1, dfOPMi2)
+
+# Extract Data Subsets -------------------
+# Extract relevant spatial determinants based on literature
+dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
+                               Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
+                               Variable. %in% "Bio13" | Variable. %in% "Bio14" | Variable. %in% "distance_to_5" |
+                               Variable. %in% "D_Mill" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
+                               Variable. %in% "D_Town" | Variable. %in% "D_Vill" | Variable. %in% "D_Road" |
+                               Variable. %in% "BD000" | Variable. %in% "Cy000" | Variable. %in% "Sd000" |
+                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")  
 
 # Extract per transition
-#dfFOR1 <- dfOPMI1 %>% filter(dfOPMI1$Transition_From. %in% "3") OK
+dfFORtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "3")
+dfRBRtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "7")
 
 # Generate Plots -------------------------
 
-# Plot with transitions from all source land cover types
-# WoE Contrast values: 1996-2007
-pOPMi1con <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
+# Plot specific source transitions
+# FOR to OPM
+# WoE contrast values
+pFORtoOPMcon <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pFORtoOPMcon <- pFORtoOPMcon + facet_wrap(~ Variable., scales="free_x")
+
+# WoE coefficients
+pFORtoOPMwoe <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pFORtoOPMwoe <- pFORtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+
+
+# RBR to OPM
+# WoE contrast values
+pRBRtoOPMcon <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRBRtoOPMcon <- pRBRtoOPMcon + facet_wrap(~ Variable., scales="free_x")
+
+# WoE coefficients
+pRBRtoOPMwoe <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
+
+
+
+
+
 pOPMi1con <- pOPMi1con + facet_wrap(~ Variable., scales="free")
 pOPMi1con <- pOPMi1con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
                               subtitle="Time-Interval: 1996-2007", x="Ranges", y="Contrast")
 pOPMi1con <- pOPMi1con + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
+
+
+
+
+
+
+
+
+
 # WoE Contrast values: 2007-2016
 pOPMi2con <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
 pOPMi2con <- pOPMi2con + facet_wrap(~ Variable., scales="free")
@@ -77,12 +122,3 @@ plotPT <- ggplot() + geom_point(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contras
 plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
 
 
-
-
-
-# Tests
-#plotSet2 <- plotSet2 + labs(title="Observed vs Simulated Map Similarity", 
-#                            subtitle="Moving 3-year time interval from 1992 to 2015",
-#                            x="Window Size", y="% Similarity (x 100)")
-#plotSet2 <- plotSet2 + scale_colour_manual(values=c("#264d73","#b3cce6"), name="Similarity", labels = c("Maximum","Minimum"))
-#plotSet2 <- plotSet2 + theme_light()
