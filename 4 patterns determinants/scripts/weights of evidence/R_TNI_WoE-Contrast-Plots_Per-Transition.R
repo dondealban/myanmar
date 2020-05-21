@@ -110,6 +110,6 @@ ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=30, height=20, units=
 ggsave(pMNGtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pMNGtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pRBRtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pRBRtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRBRtoOPMcon, file="TNI_RBRtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRBRtoOPMwoe, file="TNI_RBRtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
