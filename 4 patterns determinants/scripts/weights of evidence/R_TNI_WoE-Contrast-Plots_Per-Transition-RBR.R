@@ -19,7 +19,7 @@ DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/
 DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rbr/c_2007_2016/step03/"
 
 # Read Data Files ------------------------
-# WoE data for oil palm
+# WoE data for rubber
 setwd(DirRBRI1)
 dfRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRBRI2)
@@ -37,30 +37,30 @@ dfRBRmerge <- rbind(dfRBRi1, dfRBRi2)
 
 # Extract Data Subsets -------------------
 # Extract relevant spatial determinants based on literature
-dfRBR <- dfRBRmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
-                               Variable. %in% "Acc15" | Variable. %in% "PDn15" |
-                               Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
-                               Variable. %in% "Bio13" | Variable. %in% "Bio14" |
-                               Variable. %in% "distance_to_5" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
-                               Variable. %in% "D_Town" | Variable. %in% "D_Vill" |
-                               Variable. %in% "Cy000" | Variable. %in% "Sd000" | Variable. %in% "BD000" | 
-                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")
+dfRBR <- dfRBRmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" | Variable. %in% "Acc15" | 
+                               Variable. %in% "Bio01" | Variable. %in% "Bio02" | Variable. %in% "Bio04" |
+                               Variable. %in% "Bio08" | Variable. %in% "Bio12" | Variable. %in% "Bio13" | 
+                               Variable. %in% "Bio14" | Variable. %in% "Bio15" | Variable. %in% "Bio16" | 
+                               Variable. %in% "Bio17" | Variable. %in% "Bio18" | Variable. %in% "Bio19" |
+                               Variable. %in% "distance_to_7" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
+                               Variable. %in% "D_Town" | Variable. %in% "D_Vill")
 # Excluded spatial determinants
-#                               Variable. %in% "Bio02" | Variable. %in% "Bio03" | Variable. %in% "Bio04" |
-#                               Variable. %in% "Bio05" | Variable. %in% "Bio07" | Variable. %in% "Bio08" |
-#                               Variable. %in% "Bio09" | Variable. %in% "Bio10" | Variable. %in% "Bio11" |
-#                               Variable. %in% "Bio15" | Variable. %in% "Bio16" | Variable. %in% "Bio17" |
-#                               Variable. %in% "Bio18" | Variable. %in% "Bio19" |
-#                               Variable. %in% "S_Txn" | Variable. %in% "Tx000" |
-#                               Variable. %in% "D_Opm1996" | Variable. %in% "D_Opm2007" | Variable. %in% "D_Opm2016" |
-#                               Variable. %in% "D_Mill" | Variable. %in% "Acc00" | Variable. %in% "PDn05" |
+#                               Variable. %in% "Bio03" | Variable. %in% "Bio05" | Variable. %in% "Bio06" | 
+#                               Variable. %in% "Bio07" | Variable. %in% "Bio09" | Variable. %in% "Bio10" | 
+#                               Variable. %in% "Bio11" |
+#                               Variable. %in% "S_Txn" | Variable. %in% "Tx000" | 
+#                               Variable. %in% "Cy000" | Variable. %in% "Sd000" | Variable. %in% "BD000" | 
+#                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000" |
+#                               Variable. %in% "D_Rbr1996" | Variable. %in% "D_Rbr2007" | Variable. %in% "D_Rbr2016" |
+#                               Variable. %in% "D_Mill" | Variable. %in% "Acc00" | 
+#                               Variable. %in% "PDn05" | Variable. %in% "PDn15" |
 
 
 # Extract per transition
 dfFORtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "3")
 dfMNGtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "4")
+dfOPMtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "5")
 dfRPDtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "6")
-dfRBRtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "7")
 dfSHBtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "8")
 
 # Generate Per Transition Plots ----------
@@ -91,6 +91,19 @@ pMNGtoRBRwoe <- pMNGtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
 pMNGtoRBRwoe <- pMNGtoRBRwoe + labs(title="Association of Spatial Determinants with MNG to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
+# OPM to RBR
+
+# WoE contrast values
+pOPMtoRBRcon <- ggplot() + geom_line(data=dfOPMtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pOPMtoRBRcon <- pOPMtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pOPMtoRBRcon <- pOPMtoRBRcon + labs(title="Association of Spatial Determinants with OPM to RBR Transition",
+                                    x="Ranges", y="Contrast", colour="Time-Interval")
+# WoE coefficients
+pOPMtoRBRwoe <- ggplot() + geom_line(data=dfOPMtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pOPMtoRBRwoe <- pOPMtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pOPMtoRBRwoe <- pOPMtoRBRwoe + labs(title="Association of Spatial Determinants with OPM to RBR Transition",
+                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
 # RPD to RBR
 
 # WoE contrast values
@@ -102,19 +115,6 @@ pRPDtoRBRcon <- pRPDtoRBRcon + labs(title="Association of Spatial Determinants w
 pRPDtoRBRwoe <- ggplot() + geom_line(data=dfRPDtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pRPDtoRBRwoe <- pRPDtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
 pRPDtoRBRwoe <- pRPDtoRBRwoe + labs(title="Association of Spatial Determinants with RPD to RBR Transition",
-                                    x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
-
-# RBR to RBR
-
-# WoE contrast values
-pRBRtoRBRcon <- ggplot() + geom_line(data=dfRBRtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pRBRtoRBRcon <- pRBRtoRBRcon + facet_wrap(~ Variable., scales="free_x")
-pRBRtoRBRcon <- pRBRtoRBRcon + labs(title="Association of Spatial Determinants with RBR to RBR Transition",
-                                    x="Ranges", y="Contrast", colour="Time-Interval")
-# WoE coefficients
-pRBRtoRBRwoe <- ggplot() + geom_line(data=dfRBRtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pRBRtoRBRwoe <- pRBRtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
-pRBRtoRBRwoe <- pRBRtoRBRwoe + labs(title="Association of Spatial Determinants with RBR to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # SHB to RBR
@@ -142,8 +142,8 @@ ggsave(pMNGtoRBRwoe, file="TNI_MNGtoRBR_SD_WoE.pdf", width=30, height=20, units=
 ggsave(pRPDtoRBRcon, file="TNI_RPDtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pRPDtoRBRwoe, file="TNI_RPDtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pRBRtoRBRcon, file="TNI_RBRtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pRBRtoRBRwoe, file="TNI_RBRtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pOPMtoRBRcon, file="TNI_OPMtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pOPMtoRBRwoe, file="TNI_OPMtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
 ggsave(pSHBtoRBRcon, file="TNI_SHBtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pSHBtoRBRwoe, file="TNI_SHBtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
