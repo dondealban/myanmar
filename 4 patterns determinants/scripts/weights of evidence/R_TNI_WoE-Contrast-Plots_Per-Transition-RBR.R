@@ -6,7 +6,7 @@
 # 
 # Script by:      Jose Don T. De Alban
 # Date created:   18 May 2020
-# Date modified:  21 May 2020   
+# Date modified:  22 May 2020   
 
 
 # Load Libraries -------------------------
@@ -15,29 +15,29 @@ library(tidyverse)
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
 DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
-DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_1996_2007/step03/"
-DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/opm/c_2007_2016/step03/"
+DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rbr/c_1996_2007/step03/"
+DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rbr/c_2007_2016/step03/"
 
 # Read Data Files ------------------------
 # WoE data for oil palm
-setwd(DirOPMI1)
-dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
-setwd(DirOPMI2)
-dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRBRI1)
+dfRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRBRI2)
+dfRBRi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Clean Data Files -----------------------
 # Replace character strings
-dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
-dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
+dfRBRi1$Variable. <- gsub(".*/", "", dfRBRi1$Variable.)
+dfRBRi2$Variable. <- gsub(".*/", "", dfRBRi2$Variable.)
 # Add columns to indicate time-intervals
-dfOPMi1$Time.Interval <- rep("1996-2007", nrow(dfOPMi1))
-dfOPMi2$Time.Interval <- rep("2007-2016", nrow(dfOPMi2))
+dfRBRi1$Time.Interval <- rep("1996-2007", nrow(dfRBRi1))
+dfRBRi2$Time.Interval <- rep("2007-2016", nrow(dfRBRi2))
 # Combine dataframes
-dfOPMmerge <- rbind(dfOPMi1, dfOPMi2)
+dfRBRmerge <- rbind(dfRBRi1, dfRBRi2)
 
 # Extract Data Subsets -------------------
 # Extract relevant spatial determinants based on literature
-dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
+dfRBR <- dfRBRmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
                                Variable. %in% "Acc15" | Variable. %in% "PDn15" |
                                Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
                                Variable. %in% "Bio13" | Variable. %in% "Bio14" |
@@ -57,93 +57,93 @@ dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
 
 
 # Extract per transition
-dfFORtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "3")
-dfMNGtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "4")
-dfRPDtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "6")
-dfRBRtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "7")
-dfSHBtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "8")
+dfFORtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "3")
+dfMNGtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "4")
+dfRPDtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "6")
+dfRBRtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "7")
+dfSHBtoRBR <- dfRBR %>% filter(dfRBR$Transition_From. %in% "8")
 
 # Generate Per Transition Plots ----------
 
-# FOR to OPM
+# FOR to RBR
 
 # WoE contrast values
-pFORtoOPMcon <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pFORtoOPMcon <- pFORtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-pFORtoOPMcon <- pFORtoOPMcon + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
+pFORtoRBRcon <- ggplot() + geom_line(data=dfFORtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pFORtoRBRcon <- pFORtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pFORtoRBRcon <- pFORtoRBRcon + labs(title="Association of Spatial Determinants with FOR to RBR Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pFORtoOPMwoe <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pFORtoOPMwoe <- pFORtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-pFORtoOPMwoe <- pFORtoOPMwoe + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
+pFORtoRBRwoe <- ggplot() + geom_line(data=dfFORtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pFORtoRBRwoe <- pFORtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pFORtoRBRwoe <- pFORtoRBRwoe + labs(title="Association of Spatial Determinants with FOR to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
-# MNG to OPM
+# MNG to RBR
 
 # WoE contrast values
-pMNGtoOPMcon <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pMNGtoOPMcon <- pMNGtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-pMNGtoOPMcon <- pMNGtoOPMcon + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
+pMNGtoRBRcon <- ggplot() + geom_line(data=dfMNGtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pMNGtoRBRcon <- pMNGtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pMNGtoRBRcon <- pMNGtoRBRcon + labs(title="Association of Spatial Determinants with MNG to RBR Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pMNGtoOPMwoe <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pMNGtoOPMwoe <- pMNGtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-pMNGtoOPMwoe <- pMNGtoOPMwoe + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
+pMNGtoRBRwoe <- ggplot() + geom_line(data=dfMNGtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pMNGtoRBRwoe <- pMNGtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pMNGtoRBRwoe <- pMNGtoRBRwoe + labs(title="Association of Spatial Determinants with MNG to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
-# RPD to OPM
+# RPD to RBR
 
 # WoE contrast values
-pRPDtoOPMcon <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pRPDtoOPMcon <- pRPDtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-pRPDtoOPMcon <- pRPDtoOPMcon + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
+pRPDtoRBRcon <- ggplot() + geom_line(data=dfRPDtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRPDtoRBRcon <- pRPDtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pRPDtoRBRcon <- pRPDtoRBRcon + labs(title="Association of Spatial Determinants with RPD to RBR Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pRPDtoOPMwoe <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pRPDtoOPMwoe <- pRPDtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-pRPDtoOPMwoe <- pRPDtoOPMwoe + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
+pRPDtoRBRwoe <- ggplot() + geom_line(data=dfRPDtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRPDtoRBRwoe <- pRPDtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pRPDtoRBRwoe <- pRPDtoRBRwoe + labs(title="Association of Spatial Determinants with RPD to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
-# RBR to OPM
+# RBR to RBR
 
 # WoE contrast values
-pRBRtoOPMcon <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pRBRtoOPMcon <- pRBRtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-pRBRtoOPMcon <- pRBRtoOPMcon + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
+pRBRtoRBRcon <- ggplot() + geom_line(data=dfRBRtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRBRtoRBRcon <- pRBRtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pRBRtoRBRcon <- pRBRtoRBRcon + labs(title="Association of Spatial Determinants with RBR to RBR Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pRBRtoOPMwoe <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
+pRBRtoRBRwoe <- ggplot() + geom_line(data=dfRBRtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRBRtoRBRwoe <- pRBRtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pRBRtoRBRwoe <- pRBRtoRBRwoe + labs(title="Association of Spatial Determinants with RBR to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
-# SHB to OPM
+# SHB to RBR
 
 # WoE contrast values
-pSHBtoOPMcon <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
-pSHBtoOPMcon <- pSHBtoOPMcon + facet_wrap(~ Variable., scales="free_x")
-pSHBtoOPMcon <- pSHBtoOPMcon + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
+pSHBtoRBRcon <- ggplot() + geom_line(data=dfSHBtoRBR, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pSHBtoRBRcon <- pSHBtoRBRcon + facet_wrap(~ Variable., scales="free_x")
+pSHBtoRBRcon <- pSHBtoRBRcon + labs(title="Association of Spatial Determinants with SHB to RBR Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pSHBtoOPMwoe <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
-pSHBtoOPMwoe <- pSHBtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
-pSHBtoOPMwoe <- pSHBtoOPMwoe + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
+pSHBtoRBRwoe <- ggplot() + geom_line(data=dfSHBtoRBR, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pSHBtoRBRwoe <- pSHBtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
+pSHBtoRBRwoe <- pSHBtoRBRwoe + labs(title="Association of Spatial Determinants with SHB to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 
 # Save Output Plots ----------------------
 setwd(DirDATA)
-ggsave(pFORtoOPMcon, file="TNI_FORtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pFORtoOPMwoe, file="TNI_FORtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pFORtoRBRcon, file="TNI_FORtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pFORtoRBRwoe, file="TNI_FORtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pMNGtoOPMcon, file="TNI_MNGtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pMNGtoOPMwoe, file="TNI_MNGtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pMNGtoRBRcon, file="TNI_MNGtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pMNGtoRBRwoe, file="TNI_MNGtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pRPDtoOPMcon, file="TNI_RPDtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pRPDtoOPMwoe, file="TNI_RPDtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRPDtoRBRcon, file="TNI_RPDtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRPDtoRBRwoe, file="TNI_RPDtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pRBRtoOPMcon, file="TNI_RBRtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pRBRtoOPMwoe, file="TNI_RBRtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRBRtoRBRcon, file="TNI_RBRtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pRBRtoRBRwoe, file="TNI_RBRtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 
-ggsave(pSHBtoOPMcon, file="TNI_SHBtoOPM_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(pSHBtoOPMwoe, file="TNI_SHBtoOPM_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pSHBtoRBRcon, file="TNI_SHBtoRBR_SD_Con.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(pSHBtoRBRwoe, file="TNI_SHBtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
