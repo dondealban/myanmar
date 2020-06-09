@@ -67,20 +67,13 @@ dfSUB <- dfALL %>% filter(Variable %in% c("distance_to_5","distance_to_6","dista
 
 # Generate Plots -------------------------
 
-# Plot with transitions from all source land cover types
-# WoE Contrast values: 1996-2007
-pOPMi1con <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
-pOPMi1con <- pOPMi1con + facet_wrap(~ Variable., scales="free")
-pOPMi1con <- pOPMi1con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 1996-2007", x="Ranges", y="Contrast")
-pOPMi1con <- pOPMi1con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-# WoE Contrast values: 2007-2016
-pOPMi2con <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Contrast, colour=as.factor(Transition_From.)))
-pOPMi2con <- pOPMi2con + facet_wrap(~ Variable., scales="free")
-pOPMi2con <- pOPMi2con + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 2007-2016", x="Ranges", y="Contrast")
-pOPMi2con <- pOPMi2con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
+# Plot distance to commodity weights per commodity gain transitions for both time-intervals
+plotSUB <- ggplot() + geom_line(data=dfSUB, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotSUB <- plotSUB + facet_grid(TransitionTo ~ TimeInterval, scales="free_x" )
+plotSUB <- plotSUB + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                          x="Distance to Commodity", y="Contrast")
+plotSUB <- plotSUB + scale_colour_manual(name="Source Land Cover",
+                                         values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                         labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+
+
