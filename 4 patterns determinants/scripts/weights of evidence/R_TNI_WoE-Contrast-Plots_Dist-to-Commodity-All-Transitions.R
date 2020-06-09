@@ -37,7 +37,7 @@ dfRPDi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRPDI2)
 dfRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
-# Extract Data Subsets -------------------
+# Clean and Extract Data Subsets ---------
 
 # Replace character strings
 dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
@@ -46,6 +46,24 @@ dfRBRi1$Variable. <- gsub(".*/", "", dfRBRi1$Variable.)
 dfRBRi2$Variable. <- gsub(".*/", "", dfRBRi2$Variable.)
 dfRPDi1$Variable. <- gsub(".*/", "", dfRPDi1$Variable.)
 dfRPDi2$Variable. <- gsub(".*/", "", dfRPDi2$Variable.)
+# Combine dataframes per time-interval
+dfI1 <- rbind(dfOPMi1, dfRPDi1, dfRBRi1)
+dfI2 <- rbind(dfOPMi2, dfRPDi2, dfRBRi2)
+#Add column for time-intervals
+colT1 <- rep("1996-2007", nrow(dfI1))
+colT2 <- rep("2007-2016", nrow(dfI2))
+# Add time-interval column for dataframes
+dfALLi1 <- cbind(dfI1, colT1)
+dfALLi2 <- cbind(dfI2, colT2)
+# Rename column names
+names <- c("TransitionFrom","TransitionTo","Variable","RangeLowerLimit","RangeUpperLimit",
+          "PossibleTransitions","ExecutedTransitions","WeightCoefficient","Contrast","Significant","X","TimeInterval")
+colnames(dfALLi1) <- c(names)
+colnames(dfALLi2) <- c(names)
+# Combine all dataframes into one omnibus dataframe
+dfALL <- rbind(dfALLi1, dfALLi2)
+# Extract data subset (distance to commodity variables)
+dfSUB <- dfALL %>% filter(Variable %in% c("distance_to_5","distance_to_6","distance_to_7"))
 
 # Generate Plots -------------------------
 
