@@ -42,6 +42,10 @@ dfRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 # Replace character strings
 dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
 dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
+dfRBRi1$Variable. <- gsub(".*/", "", dfRBRi1$Variable.)
+dfRBRi2$Variable. <- gsub(".*/", "", dfRBRi2$Variable.)
+dfRPDi1$Variable. <- gsub(".*/", "", dfRPDi1$Variable.)
+dfRPDi2$Variable. <- gsub(".*/", "", dfRPDi2$Variable.)
 
 # Generate Plots -------------------------
 
