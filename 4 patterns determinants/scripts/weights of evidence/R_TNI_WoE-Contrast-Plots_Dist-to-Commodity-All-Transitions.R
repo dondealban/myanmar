@@ -28,6 +28,14 @@ setwd(DirOPMI1)
 dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
 dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRBRI1)
+dfRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRBRI2)
+dfRBRi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRPDI1)
+dfRPDi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRPDI2)
+dfRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Extract Data Subsets -------------------
 
