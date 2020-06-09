@@ -84,25 +84,3 @@ pOPMi2con <- pOPMi2con + labs(title="Association of Spatial Determinants with Oi
 pOPMi2con <- pOPMi2con + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-# WoE Coefficients: 1996-2007
-pOPMi1woe <- ggplot() + geom_line(data=dfOPMi1, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
-pOPMi1woe <- pOPMi1woe + facet_wrap(~ Variable., scales="free")
-pOPMi1woe <- pOPMi1woe + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 1996-2007", x="Ranges", y="Weights-of-Evidence Coefficients")
-pOPMi1woe <- pOPMi1woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-# WoE Coefficients: 2007-2016
-pOPMi2woe <- ggplot() + geom_line(data=dfOPMi2, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
-pOPMi2woe <- pOPMi2woe + facet_wrap(~ Variable., scales="free")
-pOPMi2woe <- pOPMi2woe + labs(title="Association of Spatial Determinants with Oil Palm Gain Transitions",
-                              subtitle="Time-Interval: 2007-2016", x="Ranges", y="Weights-of-Evidence Coefficients")
-pOPMi2woe <- pOPMi2woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
-                                             labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
-
-# Plot with transition from one source land cover type only
-plotLN <- ggplot() + geom_line(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
-plotLN <- plotLN + facet_wrap(~ Variable., scales="free_x")
-plotPT <- ggplot() + geom_point(data=dfFOR1, aes(x=Range_Lower_Limit., y=Contrast))
-plotPT <- plotPT + facet_wrap(~ Variable., scales="free_x")
