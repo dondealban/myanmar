@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/"
+DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/plots/"
 DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/opm/c_1996_2007/step03/"
 DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/opm/c_2007_2016/step03/"
 
@@ -38,14 +38,33 @@ dfOPMmerge <- rbind(dfOPMi1, dfOPMi2)
 # Extract Data Subsets -------------------
 # Extract relevant spatial determinants based on literature
 dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
-                               Variable. %in% "Acc15" | Variable. %in% "PDn15" |
-                               Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
-                               Variable. %in% "Bio13" | Variable. %in% "Bio14" |
-                               Variable. %in% "distance_to_5" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
+                               Variable. %in% "Acc00" | Variable. %in% "Acc15" |
+                               Variable. %in% "PDn05" | Variable. %in% "PDn15" |
+                               Variable. %in% "Bio01" | Variable. %in% "Bio02" | Variable. %in% "Bio03" | 
+                               Variable. %in% "Bio04" | Variable. %in% "Bio05" | Variable. %in% "Bio06" | 
+                               Variable. %in% "Bio07" | Variable. %in% "Bio08" | Variable. %in% "Bio09" |
+                               Variable. %in% "Bio10" | Variable. %in% "Bio11" | Variable. %in% "Bio12" |
+                               Variable. %in% "Bio13" | Variable. %in% "Bio14" | Variable. %in% "Bio15" | 
+                               Variable. %in% "Bio16" | Variable. %in% "Bio17" | Variable. %in% "Bio18" | 
+                               Variable. %in% "Bio19" | 
+                               Variable. %in% "distance_to_5" | Variable. %in% "D_Mill" |
+                               Variable. %in% "D_Opm1996" | Variable. %in% "D_Opm2007" |
+                               Variable. %in% "D_River" | Variable. %in% "D_Road" |
                                Variable. %in% "D_Town" | Variable. %in% "D_Vill" |
+                               Variable. %in% "Tx000" |
                                Variable. %in% "Cy000" | Variable. %in% "Sd000" | Variable. %in% "BD000" | 
                                Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")
+
 # Excluded spatial determinants
+# dfOPM <- dfOPMmerge %>% filter(Variable. %in% "Elev" | Variable. %in% "Slope" |
+#                               Variable. %in% "Acc15" | Variable. %in% "PDn15" |
+#                               Variable. %in% "Bio01" | Variable. %in% "Bio06" | Variable. %in% "Bio12" |
+#                               Variable. %in% "Bio13" | Variable. %in% "Bio14" |
+#                               Variable. %in% "distance_to_5" | Variable. %in% "D_River" | Variable. %in% "D_Road" |
+#                               Variable. %in% "D_Town" | Variable. %in% "D_Vill" |
+#                               Variable. %in% "Cy000" | Variable. %in% "Sd000" | Variable. %in% "BD000" | 
+#                               Variable. %in% "OC000" | Variable. %in% "PH000" | Variable. %in% "WC000")
+
 #                               Variable. %in% "Bio02" | Variable. %in% "Bio03" | Variable. %in% "Bio04" |
 #                               Variable. %in% "Bio05" | Variable. %in% "Bio07" | Variable. %in% "Bio08" |
 #                               Variable. %in% "Bio09" | Variable. %in% "Bio10" | Variable. %in% "Bio11" |
@@ -66,66 +85,71 @@ dfSHBtoOPM <- dfOPM %>% filter(dfOPM$Transition_From. %in% "8")
 # Generate Per Transition Plots ----------
 
 # FOR to OPM
-
 # WoE contrast values
-pFORtoOPMcon <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pFORtoOPMcon <- ggplot() + geom_point(data=dfFORtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
+pFORtoOPMcon <- pFORtoOPMcon + geom_line(data=dfFORtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
 pFORtoOPMcon <- pFORtoOPMcon + facet_wrap(~ Variable., scales="free_x")
 pFORtoOPMcon <- pFORtoOPMcon + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pFORtoOPMwoe <- ggplot() + geom_line(data=dfFORtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pFORtoOPMwoe <- ggplot() + geom_point(data=dfFORtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pFORtoOPMwoe <- pFORtoOPMwoe + geom_line(data=dfFORtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pFORtoOPMwoe <- pFORtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pFORtoOPMwoe <- pFORtoOPMwoe + labs(title="Association of Spatial Determinants with FOR to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # MNG to OPM
-
 # WoE contrast values
-pMNGtoOPMcon <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pMNGtoOPMcon <- ggplot() + geom_point(data=dfMNGtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
+pMNGtoOPMcon <- pMNGtoOPMcon + geom_line(data=dfMNGtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
 pMNGtoOPMcon <- pMNGtoOPMcon + facet_wrap(~ Variable., scales="free_x")
 pMNGtoOPMcon <- pMNGtoOPMcon + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pMNGtoOPMwoe <- ggplot() + geom_line(data=dfMNGtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pMNGtoOPMwoe <- ggplot() + geom_point(data=dfMNGtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pMNGtoOPMwoe <- pMNGtoOPMwoe + geom_line(data=dfMNGtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pMNGtoOPMwoe <- pMNGtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pMNGtoOPMwoe <- pMNGtoOPMwoe + labs(title="Association of Spatial Determinants with MNG to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # RPD to OPM
-
 # WoE contrast values
-pRPDtoOPMcon <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRPDtoOPMcon <- ggplot() + geom_point(data=dfRPDtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
+pRPDtoOPMcon <- pRPDtoOPMcon + geom_line(data=dfRPDtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
 pRPDtoOPMcon <- pRPDtoOPMcon + facet_wrap(~ Variable., scales="free_x")
 pRPDtoOPMcon <- pRPDtoOPMcon + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pRPDtoOPMwoe <- ggplot() + geom_line(data=dfRPDtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRPDtoOPMwoe <- ggplot() + geom_point(data=dfRPDtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRPDtoOPMwoe <- pRPDtoOPMwoe + geom_line(data=dfRPDtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pRPDtoOPMwoe <- pRPDtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pRPDtoOPMwoe <- pRPDtoOPMwoe + labs(title="Association of Spatial Determinants with RPD to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # RBR to OPM
-
 # WoE contrast values
-pRBRtoOPMcon <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pRBRtoOPMcon <- ggplot() + geom_point(data=dfRBRtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
+pRBRtoOPMcon <- pRBRtoOPMcon + geom_line(data=dfRBRtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
 pRBRtoOPMcon <- pRBRtoOPMcon + facet_wrap(~ Variable., scales="free_x")
 pRBRtoOPMcon <- pRBRtoOPMcon + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pRBRtoOPMwoe <- ggplot() + geom_line(data=dfRBRtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRBRtoOPMwoe <- ggplot() + geom_point(data=dfRBRtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pRBRtoOPMwoe <- pRBRtoOPMwoe + geom_line(data=dfRBRtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pRBRtoOPMwoe <- pRBRtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pRBRtoOPMwoe <- pRBRtoOPMwoe + labs(title="Association of Spatial Determinants with RBR to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
 
 # SHB to OPM
-
 # WoE contrast values
-pSHBtoOPMcon <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Contrast, colour=Time.Interval))
+pSHBtoOPMcon <- ggplot() + geom_point(data=dfSHBtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
+pSHBtoOPMcon <- pSHBtoOPMcon + geom_line(data=dfSHBtoOPM, aes(x=Range_Upper_Limit., y=Contrast, colour=Time.Interval))
 pSHBtoOPMcon <- pSHBtoOPMcon + facet_wrap(~ Variable., scales="free_x")
 pSHBtoOPMcon <- pSHBtoOPMcon + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
                                     x="Ranges", y="Contrast", colour="Time-Interval")
 # WoE coefficients
-pSHBtoOPMwoe <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Lower_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pSHBtoOPMwoe <- ggplot() + geom_point(data=dfSHBtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
+pSHBtoOPMwoe <- pSHBtoOPMwoe + geom_line(data=dfSHBtoOPM, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=Time.Interval))
 pSHBtoOPMwoe <- pSHBtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pSHBtoOPMwoe <- pSHBtoOPMwoe + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
