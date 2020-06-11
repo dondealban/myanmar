@@ -67,3 +67,9 @@ pOPMi2woe <- pOPMi2woe + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
 
+# Save Output Plots ----------------------
+setwd(DirDATA)
+ggsave(pOPMi1con, file="TNI_AllTransitions_SD_OPM_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pOPMi2con, file="TNI_AllTransitions_SD_OPM_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pOPMi1woe, file="TNI_AllTransitions_SD_OPM_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pOPMi2woe, file="TNI_AllTransitions_SD_OPM_I2_WoE.pdf", width=40, height=30, units="cm", dpi=300)
