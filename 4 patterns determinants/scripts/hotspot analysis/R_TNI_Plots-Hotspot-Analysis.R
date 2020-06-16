@@ -56,9 +56,7 @@ csvOPMtoRPDi2 <- read.csv(file="Hotspot_I2_OPm_to_RPD_3km.csv", header=TRUE, sep
 csvRBRtoRPDi2 <- read.csv(file="Hotspot_I2_RBR_to_RPD_3km.csv", header=TRUE, sep=",")
 csvSHBtoRPDi2 <- read.csv(file="Hotspot_I2_SHB_to_RPD_3km.csv", header=TRUE, sep=",")
 
-
-# Data Wrangling -------------------------
-
+# Data Wrangling [Oil Palm] --------------
 # Insert column for source land cover types for OPM gain transitions
 Source <- rep("FOR", nrow(csvFORtoOPMi1))   # Time-interval: 1996-2007
 dfFORtoOPMi1 <- cbind(csvFORtoOPMi1, Source)
@@ -95,6 +93,82 @@ dfOPMi2 <- cbind(dfOPMi2, Time_Interval)
 dfOPM <- rbind(dfOPMi1, dfOPMi2)
 GridCount <- rep(1, nrow(dfOPM))
 dfOPMall <- cbind(dfOPM, GridCount)
+
+# Data Wrangling [Rubber] ----------------
+# Insert column for source land cover types for RBR gain transitions
+Source <- rep("FOR", nrow(csvFORtoRBRi1))   # Time-interval: 1996-2007
+dfFORtoRBRi1 <- cbind(csvFORtoRBRi1, Source)
+Source <- rep("MNG", nrow(csvMNGtoRBRi1))
+dfMNGtoRBRi1 <- cbind(csvMNGtoRBRi1, Source)
+Source <- rep("OPM", nrow(csvOPMtoRBRi1))
+dfOPMtoRBRi1 <- cbind(csvOPMtoRBRi1, Source)
+Source <- rep("RPD", nrow(csvRPDtoRBRi1))
+dfRPDtoRBRi1 <- cbind(csvRPDtoRBRi1, Source)
+Source <- rep("SHB", nrow(csvSHBtoRBRi1))
+dfSHBtoRBRi1 <- cbind(csvSHBtoRBRi1, Source)
+Source <- rep("FOR", nrow(csvFORtoRBRi2))   # Time-interval: 1996-2007
+dfFORtoRBRi2 <- cbind(csvFORtoRBRi2, Source)
+Source <- rep("MNG", nrow(csvMNGtoRBRi2))
+dfMNGtoRBRi2 <- cbind(csvMNGtoRBRi2, Source)
+Source <- rep("OPM", nrow(csvOPMtoRBRi2))
+dfOPMtoRBRi2 <- cbind(csvOPMtoRBRi2, Source)
+Source <- rep("RPD", nrow(csvRPDtoRBRi2))
+dfRPDtoRBRi2 <- cbind(csvRPDtoRBRi2, Source)
+Source <- rep("SHB", nrow(csvSHBtoRBRi2))
+dfSHBtoRBRi2 <- cbind(csvSHBtoRBRi2, Source)
+
+# Combine dataframes per time-interval
+dfRBRi1 <- rbind(dfFORtoRBRi1, dfMNGtoRBRi1, dfOPMtoRBRi1, dfRPDtoRBRi1, dfSHBtoRBRi1)
+dfRBRi2 <- rbind(dfFORtoRBRi2, dfMNGtoRBRi2, dfOPMtoRBRi2, dfRPDtoRBRi2, dfSHBtoRBRi2)
+
+# Insert column for time-intervals
+Time_Interval <- rep("1996-2007", nrow(dfRBRi1))
+dfRBRi1 <- cbind(dfRBRi1, Time_Interval)
+Time_Interval <- rep("2007-2016", nrow(dfRBRi2))
+dfRBRi2 <- cbind(dfRBRi2, Time_Interval)
+
+# Combine dataframes for OPM gain transitions
+dfRBR <- rbind(dfRBRi1, dfRBRi2)
+GridCount <- rep(1, nrow(dfRBR))
+dfRBRall <- cbind(dfRBR, GridCount)
+
+# Data Wrangling [Rice Paddy] ------------
+# Insert column for source land cover types for RPD gain transitions
+Source <- rep("FOR", nrow(csvFORtoRPDi1))   # Time-interval: 1996-2007
+dfFORtoRPDi1 <- cbind(csvFORtoRPDi1, Source)
+Source <- rep("MNG", nrow(csvMNGtoRPDi1))
+dfMNGtoRPDi1 <- cbind(csvMNGtoRPDi1, Source)
+Source <- rep("OPM", nrow(csvOPMtoRPDi1))
+dfOPMtoRPDi1 <- cbind(csvOPMtoRPDi1, Source)
+Source <- rep("RBR", nrow(csvRBRtoRPDi1))
+dfRBRtoRPDi1 <- cbind(csvRBRtoRPDi1, Source)
+Source <- rep("SHB", nrow(csvSHBtoRPDi1))
+dfSHBtoRPDi1 <- cbind(csvSHBtoRPDi1, Source)
+Source <- rep("FOR", nrow(csvFORtoRPDi2))   # Time-interval: 1996-2007
+dfFORtoRPDi2 <- cbind(csvFORtoRPDi2, Source)
+Source <- rep("MNG", nrow(csvMNGtoRPDi2))
+dfMNGtoRPDi2 <- cbind(csvMNGtoRPDi2, Source)
+Source <- rep("OPM", nrow(csvOPMtoRPDi2))
+dfOPMtoRPDi2 <- cbind(csvOPMtoRPDi2, Source)
+Source <- rep("RBR", nrow(csvRBRtoRPDi2))
+dfRBRtoRPDi2 <- cbind(csvRBRtoRPDi2, Source)
+Source <- rep("SHB", nrow(csvSHBtoRPDi2))
+dfSHBtoRPDi2 <- cbind(csvSHBtoRPDi2, Source)
+
+# Combine dataframes per time-interval
+dfRPDi1 <- rbind(dfFORtoRPDi1, dfMNGtoRPDi1, dfOPMtoRPDi1, dfRBRtoRPDi1, dfSHBtoRPDi1)
+dfRPDi2 <- rbind(dfFORtoRPDi2, dfMNGtoRPDi2, dfOPMtoRPDi2, dfRBRtoRPDi2, dfSHBtoRPDi2)
+
+# Insert column for time-intervals
+Time_Interval <- rep("1996-2007", nrow(dfRPDi1))
+dfRPDi1 <- cbind(dfRPDi1, Time_Interval)
+Time_Interval <- rep("2007-2016", nrow(dfRPDi2))
+dfRPDi2 <- cbind(dfRPDi2, Time_Interval)
+
+# Combine dataframes for OPM gain transitions
+dfRPD <- rbind(dfRPDi1, dfRPDi2)
+GridCount <- rep(1, nrow(dfRPD))
+dfRPDall <- cbind(dfRPD, GridCount)
 
 # Generate Plots -------------------------
 
