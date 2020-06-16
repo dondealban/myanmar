@@ -73,9 +73,14 @@ dfOPMall <- cbind(dfOPM, GridCount)
 
 # Generate Plots -------------------------
 
-#plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, y=GridCount, fill=Gi_Bin))
+plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotOPM <- plotOPM + facet_grid(~Time_Interval)
+plotOPM <- plotOPM + labs(title="Hotspots/Coldspots of Oil Palm Gain Transitions",
+                          x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotOPM <- plotOPM + scale_fill_manual(name="Gi Bin",
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
-plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, fill=as.factor(Gi_Bin)))
 
 
 
