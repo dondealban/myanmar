@@ -31,6 +31,31 @@ csvMNGtoOPMi2 <- read.csv(file="Hotspot_I2_MNG_to_OPM_3km.csv", header=TRUE, sep
 csvRPDtoOPMi2 <- read.csv(file="Hotspot_I2_RPD_to_OPM_3km.csv", header=TRUE, sep=",")
 csvRBRtoOPMi2 <- read.csv(file="Hotspot_I2_RBR_to_OPM_3km.csv", header=TRUE, sep=",")
 csvSHBtoOPMi2 <- read.csv(file="Hotspot_I2_SHB_to_OPM_3km.csv", header=TRUE, sep=",")
+# Getis-Ord gi statistics data for hotspots of rubber gain transitions
+setwd(DirRBR)
+csvFORtoRBRi1 <- read.csv(file="Hotspot_I1_FOR_to_RBR_3km.csv", header=TRUE, sep=",")
+csvMNGtoRBRi1 <- read.csv(file="Hotspot_I1_MNG_to_RBR_3km.csv", header=TRUE, sep=",")
+csvOPMtoRBRi1 <- read.csv(file="Hotspot_I1_OPM_to_RBR_3km.csv", header=TRUE, sep=",")
+csvRPDtoRBRi1 <- read.csv(file="Hotspot_I1_RPD_to_RBR_3km.csv", header=TRUE, sep=",")
+csvSHBtoRBRi1 <- read.csv(file="Hotspot_I1_SHB_to_RBR_3km.csv", header=TRUE, sep=",")
+csvFORtoRBRi2 <- read.csv(file="Hotspot_I2_FOR_to_RBR_3km.csv", header=TRUE, sep=",")
+csvMNGtoRBRi2 <- read.csv(file="Hotspot_I2_MNG_to_RBR_3km.csv", header=TRUE, sep=",")
+csvOPMtoRBRi2 <- read.csv(file="Hotspot_I2_OPm_to_RBR_3km.csv", header=TRUE, sep=",")
+csvRPDtoRBRi2 <- read.csv(file="Hotspot_I2_RPD_to_RBR_3km.csv", header=TRUE, sep=",")
+csvSHBtoRBRi2 <- read.csv(file="Hotspot_I2_SHB_to_RBR_3km.csv", header=TRUE, sep=",")
+# Getis-Ord gi statistics data for hotspots of rice paddy gain transitions
+setwd(DirRPD)
+csvFORtoRPDi1 <- read.csv(file="Hotspot_I1_FOR_to_RPD_3km.csv", header=TRUE, sep=",")
+csvMNGtoRPDi1 <- read.csv(file="Hotspot_I1_MNG_to_RPD_3km.csv", header=TRUE, sep=",")
+csvOPMtoRPDi1 <- read.csv(file="Hotspot_I1_OPM_to_RPD_3km.csv", header=TRUE, sep=",")
+csvRBRtoRPDi1 <- read.csv(file="Hotspot_I1_RBr_to_RPD_3km.csv", header=TRUE, sep=",")
+csvSHBtoRPDi1 <- read.csv(file="Hotspot_I1_SHB_to_RPD_3km.csv", header=TRUE, sep=",")
+csvFORtoRPDi2 <- read.csv(file="Hotspot_I2_FOR_to_RPD_3km.csv", header=TRUE, sep=",")
+csvMNGtoRPDi2 <- read.csv(file="Hotspot_I2_MNG_to_RPD_3km.csv", header=TRUE, sep=",")
+csvOPMtoRPDi2 <- read.csv(file="Hotspot_I2_OPm_to_RPD_3km.csv", header=TRUE, sep=",")
+csvRBRtoRPDi2 <- read.csv(file="Hotspot_I2_RBR_to_RPD_3km.csv", header=TRUE, sep=",")
+csvSHBtoRPDi2 <- read.csv(file="Hotspot_I2_SHB_to_RPD_3km.csv", header=TRUE, sep=",")
+
 
 # Data Wrangling -------------------------
 
