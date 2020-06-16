@@ -73,8 +73,9 @@ dfOPMall <- cbind(dfOPM, GridCount)
 
 # Generate Plots -------------------------
 
-plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, y=GridCount, fill=Gi_Bin))
+#plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, y=GridCount, fill=Gi_Bin))
 
+plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, fill=as.factor(Gi_Bin)))
 
 
 
