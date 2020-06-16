@@ -170,6 +170,18 @@ dfRPD <- rbind(dfRPDi1, dfRPDi2)
 GridCount <- rep(1, nrow(dfRPD))
 dfRPDall <- cbind(dfRPD, GridCount)
 
+# Combine All Dataframes -----------------
+# Insert column for commodity type
+Commodity <- rep("OPM", nrow(dfOPMall))
+dfOPMall <- cbind(dfOPMall, Commodity)
+Commodity <- rep("RBR", nrow(dfRBRall))
+dfRBRall <- cbind(dfRBRall, Commodity)
+Commodity <- rep("RPD", nrow(dfRPDall))
+dfRPDall <- cbind(dfRPDall, Commodity)
+
+# Combine all dataframe per commodities into omnibus dataframe
+dfALL <- rbind(dfOPMall, dfRBRall, dfRPDall)
+
 # Generate Plots -------------------------
 
 # Oil palm transitions; regional scale
@@ -199,9 +211,23 @@ plotRPD <- plotRPD + scale_fill_manual(name="Gi Bin",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
+# Gain transitions for all commodities; regional scale
+plotALL <- ggplot() + geom_bar(data=dfALL, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotALL <- plotALL + facet_grid(Commodity ~ Time_Interval, scales="free_x")
+plotALL <- plotALL + labs(title="Hotspots/Coldspots of Agricultural Commodity Gain Transitions",
+                          subtitle="Tanintharyi Region, Myanmar", 
+                          x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotALL <- plotALL + scale_fill_manual(name="Gi Bin",
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+
+
 # Save Output Plots ----------------------
 setwd(DirDATA)
 ggsave(plotOPM, file="TNI_HotspotAnalysis_OPMGain.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(plotRBR, file="TNI_HotspotAnalysis_RBRGain.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, units="cm", dpi=300)
+
+ggsave(plotALL, file="TNI_HotspotAnalysis_AllCommodities.pdf", width=30, height=20, units="cm", dpi=300)
 
