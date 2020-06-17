@@ -39,9 +39,9 @@ impRPDi1 <- dfRPDi1 %>% filter(Contrast >= 0)
 impRPDi2 <- dfRPDi2 %>% filter(Contrast >= 0)
 # Create new column with concatenated data from three columns
 impRPDi1$VariableLimits <- trimws(paste(impRPDi1$Variable.,"_",
-                                        impRPDi1$Range_Upper_Limit.,"_",impRPDi1$Range_Upper_Limit.), which=c("both"))
+                                        impRPDi1$Range_Lower_Limit.,"_",impRPDi1$Range_Upper_Limit.), which=c("both"))
 impRPDi2$VariableLimits <- trimws(paste(impRPDi2$Variable.,"_",
-                                        impRPDi2$Range_Upper_Limit.,"_",impRPDi2$Range_Upper_Limit.), which=c("both"))
+                                        impRPDi2$Range_Lower_Limit.,"_",impRPDi2$Range_Upper_Limit.), which=c("both"))
 # Select top 5 variables per gain transition
 imp5RPDi1 <- impRPDi1 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
 imp5RPDi2 <- impRPDi2 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
@@ -84,15 +84,17 @@ pRPDi2woe <- pRPDi2woe + scale_colour_manual(name="Source Land Cover",
 
 # Relative importance of spatial determinants based on WoE Contrast
 # WoE Contrast values: 1996-2007
-#pRPDi1imp <- ggplot() + geom_bar(data=impRPDi1, aes(x=Variable., fill=(Contrast)), position="dodge")
-#pRPDi1imp <- pRPDi1imp + facet_grid(~Transition_From.)
-
 pRPDi1imp <- ggplot() + geom_col(data=imp5RPDi1, aes(x=VariableLimits, y=Contrast), position="dodge")
 pRPDi1imp <- pRPDi1imp + coord_flip()
 pRPDi1imp <- pRPDi1imp + facet_grid(rows=vars(Transition_From.), scales="free")
-
-
-
+pRPDi1imp <- pRPDi1imp + labs(title="Top 5 Spatial Determinants for Rice Paddy Gain Transitions",
+                              subtitle="Time-Interval: 1996-2007", x="Variables [Lower-Upper Range Limits]", y="Contrast")
+# WoE Contrast values: 2007-2016
+pRPDi2imp <- ggplot() + geom_col(data=imp5RPDi2, aes(x=VariableLimits, y=Contrast), position="dodge")
+pRPDi2imp <- pRPDi2imp + coord_flip()
+pRPDi2imp <- pRPDi2imp + facet_grid(rows=vars(Transition_From.), scales="free")
+pRPDi2imp <- pRPDi2imp + labs(title="Top 5 Spatial Determinants for Rice Paddy Gain Transitions",
+                              subtitle="Time-Interval: 2007-2016", x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
 # Save Output Plots ----------------------
 setwd(DirDATA)
@@ -100,3 +102,5 @@ ggsave(pRPDi1con, file="TNI_AllTransitions_SD_RPD_I1_Con.pdf", width=40, height=
 ggsave(pRPDi2con, file="TNI_AllTransitions_SD_RPD_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRPDi1woe, file="TNI_AllTransitions_SD_RPD_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRPDi2woe, file="TNI_AllTransitions_SD_RPD_I2_WoE.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pRPDi1imp, file="TNI_AllTransitions_SD_RPD_I1_Imp.pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(pRPDi2imp, file="TNI_AllTransitions_SD_RPD_I2_Imp.pdf", width=20, height=25, units="cm", dpi=300)
