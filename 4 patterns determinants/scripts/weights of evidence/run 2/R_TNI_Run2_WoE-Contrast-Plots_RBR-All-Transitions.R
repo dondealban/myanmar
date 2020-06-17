@@ -72,7 +72,7 @@ pRBRi2woe <- pRBRi2woe + scale_colour_manual(name="Source Land Cover",
 
 # Save Output Plots ----------------------
 setwd(DirDATA)
-ggsave(pOPMi1con, file="TNI_AllTransitions_SD_OPM_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
-ggsave(pOPMi2con, file="TNI_AllTransitions_SD_OPM_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
-ggsave(pOPMi1woe, file="TNI_AllTransitions_SD_OPM_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
-ggsave(pOPMi2woe, file="TNI_AllTransitions_SD_OPM_I2_WoE.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pRBRi1con, file="TNI_AllTransitions_SD_RBR_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pRBRi2con, file="TNI_AllTransitions_SD_RBR_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pRBRi1woe, file="TNI_AllTransitions_SD_RBR_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pRBRi2woe, file="TNI_AllTransitions_SD_RBR_I2_WoE.pdf", width=40, height=30, units="cm", dpi=300)
