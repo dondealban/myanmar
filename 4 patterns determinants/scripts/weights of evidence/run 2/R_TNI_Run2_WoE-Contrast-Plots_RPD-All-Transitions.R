@@ -34,6 +34,18 @@ csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
 dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
 dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0))
 
+# Construct dataframes for relative importance plots
+impRPDi1 <- dfRPDi1 %>% filter(Contrast >= 0)
+impRPDi2 <- dfRPDi2 %>% filter(Contrast >= 0)
+# Create new column with concatenated data from three columns
+impRPDi1$VariableLimits <- trimws(paste(impRPDi1$Variable.,"_",
+                                        impRPDi1$Range_Upper_Limit.,"_",impRPDi1$Range_Upper_Limit.), which=c("both"))
+impRPDi2$VariableLimits <- trimws(paste(impRPDi2$Variable.,"_",
+                                        impRPDi2$Range_Upper_Limit.,"_",impRPDi2$Range_Upper_Limit.), which=c("both"))
+# Select top 5 variables per gain transition
+imp5RPDi1 <- impRPDi1 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
+imp5RPDi2 <- impRPDi2 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
+
 # Generate Plots -------------------------
 
 # Plot with transitions from all source land cover types
@@ -69,6 +81,18 @@ pRPDi2woe <- pRPDi2woe + labs(title="Association of Spatial Determinants with Ri
 pRPDi2woe <- pRPDi2woe + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#ff8000","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Oil Palm","Rubber","Shrub/Orchard"))
+
+# Relative importance of spatial determinants based on WoE Contrast
+# WoE Contrast values: 1996-2007
+#pRPDi1imp <- ggplot() + geom_bar(data=impRPDi1, aes(x=Variable., fill=(Contrast)), position="dodge")
+#pRPDi1imp <- pRPDi1imp + facet_grid(~Transition_From.)
+
+pRPDi1imp <- ggplot() + geom_col(data=imp5RPDi1, aes(x=VariableLimits, y=Contrast), position="dodge")
+pRPDi1imp <- pRPDi1imp + coord_flip()
+pRPDi1imp <- pRPDi1imp + facet_grid(rows=vars(Transition_From.), scales="free")
+
+
+
 
 # Save Output Plots ----------------------
 setwd(DirDATA)
