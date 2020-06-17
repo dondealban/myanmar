@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<script>
+    <property key="dff.charset" value="UTF-8" />
+    <property key="dff.date" value="2020-Jun-16 16:54:59" />
+    <property key="dff.version" value="4.22.11.20191030-Beta" />
+    <functor name="CalcDistanceMap">
+        <property key="dff.functor.alias" value="calcDistanceMap2796" />
+        <property key="dff.functor.comment" value="Calculate distance to class." />
+        <inputport name="categoricalMap" peerid="v2" />
+        <inputport name="categories">[ 7 ]</inputport>
+        <inputport name="cellType">.int32</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="truncateDistance">.no</inputport>
+        <outputport name="distance" id="v1" />
+    </functor>
+    <functor name="SaveWeights">
+        <property key="dff.functor.alias" value="saveWeights2800" />
+        <property key="dff.functor.comment" value="Save the Weights of Evidence ranges." />
+        <inputport name="weights" peerid="v5" />
+        <inputport name="filename">&quot;tni_skeleton.dcf&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap484" />
+        <property key="dff.functor.comment" value="Initial landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2007_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v2" />
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap485" />
+        <property key="dff.functor.comment" value="Final landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2016_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v3" />
+    </functor>
+    <functor name="LoadMap">
+        <property key="dff.functor.alias" value="loadMap486" />
+        <property key="dff.functor.comment" value="Static variable map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/stack/TNI_STACK_FULL_RUN2_RBR_150px_wND.tif&quot;</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v4" />
+    </functor>
+    <functor name="SaveTable">
+        <property key="dff.functor.alias" value="saveTable496" />
+        <property key="dff.functor.comment" value="Save the Weights of Evidence ranges." />
+        <inputport name="table" peerid="v5" />
+        <inputport name="filename">&quot;tni_skeleton.csv&quot;</inputport>
+        <inputport name="suffixDigits">2</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <containerfunctor name="DetermineWeightsOfEvidenceRanges">
+        <property key="dff.container.collapsed" value="no" />
+        <property key="dff.functor.alias" value="determineWeightsOfEvidenceRanges2797" />
+        <property key="dff.functor.comment" value="Calculate the Weights of Evidence ranges." />
+        <inputport name="initialLandscape" peerid="v2" />
+        <inputport name="finalLandscape" peerid="v3" />
+        <inputport name="skeleton">[&#x0A;    3-&gt;7 [&#x0A;        &quot;distance/distance_to_7&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Acc15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/BD000&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio01&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio02&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio03&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio04&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio05&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio06&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio07&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio08&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio09&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio10&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio11&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio12&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio13&quot; 50 500000 10 5,&#x0A;        &quot;static_var/Bio14&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio15&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio16&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio17&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio18&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio19&quot; 10 500000 10 5,&#x0A;        &quot;static_var/Cy000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/D_ComF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_DefoI2&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_KBA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_OPC&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_PA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Rbr2007&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_ResF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_River&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Road&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Town&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Vill&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Elev&quot; 10 500000 10 5,&#x0A;        &quot;static_var/OC000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/PDn15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/PH000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Sd000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Slope&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Tx000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/WC000&quot; 1 500000 10 5&#x0A;    ],&#x0A;    4-&gt;7 [&#x0A;        &quot;distance/distance_to_7&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Acc15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/BD000&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio01&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio02&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio03&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio04&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio05&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio06&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio07&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio08&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio09&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio10&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio11&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio12&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio13&quot; 50 500000 10 5,&#x0A;        &quot;static_var/Bio14&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio15&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio16&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio17&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio18&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio19&quot; 10 500000 10 5,&#x0A;        &quot;static_var/Cy000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/D_ComF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_DefoI2&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_KBA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_OPC&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_PA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Rbr2007&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_ResF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_River&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Road&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Town&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Vill&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Elev&quot; 10 500000 10 5,&#x0A;        &quot;static_var/OC000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/PDn15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/PH000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Sd000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Slope&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Tx000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/WC000&quot; 1 500000 10 5&#x0A;    ],&#x0A;    5-&gt;7 [&#x0A;        &quot;distance/distance_to_7&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Acc15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/BD000&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio01&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio02&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio03&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio04&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio05&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio06&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio07&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio08&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio09&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio10&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio11&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio12&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio13&quot; 50 500000 10 5,&#x0A;        &quot;static_var/Bio14&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio15&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio16&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio17&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio18&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio19&quot; 10 500000 10 5,&#x0A;        &quot;static_var/Cy000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/D_ComF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_DefoI2&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_KBA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_OPC&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_PA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Rbr2007&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_ResF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_River&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Road&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Town&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Vill&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Elev&quot; 10 500000 10 5,&#x0A;        &quot;static_var/OC000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/PDn15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/PH000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Sd000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Slope&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Tx000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/WC000&quot; 1 500000 10 5&#x0A;    ],&#x0A;    6-&gt;7 [&#x0A;        &quot;distance/distance_to_7&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Acc15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/BD000&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio01&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio02&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio03&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio04&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio05&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio06&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio07&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio08&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio09&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio10&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio11&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio12&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio13&quot; 50 500000 10 5,&#x0A;        &quot;static_var/Bio14&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio15&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio16&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio17&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio18&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio19&quot; 10 500000 10 5,&#x0A;        &quot;static_var/Cy000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/D_ComF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_DefoI2&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_KBA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_OPC&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_PA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Rbr2007&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_ResF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_River&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Road&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Town&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Vill&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Elev&quot; 10 500000 10 5,&#x0A;        &quot;static_var/OC000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/PDn15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/PH000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Sd000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Slope&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Tx000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/WC000&quot; 1 500000 10 5&#x0A;    ],&#x0A;    8-&gt;7 [&#x0A;        &quot;distance/distance_to_7&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Acc15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/BD000&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio01&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio02&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio03&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio04&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio05&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio06&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio07&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio08&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio09&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio10&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio11&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio12&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio13&quot; 50 500000 10 5,&#x0A;        &quot;static_var/Bio14&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio15&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio16&quot; 100 500000 10 5,&#x0A;        &quot;static_var/Bio17&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio18&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Bio19&quot; 10 500000 10 5,&#x0A;        &quot;static_var/Cy000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/D_ComF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_DefoI2&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_KBA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_OPC&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_PA&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Rbr2007&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_ResF&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_River&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Road&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Town&quot; 500 500000 10 5,&#x0A;        &quot;static_var/D_Vill&quot; 500 500000 10 5,&#x0A;        &quot;static_var/Elev&quot; 10 500000 10 5,&#x0A;        &quot;static_var/OC000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/PDn15&quot; 10 500000 10 5,&#x0A;        &quot;static_var/PH000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Sd000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/Slope&quot; 5 500000 10 5,&#x0A;        &quot;static_var/Tx000&quot; 1 500000 10 5,&#x0A;        &quot;static_var/WC000&quot; 1 500000 10 5&#x0A;    ]&#x0A;]</inputport>
+        <inputport name="fixAbnormalWeights">.yes</inputport>
+        <outputport name="ranges" id="v5" />
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2798" />
+            <inputport name="map" peerid="v1" />
+            <inputport name="mapName">&quot;distance&quot;</inputport>
+        </functor>
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2799" />
+            <inputport name="map" peerid="v4" />
+            <inputport name="mapName">&quot;static_var&quot;</inputport>
+        </functor>
+    </containerfunctor>
+</script>

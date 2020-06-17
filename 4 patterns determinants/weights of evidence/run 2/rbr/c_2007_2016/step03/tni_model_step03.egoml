@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<script>
+    <property key="dff.charset" value="UTF-8" />
+    <property key="dff.date" value="2020-Jun-16 11:58:19" />
+    <property key="dff.version" value="4.22.11.20191030-Beta" />
+    <functor name="CalcDistanceMap">
+        <property key="dff.functor.alias" value="calcDistanceMap2796" />
+        <property key="dff.functor.comment" value="Calculate distance to class." />
+        <inputport name="categoricalMap" peerid="v3" />
+        <inputport name="categories">[ 7 ]</inputport>
+        <inputport name="cellType">.int32</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="truncateDistance">.no</inputport>
+        <outputport name="distance" id="v1" />
+    </functor>
+    <functor name="SaveWeights">
+        <property key="dff.functor.alias" value="saveWeights2800" />
+        <property key="dff.functor.comment" value="Save the Weights of Evidence coefficients." />
+        <inputport name="weights" peerid="v6" />
+        <inputport name="filename">&quot;tni_weights.dcf&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <functor name="LoadWeights">
+        <property key="dff.functor.alias" value="loadWeights2843" />
+        <property key="dff.functor.comment" value="Weights of Evidence ranges." />
+        <inputport name="filename">&quot;../step02/tni_skeleton.dcf&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="weights" id="v2" />
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap491" />
+        <property key="dff.functor.comment" value="Initial landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2007_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v3" />
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap492" />
+        <property key="dff.functor.comment" value="Final landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2016_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v4" />
+    </functor>
+    <functor name="LoadMap">
+        <property key="dff.functor.alias" value="loadMap493" />
+        <property key="dff.functor.comment" value="Static variable map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/stack/TNI_STACK_FULL_RUN2_RBR_150px_wND.tif&quot;</inputport>
+        <inputport name="nullValue">-99999</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v5" />
+    </functor>
+    <functor name="SaveTable">
+        <property key="dff.functor.alias" value="saveTable506" />
+        <property key="dff.functor.comment" value="Save the Weights of Evidence coefficients." />
+        <inputport name="table" peerid="v7" />
+        <inputport name="filename">&quot;tni_weights.csv&quot;</inputport>
+        <inputport name="suffixDigits">2</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <containerfunctor name="DetermineWeightsOfEvidenceCoefficients">
+        <property key="dff.container.collapsed" value="no" />
+        <property key="dff.functor.alias" value="determineWeightsOfEvidenceCoefficients2844" />
+        <property key="dff.functor.comment" value="Calculate the Weights of Evidence coefficients." />
+        <property key="viewer.report" value="yes" />
+        <inputport name="initialLandscape" peerid="v3" />
+        <inputport name="finalLandscape" peerid="v4" />
+        <inputport name="ranges" peerid="v2" />
+        <inputport name="fixAbnormalWeights">.yes</inputport>
+        <outputport name="weights" id="v6" />
+        <outputport name="report" id="v7" />
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2845" />
+            <inputport name="map" peerid="v1" />
+            <inputport name="mapName">&quot;distance&quot;</inputport>
+        </functor>
+        <functor name="NameMap">
+            <property key="dff.functor.alias" value="nameMap2846" />
+            <inputport name="map" peerid="v5" />
+            <inputport name="mapName">&quot;static_var&quot;</inputport>
+        </functor>
+    </containerfunctor>
+</script>
