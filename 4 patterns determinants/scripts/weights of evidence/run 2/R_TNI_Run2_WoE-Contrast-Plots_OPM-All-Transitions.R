@@ -21,15 +21,18 @@ DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/
 # Read Data Files ------------------------
 # WoE data for oil palm
 setwd(DirOPMI1)
-dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
-dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Extract Data Subsets -------------------
 
 # Replace character strings
-dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
-dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
+csvOPMi1$Variable. <- gsub(".*/", "", csvOPMi1$Variable.)
+csvOPMi2$Variable. <- gsub(".*/", "", csvOPMi2$Variable.)
+# Remove rows in dataframes that satisfy conditions
+dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
+dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
 
 # Generate Plots -------------------------
 
