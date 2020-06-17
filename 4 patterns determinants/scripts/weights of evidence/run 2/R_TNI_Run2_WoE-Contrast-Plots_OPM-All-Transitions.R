@@ -34,6 +34,18 @@ csvOPMi2$Variable. <- gsub(".*/", "", csvOPMi2$Variable.)
 dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
 dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
 
+# Construct dataframes for relative importance plots
+impOPMi1 <- dfOPMi1 %>% filter(Contrast >= 0)
+impOPMi2 <- dfOPMi2 %>% filter(Contrast >= 0)
+# Create new column with concatenated data from three columns
+impOPMi1$VariableLimits <- trimws(paste(impOPMi1$Variable.,"_",
+                                        impOPMi1$Range_Lower_Limit.,"_",impOPMi1$Range_Upper_Limit.), which=c("both"))
+impOPMi2$VariableLimits <- trimws(paste(impOPMi2$Variable.,"_",
+                                        impOPMi2$Range_Lower_Limit.,"_",impOPMi2$Range_Upper_Limit.), which=c("both"))
+# Select top 5 variables per gain transition
+imp5OPMi1 <- impOPMi1 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
+imp5OPMi2 <- impOPMi2 %>% arrange(desc(Contrast)) %>% group_by(Transition_From.) %>% slice(1:5)
+
 # Generate Plots -------------------------
 
 # Plot with transitions from all source land cover types
@@ -70,9 +82,25 @@ pOPMi2woe <- pOPMi2woe + scale_colour_manual(name="Source Land Cover",
                                              values=c("#246a24","#6666ff","#a65400","#ff00ff","#ccff66"),
                                              labels=c("Forest","Mangrove","Rice Paddy","Rubber","Shrub/Orchard"))
 
+# Relative importance of spatial determinants based on WoE Contrast
+# WoE Contrast values: 1996-2007
+pOPMi1imp <- ggplot() + geom_col(data=imp5OPMi1, aes(x=VariableLimits, y=Contrast), position="dodge")
+pOPMi1imp <- pOPMi1imp + coord_flip()
+pOPMi1imp <- pOPMi1imp + facet_grid(rows=vars(Transition_From.), scales="free")
+pOPMi1imp <- pOPMi1imp + labs(title="Top 5 Spatial Determinants for Oil Palm Gain Transitions",
+                              subtitle="Time-Interval: 1996-2007", x="Variables [Lower-Upper Range Limits]", y="Contrast")
+# WoE Contrast values: 2007-2016
+pOPMi2imp <- ggplot() + geom_col(data=imp5OPMi2, aes(x=VariableLimits, y=Contrast), position="dodge")
+pOPMi2imp <- pOPMi2imp + coord_flip()
+pOPMi2imp <- pOPMi2imp + facet_grid(rows=vars(Transition_From.), scales="free")
+pOPMi2imp <- pOPMi2imp + labs(title="Top 5 Spatial Determinants for Oil Palm Gain Transitions",
+                              subtitle="Time-Interval: 2007-2016", x="Variables [Lower-Upper Range Limits]", y="Contrast")
+
 # Save Output Plots ----------------------
 setwd(DirDATA)
 ggsave(pOPMi1con, file="TNI_AllTransitions_SD_OPM_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pOPMi2con, file="TNI_AllTransitions_SD_OPM_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pOPMi1woe, file="TNI_AllTransitions_SD_OPM_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pOPMi2woe, file="TNI_AllTransitions_SD_OPM_I2_WoE.pdf", width=40, height=30, units="cm", dpi=300)
+ggsave(pOPMi1imp, file="TNI_AllTransitions_SD_OPM_I1_Imp.pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(pOPMi2imp, file="TNI_AllTransitions_SD_OPM_I2_Imp.pdf", width=20, height=25, units="cm", dpi=300)
