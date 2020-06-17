@@ -6,7 +6,7 @@
 # 
 # Script by:      Jose Don T. De Alban
 # Date created:   18 May 2020
-# Date modified:  11 Jun 2020   
+# Date modified:  17 Jun 2020   
 
 
 # Load Libraries -------------------------
@@ -14,9 +14,9 @@ library(tidyverse)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/plots/"
-DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/opm/c_1996_2007/step03/"
-DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 1/opm/c_2007_2016/step03/"
+DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/opm/c_1996_2007/step03/"
+DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/opm/c_2007_2016/step03/"
 
 # Read Data Files ------------------------
 # WoE data for oil palm
