@@ -40,35 +40,35 @@ dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0))
 # WoE Contrast values: 1996-2007
 pRPDi1con <- ggplot() + geom_line(data=dfRPDi1, aes(x=Range_Upper_Limit., y=Contrast, colour=as.factor(Transition_From.)))
 pRPDi1con <- pRPDi1con + facet_wrap(~ Variable., scales="free")
-pRPDi1con <- pRPDi1con + labs(title="Association of Spatial Determinants with Rubber Gain Transitions",
+pRPDi1con <- pRPDi1con + labs(title="Association of Spatial Determinants with Rice Paddy Gain Transitions",
                               subtitle="Time-Interval: 1996-2007", x="Ranges", y="Contrast")
 pRPDi1con <- pRPDi1con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#ff8000","#a65400","#ccff66"),
-                                             labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Shrub/Orchard"))
+                                             values=c("#246a24","#6666ff","#ff8000","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Oil Palm","Rubber","Shrub/Orchard"))
 # WoE Contrast values: 2007-2016
 pRPDi2con <- ggplot() + geom_line(data=dfRPDi2, aes(x=Range_Upper_Limit., y=Contrast, colour=as.factor(Transition_From.)))
 pRPDi2con <- pRPDi2con + facet_wrap(~ Variable., scales="free")
-pRPDi2con <- pRPDi2con + labs(title="Association of Spatial Determinants with Rubber Gain Transitions",
+pRPDi2con <- pRPDi2con + labs(title="Association of Spatial Determinants with Rice Paddy Gain Transitions",
                               subtitle="Time-Interval: 2007-2016", x="Ranges", y="Contrast")
 pRPDi2con <- pRPDi2con + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#ff8000","#a65400","#ccff66"),
-                                             labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Shrub/Orchard"))
+                                             values=c("#246a24","#6666ff","#ff8000","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Oil Palm","Rubber","Shrub/Orchard"))
 # WoE Coefficients: 1996-2007
 pRPDi1woe <- ggplot() + geom_line(data=dfRPDi1, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
 pRPDi1woe <- pRPDi1woe + facet_wrap(~ Variable., scales="free")
-pRPDi1woe <- pRPDi1woe + labs(title="Association of Spatial Determinants with Rubber Gain Transitions",
+pRPDi1woe <- pRPDi1woe + labs(title="Association of Spatial Determinants with Rice Paddy Gain Transitions",
                               subtitle="Time-Interval: 1996-2007", x="Ranges", y="Weights-of-Evidence Coefficients")
 pRPDi1woe <- pRPDi1woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#ff8000","#a65400","#ccff66"),
-                                             labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Shrub/Orchard"))
+                                             values=c("#246a24","#6666ff","#ff8000","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Oil Palm","Rubber","Shrub/Orchard"))
 # WoE Coefficients: 2007-2016
 pRPDi2woe <- ggplot() + geom_line(data=dfRPDi2, aes(x=Range_Upper_Limit., y=Weight_Coefficient, colour=as.factor(Transition_From.)))
 pRPDi2woe <- pRPDi2woe + facet_wrap(~ Variable., scales="free")
-pRPDi2woe <- pRPDi2woe + labs(title="Association of Spatial Determinants with Rubber Gain Transitions",
+pRPDi2woe <- pRPDi2woe + labs(title="Association of Spatial Determinants with Rice Paddy Gain Transitions",
                               subtitle="Time-Interval: 2007-2016", x="Ranges", y="Weights-of-Evidence Coefficients")
 pRPDi2woe <- pRPDi2woe + scale_colour_manual(name="Source Land Cover",
-                                             values=c("#246a24","#6666ff","#ff8000","#a65400","#ccff66"),
-                                             labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Shrub/Orchard"))
+                                             values=c("#246a24","#6666ff","#ff8000","#ff00ff","#ccff66"),
+                                             labels=c("Forest","Mangrove","Oil Palm","Rubber","Shrub/Orchard"))
 
 # Save Output Plots ----------------------
 setwd(DirDATA)
