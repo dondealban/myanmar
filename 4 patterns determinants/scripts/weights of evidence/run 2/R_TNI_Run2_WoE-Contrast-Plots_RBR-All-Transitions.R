@@ -5,8 +5,8 @@
 # Region, Myanmar.
 # 
 # Script by:      Jose Don T. De Alban
-# Date created:   18 May 2020
-# Date modified:  17 Jun 2020   
+# Date created:   17 Jun 2020
+# Date modified:     
 
 
 # Load Libraries -------------------------
@@ -15,24 +15,24 @@ library(tidyverse)
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
 DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
-DirOPMI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/opm/c_1996_2007/step03/"
-DirOPMI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/opm/c_2007_2016/step03/"
+DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_1996_2007/step03/"
+DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_2007_2016/step03/"
 
 # Read Data Files ------------------------
-# WoE data for oil palm
-setwd(DirOPMI1)
-csvOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
-setwd(DirOPMI2)
-csvOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+# WoE data for rubber
+setwd(DirRBRI1)
+csvRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+setwd(DirRBRI2)
+csvRBRi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Extract Data Subsets -------------------
 
 # Replace character strings
-csvOPMi1$Variable. <- gsub(".*/", "", csvOPMi1$Variable.)
-csvOPMi2$Variable. <- gsub(".*/", "", csvOPMi2$Variable.)
+csvRBRi1$Variable. <- gsub(".*/", "", csvRBRi1$Variable.)
+csvRBRi2$Variable. <- gsub(".*/", "", csvRBRi2$Variable.)
 # Remove rows in dataframes that satisfy conditions
-dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
-dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
+dfRBRi1 <- csvRBRi1 %>% filter(!(Significant == 0))
+dfRBRi2 <- csvRBRi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
 
 # Generate Plots -------------------------
 
