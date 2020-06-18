@@ -82,8 +82,9 @@ colnames(dfALLi1) <- c(names)
 colnames(dfALLi2) <- c(names)
 # Combine all dataframes into one omnibus dataframe
 dfALL <- rbind(dfALLi1, dfALLi2)
-# Extract data subset (distance to commodity variables)
-dfSUB <- dfALL %>% filter(Variable %in% c("distance_to_5","distance_to_6","distance_to_7"))
+# Extract data subset (distance to various instruments, including previously deforested areas)
+dfINST <- dfALL %>% filter(Variable %in% c("D_ComF","D_KBA","D_OPC","D_PA","D_ResF"))
+dfDEFO <- dfALL %>% filter(Variable %in% c("D_DefoI1","D_defoI2"))
 
 # Generate Plots -------------------------
 
