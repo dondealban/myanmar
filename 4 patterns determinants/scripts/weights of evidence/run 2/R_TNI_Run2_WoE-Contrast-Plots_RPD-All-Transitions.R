@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirPLOT  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
 DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_1996_2007/step03/"
 DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_2007_2016/step03/"
 
@@ -97,7 +97,7 @@ pRPDi2imp <- pRPDi2imp + labs(title="Top 5 Spatial Determinants for Rice Paddy G
                               subtitle="Time-Interval: 2007-2016", x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
 # Save Output Plots ----------------------
-setwd(DirDATA)
+setwd(DirPLOT)
 ggsave(pRPDi1con, file="TNI_AllTransitions_SD_RPD_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRPDi2con, file="TNI_AllTransitions_SD_RPD_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRPDi1woe, file="TNI_AllTransitions_SD_RPD_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)

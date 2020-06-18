@@ -14,7 +14,7 @@ library(tidyverse)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirPLOT  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
 DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_1996_2007/step03/"
 DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_2007_2016/step03/"
 
@@ -97,7 +97,7 @@ pRBRi2imp <- pRBRi2imp + labs(title="Top 5 Spatial Determinants for Rubber Gain 
                               subtitle="Time-Interval: 2007-2016", x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
 # Save Output Plots ----------------------
-setwd(DirDATA)
+setwd(DirPLOT)
 ggsave(pRBRi1con, file="TNI_AllTransitions_SD_RBR_I1_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRBRi2con, file="TNI_AllTransitions_SD_RBR_I2_Con.pdf", width=40, height=30, units="cm", dpi=300)
 ggsave(pRBRi1woe, file="TNI_AllTransitions_SD_RBR_I1_WoE.pdf", width=40, height=30, units="cm", dpi=300)
