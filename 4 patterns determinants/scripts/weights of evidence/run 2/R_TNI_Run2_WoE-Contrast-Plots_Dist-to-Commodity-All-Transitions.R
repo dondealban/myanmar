@@ -48,7 +48,7 @@ csvRPDi1$Variable. <- gsub(".*/", "", csvRPDi1$Variable.)
 csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
 # Remove rows in dataframes that satisfy conditions
 dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
-dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0))
+dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
 dfRBRi1 <- csvRBRi1 %>% filter(!(Significant == 0))
 dfRBRi2 <- csvRBRi2 %>% filter(!(Significant == 0))
 dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
