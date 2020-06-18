@@ -91,7 +91,16 @@ dfPA   <- dfALL %>% filter(Variable %in% c("D_PA"))
 dfRESF <- dfALL %>% filter(Variable %in% c("D_ResF"))
 dfDEFO <- dfALL %>% filter(Variable %in% c("D_DefoI1","D_DefoI2"))
 
+# Extract data subset (distance to various instruments within 30km range upper limit)
+dfCOMF_30km <- dfALL %>% filter(Variable %in% c("D_ComF") & RangeUpperLimit <= 30000)
+dfKBA_30km  <- dfALL %>% filter(Variable %in% c("D_KBA") & RangeUpperLimit <= 30000)
+dfOPC_30km  <- dfALL %>% filter(Variable %in% c("D_OPC") & RangeUpperLimit <= 30000)
+dfPA_30km   <- dfALL %>% filter(Variable %in% c("D_PA") & RangeUpperLimit <= 30000)
+dfRESF_30km <- dfALL %>% filter(Variable %in% c("D_ResF") & RangeUpperLimit <= 30000)
+
 # Generate Plots -------------------------
+
+# Plots for full upper limit ranges
 
 # Plot distance to Community Forests per commodity gain transitions for both time-intervals
 plotCOMF <- ggplot() + geom_line(data=dfCOMF, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
@@ -101,7 +110,6 @@ plotCOMF <- plotCOMF + labs(title="Weights-of-Evidence (Contrast) of Commodity G
 plotCOMF <- plotCOMF + scale_colour_manual(name="Source Land Cover",
                                            values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                            labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
-
 # Plot distance to Key Biodiversity Areas per commodity gain transitions for both time-intervals
 plotKBA <- ggplot() + geom_line(data=dfKBA, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotKBA <- plotKBA + facet_grid(Commodity ~ TimeInterval)
@@ -110,7 +118,6 @@ plotKBA <- plotKBA + labs(title="Weights-of-Evidence (Contrast) of Commodity Gai
 plotKBA <- plotKBA + scale_colour_manual(name="Source Land Cover",
                                          values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                          labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
-
 # Plot distance to Oil Palm Concessions per commodity gain transitions for both time-intervals
 plotOPC <- ggplot() + geom_line(data=dfOPC, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotOPC <- plotOPC + facet_grid(Commodity ~ TimeInterval)
@@ -119,8 +126,6 @@ plotOPC <- plotOPC + labs(title="Weights-of-Evidence (Contrast) of Commodity Gai
 plotOPC <- plotOPC + scale_colour_manual(name="Source Land Cover",
                                          values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                          labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
-
-
 # Plot distance to Protected Areas per commodity gain transitions for both time-intervals
 plotPA <- ggplot() + geom_line(data=dfPA, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotPA <- plotPA + facet_grid(Commodity ~ TimeInterval)
@@ -129,7 +134,6 @@ plotPA <- plotPA + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain 
 plotPA <- plotPA + scale_colour_manual(name="Source Land Cover",
                                        values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                        labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
-
 # Plot distance to Reserved Forests per commodity gain transitions for both time-intervals
 plotRESF <- ggplot() + geom_line(data=dfRESF, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotRESF <- plotRESF + facet_grid(Commodity ~ TimeInterval)
@@ -138,7 +142,6 @@ plotRESF <- plotRESF + labs(title="Weights-of-Evidence (Contrast) of Commodity G
 plotRESF <- plotRESF + scale_colour_manual(name="Source Land Cover",
                                            values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                            labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
-
 # Plot distance to previously deforested areas per commodity gain transitions for both time-intervals
 plotDEFO <- ggplot() + geom_line(data=dfDEFO, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotDEFO <- plotDEFO + facet_grid(Commodity ~ TimeInterval)
@@ -148,6 +151,48 @@ plotDEFO <- plotDEFO + scale_colour_manual(name="Source Land Cover",
                                            values=c("#ff8000","#a65400","#ff00ff","#ccff66"),
                                            labels=c("Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
 
+# Plots for upper limit ranges within 30km
+
+# Plot distance to Community Forests per commodity gain transitions for both time-intervals
+plotCOMF_30km <- ggplot() + geom_line(data=dfCOMF_30km, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotCOMF_30km <- plotCOMF_30km + facet_grid(Commodity ~ TimeInterval)
+plotCOMF_30km <- plotCOMF_30km + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                                      subtitle="Distance to Community Forest Areas", x="Distance (meters)", y="Contrast")
+plotCOMF_30km <- plotCOMF_30km + scale_colour_manual(name="Source Land Cover",
+                                           values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                           labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+# Plot distance to Key Biodiversity Areas per commodity gain transitions for both time-intervals
+plotKBA_30km <- ggplot() + geom_line(data=dfKBA_30km, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotKBA_30km <- plotKBA_30km + facet_grid(Commodity ~ TimeInterval)
+plotKBA_30km <- plotKBA_30km + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                                    subtitle="Distance to Key Biodiversity Areas", x="Distance (meters)", y="Contrast")
+plotKBA_30km <- plotKBA_30km + scale_colour_manual(name="Source Land Cover",
+                                         values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                         labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+# Plot distance to Oil Palm Concessions per commodity gain transitions for both time-intervals
+plotOPC_30km <- ggplot() + geom_line(data=dfOPC_30km, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotOPC_30km <- plotOPC_30km + facet_grid(Commodity ~ TimeInterval)
+plotOPC_30km <- plotOPC_30km + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                                    subtitle="Distance to Oil Palm Concessions", x="Distance (meters)", y="Contrast")
+plotOPC_30km <- plotOPC_30km + scale_colour_manual(name="Source Land Cover",
+                                         values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                         labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+# Plot distance to Protected Areas per commodity gain transitions for both time-intervals
+plotPA_30km <- ggplot() + geom_line(data=dfPA_30km, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotPA_30km <- plotPA_30km + facet_grid(Commodity ~ TimeInterval)
+plotPA_30km <- plotPA_30km + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                                  subtitle="Distance to Protected Areas", x="Distance (meters)", y="Contrast")
+plotPA_30km <- plotPA_30km + scale_colour_manual(name="Source Land Cover",
+                                       values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                       labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+# Plot distance to Reserved Forests per commodity gain transitions for both time-intervals
+plotRESF_30km <- ggplot() + geom_line(data=dfRESF_30km, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotRESF_30km <- plotRESF_30km + facet_grid(Commodity ~ TimeInterval)
+plotRESF_30km <- plotRESF_30km + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                                      subtitle="Distance to Reserved Forest Areas", x="Distance (meters)", y="Contrast")
+plotRESF_30km <- plotRESF_30km + scale_colour_manual(name="Source Land Cover",
+                                           values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
+                                           labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
 
 # Save Output Plots ----------------------
 setwd(DirPLOT)
@@ -157,3 +202,9 @@ ggsave(plotOPC, file="TNI_WoE-Contrast_DistToOPC_I1-I2_AllTransitions.pdf", widt
 ggsave(plotPA, file="TNI_WoE-Contrast_DistToPA_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
 ggsave(plotRESF, file="TNI_WoE-Contrast_DistToResF_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
 ggsave(plotDEFO, file="TNI_WoE-Contrast_DistToPrevDefoAreas_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+
+ggsave(plotCOMF_30km, file="TNI_WoE-Contrast_DistToComF_30km_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotKBA_30km, file="TNI_WoE-Contrast_DistToKBA_30km_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotOPC_30km, file="TNI_WoE-Contrast_DistToOPC_30km_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotPA_30km, file="TNI_WoE-Contrast_DistToPA_30km_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotRESF_30km, file="TNI_WoE-Contrast_DistToResF_30km_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
