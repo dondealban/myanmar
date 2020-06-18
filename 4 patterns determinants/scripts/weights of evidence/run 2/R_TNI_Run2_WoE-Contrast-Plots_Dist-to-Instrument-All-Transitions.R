@@ -48,7 +48,7 @@ csvRPDi1$Variable. <- gsub(".*/", "", csvRPDi1$Variable.)
 csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
 # Remove rows in dataframes that satisfy conditions
 dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
-dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0))
+dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0 | Variable. == "D_DefoI1"))
 dfRBRi1 <- csvRBRi1 %>% filter(!(Significant == 0))
 dfRBRi2 <- csvRBRi2 %>% filter(!(Significant == 0))
 dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
@@ -130,7 +130,7 @@ plotPA <- plotPA + scale_colour_manual(name="Source Land Cover",
                                        values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                        labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
 
-# Plot distance to Community Forests per commodity gain transitions for both time-intervals
+# Plot distance to Reserved Forests per commodity gain transitions for both time-intervals
 plotRESF <- ggplot() + geom_line(data=dfRESF, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
 plotRESF <- plotRESF + facet_grid(Commodity ~ TimeInterval)
 plotRESF <- plotRESF + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
@@ -139,6 +139,21 @@ plotRESF <- plotRESF + scale_colour_manual(name="Source Land Cover",
                                            values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                            labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
 
+# Plot distance to previously deforested areas per commodity gain transitions for both time-intervals
+plotDEFO <- ggplot() + geom_line(data=dfDEFO, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
+plotDEFO <- plotDEFO + facet_grid(Commodity ~ TimeInterval)
+plotDEFO <- plotDEFO + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
+                            subtitle="Distance to Previously Deforested Areas", x="Distance (meters)", y="Contrast")
+plotDEFO <- plotDEFO + scale_colour_manual(name="Source Land Cover",
+                                           values=c("#ff8000","#a65400","#ff00ff","#ccff66"),
+                                           labels=c("Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+
+
 # Save Output Plots ----------------------
 setwd(DirPLOT)
-ggsave(plotSUB, file="TNI_WoE-Contrast_DistToCommodity_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotCOMF, file="TNI_WoE-Contrast_DistToComF_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotKBA, file="TNI_WoE-Contrast_DistToKBA_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotOPC, file="TNI_WoE-Contrast_DistToOPC_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotPA, file="TNI_WoE-Contrast_DistToPA_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotRESF, file="TNI_WoE-Contrast_DistToResF_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
+ggsave(plotDEFO, file="TNI_WoE-Contrast_DistToPrevDefoAreas_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
