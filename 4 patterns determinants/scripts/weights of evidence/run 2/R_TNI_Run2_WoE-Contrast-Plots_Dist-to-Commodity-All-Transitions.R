@@ -25,39 +25,59 @@ DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/
 # Read Data Files ------------------------
 # WoE data for oil palm
 setwd(DirOPMI1)
-dfOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
-dfOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvOPMi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRBRI1)
-dfRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvRBRi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRBRI2)
-dfRBRi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvRBRi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRPDI1)
-dfRPDi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvRPDi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirRPDI2)
-dfRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
+csvRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 
 # Clean and Extract Data Subsets ---------
 
 # Replace character strings
-dfOPMi1$Variable. <- gsub(".*/", "", dfOPMi1$Variable.)
-dfOPMi2$Variable. <- gsub(".*/", "", dfOPMi2$Variable.)
-dfRBRi1$Variable. <- gsub(".*/", "", dfRBRi1$Variable.)
-dfRBRi2$Variable. <- gsub(".*/", "", dfRBRi2$Variable.)
-dfRPDi1$Variable. <- gsub(".*/", "", dfRPDi1$Variable.)
-dfRPDi2$Variable. <- gsub(".*/", "", dfRPDi2$Variable.)
+csvOPMi1$Variable. <- gsub(".*/", "", csvOPMi1$Variable.)
+csvOPMi2$Variable. <- gsub(".*/", "", csvOPMi2$Variable.)
+csvRBRi1$Variable. <- gsub(".*/", "", csvRBRi1$Variable.)
+csvRBRi2$Variable. <- gsub(".*/", "", csvRBRi2$Variable.)
+csvRPDi1$Variable. <- gsub(".*/", "", csvRPDi1$Variable.)
+csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
+# Remove rows in dataframes that satisfy conditions
+dfOPMi1 <- csvOPMi1 %>% filter(!(Significant == 0))
+dfOPMi2 <- csvOPMi2 %>% filter(!(Significant == 0))
+dfRBRi1 <- csvRBRi1 %>% filter(!(Significant == 0))
+dfRBRi2 <- csvRBRi2 %>% filter(!(Significant == 0))
+dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
+dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0))
+# Add column for commodity type per time-interval for dataframes
+commodity <- rep("OPM", nrow(dfOPMi1))
+  dfOPMi1 <- cbind(dfOPMi1, commodity)
+commodity <- rep("OPM", nrow(dfOPMi2))
+  dfOPMi2 <- cbind(dfOPMi2, commodity)
+commodity <- rep("RBR", nrow(dfRBRi1))
+  dfRBRi1 <- cbind(dfRBRi1, commodity)
+commodity <- rep("RBR", nrow(dfRBRi2))
+  dfRBRi2 <- cbind(dfRBRi2, commodity)
+commodity <- rep("RPD", nrow(dfRPDi1))
+  dfRPDi1 <- cbind(dfRPDi1, commodity)
+commodity <- rep("RPD", nrow(dfRPDi2))
+  dfRPDi2 <- cbind(dfRPDi2, commodity)
 # Combine dataframes per time-interval
 dfI1 <- rbind(dfOPMi1, dfRPDi1, dfRBRi1)
 dfI2 <- rbind(dfOPMi2, dfRPDi2, dfRBRi2)
-#Add column for time-intervals
+# Add column for time-intervals
 colT1 <- rep("1996-2007", nrow(dfI1))
 colT2 <- rep("2007-2016", nrow(dfI2))
 # Add time-interval column for dataframes
 dfALLi1 <- cbind(dfI1, colT1)
 dfALLi2 <- cbind(dfI2, colT2)
 # Rename column names
-names <- c("TransitionFrom","TransitionTo","Variable","RangeLowerLimit","RangeUpperLimit",
-          "PossibleTransitions","ExecutedTransitions","WeightCoefficient","Contrast","Significant","X","TimeInterval")
+names <- c("TransitionFrom","TransitionTo","Variable","RangeLowerLimit","RangeUpperLimit","PossibleTransitions",
+          "ExecutedTransitions","WeightCoefficient","Contrast","Significant","X","Commodity","TimeInterval")
 colnames(dfALLi1) <- c(names)
 colnames(dfALLi2) <- c(names)
 # Combine all dataframes into one omnibus dataframe
