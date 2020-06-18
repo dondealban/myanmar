@@ -89,7 +89,7 @@ dfSUB <- dfALL %>% filter(Variable %in% c("distance_to_5","distance_to_6","dista
 
 # Plot distance to commodity weights per commodity gain transitions for both time-intervals
 plotSUB <- ggplot() + geom_line(data=dfSUB, aes(x=RangeLowerLimit, y=Contrast, colour=as.factor(TransitionFrom)))
-plotSUB <- plotSUB + facet_grid(Commodity ~ TimeInterval, scales="free_x")
+plotSUB <- plotSUB + facet_grid(Commodity ~ TimeInterval)
 plotSUB <- plotSUB + labs(title="Weights-of-Evidence (Contrast) of Commodity Gain Transitions",
                           x="Distance to Previously Established Plantation (in meters)", y="Contrast")
 plotSUB <- plotSUB + scale_colour_manual(name="Source Land Cover",
