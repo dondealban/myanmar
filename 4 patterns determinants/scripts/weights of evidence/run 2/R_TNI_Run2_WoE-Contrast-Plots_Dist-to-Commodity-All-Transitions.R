@@ -95,3 +95,7 @@ plotSUB <- plotSUB + labs(title="Weights-of-Evidence (Contrast) of Commodity Gai
 plotSUB <- plotSUB + scale_colour_manual(name="Source Land Cover",
                                          values=c("#246a24","#6666ff","#ff8000","#a65400","#ff00ff","#ccff66"),
                                          labels=c("Forest","Mangrove","Oil Palm","Rice Paddy","Rubber","Shrub/Orchard"))
+
+# Save Output Plots ----------------------
+setwd(DirPLOT)
+ggsave(plotSUB, file="TNI_WoE-Contrast_DistToCommodity_I1-I2_AllTransitions.pdf", width=25, height=15, units="cm", dpi=300)
