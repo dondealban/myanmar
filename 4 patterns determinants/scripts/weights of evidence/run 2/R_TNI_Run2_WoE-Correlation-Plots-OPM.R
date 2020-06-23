@@ -105,7 +105,7 @@ df8to5i2JIU <- acast(df8to5i2JIU, First_Variable. ~ Second_Variable., value.var=
 
 # Cramer's V Coefficients
 # FOR to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df3to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df3to5i1CRM, border="lightgray",
@@ -144,7 +144,7 @@ plot(df3to5i2CRM, border="lightgray",
 dev.off()
 
 # MNG to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df4to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df4to5i1CRM, border="lightgray",
@@ -183,7 +183,7 @@ plot(df4to5i2CRM, border="lightgray",
 dev.off()
 
 # RPD to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df6to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df6to5i1CRM, border="lightgray",
@@ -222,7 +222,7 @@ plot(df6to5i2CRM, border="lightgray",
 dev.off()
 
 # RBR to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df7to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df7to5i1CRM, border="lightgray",
@@ -261,7 +261,7 @@ plot(df7to5i2CRM, border="lightgray",
 dev.off()
 
 # SHB to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df8to5i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df8to5i1CRM, border="lightgray",
@@ -301,7 +301,7 @@ dev.off()
 
 # Joint Information Uncertainty
 # FOR to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df3to5i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df3to5i1JIU, border="lightgray",
@@ -340,7 +340,7 @@ plot(df3to5i2JIU, border="lightgray",
 dev.off()
 
 # MNG to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df4to5i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df4to5i1JIU, border="lightgray",
@@ -379,7 +379,7 @@ plot(df4to5i2JIU, border="lightgray",
 dev.off()
 
 # RPD to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df6to5i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df6to5i1JIU, border="lightgray",
@@ -418,7 +418,7 @@ plot(df6to5i2JIU, border="lightgray",
 dev.off()
 
 # RBR to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df7to5i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df7to5i1JIU, border="lightgray",
@@ -457,7 +457,7 @@ plot(df7to5i2JIU, border="lightgray",
 dev.off()
 
 # SHB to OPM
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df8to5i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df8to5i1JIU, border="lightgray",
