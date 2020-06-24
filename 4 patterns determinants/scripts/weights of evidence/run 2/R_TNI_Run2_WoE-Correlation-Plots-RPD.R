@@ -19,7 +19,7 @@ library(viridisLite)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirPLOT  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
 DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_1996_2007/step04/"
 DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_2007_2016/step04/"
 
@@ -105,7 +105,7 @@ df8to6i2JIU <- acast(df8to6i2JIU, First_Variable. ~ Second_Variable., value.var=
 
 # Cramer's V Coefficients
 # FOR to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df3to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df3to6i1CRM, border="lightgray",
@@ -144,7 +144,7 @@ plot(df3to6i2CRM, border="lightgray",
 dev.off()
 
 # MNG to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df4to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df4to6i1CRM, border="lightgray",
@@ -183,7 +183,7 @@ plot(df4to6i2CRM, border="lightgray",
 dev.off()
 
 # OPM to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df5to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df5to6i1CRM, border="lightgray",
@@ -222,7 +222,7 @@ plot(df5to6i2CRM, border="lightgray",
 dev.off()
 
 # RBR to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df7to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df7to6i1CRM, border="lightgray",
@@ -261,7 +261,7 @@ plot(df7to6i2CRM, border="lightgray",
 dev.off()
 
 # SHB to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df8to6i1CRM_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df8to6i1CRM, border="lightgray",
@@ -301,7 +301,7 @@ dev.off()
 
 # Joint Information Uncertainty
 # FOR to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df3to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df3to6i1JIU, border="lightgray",
@@ -340,7 +340,7 @@ plot(df3to6i2JIU, border="lightgray",
 dev.off()
 
 # MNG to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df4to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df4to6i1JIU, border="lightgray",
@@ -379,7 +379,7 @@ plot(df4to6i2JIU, border="lightgray",
 dev.off()
 
 # OPM to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df5to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df5to6i1JIU, border="lightgray",
@@ -418,7 +418,7 @@ plot(df5to6i2JIU, border="lightgray",
 dev.off()
 
 # RBR to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df7to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df7to6i1JIU, border="lightgray",
@@ -457,7 +457,7 @@ plot(df7to6i2JIU, border="lightgray",
 dev.off()
 
 # SHB to RPD
-setwd(DirDATA)
+setwd(DirPLOT)
 pdf("df8to6i1JIU_ALL.pdf")
 par(mar=c(5, 5, 5, 5))
 plot(df8to6i1JIU, border="lightgray",
