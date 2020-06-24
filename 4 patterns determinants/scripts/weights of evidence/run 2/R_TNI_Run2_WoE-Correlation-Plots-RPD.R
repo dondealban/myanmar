@@ -7,7 +7,7 @@
 # 
 # Script by:      Jose Don T. De Alban
 # Date created:   19 May 2020
-# Date modified:  19 May 2020   
+# Date modified:  24 Jun 2020   
 
 
 # Load Libraries -------------------------
@@ -19,9 +19,9 @@ library(viridisLite)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
-DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rpd/c_1996_2007/step04/"
-DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rpd/c_2007_2016/step04/"
+DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_1996_2007/step04/"
+DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_2007_2016/step04/"
 
 # Read Data Files ------------------------
 # Correlation data for RICE PADDY
