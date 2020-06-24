@@ -7,7 +7,7 @@
 # 
 # Script by:      Jose Don T. De Alban
 # Date created:   19 May 2020
-# Date modified:  19 May 2020   
+# Date modified:  24 Jun 2020   
 
 
 # Load Libraries -------------------------
@@ -19,9 +19,9 @@ library(viridisLite)
 
 # Set Working Directories ----------------
 DirMAIN  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/"
-DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rbr/c_1996_2007/step04/"
-DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/rbr/c_2007_2016/step04/"
+DirPLOT  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/plots/"
+DirRBRI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_1996_2007/step04/"
+DirRBRI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rbr/c_2007_2016/step04/"
 
 # Read Data Files ------------------------
 # Correlation data for OIL PALM
