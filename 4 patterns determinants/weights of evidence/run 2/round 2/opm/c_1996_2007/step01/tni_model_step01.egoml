@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<script>
+    <property key="dff.charset" value="UTF-8" />
+    <property key="dff.date" value="2020-May-13 10:12:53" />
+    <property key="dff.version" value="4.22.11.20191030-Beta" />
+    <functor name="DetermineTransitionMatrix">
+        <property key="dff.functor.alias" value="determineTransitionMatrix2774" />
+        <inputport name="initialLandscape" peerid="v3" />
+        <inputport name="finalLandscape" peerid="v4" />
+        <inputport name="timeSteps">11</inputport>
+        <outputport name="singleStepMatrix" id="v1" />
+        <outputport name="multiStepMatrix" id="v2" />
+    </functor>
+    <functor name="SaveTable">
+        <property key="dff.functor.alias" value="saveTable2777" />
+        <property key="dff.functor.comment" value="Single-step transition matrix." />
+        <inputport name="table" peerid="v1" />
+        <inputport name="filename">&quot;tni_single_step.csv&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <functor name="SaveTable">
+        <property key="dff.functor.alias" value="saveTable2778" />
+        <property key="dff.functor.comment" value="Multiple-step transition matrix." />
+        <inputport name="table" peerid="v2" />
+        <inputport name="filename">&quot;tni_multiple_step.csv&quot;</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap474" />
+        <property key="dff.functor.comment" value="Initial landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_1996_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v3" />
+    </functor>
+    <functor name="LoadCategoricalMap">
+        <property key="dff.functor.alias" value="loadCategoricalMap475" />
+        <property key="dff.functor.comment" value="Final landscape map." />
+        <inputport name="filename">&quot;../../../../../tni oil palm rubber/land cover/TNI_LC_2007_9cl_150px_masked.tif&quot;</inputport>
+        <inputport name="nullValue">0</inputport>
+        <inputport name="storageMode">.default</inputport>
+        <inputport name="suffixDigits">0</inputport>
+        <inputport name="step">.none</inputport>
+        <inputport name="workdir">.none</inputport>
+        <outputport name="map" id="v4" />
+    </functor>
+</script>
