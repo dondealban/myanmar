@@ -30,8 +30,8 @@ csvRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 csvRPDi1$Variable. <- gsub(".*/", "", csvRPDi1$Variable.)
 csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
 # Remove rows in dataframes that satisfy conditions
-dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
-dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0))
+dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0 | Variable. == "distance_to_6"))
+dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0 | Variable. == "distance_to_6"))
 # Add columns to indicate time-intervals
 dfRPDi1$Time.Interval <- rep("1996-2007", nrow(dfRPDi1))
 dfRPDi2$Time.Interval <- rep("2007-2016", nrow(dfRPDi2))

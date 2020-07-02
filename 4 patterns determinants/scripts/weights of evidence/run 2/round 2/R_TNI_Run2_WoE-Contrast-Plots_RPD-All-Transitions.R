@@ -31,8 +31,8 @@ csvRPDi2 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 csvRPDi1$Variable. <- gsub(".*/", "", csvRPDi1$Variable.)
 csvRPDi2$Variable. <- gsub(".*/", "", csvRPDi2$Variable.)
 # Remove rows in dataframes that satisfy conditions
-dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0))
-dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0))
+dfRPDi1 <- csvRPDi1 %>% filter(!(Significant == 0 | Variable. == "distance_to_6"))
+dfRPDi2 <- csvRPDi2 %>% filter(!(Significant == 0 | Variable. == "distance_to_6"))
 
 # Construct dataframes for relative importance plots
 impRPDi1 <- dfRPDi1 %>% filter(Contrast >= 0)
