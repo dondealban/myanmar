@@ -23,7 +23,7 @@ DirRPDI1 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/
 DirRPDI2 <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/weights of evidence/run 2/rpd/c_2007_2016/step03/"
 
 # Read Data Files ------------------------
-# WoE data for oil palm
+# WoE data for commodities
 setwd(DirOPMI1)
 csvOPMi1 <- read.csv(file="tni_weights.csv", header=TRUE, sep=",")
 setwd(DirOPMI2)
