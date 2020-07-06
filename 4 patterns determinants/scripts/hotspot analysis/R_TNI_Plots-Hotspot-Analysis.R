@@ -213,7 +213,7 @@ plotRPD <- plotRPD + scale_fill_manual(name="Gi* Category",
 
 # Gain transitions for all commodities; regional scale
 plotALL <- ggplot() + geom_bar(data=dfALL, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
-plotALL <- plotALL + facet_grid(Commodity ~ Time_Interval, scales="free_x")
+plotALL <- plotALL + facet_grid(Time_Interval ~ Commodity, scales="free_x")
 plotALL <- plotALL + labs(title="Hotspots/Coldspots of Agricultural Commodity Gain Transitions",
                           subtitle="Tanintharyi Region, Myanmar", 
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
