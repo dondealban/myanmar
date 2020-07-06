@@ -221,8 +221,6 @@ plotALL <- plotALL + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
-
-
 # Save Output Plots ----------------------
 setwd(DirPLOT)
 ggsave(plotOPM, file="TNI_HotspotAnalysis_OPMGain.pdf", width=30, height=20, units="cm", dpi=300)
