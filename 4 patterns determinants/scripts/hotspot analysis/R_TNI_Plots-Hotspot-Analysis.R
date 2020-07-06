@@ -186,7 +186,7 @@ dfALL <- rbind(dfOPMall, dfRBRall, dfRPDall)
 
 # Oil palm transitions; regional scale
 plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
-plotOPM <- plotOPM + facet_grid(NAME_2 ~ Time_Interval)
+plotOPM <- plotOPM + facet_grid(Time_Interval ~ NAME_2)
 plotOPM <- plotOPM + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotOPM <- plotOPM + scale_fill_manual(name="Gi* Category",
@@ -195,7 +195,7 @@ plotOPM <- plotOPM + scale_fill_manual(name="Gi* Category",
 
 # Rubber transitions; regional scale
 plotRBR <- ggplot() + geom_bar(data=dfRBRall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
-plotRBR <- plotRBR + facet_grid(~Time_Interval)
+plotRBR <- plotRBR + facet_grid(Time_Interval ~ NAME_2)
 plotRBR <- plotRBR + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRBR <- plotRBR + scale_fill_manual(name="Gi* Category",
@@ -204,7 +204,7 @@ plotRBR <- plotRBR + scale_fill_manual(name="Gi* Category",
 
 # Rice paddy transitions; regional scale
 plotRPD <- ggplot() + geom_bar(data=dfRPDall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
-plotRPD <- plotRPD + facet_grid(~Time_Interval)
+plotRPD <- plotRPD + facet_grid(Time_Interval ~ NAME_2)
 plotRPD <- plotRPD + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRPD <- plotRPD + scale_fill_manual(name="Gi* Category",
