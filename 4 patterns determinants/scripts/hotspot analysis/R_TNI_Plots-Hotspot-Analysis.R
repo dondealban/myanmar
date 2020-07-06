@@ -184,7 +184,7 @@ dfALL <- rbind(dfOPMall, dfRBRall, dfRPDall)
 
 # Generate Plots -------------------------
 
-# Oil palm transitions; regional scale
+# Oil palm transitions; subregional scale
 plotOPM <- ggplot() + geom_bar(data=dfOPMall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotOPM <- plotOPM + facet_grid(Time_Interval ~ NAME_2)
 plotOPM <- plotOPM + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
@@ -193,7 +193,26 @@ plotOPM <- plotOPM + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
-# Rubber transitions; regional scale
+plotOPMi1 <- ggplot() + geom_bar(data=dfOPMi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotOPMi1 <- plotOPMi1 + facet_grid(Time_Interval ~ NAME_2)
+plotOPMi1 <- plotOPMi1 + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                              x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotOPMi1 <- plotOPMi1 + scale_fill_manual(name="Gi* Category",
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                       labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+plotOPMi2 <- ggplot() + geom_bar(data=dfOPMi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotOPMi2 <- plotOPMi2 + facet_grid(Time_Interval ~ NAME_2)
+plotOPMi2 <- plotOPMi2 + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 2007-2016", 
+                              x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotOPMi2 <- plotOPMi2 + scale_fill_manual(name="Gi* Category",
+                                           values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                           labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+
+# Rubber transitions; subregional scale
 plotRBR <- ggplot() + geom_bar(data=dfRBRall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRBR <- plotRBR + facet_grid(Time_Interval ~ NAME_2)
 plotRBR <- plotRBR + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
@@ -202,7 +221,26 @@ plotRBR <- plotRBR + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
-# Rice paddy transitions; regional scale
+plotRBRi1 <- ggplot() + geom_bar(data=dfRBRi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotRBRi1 <- plotRBRi1 + facet_grid(Time_Interval ~ NAME_2)
+plotRBRi1 <- plotRBRi1 + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                          x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotRBRi1 <- plotRBRi1 + scale_fill_manual(name="Gi* Category",
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                       labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+plotRBRi2 <- ggplot() + geom_bar(data=dfRBRi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotRBRi2 <- plotRBRi2 + facet_grid(Time_Interval ~ NAME_2)
+plotRBRi2 <- plotRBRi2 + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 2007-2016",
+                              x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotRBRi2 <- plotRBRi2 + scale_fill_manual(name="Gi* Category",
+                                           values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                           labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+
+# Rice paddy transitions; subregional scale
 plotRPD <- ggplot() + geom_bar(data=dfRPDall, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRPD <- plotRPD + facet_grid(Time_Interval ~ NAME_2)
 plotRPD <- plotRPD + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
@@ -210,6 +248,25 @@ plotRPD <- plotRPD + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain
 plotRPD <- plotRPD + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+plotRPDi1 <- ggplot() + geom_bar(data=dfRPDi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotRPDi1 <- plotRPDi1 + facet_grid(Time_Interval ~ NAME_2)
+plotRPDi1 <- plotRPDi1 + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                          x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotRPDi1 <- plotRPDi1 + scale_fill_manual(name="Gi* Category",
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                       labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
+plotRPDi2 <- ggplot() + geom_bar(data=dfRPDi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
+plotRPDi2 <- plotRPDi2 + facet_grid(Time_Interval ~ NAME_2)
+plotRPDi2 <- plotRPDi2 + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
+                              subtitle="Tanintharyi Region, Myanmar; 2007-2016", 
+                              x="Source Land Cover Type", y="Number of Hexagon Grids")
+plotRPDi2 <- plotRPDi2 + scale_fill_manual(name="Gi* Category",
+                                           values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
+                                           labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
+
 
 # Gain transitions for all commodities; regional scale
 plotALL <- ggplot() + geom_bar(data=dfALL, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
@@ -224,6 +281,12 @@ plotALL <- plotALL + scale_fill_manual(name="Gi* Category",
 # Save Output Plots ----------------------
 setwd(DirPLOT)
 ggsave(plotOPM, file="TNI_HotspotAnalysis_OPMGain.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(plotRBR, file="TNI_HotspotAnalysis_RBRGain.pdf", width=30, height=20, units="cm", dpi=300)
+ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, units="cm", dpi=300)
+
+ggsave(plotOPMi1, file="TNI_HotspotAnalysis_OPMGain_I1.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(plotOPMi2, file="TNI_HotspotAnalysis_OPMGain_I2.pdf", width=30, height=10, units="cm", dpi=300)
+
 ggsave(plotRBR, file="TNI_HotspotAnalysis_RBRGain.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, units="cm", dpi=300)
 
