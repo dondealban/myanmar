@@ -196,7 +196,7 @@ plotOPM <- plotOPM + scale_fill_manual(name="Gi* Category",
 plotOPMi1 <- ggplot() + geom_bar(data=dfOPMi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotOPMi1 <- plotOPMi1 + facet_grid(Time_Interval ~ NAME_2)
 plotOPMi1 <- plotOPMi1 + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                              subtitle="Tanintharyi Region, Myanmar", 
                               x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotOPMi1 <- plotOPMi1 + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
@@ -205,7 +205,7 @@ plotOPMi1 <- plotOPMi1 + scale_fill_manual(name="Gi* Category",
 plotOPMi2 <- ggplot() + geom_bar(data=dfOPMi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotOPMi2 <- plotOPMi2 + facet_grid(Time_Interval ~ NAME_2)
 plotOPMi2 <- plotOPMi2 + labs(title="Subregion Hotspots/Coldspots of Oil Palm Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 2007-2016", 
+                              subtitle="Tanintharyi Region, Myanmar", 
                               x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotOPMi2 <- plotOPMi2 + scale_fill_manual(name="Gi* Category",
                                            values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
@@ -224,7 +224,7 @@ plotRBR <- plotRBR + scale_fill_manual(name="Gi* Category",
 plotRBRi1 <- ggplot() + geom_bar(data=dfRBRi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRBRi1 <- plotRBRi1 + facet_grid(Time_Interval ~ NAME_2)
 plotRBRi1 <- plotRBRi1 + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                              subtitle="Tanintharyi Region, Myanmar", 
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRBRi1 <- plotRBRi1 + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
@@ -233,7 +233,7 @@ plotRBRi1 <- plotRBRi1 + scale_fill_manual(name="Gi* Category",
 plotRBRi2 <- ggplot() + geom_bar(data=dfRBRi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRBRi2 <- plotRBRi2 + facet_grid(Time_Interval ~ NAME_2)
 plotRBRi2 <- plotRBRi2 + labs(title="Subregion Hotspots/Coldspots of Rubber Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 2007-2016",
+                              subtitle="Tanintharyi Region, Myanmar",
                               x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRBRi2 <- plotRBRi2 + scale_fill_manual(name="Gi* Category",
                                            values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
@@ -252,7 +252,7 @@ plotRPD <- plotRPD + scale_fill_manual(name="Gi* Category",
 plotRPDi1 <- ggplot() + geom_bar(data=dfRPDi1, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRPDi1 <- plotRPDi1 + facet_grid(Time_Interval ~ NAME_2)
 plotRPDi1 <- plotRPDi1 + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 1996-2007", 
+                              subtitle="Tanintharyi Region, Myanmar", 
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRPDi1 <- plotRPDi1 + scale_fill_manual(name="Gi* Category",
                                        values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
@@ -261,7 +261,7 @@ plotRPDi1 <- plotRPDi1 + scale_fill_manual(name="Gi* Category",
 plotRPDi2 <- ggplot() + geom_bar(data=dfRPDi2, aes(x=Source, fill=forcats::fct_rev(as.factor(Gi_Bin))))
 plotRPDi2 <- plotRPDi2 + facet_grid(Time_Interval ~ NAME_2)
 plotRPDi2 <- plotRPDi2 + labs(title="Subregion Hotspots/Coldspots of Rice Paddy Gain Transitions",
-                              subtitle="Tanintharyi Region, Myanmar; 2007-2016", 
+                              subtitle="Tanintharyi Region, Myanmar", 
                               x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRPDi2 <- plotRPDi2 + scale_fill_manual(name="Gi* Category",
                                            values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
