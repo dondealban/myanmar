@@ -286,9 +286,8 @@ ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, uni
 
 ggsave(plotOPMi1, file="TNI_HotspotAnalysis_OPMGain_I1.pdf", width=30, height=10, units="cm", dpi=300)
 ggsave(plotOPMi2, file="TNI_HotspotAnalysis_OPMGain_I2.pdf", width=30, height=10, units="cm", dpi=300)
-
-ggsave(plotRBR, file="TNI_HotspotAnalysis_RBRGain.pdf", width=30, height=20, units="cm", dpi=300)
-ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, units="cm", dpi=300)
-
+ggsave(plotRBRi1, file="TNI_HotspotAnalysis_RBRGain_I1.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(plotRBRi2, file="TNI_HotspotAnalysis_RBRGain_I2.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(plotRPDi1, file="TNI_HotspotAnalysis_RPDGain_I1.pdf", width=30, height=10, units="cm", dpi=300)
+ggsave(plotRPDi2, file="TNI_HotspotAnalysis_RPDGain_I2.pdf", width=30, height=10, units="cm", dpi=300)
 ggsave(plotALL, file="TNI_HotspotAnalysis_AllCommodities.pdf", width=30, height=20, units="cm", dpi=300)
-
