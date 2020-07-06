@@ -190,7 +190,7 @@ plotOPM <- plotOPM + facet_grid(~Time_Interval)
 plotOPM <- plotOPM + labs(title="Hotspots/Coldspots of Oil Palm Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotOPM <- plotOPM + scale_fill_manual(name="Gi Bin",
-                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
 # Rubber transitions; regional scale
@@ -199,7 +199,7 @@ plotRBR <- plotRBR + facet_grid(~Time_Interval)
 plotRBR <- plotRBR + labs(title="Hotspots/Coldspots of Rubber Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRBR <- plotRBR + scale_fill_manual(name="Gi Bin",
-                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
 # Rice paddy transitions; regional scale
@@ -208,7 +208,7 @@ plotRPD <- plotRPD + facet_grid(~Time_Interval)
 plotRPD <- plotRPD + labs(title="Hotspots/Coldspots of Rice Paddy Gain Transitions",
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotRPD <- plotRPD + scale_fill_manual(name="Gi Bin",
-                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
 # Gain transitions for all commodities; regional scale
@@ -218,7 +218,7 @@ plotALL <- plotALL + labs(title="Hotspots/Coldspots of Agricultural Commodity Ga
                           subtitle="Tanintharyi Region, Myanmar", 
                           x="Source Land Cover Type", y="Number of Hexagon Grids")
 plotALL <- plotALL + scale_fill_manual(name="Gi Bin",
-                                       values=c("#d7191c","#f17c4a","#fec980","#ffffff","#c7e9ad","#80bfac","#2b83ba"),
+                                       values=c("#d7191c","#f17c4a","#fec980","#ffffbf","#c7e9ad","#80bfac","#2b83ba"),
                                        labels=c("99% hotspot","95% hotspot","90% hotspot","No clustering","90% coldspot","95% coldspot","99% coldspot"))
 
 
