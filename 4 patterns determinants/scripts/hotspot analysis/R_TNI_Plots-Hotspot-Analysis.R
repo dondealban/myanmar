@@ -127,7 +127,7 @@ dfRBRi1 <- cbind(dfRBRi1, Time_Interval)
 Time_Interval <- rep("2007-2016", nrow(dfRBRi2))
 dfRBRi2 <- cbind(dfRBRi2, Time_Interval)
 
-# Combine dataframes for OPM gain transitions
+# Combine dataframes for RBR gain transitions
 dfRBR <- rbind(dfRBRi1, dfRBRi2)
 GridCount <- rep(1, nrow(dfRBR))
 dfRBRall <- cbind(dfRBR, GridCount)
@@ -165,7 +165,7 @@ dfRPDi1 <- cbind(dfRPDi1, Time_Interval)
 Time_Interval <- rep("2007-2016", nrow(dfRPDi2))
 dfRPDi2 <- cbind(dfRPDi2, Time_Interval)
 
-# Combine dataframes for OPM gain transitions
+# Combine dataframes for RPD gain transitions
 dfRPD <- rbind(dfRPDi1, dfRPDi2)
 GridCount <- rep(1, nrow(dfRPD))
 dfRPDall <- cbind(dfRPD, GridCount)
