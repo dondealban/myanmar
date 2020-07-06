@@ -13,7 +13,7 @@ library(tidyverse)
 
 # Set Working Directories ----------------
 DirMAIN <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/"
-DirDATA <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/hotspot analysis/"
+DirPLOT <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/hotspot analysis/plots/"
 DirOPM  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/hotspot analysis/csv opm/"
 DirRBR  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/hotspot analysis/csv rbr/"
 DirRPD  <- "/Users/dondealban/Dropbox/Research/myanmar/4 patterns determinants/hotspot analysis/csv rpd/"
