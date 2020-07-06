@@ -224,7 +224,7 @@ plotALL <- plotALL + scale_fill_manual(name="Gi Bin",
 
 
 # Save Output Plots ----------------------
-setwd(DirDATA)
+setwd(DirPLOT)
 ggsave(plotOPM, file="TNI_HotspotAnalysis_OPMGain.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(plotRBR, file="TNI_HotspotAnalysis_RBRGain.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(plotRPD, file="TNI_HotspotAnalysis_RPDGain.pdf", width=30, height=20, units="cm", dpi=300)
