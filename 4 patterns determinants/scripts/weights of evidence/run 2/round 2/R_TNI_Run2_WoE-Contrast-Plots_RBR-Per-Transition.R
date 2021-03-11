@@ -125,7 +125,7 @@ pFORtoRBRi1imp <- pFORtoRBRi1imp + labs(title="Top 25 Spatial Determinants of Fo
 # WoE Contrast values: 2007-2016
 pFORtoRBRi2imp <- ggplot() + geom_col(data=imp25FORtoRBRi2, aes(x=reorder(VariableLimits,Contrast), y=Contrast), position="dodge")
 pFORtoRBRi2imp <- pFORtoRBRi2imp + coord_flip()
-pFORtoRBRi2imp <- pFORtoRBRi2imp + labs(title="Top 25 Spatial Determinants of Forest to RubberTransition",
+pFORtoRBRi2imp <- pFORtoRBRi2imp + labs(title="Top 25 Spatial Determinants of Forest to Rubber Transition",
                                         subtitle="Time-Interval: 2007-2016", 
                                         x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
