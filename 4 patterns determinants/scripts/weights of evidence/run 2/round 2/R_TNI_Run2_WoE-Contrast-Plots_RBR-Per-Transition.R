@@ -141,3 +141,6 @@ ggsave(pMNGtoRBRwoe, file="TNI_AllVariables_MNGtoRBR_SD_WoE.pdf", width=30, heig
 ggsave(pRPDtoRBRwoe, file="TNI_AllVariables_RPDtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pOPMtoRBRwoe, file="TNI_AllVariables_OPMtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
 ggsave(pSHBtoRBRwoe, file="TNI_AllVariables_SHBtoRBR_SD_WoE.pdf", width=30, height=20, units="cm", dpi=300)
+
+ggsave(pFORtoRBRi1imp, file="TNI_AllVariables_SD_FORtoRBR_I1_Imp.pdf", width=20, height=25, units="cm", dpi=300)
+ggsave(pFORtoRBRi2imp, file="TNI_AllVariables_SD_FORtoRBR_I2_Imp.pdf", width=20, height=25, units="cm", dpi=300)
