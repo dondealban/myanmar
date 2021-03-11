@@ -47,7 +47,10 @@ dfSHBtoOPM <- dfOPMall %>% filter(dfOPMall$Transition_From. %in% "8")
 
 # Construct dataframes for relative importance plots
 impFORtoOPM <- dfFORtoOPM %>% filter(Contrast >= 0)
-
+# Create new column with concatenated data from three columns
+impFORtoOPM$VariableLimits <- trimws(paste(impFORtoOPM$Variable.,"_",
+                                           impFORtoOPM$Range_Lower_Limit.,"_",
+                                           impFORtoOPM$Range_Upper_Limit.), which=c("both"))
 
 # Generate Plots: All Variables Per Transition ----------
 
