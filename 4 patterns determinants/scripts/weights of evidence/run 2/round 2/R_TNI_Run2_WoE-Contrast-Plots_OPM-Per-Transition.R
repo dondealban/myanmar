@@ -45,6 +45,10 @@ dfRPDtoOPM <- dfOPMall %>% filter(dfOPMall$Transition_From. %in% "6")
 dfRBRtoOPM <- dfOPMall %>% filter(dfOPMall$Transition_From. %in% "7")
 dfSHBtoOPM <- dfOPMall %>% filter(dfOPMall$Transition_From. %in% "8")
 
+# Construct dataframes for relative importance plots
+impFORtoOPM <- dfFORtoOPM %>% filter(Contrast >= 0)
+
+
 # Generate Plots: All Variables Per Transition ----------
 
 # WoE Contrast
