@@ -51,6 +51,9 @@ impFORtoOPM <- dfFORtoOPM %>% filter(Contrast >= 0)
 impFORtoOPM$VariableLimits <- trimws(paste(impFORtoOPM$Variable.,"_",
                                            impFORtoOPM$Range_Lower_Limit.,"_",
                                            impFORtoOPM$Range_Upper_Limit.), which=c("both"))
+# Select top 25 variables per gain transition
+imp25FORtoOPMi1 <- impFORtoOPM %>% filter(impFORtoOPM$Time.Interval %in% "1996-2007") %>% arrange(desc(Contrast)) %>% slice(1:25)
+imp25FORtoOPMi2 <- impFORtoOPM %>% filter(impFORtoOPM$Time.Interval %in% "2007-2016") %>% arrange(desc(Contrast)) %>% slice(1:25)
 
 # Generate Plots: All Variables Per Transition ----------
 
@@ -109,6 +112,9 @@ pSHBtoOPMwoe <- ggplot() + geom_line(data=dfSHBtoOPM, aes(x=Range_Upper_Limit., 
 pSHBtoOPMwoe <- pSHBtoOPMwoe + facet_wrap(~ Variable., scales="free_x")
 pSHBtoOPMwoe <- pSHBtoOPMwoe + labs(title="Association of Spatial Determinants with SHB to OPM Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
+# Generate Plots: Variables Importance ------------------
+
 
 # Save Plots: All Variables Per Transition --------------
 setwd(DirPLOT)
