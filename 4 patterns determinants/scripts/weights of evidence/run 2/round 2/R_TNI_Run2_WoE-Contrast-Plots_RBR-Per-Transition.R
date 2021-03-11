@@ -45,6 +45,17 @@ dfOPMtoRBR <- dfRBRall %>% filter(dfRBRall$Transition_From. %in% "5")
 dfRPDtoRBR <- dfRBRall %>% filter(dfRBRall$Transition_From. %in% "6")
 dfSHBtoRBR <- dfRBRall %>% filter(dfRBRall$Transition_From. %in% "8")
 
+# Construct dataframes for relative importance plots
+impFORtoRBR <- dfFORtoRBR %>% filter(Contrast >= 0)
+# Create new column with concatenated data from three columns
+impFORtoRBR$VariableLimits <- trimws(paste(impFORtoRBR$Variable.,"_",
+                                           impFORtoRBR$Range_Lower_Limit.,"_",
+                                           impFORtoRBR$Range_Upper_Limit.), which=c("both"))
+# Select top 25 variables per gain transition
+imp25FORtoRBRi1 <- impFORtoRBR %>% filter(impFORtoRBR$Time.Interval %in% "1996-2007") %>% arrange(desc(Contrast)) %>% slice(1:25)
+imp25FORtoRBRi2 <- impFORtoRBR %>% filter(impFORtoRBR$Time.Interval %in% "2007-2016") %>% arrange(desc(Contrast)) %>% slice(1:25)
+
+
 # Generate Plots: All Variables Per Transition ----------
 
 # WoE Contrast
