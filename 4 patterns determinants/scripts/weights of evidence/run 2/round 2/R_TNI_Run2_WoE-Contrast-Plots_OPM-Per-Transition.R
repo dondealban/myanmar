@@ -115,6 +115,19 @@ pSHBtoOPMwoe <- pSHBtoOPMwoe + labs(title="Association of Spatial Determinants w
 
 # Generate Plots: Variables Importance ------------------
 
+# Relative importance of spatial determinants based on WoE Contrast
+# WoE Contrast values: 1996-2007
+pFORtoOPMi1imp <- ggplot() + geom_col(data=imp25FORtoOPMi1, aes(x=reorder(VariableLimits,Contrast), y=Contrast), position="dodge")
+pFORtoOPMi1imp <- pFORtoOPMi1imp + coord_flip()
+pFORtoOPMi1imp <- pFORtoOPMi1imp + labs(title="Top 25 Spatial Determinants of Forest to Oil Palm Transition",
+                                        subtitle="Time-Interval: 1996-2007", 
+                                        x="Variables [Lower-Upper Range Limits]", y="Contrast")
+# WoE Contrast values: 2007-2016
+pFORtoOPMi2imp <- ggplot() + geom_col(data=imp25FORtoOPMi2, aes(x=reorder(VariableLimits,Contrast), y=Contrast), position="dodge")
+pFORtoOPMi2imp <- pFORtoOPMi2imp + coord_flip()
+pFORtoOPMi2imp <- pFORtoOPMi2imp + labs(title="Top 25 Spatial Determinants of Forest to Oil Palm Transition",
+                                        subtitle="Time-Interval: 2007-2016", 
+                                        x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
 # Save Plots: All Variables Per Transition --------------
 setwd(DirPLOT)
