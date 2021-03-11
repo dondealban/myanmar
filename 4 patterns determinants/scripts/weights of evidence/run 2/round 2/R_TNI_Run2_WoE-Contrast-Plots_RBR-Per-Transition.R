@@ -55,7 +55,6 @@ impFORtoRBR$VariableLimits <- trimws(paste(impFORtoRBR$Variable.,"_",
 imp25FORtoRBRi1 <- impFORtoRBR %>% filter(impFORtoRBR$Time.Interval %in% "1996-2007") %>% arrange(desc(Contrast)) %>% slice(1:25)
 imp25FORtoRBRi2 <- impFORtoRBR %>% filter(impFORtoRBR$Time.Interval %in% "2007-2016") %>% arrange(desc(Contrast)) %>% slice(1:25)
 
-
 # Generate Plots: All Variables Per Transition ----------
 
 # WoE Contrast
@@ -113,6 +112,22 @@ pSHBtoRBRwoe <- ggplot() + geom_line(data=dfSHBtoRBR, aes(x=Range_Upper_Limit., 
 pSHBtoRBRwoe <- pSHBtoRBRwoe + facet_wrap(~ Variable., scales="free_x")
 pSHBtoRBRwoe <- pSHBtoRBRwoe + labs(title="Association of Spatial Determinants with SHB to RBR Transition",
                                     x="Ranges", y="Weights-of-Evidence Coefficients", colour="Time-Interval")
+
+# Generate Plots: Variables Importance ------------------
+
+# Relative importance of spatial determinants based on WoE Contrast
+# WoE Contrast values: 1996-2007
+pFORtoRBRi1imp <- ggplot() + geom_col(data=imp25FORtoRBRi1, aes(x=reorder(VariableLimits,Contrast), y=Contrast), position="dodge")
+pFORtoRBRi1imp <- pFORtoRBRi1imp + coord_flip()
+pFORtoRBRi1imp <- pFORtoRBRi1imp + labs(title="Top 25 Spatial Determinants of Forest to Rubber Transition",
+                                        subtitle="Time-Interval: 1996-2007", 
+                                        x="Variables [Lower-Upper Range Limits]", y="Contrast")
+# WoE Contrast values: 2007-2016
+pFORtoRBRi2imp <- ggplot() + geom_col(data=imp25FORtoRBRi2, aes(x=reorder(VariableLimits,Contrast), y=Contrast), position="dodge")
+pFORtoRBRi2imp <- pFORtoRBRi2imp + coord_flip()
+pFORtoRBRi2imp <- pFORtoRBRi2imp + labs(title="Top 25 Spatial Determinants of Forest to RubberTransition",
+                                        subtitle="Time-Interval: 2007-2016", 
+                                        x="Variables [Lower-Upper Range Limits]", y="Contrast")
 
 # Save Plots: All Variables Per Transition --------------
 setwd(DirPLOT)
